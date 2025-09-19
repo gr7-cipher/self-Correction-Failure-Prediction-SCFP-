@@ -1,0 +1,47 @@
+{
+  "thresholds": {
+    "intrinsic_max_failure_prob": 0.3,
+    "external_max_failure_prob": 0.7,
+    "human_min_failure_prob": 0.7,
+    "confidence_threshold": 0.8,
+    "cost_sensitivity": 1.0
+  },
+  "strategy_preferences": {
+    "intrinsic": 1.0,
+    "external": 0.8,
+    "human": 0.6,
+    "hybrid": 0.9
+  },
+  "cost_weights": {
+    "computational": 0.3,
+    "monetary": 0.4,
+    "latency": 0.2,
+    "quality": 0.1
+  },
+  "cost_profiles": {
+    "intrinsic": {
+      "computational": 1.0,
+      "monetary": 0.0,
+      "latency": 2.0,
+      "quality_risk": 0.3
+    },
+    "external": {
+      "computational": 0.5,
+      "monetary": 5.0,
+      "latency": 5.0,
+      "quality_risk": 0.15
+    },
+    "human": {
+      "computational": 0.1,
+      "monetary": 50.0,
+      "latency": 300.0,
+      "quality_risk": 0.05
+    },
+    "hybrid": {
+      "computational": 1.5,
+      "monetary": 10.0,
+      "latency": 8.0,
+      "quality_risk": 0.1
+    }
+  }
+}
