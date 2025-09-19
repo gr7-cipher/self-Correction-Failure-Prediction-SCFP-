@@ -245,20 +245,26 @@ If you use this code or framework in your research, please cite:
   year={2024}
 }
 ```
+## Contributing
+
+Contributions are welcome! If you find a bug or have a suggestion for improvement, please open an issue or submit a pull request.
+
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
+This project is dual-licensed:
+- **Apache 2.0 License** – for academic and non-commercial use.  
+- **Commercial License** – for commercial us
+  
 ## Contact
 
 For questions or issues, please open a GitHub issue or contact the authors:
 
 - Shahed Almobydeen: salmobydeen@aut.edu.jo
 - Gaith Rjoub: grjoub@aut.edu.jo
-- Jamal Bentahar: jamal.bentahar@ku.ac.ae
-- Ahmad Irjoob: ahmad.irjoob@bau.edu.jo
+
 
 ## Acknowledgments
 
-This work was supported by the Faculty of Information Technology at Aqaba University of Technology, the Concordia Institute for Information Systems Engineering, the 6G Research Center at Khalifa University, and the Faculty of Artificial Intelligence at Al-Balqa Applied University.
+This work is based on the research paper *"Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing."* We thank the authors for their valuable contributions to the field of LLM.
+
+
