@@ -1,4 +1,4 @@
-# Commercial License for SIRLS Implementation
+# Self Correction Failure Prediction (SCFP)
 
 This software is dual-licensed:
 
