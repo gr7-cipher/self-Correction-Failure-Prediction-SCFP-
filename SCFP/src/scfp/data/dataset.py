@@ -58,14 +58,37 @@ class CorrectionTrace:
     @classmethod
     def from_dict(cls, data: Dict) -> "CorrectionTrace":
         """Create trace from dictionary."""
+        # Robust mapping for failure modes
+        mode_map = {
+            "justification hallucination": FailureMode.JUSTIFICATION_HALLUCINATION,
+            "confidence miscalibration": FailureMode.CONFIDENCE_MISCALIBRATION,
+            "bias amplification": FailureMode.BIAS_AMPLIFICATION,
+            "over-correction": FailureMode.OVER_CORRECTION,
+            "reasoning myopia": FailureMode.REASONING_MYOPIA,
+            "n/a": FailureMode.SUCCESS,
+            "success": FailureMode.SUCCESS,
+            "jh": FailureMode.JUSTIFICATION_HALLUCINATION,
+            "cm": FailureMode.CONFIDENCE_MISCALIBRATION,
+            "ba": FailureMode.BIAS_AMPLIFICATION,
+            "oc": FailureMode.OVER_CORRECTION,
+            "rm": FailureMode.REASONING_MYOPIA,
+        }
+        
+        # Determine failure mode
+        raw_mode = data.get("failure_mode") or data.get("failure_type") or "success"
+        if isinstance(raw_mode, str):
+            mode = mode_map.get(raw_mode.lower(), FailureMode.SUCCESS)
+        else:
+            mode = FailureMode(raw_mode)
+            
         return cls(
             prompt=data["prompt"],
             initial_response=data["initial_response"],
             critique=data["critique"],
-            final_response=data["final_response"],
-            failure_mode=FailureMode(data["failure_mode"]),
-            is_success=data["is_success"],
-            metadata=data.get("metadata", {})
+            final_response=data.get("final_response", ""),
+            failure_mode=mode,
+            is_success=data.get("is_success", bool(data.get("label", mode == FailureMode.SUCCESS))),
+            metadata=data.get("metadata") or data.get("meta") or {}
         )
 
 
@@ -107,37 +130,52 @@ class SCFPDataset(Dataset):
         return len(self.traces)
     
     def __getitem__(self, idx: int) -> Dict[str, torch.Tensor]:
-        """Get a single item from the dataset."""
+        """Get a single item from the dataset with segment IDs."""
         trace = self.traces[idx]
         
-        # Construct input text
-        input_parts = [
-            f"Prompt: {trace.prompt}",
-            f"Initial Response: {trace.initial_response}",
-            f"Critique: {trace.critique}"
-        ]
+        # Manually tokenize segments to create segment_ids (token_type_ids)
+        # Segment 0: Prompt
+        # Segment 1: Initial Response
+        # Segment 2: Critique
+        
+        prompt_tokens = self.tokenizer.tokenize(f"Prompt: {trace.prompt}")
+        response_tokens = self.tokenizer.tokenize(f"Initial Response: {trace.initial_response}")
+        critique_tokens = self.tokenizer.tokenize(f"Critique: {trace.critique}")
+        
+        # Add special tokens
+        cls_token = self.tokenizer.cls_token
+        sep_token = self.tokenizer.sep_token
+        
+        tokens = [cls_token] + prompt_tokens + [sep_token] + response_tokens + [sep_token] + critique_tokens + [sep_token]
+        segment_ids = [0] * (len(prompt_tokens) + 2) + [1] * (len(response_tokens) + 1) + [2] * (len(critique_tokens) + 1)
         
         if self.include_final_response:
-            input_parts.append(f"Final Response: {trace.final_response}")
+            final_tokens = self.tokenizer.tokenize(f"Final Response: {trace.final_response}")
+            tokens += final_tokens + [sep_token]
+            segment_ids += [3] * (len(final_tokens) + 1)
+            
+        # Truncate
+        if len(tokens) > self.max_length:
+            tokens = tokens[:self.max_length]
+            segment_ids = segment_ids[:self.max_length]
+            
+        # Pad
+        input_ids = self.tokenizer.convert_tokens_to_ids(tokens)
+        attention_mask = [1] * len(input_ids)
         
-        input_text = " [SEP] ".join(input_parts)
-        
-        # Tokenize
-        encoding = self.tokenizer(
-            input_text,
-            truncation=True,
-            padding="max_length",
-            max_length=self.max_length,
-            return_tensors="pt"
-        )
+        padding_length = self.max_length - len(input_ids)
+        input_ids += [self.tokenizer.pad_token_id] * padding_length
+        attention_mask += [0] * padding_length
+        segment_ids += [0] * padding_length  # Padding gets segment 0
         
         # Create labels
         binary_label = 1 if trace.is_success else 0
         multiclass_label = self.mode_to_idx[trace.failure_mode]
         
         return {
-            "input_ids": encoding["input_ids"].squeeze(0),
-            "attention_mask": encoding["attention_mask"].squeeze(0),
+            "input_ids": torch.tensor(input_ids, dtype=torch.long),
+            "attention_mask": torch.tensor(attention_mask, dtype=torch.long),
+            "token_type_ids": torch.tensor(segment_ids, dtype=torch.long),
             "binary_label": torch.tensor(binary_label, dtype=torch.long),
             "multiclass_label": torch.tensor(multiclass_label, dtype=torch.long),
             "trace_id": torch.tensor(idx, dtype=torch.long)
@@ -156,6 +194,37 @@ class SCFPDataset(Dataset):
             data = json.load(f)
         
         traces = [CorrectionTrace.from_dict(item) for item in data]
+        
+        return cls(
+            traces=traces,
+            tokenizer=tokenizer,
+            max_length=max_length,
+            include_final_response=include_final_response
+        )
+    
+    @classmethod
+    def from_jsonl(
+        cls,
+        jsonl_path: str,
+        tokenizer,
+        max_length: int = 1024,
+        include_final_response: bool = False
+    ) -> "SCFPDataset":
+        """Load dataset from JSONL file (benchmark format)."""
+        traces = []
+        with open(jsonl_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                item = json.loads(line)
+                # Map 'label' to 'is_success' and 'failure_type' to 'failure_mode' if needed
+                # Benchmark format: {"trace_id": ..., "label": 0/1, "failure_type": ..., ...}
+                if "is_success" not in item and "label" in item:
+                    item["is_success"] = bool(item["label"])
+                if "failure_mode" not in item and "failure_type" in item:
+                    item["failure_mode"] = item["failure_type"].lower()
+                    if item["failure_mode"] == "n/a":
+                        item["failure_mode"] = "success"
+                
+                traces.append(CorrectionTrace.from_dict(item))
         
         return cls(
             traces=traces,
