@@ -7,7 +7,7 @@ will fail during intrinsic self-correction processes.
 
 __version__ = "1.0.0"
 __author__ = "Shahed Almobydeen, Gaith Rjoub, Jamal Bentahar, Ahmad Irjoob"
-__email__ = "salmobydeen@aut.edu.jo"
+__email__ = "grjoub@aut.edu.jo"
 
 from .models import (
     DeBERTaFailurePredictor,
