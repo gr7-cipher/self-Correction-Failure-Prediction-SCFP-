@@ -72,8 +72,11 @@ python scripts/train_baselines.py --config experiments/baselines_config.yaml
 # Run comprehensive evaluation
 python scripts/evaluate_all.py --models_dir models/ --data_dir data/processed/ --output results/
 
-# Generate results tables and plots
-python scripts/generate_results.py --results_dir results/ --output results/summary/
+# Analyze experimental performance and generate main report
+python scripts/analyze_experimental_performance.py --results_dir results/ --output results/summary/
+
+# Generate paper-quality visualizations (ROC, Calibration, Tables 3&4)
+python scripts/visualize_paper_results.py --results-json results/comprehensive_evaluation.json --output-dir results/paper/
 ```
 
 ### Dynamic Routing Demo
@@ -235,9 +238,9 @@ If you use this code or framework in your research, please cite:
 ```bibtex
 @article{almobydeen2024predicting,
   title={Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing},
-  author={Almobydeen, Shahed and Rjoub, Gaith and Bentahar, Jamal and Irjoob, Ahmad and Pedrycz, Witold},
-  journal={Information Processing and Management},
-  year={2026}
+  author={Almobydeen, Shahed and Rjoub, Gaith and Bentahar, Jamal and Irjoob, Ahmad},
+  journal={arXiv preprint},
+  year={2024}
 }
 ```
 ## Contributing
@@ -252,9 +255,9 @@ This project is dual-licensed:
   
 ## Contact
 
-For questions or issues, please open a GitHub issue or contact the author:
+For questions or issues, please open a GitHub issue or contact the authors:
 
-
+- Shahed Almobydeen: salmobydeen@aut.edu.jo
 - Gaith Rjoub: grjoub@aut.edu.jo
 
 
