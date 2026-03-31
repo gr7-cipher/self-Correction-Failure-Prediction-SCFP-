@@ -236,7 +236,7 @@ If you use this code or framework in your research, please cite:
 @article{almobydeen2024predicting,
   title={Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing},
   author={Almobydeen, Shahed and Rjoub, Gaith and Bentahar, Jamal and Irjoob, Ahmad and Pedrycz, Witold},
-  journal={arXiv preprint},
+  journal={Information Processing and Management},
   year={2026}
 }
 ```
