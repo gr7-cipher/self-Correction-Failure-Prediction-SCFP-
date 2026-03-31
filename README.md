@@ -255,9 +255,8 @@ This project is dual-licensed:
   
 ## Contact
 
-For questions or issues, please open a GitHub issue or contact the authors:
+For questions or issues, please open a GitHub issue or contact the author:
 
-- Shahed Almobydeen: salmobydeen@aut.edu.jo
 - Gaith Rjoub: grjoub@aut.edu.jo
 
 
