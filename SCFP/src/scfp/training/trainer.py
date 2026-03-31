@@ -29,6 +29,7 @@ class TrainingConfig:
     model_name: str = "microsoft/deberta-v3-base"
     max_length: int = 1024
     use_specialized_attention: bool = True
+    dropout_rate: float = 0.1
     
     # Training parameters
     learning_rate: float = 2e-5
@@ -166,10 +167,12 @@ class Trainer:
         multiclass_weights = None
         
         if self.config.use_class_weights:
-            # This would typically be computed from the dataset
-            # For now, we'll use balanced weights
-            binary_weights = torch.tensor([1.0, 1.0]).to(self.device)
-            multiclass_weights = torch.tensor([1.0] * 6).to(self.device)
+            self.logger.info("Calculating class weights for imbalanced data...")
+            binary_weights = self.train_dataloader.dataset.get_class_weights().to(self.device)
+            multiclass_weights = self.train_dataloader.dataset.get_multiclass_weights().to(self.device)
+            
+            self.logger.info(f"Binary class weights: {binary_weights.tolist()}")
+            self.logger.info(f"Multiclass class weights: {multiclass_weights.tolist()}")
         
         self.loss_fn = MultiTaskLoss(
             binary_weight=self.config.binary_weight,
@@ -193,22 +196,55 @@ class Trainer:
     
     def train(self) -> Dict[str, List[float]]:
         """
-        Main training loop.
-        
-        Returns:
-            Training history dictionary
+        Standard single-stage training loop.
         """
-        self.logger.info("Starting training...")
-        self.logger.info(f"Training on {self.device}")
-        self.logger.info(f"Number of training examples: {len(self.train_dataloader.dataset)}")
-        self.logger.info(f"Number of epochs: {self.config.num_epochs}")
-        self.logger.info(f"Batch size: {self.config.batch_size}")
+        return self._train_wrapper(self.config.num_epochs, "Full")
+
+    def train_3_stage(
+        self, 
+        epochs_binary: int = 10, 
+        epochs_multiclass: int = 15, 
+        epochs_joint: int = 20
+    ) -> Dict[str, List[float]]:
+        """
+        Three-stage training procedure as described in the paper.
+        
+        Stage 1: Binary Detection (Failure vs Success)
+        Stage 2: Multi-class Classification (Failure Modes)
+        Stage 3: Joint Optimization
+        """
+        self.logger.info("Starting 3-Stage Training Procedure...")
+        
+        # Stage 1: Binary Detection
+        self.logger.info(f"--- Stage 1: Binary Detection ({epochs_binary} epochs) ---")
+        self.loss_fn.binary_weight = 1.0
+        self.loss_fn.multiclass_weight = 0.0
+        self._train_wrapper(epochs_binary, "Stage1_Binary")
+        
+        # Stage 2: Multi-class Classification
+        self.logger.info(f"--- Stage 2: Multi-class Classification ({epochs_multiclass} epochs) ---")
+        self.loss_fn.binary_weight = 0.0
+        self.loss_fn.multiclass_weight = 1.0
+        self._train_wrapper(epochs_multiclass, "Stage2_Multi")
+        
+        # Stage 3: Joint Optimization
+        self.logger.info(f"--- Stage 3: Joint Optimization ({epochs_joint} epochs) ---")
+        self.loss_fn.binary_weight = self.config.binary_weight
+        self.loss_fn.multiclass_weight = self.config.multiclass_weight
+        self._train_wrapper(epochs_joint, "Stage3_Joint")
+        
+        self.logger.info("3-Stage Training Completed!")
+        return self.training_history
+
+    def _train_wrapper(self, num_epochs: int, stage_name: str) -> Dict[str, List[float]]:
+        """Helper to run training for a specific number of epochs."""
+        self.logger.info(f"Starting {stage_name} training for {num_epochs} epochs")
         
         self.model.train()
         
-        for epoch in range(self.config.num_epochs):
+        for epoch in range(num_epochs):
             self.epoch = epoch
-            self.logger.info(f"Epoch {epoch + 1}/{self.config.num_epochs}")
+            self.logger.info(f"{stage_name} - Epoch {epoch + 1}/{num_epochs}")
             
             # Training epoch
             train_metrics = self._train_epoch()
@@ -219,28 +255,13 @@ class Trainer:
             # Log metrics
             self._log_metrics(train_metrics, eval_metrics, epoch)
             
-            # Save checkpoint
-            if (epoch + 1) % (self.config.save_steps // len(self.train_dataloader)) == 0:
-                self._save_checkpoint(epoch, eval_metrics)
-            
-            # Early stopping check
+            # Check for best model
             current_metric = eval_metrics.get(self.config.metric_for_best_model, 0)
             if current_metric > self.best_metric:
                 self.best_metric = current_metric
                 self.early_stopping_counter = 0
                 self._save_best_model(eval_metrics)
-            else:
-                self.early_stopping_counter += 1
-                
-            if self.early_stopping_counter >= self.config.early_stopping_patience:
-                self.logger.info(f"Early stopping after {epoch + 1} epochs")
-                break
-        
-        # Load best model if requested
-        if self.config.load_best_model_at_end:
-            self._load_best_model()
-        
-        self.logger.info("Training completed!")
+            
         return self.training_history
     
     def _train_epoch(self) -> Dict[str, float]:
@@ -260,7 +281,8 @@ class Trainer:
             # Forward pass
             outputs = self.model(
                 input_ids=batch["input_ids"],
-                attention_mask=batch["attention_mask"]
+                attention_mask=batch["attention_mask"],
+                token_type_ids=batch.get("token_type_ids")
             )
             
             # Compute loss
@@ -358,7 +380,8 @@ class Trainer:
                 # Forward pass
                 outputs = self.model(
                     input_ids=batch["input_ids"],
-                    attention_mask=batch["attention_mask"]
+                    attention_mask=batch["attention_mask"],
+                    token_type_ids=batch.get("token_type_ids")
                 )
                 
                 # Compute loss
