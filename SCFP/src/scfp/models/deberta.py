@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from transformers import DebertaV2Model, DebertaV2Config
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Tuple, List
 import numpy as np
 
 
@@ -45,14 +45,16 @@ class SpecializedAttention(nn.Module):
     def forward(
         self, 
         hidden_states: torch.Tensor, 
-        attention_mask: Optional[torch.Tensor] = None
+        attention_mask: Optional[torch.Tensor] = None,
+        segment_ids: Optional[torch.Tensor] = None
     ) -> torch.Tensor:
         """
         Forward pass of specialized attention.
         
         Args:
             hidden_states: Input hidden states [batch_size, seq_len, hidden_size]
-            attention_mask: Attention mask [batch_size, seq_len]
+            attention_mask: Standard padding mask [batch_size, seq_len]
+            segment_ids: Component IDs for specialized masking [batch_size, seq_len]
         
         Returns:
             Attended hidden states [batch_size, seq_len, hidden_size]
@@ -68,17 +70,30 @@ class SpecializedAttention(nn.Module):
         attention_scores = torch.matmul(query_layer, key_layer.transpose(-1, -2))
         attention_scores = attention_scores / np.sqrt(self.attention_head_size)
         
-        # Apply attention mask if provided
+        # Apply specialized attention mask if segment_ids provided
+        if segment_ids is not None:
+            # Create segment-aware mask
+            # Rule: Critique (segment 2) can attend to Prompt (0) and Response (1)
+            # Response (1) can attend to Prompt (0) but NOT Critique (2)
+            # Prompt (0) cannot attend to Response or Critique (forward-only logic for grounding)
+            
+            # S[B, L] -> Mask[B, L, L]
+            s_q = segment_ids.unsqueeze(-1)  # [B, L, 1]
+            s_k = segment_ids.unsqueeze(-2)  # [B, 1, L]
+            
+            # Allow: s_k <= s_q (standard causal-like or grounded reasoning)
+            special_mask = (s_k <= s_q).float()
+            
+            # Expand for multi-head attention
+            extended_mask = special_mask.unsqueeze(1) # [B, 1, L, L]
+            attention_scores = attention_scores.masked_fill(extended_mask == 0, -1e9)
+        
+        # Apply standard padding mask if provided
         if attention_mask is not None:
             # Expand mask for multi-head attention
             extended_attention_mask = attention_mask.unsqueeze(1).unsqueeze(2)
-            extended_attention_mask = extended_attention_mask.expand(
-                batch_size, self.num_attention_heads, seq_len, seq_len
-            )
-            # Apply mask (set masked positions to large negative value)
-            attention_scores = attention_scores.masked_fill(
-                extended_attention_mask == 0, -1e9
-            )
+            # Apply mask
+            attention_scores = attention_scores.masked_fill(extended_attention_mask == 0, -1e9)
         
         # Compute attention probabilities
         attention_probs = F.softmax(attention_scores, dim=-1)
@@ -185,6 +200,10 @@ class DeBERTaFailurePredictor(nn.Module):
         self.config = DebertaV2Config.from_pretrained(model_name)
         self.deberta = DebertaV2Model.from_pretrained(model_name, config=self.config)
         
+        # Resize token type embeddings to handle 4 segments (Prompt, Response, Critique, Final)
+        # Standard DeBERTa usually has type_vocab_size = 0 or 2
+        self.deberta.embeddings.token_type_embeddings = nn.Embedding(4, self.config.hidden_size)
+        
         # Specialized attention layer
         if use_specialized_attention:
             self.specialized_attention = SpecializedAttention(
@@ -192,11 +211,9 @@ class DeBERTaFailurePredictor(nn.Module):
                 num_attention_heads=self.config.num_attention_heads
             )
         
-        # Pooling layer
-        self.pooler = nn.Sequential(
-            nn.Linear(self.config.hidden_size, self.config.hidden_size),
-            nn.Tanh()
-        )
+        # Pooled representation with Adaptive Length Normalization
+        self.pooler_linear = nn.Linear(self.config.hidden_size, self.config.hidden_size)
+        self.pooler_activation = nn.Tanh()
         
         # Multi-task prediction head
         self.prediction_head = MultiTaskHead(
@@ -214,6 +231,7 @@ class DeBERTaFailurePredictor(nn.Module):
         self,
         input_ids: torch.Tensor,
         attention_mask: torch.Tensor,
+        token_type_ids: Optional[torch.Tensor] = None,
         return_attention_weights: bool = False
     ) -> Dict[str, torch.Tensor]:
         """
@@ -222,6 +240,7 @@ class DeBERTaFailurePredictor(nn.Module):
         Args:
             input_ids: Input token IDs [batch_size, seq_len]
             attention_mask: Attention mask [batch_size, seq_len]
+            token_type_ids: Segment IDs [batch_size, seq_len]
             return_attention_weights: Whether to return attention weights
         
         Returns:
@@ -231,6 +250,7 @@ class DeBERTaFailurePredictor(nn.Module):
         outputs = self.deberta(
             input_ids=input_ids,
             attention_mask=attention_mask,
+            token_type_ids=token_type_ids,
             output_attentions=return_attention_weights
         )
         
@@ -239,11 +259,21 @@ class DeBERTaFailurePredictor(nn.Module):
         # Apply specialized attention if enabled
         if self.use_specialized_attention:
             sequence_output = self.specialized_attention(
-                sequence_output, attention_mask
+                sequence_output, 
+                attention_mask=attention_mask,
+                segment_ids=token_type_ids
             )
         
-        # Pool the sequence output (use [CLS] token)
-        pooled_output = self.pooler(sequence_output[:, 0])  # [batch_size, hidden_size]
+        # Pooled output from [CLS] token
+        cls_repr = sequence_output[:, 0]
+        
+        # Apply Adaptive Length Normalization: h_norm = h_cls / sqrt(length(X))
+        # length(X) is computed as the sum of attention_mask
+        seq_lengths = attention_mask.sum(dim=1).unsqueeze(-1).float()
+        h_norm = cls_repr / torch.sqrt(seq_lengths + 1e-6)
+        
+        # Final pooling projection
+        pooled_output = self.pooler_activation(self.pooler_linear(h_norm))
         pooled_output = self.dropout(pooled_output)
         
         # Get predictions from multi-task head
