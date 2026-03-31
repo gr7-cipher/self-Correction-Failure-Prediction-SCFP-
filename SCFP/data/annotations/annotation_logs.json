@@ -1,0 +1,20 @@
+[
+  {
+    "trace_id": "scfp_00001",
+    "annotator": "annotator_1",
+    "domain": "Mathematical Reasoning (GSM8K)",
+    "label": "JH",
+    "is_success": false,
+    "timestamp": "2024-03-15T10:30:00Z",
+    "rationale": "The model hallucinated a mathematical property that does not exist to justify its incorrect step."
+  },
+  {
+    "trace_id": "scfp_00002",
+    "annotator": "annotator_2",
+    "domain": "Strategic QA (StrategyQA)",
+    "label": "SUCCESS",
+    "is_success": true,
+    "timestamp": "2024-03-15T10:35:00Z",
+    "rationale": "The critique correctly identified the missing step and the final response incorporated it perfectly."
+  }
+]
