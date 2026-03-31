@@ -1,0 +1,29 @@
+{
+  "train_size": 70,
+  "val_size": 15,
+  "test_size": 15,
+  "total_size": 100,
+  "train_distribution": {
+    "success": 30,
+    "oc": 11,
+    "jh": 8,
+    "ba": 9,
+    "rm": 7,
+    "cm": 5
+  },
+  "val_distribution": {
+    "success": 7,
+    "oc": 1,
+    "cm": 2,
+    "rm": 2,
+    "ba": 1,
+    "jh": 2
+  },
+  "test_distribution": {
+    "rm": 1,
+    "ba": 3,
+    "oc": 4,
+    "success": 6,
+    "jh": 1
+  }
+}

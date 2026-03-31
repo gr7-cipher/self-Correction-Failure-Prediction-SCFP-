@@ -1,0 +1,302 @@
+[
+  {
+    "prompt": "All squares are rectangles. Shape X is a square. Is shape X a rectangle?",
+    "initial_response": "The answer is 6393. I calculated this by adding 76 + 84 = 6393.",
+    "critique": "I see a minor arithmetic error in step 2. Let me fix that: 76 + 85 = 6393. The answer is now 6394.",
+    "final_response": "Based on my revised analysis, the answer is 6393. This accounts for the correction identified in my critique.",
+    "failure_mode": "rm",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A rectangle has a length of 80 cm and a width of 34 cm. What is its area?",
+    "initial_response": "I believe the answer is 2713, since I mistakenly used addition instead of multiplication.",
+    "critique": "Actually, considering the typical pattern in these types of problems, the answer should favor 2713.",
+    "final_response": "After reconsideration, I believe the answer is 2716. This accounts for the correction identified in my critique.",
+    "failure_mode": "ba",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Did ancient Egyptians have access to iron tools?",
+    "initial_response": "Based on my analysis, 154 seems correct because I mistakenly used addition instead of multiplication.",
+    "critique": "I made an error in my initial response. Let me completely redo the calculation from scratch using a different method entirely.",
+    "final_response": "After reconsideration, I believe the answer is 156. This accounts for the correction identified in my critique.",
+    "failure_mode": "oc",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "If today is Monday, what day will it be in 10 days?",
+    "initial_response": "Based on careful analysis, the answer is 392. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 392 is correct because the formula was applied correctly.",
+    "final_response": "After careful verification, the answer is 392. The calculation 7 × 56 = 392 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "All A are B. No B are C. Can any A be C?",
+    "initial_response": "Based on careful analysis, the answer is 1980. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 1980 is correct because the formula was applied correctly.",
+    "final_response": "The correct answer is 1980. The calculation 99 × 20 = 1980 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Did ancient Egyptians have access to iron tools?",
+    "initial_response": "Based on my analysis, 5057 seems correct because I mistakenly used addition instead of multiplication.",
+    "critique": "I made an error in my initial response. Let me completely redo the calculation from scratch using a different method entirely.",
+    "final_response": "Based on my revised analysis, the answer is 5059. This accounts for the correction identified in my critique.",
+    "failure_mode": "oc",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Is it possible for a country to have more time zones than the United States?",
+    "initial_response": "Based on careful analysis, the answer is 6144. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Let me verify my answer. Checking step by step: Step 1: 96 × 64 = 6144. The answer 6144 is confirmed correct.",
+    "final_response": "After careful verification, the answer is 6144. The calculation 96 × 64 = 6144 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Could Shakespeare have read works by Galileo?",
+    "initial_response": "The answer is 382. I calculated this by adding 11 + 35 = 382.",
+    "critique": "I made an error in my initial response. Let me completely redo the calculation from scratch using a different method entirely.",
+    "final_response": "Based on my revised analysis, the answer is 384. This accounts for the correction identified in my critique.",
+    "failure_mode": "oc",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 0.8,
+      "annotator_votes": [
+        1,
+        0,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "If a train travels at 76 km/h for 86 hours, what is the total distance?",
+    "initial_response": "The answer is 6542. I calculated this by adding 76 + 86 = 6542.",
+    "critique": "Wait, I need to reconsider. The formula I used assumes the values are additive, which is not stated in the problem. The correct approach requires a weighted average.",
+    "final_response": "After reconsideration, I believe the answer is 6542. This accounts for the correction identified in my critique.",
+    "failure_mode": "jh",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 0.8,
+      "annotator_votes": [
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Is the Great Wall of China visible from space with the naked eye?",
+    "initial_response": "I believe the answer is 6110, since I mistakenly used addition instead of multiplication.",
+    "critique": "Actually, considering the typical pattern in these types of problems, the answer should favor 6110.",
+    "final_response": "After reconsideration, I believe the answer is 6113. This accounts for the correction identified in my critique.",
+    "failure_mode": "ba",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Can a person legally own a piece of the Moon?",
+    "initial_response": "Based on my analysis, 3745 seems correct because I mistakenly used addition instead of multiplication.",
+    "critique": "My previous answer was wrong. I need to apply a much more complex approach: integration over the domain.",
+    "final_response": "After reconsideration, I believe the answer is 3745. This accounts for the correction identified in my critique.",
+    "failure_mode": "oc",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "If P implies Q, and Q implies R, does P imply R?",
+    "initial_response": "The answer is 5478. To solve this, I first identified the key variables, then applied the relevant formula: 66 × 83 = 5478. This gives us 5478.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 5478 is correct because the formula was applied correctly.",
+    "final_response": "The correct answer is 5478. The calculation 66 × 83 = 5478 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "No reptiles are warm-blooded. Snakes are reptiles. Are snakes warm-blooded?",
+    "initial_response": "After reviewing the problem, the correct answer is 5700. The key insight is applying the direct formula.",
+    "critique": "Let me verify my answer. Checking step by step: Step 1: 75 × 76 = 5700. The answer 5700 is confirmed correct.",
+    "final_response": "The correct answer is 5700. The calculation 75 × 76 = 5700 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "If a train travels at 38 km/h for 2 hours, what is the total distance?",
+    "initial_response": "I believe the answer is 73, since I mistakenly used addition instead of multiplication.",
+    "critique": "In my experience, problems like this always have 73 as the answer.",
+    "final_response": "After reconsideration, I believe the answer is 74. This accounts for the correction identified in my critique.",
+    "failure_mode": "ba",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A tank holds 14 liters. If 16 liters are used, what fraction remains?",
+    "initial_response": "Based on careful analysis, the answer is 224. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Let me verify my answer. Checking step by step: Step 1: 14 × 16 = 224. The answer 224 is confirmed correct.",
+    "final_response": "After careful verification, the answer is 224. The calculation 14 × 16 = 224 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  }
+]
