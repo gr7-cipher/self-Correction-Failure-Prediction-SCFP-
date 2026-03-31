@@ -1,0 +1,37 @@
+{
+  "version": "1.0",
+  "total_traces": 12000,
+  "train": 8397,
+  "val": 1797,
+  "test": 1806,
+  "n_success": 5402,
+  "n_failure": 6598,
+  "failure_rate": 0.5498,
+  "pilot_kappa": 0.8849,
+  "seed": 42,
+  "annotators": [
+    "annotator_1",
+    "annotator_2",
+    "annotator_3",
+    "annotator_4",
+    "annotator_5"
+  ],
+  "domains": [
+    "Mathematical Reasoning (GSM8K)",
+    "Strategic QA (StrategyQA)",
+    "Logical Reasoning (LogicQA)"
+  ],
+  "source_models": [
+    "GPT-4",
+    "GPT-4o",
+    "Claude-3-Opus",
+    "Gemini-Pro"
+  ],
+  "failure_modes": [
+    "Justification Hallucination",
+    "Confidence Miscalibration",
+    "Bias Amplification",
+    "Over-correction",
+    "Reasoning Myopia"
+  ]
+}
