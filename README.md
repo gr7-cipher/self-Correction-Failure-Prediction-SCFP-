@@ -52,18 +52,15 @@ pip install -e .
 ### Data Preparation
 
 ```bash
-# Generate synthetic SCFP dataset (if original unavailable)
-python scripts/generate_synthetic_data.py --output data/scfp_synthetic.json --size 12000
-
-# Preprocess the dataset
-python scripts/preprocess_data.py --input data/scfp_synthetic.json --output data/processed/
+# Preprocess the real benchmark dataset (scfp_v1.jsonl)
+python scripts/preprocess_data.py --input data/scfp_v1.jsonl --output data/processed/
 ```
 
 ### Training
 
 ```bash
-# Train the main DeBERTa-v3 model
-python scripts/train_deberta.py --config experiments/deberta_config.yaml
+# Train the main DeBERTa-v3 model with 3-stage training
+python scripts/train_deberta.py --data-dir data/processed/ --three-stage --epochs-binary 10 --epochs-multiclass 15 --epochs-joint 20
 
 # Train baseline models
 python scripts/train_baselines.py --config experiments/baselines_config.yaml
@@ -133,7 +130,7 @@ Our core model is based on DeBERTa-v3 with specialized components:
 
 ## Experimental Results
 
-### Main Results (Synthetic Data)
+### Main Results (Real Benchmark Data)
 
 | Model | Binary Accuracy | Macro F1 | Weighted F1 | AUC-ROC | ECE |
 |-------|----------------|----------|-------------|---------|-----|
@@ -220,18 +217,16 @@ python -m pytest tests/test_model_training.py -v
 
 ### Current Limitations
 
-1. **Synthetic Data**: Original SCFP benchmark unavailable, using synthetic data
-2. **GPT-4o Simulation**: GPT-4o judge baseline simulated due to API constraints
-3. **Limited Model Coverage**: Cross-model experiments limited to available models
-4. **Computational Resources**: Some experiments scaled down for feasibility
+1. **GPT-4o Judge**: External evaluation using GPT-4o API (requires API key)
+2. **Limited Model Coverage**: Cross-model experiments limited to available base models
+3. **Computational Resources**: Some experiments scaled down for CPU-only feasibility
 
 ### Future Directions
 
-1. **Real Dataset Integration**: Incorporate actual SCFP benchmark when available
-2. **Extended Model Coverage**: Test on more diverse LLM architectures
-3. **Domain Adaptation**: Extend to specialized domains (code, math, science)
-4. **Online Learning**: Adaptive systems that learn from deployment feedback
-5. **Causal Analysis**: Understanding causal factors in correction failures
+1. **Extended Model Coverage**: Test on more diverse LLM architectures
+2. **Domain Adaptation**: Extend to specialized domains (code, math, science)
+3. **Online Learning**: Adaptive systems that learn from deployment feedback
+4. **Causal Analysis**: Understanding causal factors in correction failures
 
 ## Citation
 
