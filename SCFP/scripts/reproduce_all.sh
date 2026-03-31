@@ -18,7 +18,10 @@ EPOCHS=5
 
 # Create directories
 echo "Creating directories..."
-mkdir -p data/raw data/processed models/deberta models/baselines results logs
+mkdir -p data/raw data/processed models/deberta models/baselines models/llama3-sft models/qwen2-sft results logs
+
+# Step 1: Prepare dataset
+# ... (keeping Step 1-3 as is)
 
 # Step 1: Prepare dataset
 echo ""
@@ -88,18 +91,27 @@ python scripts/demo_routing.py \
     --output results/routing_demo.json \
     2>&1 | tee logs/routing_demo.log
 
-# Step 7: Generate final report
+# Step 7: Analyze experimental results
 echo ""
-echo "Step 7: Generating final report..."
+echo "Step 7: Analyzing experimental results..."
 echo "------------------------------------------------------"
-python scripts/generate_results.py \
+python scripts/analyze_experimental_performance.py \
     --results-dir results \
     --output results/summary \
-    2>&1 | tee logs/report_generation.log
+    2>&1 | tee logs/analysis.log
 
-# Step 8: Run unit tests
+# Step 8: Generate paper-quality visualizations
 echo ""
-echo "Step 8: Running unit tests..."
+echo "Step 8: Generating paper visualizations..."
+echo "------------------------------------------------------"
+python scripts/visualize_paper_results.py \
+    --results-json results/comprehensive_evaluation.json \
+    --output-dir results/paper \
+    2>&1 | tee logs/visualization.log
+
+# Step 9: Run unit tests
+echo ""
+echo "Step 9: Running unit tests..."
 echo "------------------------------------------------------"
 python -m pytest tests/ -v --tb=short 2>&1 | tee logs/tests.log
 
@@ -109,26 +121,26 @@ echo "REPRODUCTION COMPLETE!"
 echo "======================================================"
 echo ""
 echo "Results are available in the following locations:"
-echo "  - Synthetic dataset: data/raw/scfp_synthetic.json"
+echo "  - Real benchmark data: data/scfp_v1.jsonl"
 echo "  - Processed data: data/processed/"
 echo "  - Trained models: models/"
-echo "  - Evaluation results: results/"
+echo "  - Evaluation benchmarks: results/"
 echo "  - Logs: logs/"
 echo ""
 echo "Key files:"
 echo "  - Main results: results/comprehensive_evaluation.json"
-echo "  - Model comparison plots: results/model_comparison.png"
-echo "  - Routing demo: results/routing_demo.json"
-echo "  - Final report: results/summary/REPORT.md"
+echo "  - ROC Curves: results/paper/figure3_roc_curves.png"
+echo "  - Calibration Plots: results/paper/figure4_calibration.png"
+echo "  - Final Experimental Report: results/summary/REPORT.md"
 echo ""
 echo "To view the main results:"
 echo "  cat results/comprehensive_evaluation.json | jq '.summary'"
 echo ""
 echo "To run individual components:"
-echo "  ./scripts/generate_synthetic_data.py --help"
+echo "  ./scripts/preprocess_data.py --help"
 echo "  ./scripts/train_deberta.py --help"
 echo "  ./scripts/evaluate_all.py --help"
-echo "  ./scripts/demo_routing.py --help"
+echo "  ./scripts/visualize_paper_results.py --help"
 echo ""
 echo "For interactive routing demo:"
 echo "  python scripts/demo_routing.py --interactive"

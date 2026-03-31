@@ -84,8 +84,8 @@ def evaluate_neural_model(model, dataset, device):
             all_multiclass_probs.extend(multiclass_probs.cpu().numpy())
     
     # Calculate metrics
-    metrics = EvaluationMetrics()
-    results = metrics.compute_all_metrics(
+    metrics_calc = EvaluationMetrics()
+    results = metrics_calc.compute_all_metrics(
         binary_preds=np.array(all_binary_preds),
         binary_labels=np.array(all_binary_labels),
         binary_probs=np.array(all_binary_probs),
@@ -94,7 +94,16 @@ def evaluate_neural_model(model, dataset, device):
         multiclass_probs=np.array(all_multiclass_probs)
     )
     
-    return results
+    raw_data = {
+        "binary_preds": np.array(all_binary_preds).tolist(),
+        "binary_labels": np.array(all_binary_labels).tolist(),
+        "binary_probs": np.array(all_binary_probs).tolist(),
+        "multiclass_preds": np.array(all_multiclass_preds).tolist(),
+        "multiclass_labels": np.array(all_multiclass_labels).tolist(),
+        "multiclass_probs": np.array(all_multiclass_probs).tolist()
+    }
+    
+    return results, raw_data
 
 
 def evaluate_heuristic_model(model, dataset):
@@ -125,8 +134,8 @@ def evaluate_heuristic_model(model, dataset):
     binary_probs_2d = np.column_stack([binary_probs, 1 - binary_probs])
     
     # Calculate metrics
-    metrics = EvaluationMetrics()
-    results = metrics.compute_all_metrics(
+    metrics_calc = EvaluationMetrics()
+    results = metrics_calc.compute_all_metrics(
         binary_preds=binary_preds,
         binary_labels=np.array(binary_labels),
         binary_probs=binary_probs_2d,
@@ -135,7 +144,16 @@ def evaluate_heuristic_model(model, dataset):
         multiclass_probs=multiclass_probs
     )
     
-    return results
+    raw_data = {
+        "binary_preds": binary_preds.tolist(),
+        "binary_labels": np.array(binary_labels).tolist(),
+        "binary_probs": binary_probs_2d.tolist(),
+        "multiclass_preds": multiclass_preds.tolist(),
+        "multiclass_labels": np.array(multiclass_labels).tolist(),
+        "multiclass_probs": multiclass_probs.tolist()
+    }
+    
+    return results, raw_data
 
 
 def run_ablation_study(base_model_path, data_dir, device, output_dir):
@@ -357,7 +375,9 @@ def main():
     
     for name, model in heuristic_models.items():
         print(f"  Evaluating {name}...")
-        results[name] = evaluate_heuristic_model(model, dummy_dataset)
+        res, raw = evaluate_heuristic_model(model, dummy_dataset)
+        results[name] = res
+        results[f"{name}_raw"] = raw
     
     # Evaluate neural models
     print("\nEvaluating neural models...")
@@ -391,7 +411,9 @@ def main():
                         max_length=1024 if model_name == "deberta" else 512
                     )
                     
-                    results[model_name] = evaluate_neural_model(model, test_dataset, device)
+                    res, raw = evaluate_neural_model(model, test_dataset, device)
+                    results[model_name] = res
+                    results[f"{model_name}_raw"] = raw
                 else:
                     print(f"    Could not load {model_name}")
             except Exception as e:
