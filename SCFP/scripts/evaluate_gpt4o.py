@@ -22,30 +22,31 @@ class GPT4oJudge:
         self.client = openai.AsyncOpenAI(api_key=self.api_key)
         self.model = model
 
-    async def evaluate_trace(self, prompt: str, initial_response: str, critique: str) -> Dict[str, Any]:
+    async def evaluate_trace(
+        self, 
+        prompt: str, 
+        initial_response: str, 
+        critique: str,
+        use_cot: bool = False
+    ) -> Dict[str, Any]:
         """
-        Evaluate a single correction trace using GPT-4o.
+        Evaluate a single correction trace using GPT-4o with optional CoT.
         """
-        system_prompt = (
-            "You are an expert evaluator of LLM reasoning and self-correction. "
-            "Your task is to predict if the following self-correction trace will result in a FAILURE or SUCCESS. "
-            "A failure occurs if the final response is still incorrect or contains reasoning errors "
-            "introduced or ignored during the critique process."
-        )
-        
-        user_prompt = (
-            f"### Original Prompt:\n{prompt}\n\n"
-            f"### Initial Response:\n{initial_response}\n\n"
-            f"### Self-Generated Critique:\n{critique}\n\n"
-            "Predict the failure mode from the following taxonomy:\n"
-            "1. SUCCESS: The correction will fix the error.\n"
-            "2. JH: Justification Hallucination (fabricating reasons).\n"
-            "3. CM: Confidence Miscalibration (poor uncertainty alignment).\n"
-            "4. BA: Bias Amplification (reinforcing initial errors).\n"
-            "5. OC: Over-correction (changing correct to incorrect).\n"
-            "6. RM: Reasoning Myopia (ignoring global logic).\n\n"
-            "Respond ONLY in JSON format with keys 'is_failure' (boolean) and 'failure_mode' (string, choices: [SUCCESS, JH, CM, BA, OC, RM])."
-        )
+        if use_cot:
+            from scfp.models.llm_baselines import CoTJudge
+            system_prompt = CoTJudge.get_cot_system_prompt()
+            user_prompt = CoTJudge.get_cot_user_prompt(prompt, initial_response, critique)
+        else:
+            system_prompt = (
+                "You are an expert evaluator of LLM reasoning and self-correction. "
+                "Your task is to predict if the following self-correction trace will result in a FAILURE or SUCCESS. "
+            )
+            user_prompt = (
+                f"### Prompt:\n{prompt}\n\n"
+                f"### Response:\n{initial_response}\n\n"
+                f"### Critique:\n{critique}\n\n"
+                "Respond ONLY in JSON format with keys 'is_failure' (bool) and 'failure_mode' (string: [SUCCESS, JH, CM, BA, OC, RM])."
+            )
         
         try:
             response = await self.client.chat.completions.create(
@@ -61,7 +62,6 @@ class GPT4oJudge:
             result = json.loads(response.choices[0].message.content)
             return result
         except Exception as e:
-            print(f"Error evaluating trace: {e}")
             return {"is_failure": None, "failure_mode": "ERROR", "error": str(e)}
 
 async def main():
@@ -70,6 +70,7 @@ async def main():
     parser.add_argument("--output", type=str, required=True, help="Path to save results")
     parser.add_argument("--limit", type=int, default=100, help="Limit number of traces for evaluation")
     parser.add_argument("--model", type=str, default="gpt-4o", help="Model to use as judge")
+    parser.add_argument("--use-cot", action="store_true", help="Use Chain-of-Thought prompting")
     
     args = parser.parse_args()
     
@@ -83,14 +84,15 @@ async def main():
                 break
             traces.append(json.loads(line))
     
-    print(f"Evaluating {len(traces)} traces with {args.model}...")
+    print(f"Evaluating {len(traces)} traces with {args.model} (CoT: {args.use_cot})...")
     
     results = []
     tasks = [
         judge.evaluate_trace(
             trace["prompt"], 
             trace["initial_response"], 
-            trace["critique"]
+            trace["critique"],
+            use_cot=args.use_cot
         ) for trace in traces
     ]
     
