@@ -1,0 +1,302 @@
+[
+  {
+    "prompt": "Is the Great Wall of China visible from space with the naked eye?",
+    "initial_response": "The answer is 1288. To solve this, I first identified the key variables, then applied the relevant formula: 28 × 46 = 1288. This gives us 1288.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 1288 is correct because the formula was applied correctly.",
+    "final_response": "The correct answer is 1288. The calculation 28 × 46 = 1288 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Would it be possible to walk from London to Paris?",
+    "initial_response": "After reviewing the problem, the correct answer is 114. The key insight is applying the direct formula.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 114 is correct because the formula was applied correctly.",
+    "final_response": "After careful verification, the answer is 114. The calculation 57 × 2 = 114 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A factory produces 67 units per hour. How many units in 59 hours?",
+    "initial_response": "Based on careful analysis, the answer is 3953. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Let me verify my answer. Checking step by step: Step 1: 67 × 59 = 3953. The answer 3953 is confirmed correct.",
+    "final_response": "The correct answer is 3953. The calculation 67 × 59 = 3953 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A tank holds 34 liters. If 87 liters are used, what fraction remains?",
+    "initial_response": "Based on my analysis, 2961 seems correct because I mistakenly used addition instead of multiplication.",
+    "critique": "I made an error in my initial response. Let me completely redo the calculation from scratch using a different method entirely.",
+    "final_response": "Based on my revised analysis, the answer is 2962. This accounts for the correction identified in my critique.",
+    "failure_mode": "oc",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 0.8,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A store sells 20 apples per day. After 60 days, how many apples have been sold?",
+    "initial_response": "The answer is 1189. I calculated this by adding 20 + 60 = 1189.",
+    "critique": "I am absolutely certain my answer is correct. There is no possible error in my reasoning.",
+    "final_response": "After reconsideration, I believe the answer is 1192. This accounts for the correction identified in my critique.",
+    "failure_mode": "cm",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A rectangle has a length of 20 cm and a width of 86 cm. What is its area?",
+    "initial_response": "The answer is 1728. I calculated this by adding 20 + 86 = 1728.",
+    "critique": "The wording in my previous answer was unclear. Let me rephrase it more precisely while keeping the same calculation.",
+    "final_response": "Based on my revised analysis, the answer is 1731. This accounts for the correction identified in my critique.",
+    "failure_mode": "rm",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "If a train travels at 85 km/h for 61 hours, what is the total distance?",
+    "initial_response": "The answer is 5183. I calculated this by adding 85 + 61 = 5183.",
+    "critique": "Actually, considering the typical pattern in these types of problems, the answer should favor 5183.",
+    "final_response": "After reconsideration, I believe the answer is 5186. This accounts for the correction identified in my critique.",
+    "failure_mode": "ba",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Could Shakespeare have read works by Galileo?",
+    "initial_response": "Based on my analysis, 1593 seems correct because I mistakenly used addition instead of multiplication.",
+    "critique": "My previous answer is definitely right. The calculation is straightforward and I have verified it multiple times.",
+    "final_response": "Based on my revised analysis, the answer is 1596. This accounts for the correction identified in my critique.",
+    "failure_mode": "cm",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "All A are B. No B are C. Can any A be C?",
+    "initial_response": "The answer is 4232. To solve this, I first identified the key variables, then applied the relevant formula: 46 × 92 = 4232. This gives us 4232.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 4232 is correct because the formula was applied correctly.",
+    "final_response": "After careful verification, the answer is 4232. The calculation 46 × 92 = 4232 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "John walks 33 miles each day. How far does he walk in 98 days?",
+    "initial_response": "The answer is 3234. To solve this, I first identified the key variables, then applied the relevant formula: 33 × 98 = 3234. This gives us 3234.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 3234 is correct because the formula was applied correctly.",
+    "final_response": "The correct answer is 3234. The calculation 33 × 98 = 3234 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "A store sells 20 apples per day. After 36 days, how many apples have been sold?",
+    "initial_response": "I believe the answer is 726, since I mistakenly used addition instead of multiplication.",
+    "critique": "Upon reflection, my initial answer is incorrect because the problem implies a ratio relationship. The actual constraint is the values must be normalized first.",
+    "final_response": "After reconsideration, I believe the answer is 728. This accounts for the correction identified in my critique.",
+    "failure_mode": "jh",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "If a train travels at 24 km/h for 12 hours, what is the total distance?",
+    "initial_response": "Based on careful analysis, the answer is 288. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Upon review, my initial reasoning was sound. The answer 288 is correct because the formula was applied correctly.",
+    "final_response": "After careful verification, the answer is 288. The calculation 24 × 12 = 288 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "There are 9 students in a class. 58 are absent. How many are present?",
+    "initial_response": "The answer is 541. I calculated this by adding 9 + 58 = 541.",
+    "critique": "Wait, I need to reconsider. The formula I used assumes the values are additive, which is not stated in the problem. The correct approach requires a weighted average.",
+    "final_response": "Based on my revised analysis, the answer is 542. This accounts for the correction identified in my critique.",
+    "failure_mode": "jh",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "Is the Great Wall of China visible from space with the naked eye?",
+    "initial_response": "Based on careful analysis, the answer is 2170. The reasoning follows from the given values, which leads directly to the conclusion.",
+    "critique": "Let me verify my answer. Checking step by step: Step 1: 35 × 62 = 2170. The answer 2170 is confirmed correct.",
+    "final_response": "After careful verification, the answer is 2170. The calculation 35 × 62 = 2170 is verified.",
+    "failure_mode": "success",
+    "is_success": false,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  },
+  {
+    "prompt": "All mammals are warm-blooded. Dolphins are mammals. Are dolphins warm-blooded?",
+    "initial_response": "The answer is 2658. I calculated this by adding 42 + 63 = 2658.",
+    "critique": "The wording in my previous answer was unclear. Let me rephrase it more precisely while keeping the same calculation.",
+    "final_response": "Based on my revised analysis, the answer is 2658. This accounts for the correction identified in my critique.",
+    "failure_mode": "rm",
+    "is_success": true,
+    "metadata": {
+      "binary_agreement": 1.0,
+      "annotator_votes": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "adjudicated": false,
+      "qc_flag": "verified"
+    }
+  }
+]
