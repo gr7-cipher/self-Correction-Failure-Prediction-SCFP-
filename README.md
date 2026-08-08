@@ -235,14 +235,9 @@ python -m pytest tests/test_model_training.py -v
 
 If you use this code or framework in your research, please cite:
 
-```bibtex
-@article{almobydeen2024predicting,
-  title={Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing},
-  author={Almobydeen, Shahed and Rjoub, Gaith and Bentahar, Jamal and Irjoob, Ahmad and Pedrycz, Witold},
-  journal={Information Processing and Management},
-  year={2026}
-}
-```
+**************
+
+
 ## Contributing
 
 Contributions are welcome! If you find a bug or have a suggestion for improvement, please open an issue or submit a pull request.
@@ -257,7 +252,7 @@ This project is dual-licensed:
 
 For questions or issues, please open a GitHub issue or contact the author:
 
-- Gaith Rjoub: grjoub@aut.edu.jo
+- *************
 
 
 ## Acknowledgments
