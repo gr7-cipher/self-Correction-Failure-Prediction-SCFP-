@@ -1,0 +1,49 @@
+# Free GPU (Kaggle: 30 GPU-hours/week on T4; or Google Colab free T4), no API keys.
+# Same pipeline, larger models, batched generation on CUDA.
+#
+# Size: filter 2,400 x 1 x 3 = 7,200 calls; generate 1,500 x 4 x 3 = 18,000 calls.
+# Throughput on a T4 is not measured yet: run the first 100 calls, read
+# latency_s in calls.jsonl, and scale. Plan for more than one Kaggle session;
+# copy run_dir (calls.jsonl) between sessions and the run resumes where it stopped.
+#
+#   pip install "datasets>=2.19" pyyaml accelerate
+#   python -m scfp_bench all-auto --config configs/free_gpu.yaml
+
+run_dir: scfp_runs/gpu_v1
+seed: 42
+batch_size: 16
+
+sources:
+  gsm8k: [train, test]
+  strategyqa: [train, test]
+  logiqa: [train, validation, test]
+
+routing_holdout: {source: gsm8k, origin_split: test, n: 1000}
+
+models:
+  # Ungated, permissively licensed, each fits a 16 GB T4 in fp16.
+  - {name: qwen2.5-3b, provider: local, model: Qwen/Qwen2.5-3B-Instruct, max_tokens: 768}
+  - {name: phi-3.5-mini, provider: local, model: microsoft/Phi-3.5-mini-instruct, max_tokens: 768}
+  - {name: granite-3.1-2b, provider: local, model: ibm-granite/granite-3.1-2b-instruct, max_tokens: 768}
+  - {name: smollm2-1.7b, provider: local, model: HuggingFaceTB/SmolLM2-1.7B-Instruct, max_tokens: 768}
+
+filter:
+  models: [qwen2.5-3b]
+  samples_per_problem: 3
+  temperature: 0.7
+  band: [0.2, 0.8]
+  candidates_per_source: {gsm8k: 1000, strategyqa: 800, logiqa: 600}
+  target_per_source: {gsm8k: 600, strategyqa: 525, logiqa: 375}   # 40 / 35 / 25 %
+
+generate:
+  models: [qwen2.5-3b, phi-3.5-mini, granite-3.1-2b, smollm2-1.7b]
+  temperature: 0.0
+
+label: {failure_definition: final_incorrect}
+split: {ratios: [0.70, 0.15, 0.15]}
+
+annotation:
+  annotators: [ann1, ann2, ann3, ann4, ann5]
+  raters_per_trace: 2
+  agreement_fraction: 0.20
+  agreement_raters: 3

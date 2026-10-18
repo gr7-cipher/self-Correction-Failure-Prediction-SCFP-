@@ -1,0 +1,39 @@
+# Pipeline smoke test with a fake model. Costs nothing and needs no keys.
+# Output is tagged provider=mock and `validate` refuses it without --allow-mock.
+# NEVER use this run directory for anything reported in the paper.
+
+run_dir: scfp_runs/smoke_mock
+seed: 0
+concurrency: 4
+
+sources:
+  gsm8k: [test]
+  strategyqa: [test]
+  logiqa: [test]
+
+routing_holdout: {source: gsm8k, origin_split: test, n: 100}
+
+models:
+  - {name: mock-a, provider: mock, model: a}
+  - {name: mock-b, provider: mock, model: b}
+
+filter:
+  models: [mock-a]
+  samples_per_problem: 5
+  temperature: 0.7
+  band: [0.0, 1.0]
+  candidates_per_source: {gsm8k: 20, strategyqa: 20, logiqa: 20}
+  target_per_source: {gsm8k: 10, strategyqa: 10, logiqa: 10}
+
+generate:
+  models: [mock-a, mock-b]
+  temperature: 0.0
+
+label: {failure_definition: final_incorrect}
+split: {ratios: [0.70, 0.15, 0.15]}
+
+annotation:
+  annotators: [ann1, ann2, ann3]
+  raters_per_trace: 1
+  agreement_fraction: 0.5
+  agreement_raters: 3

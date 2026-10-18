@@ -35,7 +35,7 @@ def main():
     parser.add_argument("--config", type=str, help="Training configuration file")
     parser.add_argument("--data-dir", type=str, required=True, help="Data directory with splits")
     parser.add_argument("--output-dir", type=str, default="./models/deberta", help="Output directory")
-    parser.add_argument("--model-name", type=str, default="microsoft/deberta-v3-base", help="Base model name")
+    parser.add_argument("--model-name", type=str, default="microsoft/deberta-v3-large", help="Base model name")
     
     # Training parameters (can override config)
     parser.add_argument("--batch-size", type=int, help="Batch size")

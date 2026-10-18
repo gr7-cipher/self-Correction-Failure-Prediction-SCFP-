@@ -185,7 +185,7 @@ class DeBERTaFailurePredictor(nn.Module):
     
     def __init__(
         self,
-        model_name: str = "microsoft/deberta-v3-base",
+        model_name: str = "microsoft/deberta-v3-large",
         num_failure_modes: int = 6,
         use_specialized_attention: bool = True,
         dropout_rate: float = 0.1

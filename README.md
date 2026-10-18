@@ -1,6 +1,6 @@
 # Self-Correction Failure Prediction (SCFP) Framework
 
-This repository implements the complete SCFP framework for predicting LLM self-correction failures as described in "Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing".
+This repository implements the complete SCFP framework for predicting LLM self-correction failures as described in "Predicting LLM Self-Correction Failures: A Supervised Learning Framework for Dynamic Routing".
 
 ## Overview
 
@@ -10,9 +10,9 @@ The SCFP framework introduces a comprehensive approach to predicting when and ho
 
 - **Process-Oriented Failure Taxonomy**: Five distinct failure modes (Justification Hallucination, Confidence Miscalibration, Bias Amplification, Over-correction, Reasoning Myopia)
 - **DeBERTa-v3 Meta-Learning Model**: Specialized attention mechanisms for analyzing correction traces
-- **Comprehensive Baselines**: Random, confidence-based, length-based, GPT-4o judge, fine-tuned BERT/RoBERTa
+- **Baselines**: Random, confidence-based, length-based, fine-tuned BERT-base/RoBERTa-large, SFT Llama-3-8B/Qwen-2.5-7B
 - **Dynamic Risk-Aware Routing**: Intelligent orchestration between correction strategies
-- **Cross-Model Generalization**: Failure patterns that transcend individual model architectures
+- **Cross-Model Generalization**: Train on one model family, test on others
 
 ## Project Structure
 
@@ -99,11 +99,11 @@ Our core model is based on DeBERTa-v3 with specialized components:
 
 ### Hyperparameters
 
-- **Model**: DeBERTa-v3-base
+- **Model**: DeBERTa-v3-large (`microsoft/deberta-v3-large`)
 - **Max Length**: 1024 tokens
-- **Learning Rate**: 2e-5 (AdamW)
-- **Epochs**: 3-8 (early stopping)
-- **Batch Size**: 8-32
+- **Learning Rate**: 2e-5 (AdamW, weight decay 0.01)
+- **Epochs**: 10 binary / 15 multi-class / 20 joint, early-stopping patience 5
+- **Batch Size**: 16
 - **Warmup**: 10% of training steps
 
 ## Failure Taxonomy
@@ -119,41 +119,25 @@ Our core model is based on DeBERTa-v3 with specialized components:
 - **Random**: Random prediction baseline
 - **Confidence Heuristic**: Based on model confidence scores
 - **Length Heuristic**: Based on response length patterns
-- **GPT-4o Judge**: External evaluation using GPT-4o (simulated)
 - **Fine-tuned BERT-base**: BERT-base fine-tuned on correction traces
 - **Fine-tuned RoBERTa-large**: RoBERTa-large fine-tuned on correction traces
+- **SFT Llama-3-8B / Qwen-2.5-7B**: generative models fine-tuned on correction traces
 
 ## Evaluation Metrics
 
 - **Accuracy**: Overall classification accuracy
 - **Macro F1**: Unweighted average F1 across classes
 - **Weighted F1**: Sample-weighted average F1
-- **AUC-ROC**: Area under ROC curve
-- **ECE**: Expected Calibration Error
+- **AUC-ROC**: Area under ROC curve (continuous failure probabilities)
+- **Significance**: exact McNemar test on paired per-example predictions
 
 ## Experimental Results
 
-### Main Results (Real Benchmark Data)
-
-| Model | Binary Accuracy | Macro F1 | Weighted F1 | AUC-ROC | ECE |
-|-------|----------------|----------|-------------|---------|-----|
-| DeBERTa-v3 (Ours) | 82.4% (±2.1%) | 0.814 (±0.022) | 0.823 (±0.019) | 0.891 (±0.015) | 0.067 (±0.008) |
-| RoBERTa-large | 78.9% (±2.4%) | 0.771 (±0.028) | 0.785 (±0.023) | 0.856 (±0.021) | 0.089 (±0.012) |
-| BERT-base | 75.2% (±2.8%) | 0.734 (±0.031) | 0.748 (±0.027) | 0.821 (±0.024) | 0.112 (±0.015) |
-| GPT-4o Judge | 73.6% (±3.1%) | 0.718 (±0.034) | 0.731 (±0.029) | 0.798 (±0.027) | 0.134 (±0.018) |
-| Confidence Heuristic | 64.3% (±3.5%) | 0.612 (±0.038) | 0.639 (±0.033) | 0.687 (±0.031) | 0.187 (±0.022) |
-| Length Heuristic | 58.7% (±3.8%) | 0.571 (±0.041) | 0.584 (±0.036) | 0.623 (±0.034) | 0.234 (±0.025) |
-| Random | 50.1% (±4.2%) | 0.501 (±0.045) | 0.500 (±0.040) | 0.500 (±0.037) | 0.412 (±0.031) |
-
-### Ablation Studies
-
-| Configuration | Binary Accuracy | Macro F1 | Notes |
-|---------------|----------------|----------|-------|
-| Full Model | 82.4% (±2.1%) | 0.814 (±0.022) | Complete architecture |
-| No Specialized Attention | 79.1% (±2.5%) | 0.776 (±0.026) | Standard attention only |
-| No Critique Input | 76.8% (±2.7%) | 0.751 (±0.029) | Initial response only |
-| Handcrafted Features Only | 71.3% (±3.2%) | 0.698 (±0.033) | No neural components |
-| Single-Task (Binary Only) | 81.7% (±2.3%) | 0.802 (±0.024) | No multi-class head |
+No results are reported here yet. Every number must come from per-example prediction
+files produced by `scripts/evaluate_all.py` and checked with `verification/verify_metrics.py`
+(see the manuscript repository). Earlier versions of this README listed results labeled
+"Real Benchmark Data" that had no corresponding prediction files, logs, or model weights;
+they were removed.
 
 ## Dynamic Routing System
 
@@ -220,9 +204,8 @@ python -m pytest tests/test_model_training.py -v
 
 ### Current Limitations
 
-1. **GPT-4o Judge**: External evaluation using GPT-4o API (requires API key)
-2. **Limited Model Coverage**: Cross-model experiments limited to available base models
-3. **Computational Resources**: Some experiments scaled down for CPU-only feasibility
+1. **Limited Model Coverage**: Cross-model experiments limited to available base models
+2. **Computational Resources**: State the hardware actually used for each reported run (GPU model or CPU-only) next to its results
 
 ### Future Directions
 
@@ -253,10 +236,3 @@ This project is dual-licensed:
 For questions or issues, please open a GitHub issue or contact the author:
 
 - *************
-
-
-## Acknowledgments
-
-This work is based on the research paper *"Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing."* We thank the authors for their valuable contributions to the field of LLM.
-
-

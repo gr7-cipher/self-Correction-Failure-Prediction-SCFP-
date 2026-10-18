@@ -1,0 +1,43 @@
+# Small real run (a few hundred calls) to check prompts, answer parsing, the
+# outcome distribution and per-call cost before launching scfp_v1.yaml.
+# Uses the same model block as scfp_v1.yaml: copy your filled-in ids here.
+
+run_dir: scfp_runs/pilot
+seed: 42
+concurrency: 4
+
+sources:
+  gsm8k: [train, test]
+  strategyqa: [train]
+  logiqa: [validation]
+
+routing_holdout: {source: gsm8k, origin_split: test, n: 1000}
+
+models:
+  - {name: openai-model, provider: openai, model: REPLACE_ME, api_key_env: OPENAI_API_KEY}
+  - {name: anthropic-model, provider: anthropic, model: REPLACE_ME, api_key_env: ANTHROPIC_API_KEY}
+  - {name: llama-model, provider: openai_compatible, model: REPLACE_ME,
+     base_url: "https://api.together.xyz/v1", api_key_env: TOGETHER_API_KEY}
+  - {name: qwen-model, provider: openai_compatible, model: REPLACE_ME,
+     base_url: "https://api.together.xyz/v1", api_key_env: TOGETHER_API_KEY}
+
+filter:
+  models: [openai-model, llama-model]
+  samples_per_problem: 3
+  temperature: 0.7
+  band: [0.2, 0.8]
+  candidates_per_source: {gsm8k: 60, strategyqa: 60, logiqa: 60}
+  target_per_source: {gsm8k: 20, strategyqa: 20, logiqa: 20}
+
+generate:
+  models: [openai-model, anthropic-model, llama-model, qwen-model]
+  temperature: 0.0
+
+label: {failure_definition: final_incorrect}
+split: {ratios: [0.70, 0.15, 0.15]}
+
+annotation:
+  annotators: [ann1, ann2, ann3]
+  raters_per_trace: 2
+  agreement_fraction: 0.5
+  agreement_raters: 3
