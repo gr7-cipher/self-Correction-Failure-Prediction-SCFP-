@@ -1,10 +1,11 @@
 # Free, no API keys: small open-weight models on this Mac (M1, 8 GB).
-# Measured here: Qwen2.5-0.5B runs about 5 s per call unbatched; batching on
-# MPS was slower (18 s/call at batch 8), so batch_size stays 1.
+# Measured here (unbatched, fp16 on MPS): Qwen2.5-0.5B ~5 s/call; Qwen2.5-1.5B
+# ~24 s/call (~10.5 tok/s). Batching on MPS was slower (18 s/call at batch 8),
+# so batch_size stays 1.
 #
-# Size: filter 600 candidates x 1 model x 3 samples = 1,800 calls
-#       generate 300 problems x 3 models x 3 calls   = 2,700 calls
-# About 4,500 calls, roughly 8-12 hours, so run it overnight. It is resumable:
+# Size: filter 600 candidates x 1 model x 3 samples = 1,800 calls (0.5B, ~2.5 h)
+#       generate 300 problems x 3 models x 3 calls   = 2,700 calls (~14 h)
+# About 4,500 calls, roughly 16 hours. It is resumable:
 # if it stops, run the same command again and logged calls are reused.
 # Disk: the three models need about 7.5 GB.
 #
@@ -27,7 +28,12 @@ models:
   - {name: smollm2-1.7b, provider: local, model: HuggingFaceTB/SmolLM2-1.7B-Instruct, max_tokens: 512}
 
 filter:
-  models: [qwen2.5-1.5b]
+  # Difficulty is measured with the smallest generator (Qwen2.5-0.5B), not the
+  # 1.5B model: filtering with 1.5B would take ~12 h instead of ~2.5 h. The
+  # [0.2, 0.8] band is therefore relative to Qwen2.5-0.5B; state this in the paper.
+  # (Seven 1.5B filter calls from the first, stopped run remain in calls.jsonl;
+  # they are unused.)
+  models: [qwen2.5-0.5b]
   samples_per_problem: 3
   temperature: 0.7
   band: [0.2, 0.8]
