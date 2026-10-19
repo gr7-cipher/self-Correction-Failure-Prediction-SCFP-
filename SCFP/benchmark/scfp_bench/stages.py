@@ -128,14 +128,22 @@ def stage_filter(cfg):
             selected.append(p)
     write_jsonl(path(cfg, "filter.jsonl"), rows)
 
+    # Top-up runs keep every earlier pick that is still in the band, so problems
+    # that already have traces are not swapped out for new ones.
+    prev_path = path(cfg, "selected.jsonl")
+    prev = [d["problem_id"] for d in read_jsonl(prev_path)] if os.path.exists(prev_path) else []
     final, report = [], {}
     for source, target in fc["target_per_source"].items():
         pool = [p for p in selected if p.source == source]
-        rng.shuffle(pool)
-        take = pool[:target]
+        by_id = {p.problem_id: p for p in pool}
+        kept = [by_id[i] for i in prev if i in by_id]
+        rest = [p for p in pool if p.problem_id not in set(prev)]
+        rng.shuffle(rest)
+        take = (kept + rest)[:target]
         final.extend(take)
         report[source] = {"candidates": sum(1 for p in candidates if p.source == source),
-                          "in_band": len(pool), "target": target, "selected": len(take)}
+                          "in_band": len(pool), "target": target, "selected": len(take),
+                          "kept_from_previous_run": min(len(kept), target)}
         if len(take) < target:
             print(f"  WARNING {source}: only {len(take)} of {target} target problems are in "
                   f"the band. Raise candidates_per_source or report the smaller count.")
@@ -226,7 +234,8 @@ def stage_label(cfg):
     """Score R0 and Rf automatically and derive the binary outcome label."""
     probs = {d["problem_id"]: problem_from_dict(d) for d in read_jsonl(path(cfg, "selected.jsonl"))}
     definition = cfg["label"]["failure_definition"]
-    rows, cells = [], Counter()
+    require_final = cfg["label"].get("require_final_line", False)
+    rows, excluded, cells = [], [], Counter()
     for t in read_jsonl(path(cfg, "traces.jsonl")):
         p = probs[t["problem_id"]]
         n_opt = len(p.options) or 4
@@ -240,17 +249,29 @@ def stage_label(cfg):
             label = int(c0 and not cf)
         else:
             raise ValueError(f"unknown failure_definition {definition}")
+        row = {**t, "gold": p.gold, "r0_answer": e0.value, "rf_answer": ef.value,
+               "r0_parsed_from_final_line": e0.from_final_line,
+               "rf_parsed_from_final_line": ef.from_final_line,
+               "r0_correct": c0, "rf_correct": cf, "outcome_cell": cell,
+               "label": label, "failure_definition": definition}
+        if require_final and not (e0.from_final_line and ef.from_final_line):
+            # Without an explicit final answer in R0 and Rf, the outcome would rest on
+            # a fallback guess. Such traces are excluded and counted, not scored.
+            missing = [s for s, e in (("R0", e0), ("Rf", ef)) if not e.from_final_line]
+            excluded.append({**row, "excluded_reason": "no_final_answer_line", "missing_in": missing})
+            continue
         cells[cell] += 1
-        rows.append({**t, "gold": p.gold, "r0_answer": e0.value, "rf_answer": ef.value,
-                     "r0_parsed_from_final_line": e0.from_final_line,
-                     "rf_parsed_from_final_line": ef.from_final_line,
-                     "r0_correct": c0, "rf_correct": cf, "outcome_cell": cell,
-                     "label": label, "failure_definition": definition})
+        rows.append(row)
     write_jsonl(path(cfg, "labeled.jsonl"), rows)
-    unparsed = sum(not (r["r0_parsed_from_final_line"] and r["rf_parsed_from_final_line"]) for r in rows)
-    summary = {"traces": len(rows), "outcome_cells": dict(cells),
+    write_jsonl(path(cfg, "excluded.jsonl"), excluded)
+    excl_by = Counter(f"{r['source_model']} / {r['source']}" for r in excluded)
+    summary = {"traces_generated": len(rows) + len(excluded), "traces_kept": len(rows),
+               "excluded_no_final_answer_line": len(excluded),
+               "excluded_by_model_and_source": dict(sorted(excl_by.items())),
+               "require_final_line": require_final,
+               "outcome_cells": dict(cells),
                "failure_rate": sum(r["label"] for r in rows) / max(len(rows), 1),
-               "traces_without_final_answer_line": unparsed}
+               "problems_kept": len({r["problem_id"] for r in rows})}
     json.dump(summary, open(path(cfg, "label_summary.json"), "w"), indent=2)
     print(json.dumps(summary, indent=2))
 

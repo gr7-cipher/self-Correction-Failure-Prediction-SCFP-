@@ -116,3 +116,28 @@ def test_annotation_roundtrip(mock_run):
     report = json.load(open(stages.path(mock_run, "annotation", "agreement.json")))
     assert report["needs_adjudication"] == 0
     assert report["final_labels"] == len(assign)
+
+
+# ---------------------------------------------------------------- exclusion and top-up
+def test_require_final_line_excludes_and_counts(mock_run):
+    cfg = dict(mock_run, label={"failure_definition": "final_incorrect", "require_final_line": True})
+    traces = stages.read_jsonl(stages.path(cfg, "traces.jsonl"))
+    traces[0]["final_response"] = "I think it is 7."          # no "Final answer:" line
+    stages.write_jsonl(stages.path(cfg, "traces.jsonl"), traces)
+    stages.stage_label(cfg)
+    summary = json.load(open(stages.path(cfg, "label_summary.json")))
+    kept = {r["trace_id"] for r in stages.read_jsonl(stages.path(cfg, "labeled.jsonl"))}
+    excl = stages.read_jsonl(stages.path(cfg, "excluded.jsonl"))
+    assert traces[0]["trace_id"] not in kept
+    assert summary["excluded_no_final_answer_line"] == len(excl) >= 1
+    assert summary["traces_generated"] == len(traces)
+    assert excl[0]["missing_in"] == ["Rf"] or "Rf" in excl[0]["missing_in"]
+
+
+def test_topup_keeps_previous_picks(mock_run):
+    before = {d["problem_id"] for d in stages.read_jsonl(stages.path(mock_run, "selected.jsonl"))}
+    cfg = json.loads(json.dumps(mock_run))
+    cfg["filter"]["candidates_per_source"] = {k: v + 10 for k, v in cfg["filter"]["candidates_per_source"].items()}
+    stages.stage_filter(cfg)
+    after = {d["problem_id"] for d in stages.read_jsonl(stages.path(cfg, "selected.jsonl"))}
+    assert before <= after
