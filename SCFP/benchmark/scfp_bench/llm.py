@@ -227,8 +227,13 @@ class LocalHF:
                                                  padding_side="left")
         if self.tok.pad_token is None:
             self.tok.pad_token = self.tok.eos_token
+        # Load straight onto the device: from_pretrained(...).to(device) briefly
+        # held a CPU copy and a GPU copy, which thrashed swap on an 8 GB Mac.
+        import gc
         self.model = AutoModelForCausalLM.from_pretrained(
-            spec.model, revision=spec.revision, dtype=dtype).to(device).eval()
+            spec.model, revision=spec.revision, dtype=dtype, device_map=device,
+            low_cpu_mem_usage=True).eval()
+        gc.collect()
         commit = spec.revision or getattr(self.model.config, "_commit_hash", None)
         if not commit:
             try:
