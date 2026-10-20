@@ -215,9 +215,7 @@ class LocalHF:
         key = (spec.model, spec.revision)
         if self.key == key:
             return
-        self.tok = self.model = None
-        if torch.backends.mps.is_available():
-            torch.mps.empty_cache()
+        self.free()
         device = spec.device or ("cuda" if torch.cuda.is_available()
                                  else "mps" if torch.backends.mps.is_available() else "cpu")
         if device == "cuda":  # T4/V100 (free Colab/Kaggle) lack fast bf16
@@ -241,6 +239,27 @@ class LocalHF:
         self.version = f"{spec.model}@{commit}"
         self.device, self.key = device, key
 
+    def free(self):
+        """Release the current model. Dropping the reference alone left old models
+        resident on MPS; a run that switched models grew to 21 GB on an 8 GB Mac."""
+        import gc
+        import torch
+        if self.model is not None:
+            self.model.to("cpu")
+        self.tok = self.model = None
+        self.key = None
+        gc.collect()
+        if torch.backends.mps.is_available():
+            torch.mps.empty_cache()
+        elif torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+    def _after_call(self):
+        import torch
+        self.calls = getattr(self, "calls", 0) + 1
+        if self.calls % 25 == 0 and torch.backends.mps.is_available():
+            torch.mps.empty_cache()
+
     def generate(self, spec: ModelSpec, messages, temperature, seed):
         import torch
         with self.lock:
@@ -259,9 +278,12 @@ class LocalHF:
             new = out[0, n_in:]
             text = self.tok.decode(new, skip_special_tokens=True)
             finish = "length" if len(new) >= spec.max_tokens else "stop"
+            n_new = int(len(new))
+            del out, new, enc
+            self._after_call()
             return {"text": text, "model_version": self.version, "response_id": None,
                     "finish_reason": finish,
-                    "usage": {"prompt_tokens": int(n_in), "completion_tokens": int(len(new))}}
+                    "usage": {"prompt_tokens": int(n_in), "completion_tokens": n_new}}
 
     def generate_batch(self, spec: ModelSpec, messages_list, temperature, seed):
         import torch
@@ -285,7 +307,10 @@ class LocalHF:
             gen_eos = gen_eos if isinstance(gen_eos, list) else [gen_eos]
             stops = {self.tok.eos_token_id, self.tok.pad_token_id, *gen_eos} - {None}
             results = []
-            for row, plen in zip(out[:, n_in:].tolist(), prompt_lens):
+            rows_out = out[:, n_in:].tolist()
+            del out, enc
+            self._after_call()
+            for row, plen in zip(rows_out, prompt_lens):
                 n = next((i + 1 for i, tok in enumerate(row) if tok in stops), len(row))
                 results.append({"text": self.tok.decode(row[:n], skip_special_tokens=True),
                                 "model_version": self.version, "response_id": None,
