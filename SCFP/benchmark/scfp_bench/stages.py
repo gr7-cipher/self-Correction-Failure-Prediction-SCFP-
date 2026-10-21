@@ -348,6 +348,18 @@ def stage_export(cfg):
                                                     "final_response")}})
     json.dump(tasks, open(path(cfg, "annotation", "tasks.json"), "w"), ensure_ascii=False, indent=1)
     write_jsonl(path(cfg, "annotation", "assignments.jsonl"), assign)
+    # One task file per annotator, for one Label Studio project per annotator.
+    # (The free Label Studio edition cannot assign tasks or set overlap.) Each
+    # file is in its own random order; source model and split are not shown.
+    by_id = {t_["data"]["trace_id"]: t_ for t_ in tasks}
+    counts = {}
+    for ann in annotators:
+        mine = [dict(by_id[a["trace_id"]]["data"], annotator=ann) for a in assign if ann in a["annotators"]]
+        random.Random(f"{cfg['seed']}-{ann}").shuffle(mine)
+        json.dump([{"data": d} for d in mine], open(path(cfg, "annotation", f"tasks_{ann}.json"), "w"),
+                  ensure_ascii=False, indent=1)
+        counts[ann] = len(mine)
+    print(f"per-annotator task files: {counts}")
     choices = "\n".join(f'    <Choice value="{c}"/>' for c in FAILURE_MODES + [UNCLEAR])
     open(path(cfg, "annotation", "label_config.xml"), "w").write(LABEL_CONFIG.format(choices=choices))
     print(f"exported {len(tasks)} failed traces; {n_overlap} in the agreement set "
@@ -355,14 +367,19 @@ def stage_export(cfg):
 
 
 def parse_label_studio(export_path):
-    """Label Studio JSON export -> rows of {trace_id, annotator, mode}."""
+    """Label Studio JSON export -> rows of {trace_id, annotator, mode}.
+
+    The annotator is taken from the task's "annotator" field (set by export);
+    otherwise from completed_by, which Label Studio writes as a user id or a dict.
+    """
     out = []
     for task in json.load(open(export_path)):
         tid = task["data"]["trace_id"]
         for ann in task.get("annotations", []):
             if ann.get("was_cancelled"):
                 continue
-            who = str(ann.get("completed_by", {}).get("email", ann.get("completed_by")))
+            cb = ann.get("completed_by")
+            who = task["data"].get("annotator") or str(cb.get("email", cb.get("id")) if isinstance(cb, dict) else cb)
             for res in ann.get("result", []):
                 if res.get("from_name") == "failure_mode":
                     out.append({"trace_id": tid, "annotator": who,
@@ -389,7 +406,14 @@ def fleiss_kappa(table):
 
 def stage_agree(cfg, export_path):
     """Compute agreement on the agreement set and build final failure-mode labels."""
-    anns = parse_label_studio(export_path) if export_path.endswith(".json") else read_jsonl(export_path)
+    anns = []
+    for p in export_path.split(","):  # one Label Studio export per annotator project
+        p = p.strip()
+        anns += parse_label_studio(p) if p.endswith(".json") else read_jsonl(p)
+    seen = Counter((a["trace_id"], a["annotator"]) for a in anns)
+    dupes = [k for k, n in seen.items() if n > 1]
+    if dupes:
+        raise ValueError(f"{len(dupes)} traces were labeled twice by the same annotator, e.g. {dupes[0]}")
     write_jsonl(path(cfg, "annotation", "annotations.jsonl"), anns)
     assign = {a["trace_id"]: a for a in read_jsonl(path(cfg, "annotation", "assignments.jsonl"))}
     by_trace = defaultdict(list)

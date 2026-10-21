@@ -141,3 +141,22 @@ def test_topup_keeps_previous_picks(mock_run):
     stages.stage_filter(cfg)
     after = {d["problem_id"] for d in stages.read_jsonl(stages.path(cfg, "selected.jsonl"))}
     assert before <= after
+
+
+def test_label_studio_exports_per_annotator(mock_run, tmp_path):
+    stages.stage_export(mock_run)
+    files = []
+    for ann in mock_run["annotation"]["annotators"]:
+        tasks = json.load(open(stages.path(mock_run, "annotation", f"tasks_{ann}.json")))
+        # simulate a Label Studio JSON export: completed_by is an integer user id
+        export = [{"data": t["data"], "annotations": [{"completed_by": 7, "result": [
+            {"from_name": "failure_mode", "value": {"choices": [stages.FAILURE_MODES[1]]}}]}]}
+            for t in tasks]
+        p = tmp_path / f"export_{ann}.json"
+        p.write_text(json.dumps(export))
+        files.append(str(p))
+    stages.stage_agree(mock_run, ",".join(files))
+    anns = stages.read_jsonl(stages.path(mock_run, "annotation", "annotations.jsonl"))
+    assert {a["annotator"] for a in anns} == set(mock_run["annotation"]["annotators"])
+    report = json.load(open(stages.path(mock_run, "annotation", "agreement.json")))
+    assert report["needs_adjudication"] == 0
