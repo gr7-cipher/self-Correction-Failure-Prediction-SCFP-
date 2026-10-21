@@ -260,9 +260,12 @@ class LocalHF:
             torch.cuda.empty_cache()
 
     def _after_call(self):
+        # The MPS caching allocator kept freed blocks of every sequence length:
+        # SmolLM2-1.7B held 3.5 GB of tensors but 9.4 GB in the driver, which
+        # swapped an 8 GB Mac to a crawl. Releasing the cache after each call
+        # costs little next to a 5-25 s generation.
         import torch
-        self.calls = getattr(self, "calls", 0) + 1
-        if self.calls % 25 == 0 and torch.backends.mps.is_available():
+        if torch.backends.mps.is_available():
             torch.mps.empty_cache()
 
     def generate(self, spec: ModelSpec, messages, temperature, seed):

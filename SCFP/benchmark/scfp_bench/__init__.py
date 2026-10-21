@@ -12,3 +12,10 @@ Stages (run in order, each reads the previous stage's output under one run dir):
 """
 
 __version__ = "0.1.0"
+
+import os as _os
+
+# Must be set before torch is imported. Without it, the MPS caching allocator
+# held ~9.4 GB in the driver for a 3.5 GB model (SmolLM2-1.7B) during long
+# generations and swapped an 8 GB Mac to a crawl; at 0.5 it stays near 4 GB.
+_os.environ.setdefault("PYTORCH_MPS_LOW_WATERMARK_RATIO", "0.5")
