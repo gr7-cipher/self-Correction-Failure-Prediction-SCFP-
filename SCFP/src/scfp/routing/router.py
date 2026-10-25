@@ -141,17 +141,16 @@ class DynamicRouter:
         Returns:
             Tuple of (failure_probability, failure_mode, model_confidence)
         """
-        # Convert trace to input format
-        input_text = partial_trace.to_input_text()
-        
-        # Tokenize (this would use the actual tokenizer)
-        # For now, we'll simulate the prediction
-        
-        # Simulate failure prediction
-        failure_prob = np.random.beta(2, 3)  # Biased toward lower failure rates
-        failure_mode = FailureMode.JUSTIFICATION_HALLUCINATION  # Most common
-        model_confidence = np.random.beta(5, 2)  # Biased toward higher confidence
-        
+        # The predictor is any callable mapping the partial trace's input text to
+        # (failure_probability, failure_mode, model_confidence). There is no
+        # fallback: an earlier version drew random numbers here, and routing
+        # results must come from a trained predictor.
+        if self.failure_predictor is None:
+            raise RuntimeError("DynamicRouter needs a trained failure_predictor; "
+                               "routing without one would produce made-up numbers")
+        failure_prob, failure_mode, model_confidence = self.failure_predictor(
+            partial_trace.to_input_text())
+
         return failure_prob, failure_mode, model_confidence
     
     def _analyze_context(self, context: Dict) -> Dict[str, float]:

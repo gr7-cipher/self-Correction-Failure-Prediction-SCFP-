@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from scfp.routing.router import DynamicRouter, RoutingStrategy, RoutingDecision
+from scfp.routing.router import DynamicRouter, RoutingStrategy, RoutingDecision, FailureMode
 from scfp.routing.cost_model import CostModel, CostProfile
 
 
@@ -84,7 +84,8 @@ class TestDynamicRouter:
         """Create router for testing."""
         cost_model = CostModel()
         return DynamicRouter(
-            failure_predictor=None,  # Using dummy predictor for tests
+            # Fixed stub so routing logic is tested deterministically.
+            failure_predictor=lambda text: (0.5, list(FailureMode)[0], 0.8),
             cost_model=cost_model
         )
     
