@@ -89,3 +89,22 @@ Calls = filter (candidates × filter models × samples) + generation (problems �
 models × 3). With `scfp_v1.yaml` that is about 75,000 calls. At roughly 1,000
 input+output tokens per call, that is ~75M tokens. Measure the real per-call
 usage in the pilot and multiply.
+
+## Experiments on the benchmark
+
+All predictors read the partial trace (P, R0, F) only. Each run writes
+`predictions/<name>__binary.jsonl` and `results/<name>.json` under the run directory.
+
+```bash
+# 1. Confidence-heuristic feature: critique log-prob under its own generator (Mac/GPU)
+python -m scfp_bench.experiments.logprobs --config configs/laptop_local.yaml
+# 2. CPU baselines: majority, random, length, confidence, TF-IDF + logistic regression
+python -m scfp_bench.experiments.baselines --config configs/laptop_local.yaml
+# 3. Fine-tuned encoders, ablations, cross-model (GPU; Kaggle or Colab)
+bash run_gpu_experiments.sh
+# 4. Paper tables (every data-derived table; missing runs show as \TBD)
+python -m scfp_bench.experiments.make_tables --config configs/laptop_local.yaml --out ../../../paper_tables
+```
+
+Then check the tables against the data with
+`verification/verify_metrics.py --run-dir <run_dir> --tables <paper_tables>`.

@@ -87,10 +87,21 @@ def build(arch, model_name, special_attention=True):
     if arch == "scfp":
         sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "..", "..", "src"))
         from scfp.models.deberta import DeBERTaFailurePredictor
-        return DeBERTaFailurePredictor(model_name=model_name, num_failure_modes=len(MODES),
-                                       use_specialized_attention=special_attention)
-    from transformers import AutoModelForSequenceClassification
-    return AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+        model = DeBERTaFailurePredictor(model_name=model_name, num_failure_modes=len(MODES),
+                                        use_specialized_attention=special_attention)
+    else:
+        from transformers import AutoModelForSequenceClassification
+        model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+    # Some checkpoints load in float16 by default, which gave NaN outputs and dtype
+    # mismatches with the new (float32) layers. Keep master weights in float32;
+    # mixed precision is applied with autocast on CUDA instead.
+    return model.float()
+
+
+def enable_checkpointing(model, arch):
+    target = model.deberta if arch == "scfp" else model
+    if hasattr(target, "gradient_checkpointing_enable"):
+        target.gradient_checkpointing_enable()
 
 
 def forward(model, arch, ids, seg, mask, use_segments=True):
@@ -104,12 +115,13 @@ def forward(model, arch, ids, seg, mask, use_segments=True):
 
 
 @torch.no_grad()
-def predict(model, arch, data, bs, pad_id, device, use_segments=True):
+def predict(model, arch, data, bs, pad_id, device, use_segments=True, amp=False):
     model.eval()
     pb, pm = [], []
     for b in batches(data, bs, False, 0):
         ids, seg, mask, _, _ = collate(b, pad_id, device)
-        lb, lm = forward(model, arch, ids, seg, mask, use_segments)
+        with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=amp):
+            lb, lm = forward(model, arch, ids, seg, mask, use_segments)
         pb.append(torch.softmax(lb.float(), -1)[:, 1].cpu())
         if lm is not None:
             pm.append(lm.float().argmax(-1).cpu())
@@ -141,6 +153,9 @@ def main():
     ap.add_argument("--no-segments", action="store_true", help="ablation: all tokens in segment 0")
     ap.add_argument("--no-special-attention", action="store_true", help="ablation: drop the extra layer")
     ap.add_argument("--binary-only", action="store_true", help="ablation: skip multi-class and joint stages")
+    ap.add_argument("--grad-accum", type=int, default=1, help="effective batch = batch-size x grad-accum")
+    ap.add_argument("--no-amp", action="store_true", help="disable fp16 autocast on CUDA")
+    ap.add_argument("--no-grad-checkpoint", action="store_true", help="disable gradient checkpointing on CUDA")
     args = ap.parse_args()
 
     cfg = yaml.safe_load(open(args.config))
@@ -165,6 +180,10 @@ def main():
                  "row": r} for r in v for e in [encode(tok, r, args.max_len, inputs=inputs)]] for k, v in S.items()}
 
     model = build(args.arch, args.model, special_attention=not args.no_special_attention).to(device)
+    amp = device == "cuda" and not args.no_amp
+    if device == "cuda" and not args.no_grad_checkpoint:
+        enable_checkpointing(model, args.arch)
+    scaler = torch.amp.GradScaler("cuda", enabled=amp)
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     pad = tok.pad_token_id
     ytr = np.array([d["y"] for d in data["train"]])
@@ -184,18 +203,23 @@ def main():
         bad = 0
         for ep in range(epochs):
             train = data["train"] if stage != "multi" else [d for d in data["train"] if d["mode"] >= 0]
-            for b in batches(train, args.batch_size, True, args.seed + ep):
+            opt.zero_grad()
+            for step, b in enumerate(batches(train, args.batch_size, True, args.seed + ep)):
                 ids, seg, mask, y, m = collate(b, pad, device)
-                lb, lm = forward(model, args.arch, ids, seg, mask, use_seg)
+                with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=amp):
+                    lb, lm = forward(model, args.arch, ids, seg, mask, use_seg)
                 l_bin = torch.nn.functional.cross_entropy(lb.float(), y, weight=w_bin)
                 if stage == "binary":
                     loss = l_bin
                 else:
                     l_multi = torch.nn.functional.cross_entropy(lm.float(), m, weight=w_mode, ignore_index=-100)
                     loss = l_multi if stage == "multi" else args.alpha * l_bin + (1 - args.alpha) * l_multi
-                opt.zero_grad(); loss.backward()
-                torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0); opt.step()
-            pv, _ = predict(model, args.arch, data["val"], args.batch_size, pad, device, use_seg)
+                scaler.scale(loss / args.grad_accum).backward()
+                if (step + 1) % args.grad_accum == 0:
+                    scaler.unscale_(opt)
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+                    scaler.step(opt); scaler.update(); opt.zero_grad()
+            pv, _ = predict(model, args.arch, data["val"], args.batch_size, pad, device, use_seg, amp)
             yv = np.array([d["y"] for d in data["val"]])
             f1 = f1_score(yv, (pv >= 0.5).astype(int), average="macro")
             log.append({"stage": stage, "epoch": ep + 1, "val_binary_macro_f1": float(f1)})
@@ -209,7 +233,7 @@ def main():
                     break
     model.load_state_dict(best_state)
 
-    pt, pmode = predict(model, args.arch, data["test"], args.batch_size, pad, device, use_seg)
+    pt, pmode = predict(model, args.arch, data["test"], args.batch_size, pad, device, use_seg, amp)
     yt = np.array([d["y"] for d in data["test"]])
     yp = (pt >= 0.5).astype(int)
     rows = [{"trace_id": d["row"]["trace_id"], "model": args.name, "task": "binary", "split": "test",
