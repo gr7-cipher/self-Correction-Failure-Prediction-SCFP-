@@ -154,6 +154,9 @@ def main():
     ap.add_argument("--no-special-attention", action="store_true", help="ablation: drop the extra layer")
     ap.add_argument("--binary-only", action="store_true", help="ablation: skip multi-class and joint stages")
     ap.add_argument("--grad-accum", type=int, default=1, help="effective batch = batch-size x grad-accum")
+    ap.add_argument("--save", action="store_true", help="save the best weights to results/<name>.pt")
+    ap.add_argument("--freeze-word-embeddings", action="store_true",
+                    help="do not train the token embedding table (saves optimizer memory on small GPUs)")
     ap.add_argument("--no-amp", action="store_true", help="disable fp16 autocast on CUDA")
     ap.add_argument("--no-grad-checkpoint", action="store_true", help="disable gradient checkpointing on CUDA")
     args = ap.parse_args()
@@ -180,11 +183,19 @@ def main():
                  "row": r} for r in v for e in [encode(tok, r, args.max_len, inputs=inputs)]] for k, v in S.items()}
 
     model = build(args.arch, args.model, special_attention=not args.no_special_attention).to(device)
+    if args.freeze_word_embeddings:
+        frozen = 0
+        for name, p in model.named_parameters():
+            if name.endswith("word_embeddings.weight"):
+                p.requires_grad = False
+                frozen += p.numel()
+        print(f"froze word embeddings: {frozen / 1e6:.1f}M parameters", flush=True)
     amp = device == "cuda" and not args.no_amp
-    if device == "cuda" and not args.no_grad_checkpoint:
+    if device in ("cuda", "mps") and not args.no_grad_checkpoint:
         enable_checkpointing(model, args.arch)
     scaler = torch.amp.GradScaler("cuda", enabled=amp)
-    opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    opt = torch.optim.AdamW([p for p in model.parameters() if p.requires_grad],
+                            lr=args.lr, weight_decay=args.weight_decay)
     pad = tok.pad_token_id
     ytr = np.array([d["y"] for d in data["train"]])
     w_bin = torch.tensor(len(ytr) / (2 * np.bincount(ytr, minlength=2).clip(1)), dtype=torch.float, device=device)
@@ -232,6 +243,9 @@ def main():
                 if bad >= args.patience:
                     break
     model.load_state_dict(best_state)
+    if args.save:
+        os.makedirs(os.path.join(run_dir, "results"), exist_ok=True)
+        torch.save(best_state, os.path.join(run_dir, "results", f"{args.name}.pt"))
 
     pt, pmode = predict(model, args.arch, data["test"], args.batch_size, pad, device, use_seg, amp)
     yt = np.array([d["y"] for d in data["test"]])
