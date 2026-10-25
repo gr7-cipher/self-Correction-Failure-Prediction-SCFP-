@@ -11,7 +11,7 @@ for any reported result.
 ## Setup
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install "openai>=1.40" "anthropic>=0.34" "datasets>=2.19" pyyaml pytest numpy scipy scikit-learn
+python3 -m venv .venv && .venv/bin/pip install "openai>=1.40" "anthropic>=0.34" "datasets>=2.19" pyyaml pytest numpy scipy scikit-learn torch transformers accelerate sentencepiece protobuf
 cd SCFP/benchmark
 export PYTHONPATH=.
 ```

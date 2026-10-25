@@ -249,8 +249,8 @@ class LocalHF:
         resident on MPS; a run that switched models grew to 21 GB on an 8 GB Mac."""
         import gc
         import torch
-        if self.model is not None:
-            self.model.to("cpu")
+        # Do not move the model to the CPU first: on unified memory that copies
+        # the weights and briefly doubles memory use. Dropping the references is enough.
         self.tok = self.model = None
         self.key = None
         gc.collect()

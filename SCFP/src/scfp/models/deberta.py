@@ -83,6 +83,10 @@ class SpecializedAttention(nn.Module):
             
             # Allow: s_k <= s_q (standard causal-like or grounded reasoning)
             special_mask = (s_k <= s_q).float()
+            # [CLS] (position 0) sits in segment 0, so the rule above would let the
+            # token the classifier reads see only the prompt. Let it attend to the
+            # whole trace.
+            special_mask[:, 0, :] = 1.0
             
             # Expand for multi-head attention
             extended_mask = special_mask.unsqueeze(1) # [B, 1, L, L]
@@ -197,12 +201,13 @@ class DeBERTaFailurePredictor(nn.Module):
         self.use_specialized_attention = use_specialized_attention
         
         # Load DeBERTa configuration and model
+        # DeBERTa-v3 ships with type_vocab_size = 0, so segment embeddings are off
+        # by default. Setting it in the config before loading creates a (randomly
+        # initialized) segment embedding that every transformers version uses.
+        # Segments: 0 = prompt, 1 = initial response, 2 = critique, 3 = padding/other.
         self.config = DebertaV2Config.from_pretrained(model_name)
+        self.config.type_vocab_size = 4
         self.deberta = DebertaV2Model.from_pretrained(model_name, config=self.config)
-        
-        # Resize token type embeddings to handle 4 segments (Prompt, Response, Critique, Final)
-        # Standard DeBERTa usually has type_vocab_size = 0 or 2
-        self.deberta.embeddings.token_type_embeddings = nn.Embedding(4, self.config.hidden_size)
         
         # Specialized attention layer
         if use_specialized_attention:
