@@ -1,0 +1,20 @@
+{
+  "gsm8k": {
+    "candidates": 240,
+    "in_band": 82,
+    "target": 120,
+    "selected": 82
+  },
+  "strategyqa": {
+    "candidates": 210,
+    "in_band": 68,
+    "target": 105,
+    "selected": 68
+  },
+  "logiqa": {
+    "candidates": 150,
+    "in_band": 58,
+    "target": 75,
+    "selected": 58
+  }
+}

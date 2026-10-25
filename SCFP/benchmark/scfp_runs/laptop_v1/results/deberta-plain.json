@@ -1,0 +1,98 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "microsoft/deberta-v3-small",
+    "name": "deberta-plain",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 768,
+    "patience": 5,
+    "seed": 42,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "mps",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": false,
+    "no_grad_checkpoint": false
+  },
+  "device": "mps",
+  "gpu": null,
+  "wall_clock_s": 2308.1,
+  "best_val_macro_f1": 0.6543478260869565,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.565883190883191
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6204797708557107
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.6543478260869565
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.6103989242492156
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5470085470085471
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.5646428571428572
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.631780529081678
+    },
+    {
+      "stage": "binary",
+      "epoch": 8,
+      "val_binary_macro_f1": 0.5974062065771191
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.5555555555555556,
+    "macro_f1": 0.55,
+    "weighted_f1": 0.5537037037037037,
+    "auc": 0.5682758620689656,
+    "ci95": {
+      "accuracy": [
+        0.46296296296296297,
+        0.6481481481481481
+      ],
+      "macro_f1": [
+        0.45091164095371666,
+        0.6389398444952498
+      ],
+      "auc": [
+        0.4555269623969815,
+        0.6772427865285464
+      ]
+    }
+  }
+}

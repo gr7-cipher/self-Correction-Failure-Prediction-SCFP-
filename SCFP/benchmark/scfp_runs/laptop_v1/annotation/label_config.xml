@@ -1,0 +1,22 @@
+<View>
+  <Header value="Problem"/>
+  <Text name="prompt" value="$prompt"/>
+  <Header value="Gold answer"/>
+  <Text name="gold" value="$gold"/>
+  <Header value="Initial response (R0)"/>
+  <Text name="r0" value="$initial_response"/>
+  <Header value="Self-critique (F)"/>
+  <Text name="f" value="$critique"/>
+  <Header value="Final response (Rf)"/>
+  <Text name="rf" value="$final_response"/>
+  <Header value="Primary failure mode (pick exactly one)"/>
+  <Choices name="failure_mode" toName="f" choice="single" required="true">
+    <Choice value="Justification Hallucination"/>
+    <Choice value="Confidence Miscalibration"/>
+    <Choice value="Bias Amplification"/>
+    <Choice value="Over-correction"/>
+    <Choice value="Reasoning Myopia"/>
+    <Choice value="Unclear / none of these"/>
+  </Choices>
+  <TextArea name="rationale" toName="f" placeholder="One sentence: why this mode?" rows="2"/>
+</View>

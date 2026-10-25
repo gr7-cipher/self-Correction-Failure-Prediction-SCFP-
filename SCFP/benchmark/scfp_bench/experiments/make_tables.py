@@ -7,6 +7,7 @@ data or predictions and \\input{} the files into the manuscript.
 """
 
 import argparse
+import glob
 import json
 import os
 import re
@@ -83,13 +84,23 @@ def encoder_tables(rd, res_dir, out, numbers):
             rows.append(f"{label} & {TBD} & {TBD} & {TBD} & {TBD} \\\\")
             continue
         te, ci = r["test"], r["test"]["ci95"]["accuracy"]
-        multi = r.get("test_multiclass", {}).get("macro_f1")
+        p = None
+        mine = os.path.join(rd, "predictions", f"{name}__binary.jsonl")
+        tfp = os.path.join(rd, "predictions", "tfidf_lr__binary.jsonl")
+        if os.path.exists(mine) and os.path.exists(tfp):
+            from .metrics import mcnemar
+            a_ = {x["trace_id"]: x for x in read_jsonl(mine)}
+            b_ = {x["trace_id"]: x for x in read_jsonl(tfp)}
+            ids = sorted(a_)
+            p = mcnemar([a_[i]["y_true"] for i in ids], [b_[i]["y_pred"] for i in ids],
+                        [a_[i]["y_pred"] for i in ids])["p_value"]
+        ptxt = "--" if p is None else (f"{p:.3f}" if p >= 0.001 else "$<$0.001")
         rows.append(f"{label} & {te['accuracy']:.3f} [{ci[0]:.3f}, {ci[1]:.3f}] & {te['macro_f1']:.3f} & "
-                    f"{te.get('auc', float('nan')):.3f} & {f'{multi:.3f}' if multi is not None else '--'} \\\\")
+                    f"{te.get('auc', float('nan')):.3f} & {ptxt} \\\\")
         numbers.setdefault("encoders", {})[name] = te
     write(out, "tab_encoder_results.tex", r"""\begin{tabular}{@{}lcccc@{}}
 \toprule
-\textbf{Model} & \textbf{Binary Accuracy [95\% CI]} & \textbf{Binary Macro F1} & \textbf{AUC-ROC} & \textbf{Multi-class Macro F1} \\
+\textbf{Model} & \textbf{Accuracy [95\% CI]} & \textbf{Macro F1} & \textbf{AUC-ROC} & \textbf{$p$ vs.\ TF-IDF} \\
 \midrule
 """ + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
 
@@ -202,6 +213,37 @@ def routing_and_macros(rd, res_dir, out, numbers):
         for k in ("attCorrect", "attCorrectSd", "attIncorrect", "attIncorrectSd", "attT", "attDf", "attP",
                   "attNc", "attNi", "attMeanP", "attMeanRzero", "attMeanF", "latMedian", "latPninety"):
             put(k, None)
+    # every run: accuracy, CI, macro-F1, AUC and paired tests vs TF-IDF and majority
+    def mname(run):
+        return "res" + "".join(w.capitalize() for w in re.split(r"[^A-Za-z]+", run) if w)
+    base_preds = {k: preds(k) for k in ("tfidf_lr", "majority")}
+    runs = sorted(os.path.basename(p)[: -len("__binary.jsonl")]
+                  for p in glob.glob(os.path.join(rd, "predictions", "*__binary.jsonl")))
+    for run in runs:
+        pr = preds(run)
+        ids = sorted(pr)
+        y = [pr[i]["y_true"] for i in ids]; yp = [pr[i]["y_pred"] for i in ids]; pf = [pr[i]["p_fail"] for i in ids]
+        from .metrics import summarize, bootstrap as _bs
+        s, ci = summarize(y, yp, pf), _bs(y, yp, pf)
+        k = mname(run)
+        put(k + "Acc", 100 * s["accuracy"], "{:.1f}")
+        put(k + "AccLo", 100 * ci["accuracy"][0], "{:.1f}"); put(k + "AccHi", 100 * ci["accuracy"][1], "{:.1f}")
+        put(k + "Fone", s["macro_f1"]); put(k + "AUC", s.get("auc"))
+        for bk, bp in (("Tfidf", base_preds["tfidf_lr"]), ("Maj", base_preds["majority"])):
+            if bp and run not in ("tfidf_lr", "majority"):
+                put(k + "Vs" + bk + "P", mcnemar(y, yp, [bp[i]["y_pred"] for i in ids])["p_value"])
+    # cross-model rows by generator family
+    xp = preds("xmodel-qwen-to-all")
+    if xp:
+        from .metrics import summarize, bootstrap as _bs
+        for key, fam in (("Qwen", ("qwen2.5-0.5b", "qwen2.5-1.5b")), ("Smol", ("smollm2-1.7b",))):
+            sub = [x for x in xp.values() if x["source_model"] in fam]
+            y = [x["y_true"] for x in sub]; yp = [x["y_pred"] for x in sub]
+            s, ci = summarize(y, yp), _bs(y, yp)
+            put(f"xmodel{key}Acc", 100 * s["accuracy"], "{:.1f}")
+            put(f"xmodel{key}AccLo", 100 * ci["accuracy"][0], "{:.1f}"); put(f"xmodel{key}AccHi", 100 * ci["accuracy"][1], "{:.1f}")
+            put(f"xmodel{key}N", len(sub), "{}")
+            put(f"xmodel{key}FailRate", 100 * sum(y) / len(y), "{:.1f}")
     body = "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items()))
     write(out, "macros.tex", body)
     numbers["macros"] = M

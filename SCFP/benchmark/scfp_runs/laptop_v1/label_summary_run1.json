@@ -1,0 +1,11 @@
+{
+  "traces": 624,
+  "outcome_cells": {
+    "right->wrong": 79,
+    "wrong->right": 110,
+    "right->right": 216,
+    "wrong->wrong": 219
+  },
+  "failure_rate": 0.4775641025641026,
+  "traces_without_final_answer_line": 135
+}

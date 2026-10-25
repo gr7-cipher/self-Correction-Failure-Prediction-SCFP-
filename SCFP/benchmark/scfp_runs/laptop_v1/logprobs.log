@@ -1,0 +1,44 @@
+scoring 244 critiques with qwen2.5-0.5b
+  loading Qwen/Qwen2.5-0.5B-Instruct on mps (torch.float16)
+W1024 20:36:46.547000 96241 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<01:17,  3.71it/s]Loading weights:   8%|▊         | 23/290 [00:00<00:03, 75.20it/s]Loading weights:  21%|██        | 60/290 [00:00<00:01, 164.80it/s]Loading weights:  37%|███▋      | 107/290 [00:00<00:00, 256.37it/s]Loading weights:  52%|█████▏    | 152/290 [00:00<00:00, 314.18it/s]Loading weights:  70%|███████   | 204/290 [00:00<00:00, 373.69it/s]Loading weights:  89%|████████▉ | 259/290 [00:00<00:00, 423.72it/s]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 254.34it/s]
+  qwen2.5-0.5b: 25/244
+  qwen2.5-0.5b: 50/244
+  qwen2.5-0.5b: 75/244
+  qwen2.5-0.5b: 100/244
+  qwen2.5-0.5b: 125/244
+  qwen2.5-0.5b: 150/244
+  qwen2.5-0.5b: 175/244
+  qwen2.5-0.5b: 200/244
+  qwen2.5-0.5b: 225/244
+scoring 177 critiques with qwen2.5-1.5b
+  loading Qwen/Qwen2.5-1.5B-Instruct on mps (torch.float16)
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   0%|          | 1/338 [00:00<00:43,  7.73it/s]Loading weights:   7%|▋         | 23/338 [00:00<00:02, 113.43it/s]Loading weights:  15%|█▌        | 52/338 [00:00<00:01, 172.76it/s]Loading weights:  25%|██▍       | 83/338 [00:00<00:01, 216.79it/s]Loading weights:  31%|███▏      | 106/338 [00:00<00:01, 143.57it/s]Loading weights:  37%|███▋      | 124/338 [00:06<00:19, 11.07it/s] Loading weights:  41%|████      | 139/338 [00:06<00:14, 14.17it/s]Loading weights:  46%|████▋     | 157/338 [00:06<00:09, 19.19it/s]Loading weights:  52%|█████▏    | 177/338 [00:06<00:05, 26.95it/s]Loading weights:  59%|█████▉    | 201/338 [00:06<00:03, 39.07it/s]Loading weights:  64%|██████▍   | 217/338 [00:07<00:02, 42.90it/s]Loading weights:  69%|██████▊   | 232/338 [00:07<00:02, 52.21it/s]Loading weights:  73%|███████▎  | 248/338 [00:07<00:01, 60.91it/s]Loading weights:  81%|████████  | 274/338 [00:07<00:00, 82.54it/s]Loading weights:  86%|████████▌ | 289/338 [00:07<00:00, 86.31it/s]Loading weights:  91%|█████████ | 307/338 [00:07<00:00, 99.54it/s]Loading weights:  99%|█████████▊| 333/338 [00:07<00:00, 129.48it/s]Loading weights: 100%|██████████| 338/338 [00:07<00:00, 43.23it/s] 
+  qwen2.5-1.5b: 25/177
+  qwen2.5-1.5b: 50/177
+  qwen2.5-1.5b: 75/177
+  qwen2.5-1.5b: 100/177
+  qwen2.5-1.5b: 125/177
+  qwen2.5-1.5b: 150/177
+  qwen2.5-1.5b: 175/177
+scoring 295 critiques with smollm2-1.7b
+  loading HuggingFaceTB/SmolLM2-1.7B-Instruct on mps (torch.float16)
+Loading weights:   0%|          | 0/218 [00:00<?, ?it/s]Loading weights:   3%|▎         | 7/218 [00:00<00:03, 60.29it/s]Loading weights:   7%|▋         | 16/218 [00:00<00:03, 62.05it/s]Loading weights:  14%|█▍        | 31/218 [00:00<00:02, 85.75it/s]Loading weights:  23%|██▎       | 50/218 [00:00<00:01, 120.26it/s]Loading weights:  29%|██▉       | 63/218 [00:00<00:01, 80.65it/s] Loading weights:  33%|███▎      | 73/218 [00:00<00:01, 80.68it/s]Loading weights:  39%|███▊      | 84/218 [00:00<00:01, 86.74it/s]Loading weights:  44%|████▎     | 95/218 [00:01<00:01, 89.47it/s]Loading weights:  48%|████▊     | 105/218 [00:01<00:01, 82.08it/s]Loading weights:  56%|█████▌    | 121/218 [00:01<00:01, 94.46it/s]Loading weights:  60%|██████    | 131/218 [00:01<00:01, 45.55it/s]Loading weights:  64%|██████▍   | 139/218 [00:02<00:01, 47.13it/s]Loading weights:  72%|███████▏  | 157/218 [00:02<00:00, 65.97it/s]Loading weights:  77%|███████▋  | 167/218 [00:02<00:00, 62.91it/s]Loading weights:  81%|████████  | 176/218 [00:02<00:00, 61.43it/s]Loading weights:  86%|████████▌ | 188/218 [00:02<00:00, 63.04it/s]Loading weights:  90%|████████▉ | 196/218 [00:02<00:00, 66.09it/s]Loading weights:  94%|█████████▎| 204/218 [00:02<00:00, 62.61it/s]Loading weights:  97%|█████████▋| 211/218 [00:03<00:00, 53.26it/s]Loading weights: 100%|██████████| 218/218 [00:03<00:00, 68.87it/s]
+/Users/gaith/miniforge3/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+scoring 295 critiques with smollm2-1.7b
+  loading HuggingFaceTB/SmolLM2-1.7B-Instruct on mps (torch.float16)
+W1024 21:03:47.152000 551 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/218 [00:00<?, ?it/s]Loading weights:   0%|          | 1/218 [00:00<00:34,  6.29it/s]Loading weights:   4%|▎         | 8/218 [00:00<00:06, 33.48it/s]Loading weights:   8%|▊         | 17/218 [00:00<00:04, 46.61it/s]Loading weights:  12%|█▏        | 27/218 [00:00<00:03, 60.23it/s]Loading weights:  18%|█▊        | 39/218 [00:00<00:02, 77.90it/s]Loading weights:  24%|██▍       | 52/218 [00:00<00:01, 92.50it/s]Loading weights:  28%|██▊       | 62/218 [00:00<00:02, 77.84it/s]Loading weights:  33%|███▎      | 71/218 [00:01<00:02, 72.29it/s]Loading weights:  41%|████      | 89/218 [00:01<00:01, 93.23it/s]Loading weights:  49%|████▉     | 107/218 [00:01<00:01, 107.55it/s]Loading weights:  55%|█████▌    | 120/218 [00:01<00:00, 105.00it/s]Loading weights:  61%|██████    | 132/218 [00:01<00:00, 98.31it/s] Loading weights:  66%|██████▌   | 143/218 [00:01<00:01, 61.79it/s]Loading weights:  69%|██████▉   | 151/218 [00:02<00:01, 52.59it/s]Loading weights:  73%|███████▎  | 160/218 [00:02<00:01, 57.06it/s]Loading weights:  78%|███████▊  | 170/218 [00:02<00:00, 63.08it/s]Loading weights:  82%|████████▏ | 178/218 [00:02<00:00, 48.43it/s]Loading weights:  86%|████████▌ | 187/218 [00:03<00:00, 33.51it/s]Loading weights:  90%|█████████ | 197/218 [00:03<00:00, 35.13it/s]Loading weights:  93%|█████████▎| 202/218 [00:03<00:00, 32.49it/s]Loading weights:  94%|█████████▍| 206/218 [00:04<00:00, 20.21it/s]Loading weights:  97%|█████████▋| 212/218 [00:04<00:00, 24.40it/s]Loading weights: 100%|██████████| 218/218 [00:04<00:00, 50.22it/s]
+  smollm2-1.7b: 25/295
+  smollm2-1.7b: 50/295
+  smollm2-1.7b: 75/295
+  smollm2-1.7b: 100/295
+  smollm2-1.7b: 125/295
+  smollm2-1.7b: 150/295
+  smollm2-1.7b: 175/295
+  smollm2-1.7b: 200/295
+  smollm2-1.7b: 225/295
+  smollm2-1.7b: 250/295
+  smollm2-1.7b: 275/295
+wrote 716 rows to scfp_runs/laptop_v1/features/critique_logprob.jsonl

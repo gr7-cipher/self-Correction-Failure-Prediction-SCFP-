@@ -1,0 +1,41 @@
+{
+  "confusion": {
+    "matrix": [
+      [
+        26,
+        32
+      ],
+      [
+        18,
+        32
+      ]
+    ],
+    "n": 108,
+    "accuracy": 0.5370370370370371
+  },
+  "attention": {
+    "n_correct": 58,
+    "n_incorrect": 50,
+    "critique_share_correct_mean": 0.6046100502897953,
+    "critique_share_correct_sd": 0.17106353473639394,
+    "critique_share_incorrect_mean": 0.5978625945746898,
+    "critique_share_incorrect_sd": 0.16900774871578325,
+    "welch_t": 0.20571872152143694,
+    "welch_df": 104.02174327654063,
+    "p_value": 0.8374126991237681,
+    "mean_shares_all": {
+      "prompt": 0.20129537516859947,
+      "R0": 0.1972184951796576,
+      "critique": 0.6014862281994687
+    }
+  },
+  "latency": {
+    "device": "mps",
+    "hardware": "Apple M1 (8 GB)",
+    "median_ms": 105.00097274780273,
+    "mean_ms": 109.65731484549386,
+    "p90_ms": 167.7069187164307,
+    "n": 105,
+    "batch_size": 1
+  }
+}

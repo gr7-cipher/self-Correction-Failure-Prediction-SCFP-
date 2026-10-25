@@ -1,0 +1,108 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "scfp",
+    "model": "microsoft/deberta-v3-xsmall",
+    "name": "abl-deberta-xsmall",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 768,
+    "patience": 5,
+    "seed": 42,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "mps",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": false,
+    "no_grad_checkpoint": false
+  },
+  "device": "mps",
+  "gpu": null,
+  "wall_clock_s": 6702.3,
+  "best_val_macro_f1": 0.6280701754385964,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.3504901960784314
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.57543391188251
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.5708502024291497
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.579516768842409
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.6245572609208973
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.5076013513513513
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.6138433515482695
+    },
+    {
+      "stage": "binary",
+      "epoch": 8,
+      "val_binary_macro_f1": 0.4230457440648523
+    },
+    {
+      "stage": "binary",
+      "epoch": 9,
+      "val_binary_macro_f1": 0.6198620689655172
+    },
+    {
+      "stage": "binary",
+      "epoch": 10,
+      "val_binary_macro_f1": 0.6280701754385964
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.5833333333333334,
+    "macro_f1": 0.5772074815137016,
+    "weighted_f1": 0.5809772364796288,
+    "auc": 0.5786206896551724,
+    "ci95": {
+      "accuracy": [
+        0.49074074074074076,
+        0.6759259259259259
+      ],
+      "macro_f1": [
+        0.4769862194720952,
+        0.6632064724276348
+      ],
+      "auc": [
+        0.4656327856395436,
+        0.6822117384965684
+      ]
+    }
+  }
+}

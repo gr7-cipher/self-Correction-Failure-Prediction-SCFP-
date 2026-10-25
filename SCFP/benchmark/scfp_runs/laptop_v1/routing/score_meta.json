@@ -1,0 +1,7 @@
+{
+  "predictor": "deberta-scfp",
+  "predictor_latency_s": 0.17951274514198304,
+  "predictor_latency_median_s": 0.17738234996795654,
+  "device": "mps",
+  "scorer_latency_s": 1.4790011644363403
+}

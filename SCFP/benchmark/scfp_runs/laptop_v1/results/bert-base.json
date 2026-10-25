@@ -1,0 +1,93 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "google-bert/bert-base-uncased",
+    "name": "bert-base",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 512,
+    "patience": 5,
+    "seed": 42,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "mps",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": false,
+    "no_grad_checkpoint": false
+  },
+  "device": "mps",
+  "gpu": null,
+  "wall_clock_s": 1438.4,
+  "best_val_macro_f1": 0.6791310541310542,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.5836302183246551
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6791310541310542
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.574052812858783
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.5847578347578347
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.6022514071294559
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.5881449353935122
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.611513363725753
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.6018518518518519,
+    "macro_f1": 0.6001721911321567,
+    "weighted_f1": 0.6020918033832369,
+    "auc": 0.583793103448276,
+    "ci95": {
+      "accuracy": [
+        0.5185185185185185,
+        0.6851851851851852
+      ],
+      "macro_f1": [
+        0.5124180533279872,
+        0.68125
+      ],
+      "auc": [
+        0.47770406910971963,
+        0.6840734501347707
+      ]
+    }
+  }
+}

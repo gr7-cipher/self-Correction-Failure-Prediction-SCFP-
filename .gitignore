@@ -1,4 +1,9 @@
 .venv/
 __pycache__/
 *.pyc
-scfp_runs/
+# benchmark runs: release the SCFP v1.0 run (logs, splits, predictions, results);
+# ignore other runs and model weights (too large for git)
+SCFP/benchmark/scfp_runs/*
+!SCFP/benchmark/scfp_runs/laptop_v1/
+*.pt
+SCFP/benchmark/scfp_runs/laptop_v1/annotation/package_*/

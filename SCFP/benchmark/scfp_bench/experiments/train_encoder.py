@@ -168,6 +168,13 @@ def main():
                              else "mps" if torch.backends.mps.is_available() else "cpu")
     from transformers import AutoTokenizer
     tok = AutoTokenizer.from_pretrained(args.model)
+    # Models with absolute position embeddings (BERT, RoBERTa) cannot read past
+    # their limit; on MPS an overflow can silently read invalid memory instead of
+    # failing. Cap the length at the model's limit.
+    limit = getattr(tok, "model_max_length", None)
+    if limit and limit < 100000 and args.max_len > limit:
+        print(f"max-len {args.max_len} exceeds {args.model}'s limit {limit}; using {limit}", flush=True)
+        args.max_len = limit
 
     S = load_splits(run_dir)
     keep = lambda rows, ms: [r for r in rows if ms is None or r["source_model"] in ms.split(",")]
