@@ -6,6 +6,7 @@ is flagged, so unparseable outputs can be counted and reported rather than
 silently scored as wrong.
 """
 
+import math
 import re
 from dataclasses import dataclass
 from typing import Optional
@@ -33,6 +34,8 @@ def normalize_number(s: str) -> Optional[str]:
     try:
         val = float(raw)
     except ValueError:
+        return None
+    if not math.isfinite(val):  # e.g. a runaway digit string that overflows float
         return None
     return str(int(val)) if val == int(val) else f"{val:.6g}"
 
