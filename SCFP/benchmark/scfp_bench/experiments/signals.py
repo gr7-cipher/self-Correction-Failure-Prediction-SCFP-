@@ -366,6 +366,8 @@ def cmd_evaluate(cfg):
                         pooled.setdefault(k, ([], []))
                         pooled[k][0].extend(y.tolist()); pooled[k][1].extend(v.tolist())
                 else:
+                    if not pooled:  # no generator had enough traces in this set
+                        continue
                     preds = {k: np.array(v[1]) for k, v in pooled.items()}
                     y = np.array(next(iter(pooled.values()))[0])
                 maj = int(np.nanmean(y) >= 0.5)
@@ -400,13 +402,51 @@ def cmd_evaluate(cfg):
     print(md)
 
 
+# ---------------------------------------------------------------- verifier (GSM8K)
+VERIFIER = ["pot_ran", "pot_agree_r0", "pot_agree_f"]
+
+
+def cmd_verify(cfg):
+    """Program-of-thought check of the initial answer, before any revision: the generator writes a
+    program for the problem, it is screened and run in an isolated subprocess, and its printed
+    number is compared with the initial answer and with the answer the critique proposes."""
+    from ..answers import normalize_number
+    from .routing import PROGRAM_PROMPT, run_program
+    sc = cfg["signals"]
+    cl = Client(CallLog(D(cfg, "calls.jsonl")))
+    S = specs(cfg)
+    bs = cfg.get("batch_size", 8)
+    for set_name in ("natural", "v1"):
+        out = []
+        for name in sc["models"]:
+            rows = [r for r in load_set(cfg, set_name) if r["source"] == "gsm8k" and r["source_model"] == name]
+            for i in range(0, len(rows), bs):
+                chunk = rows[i:i + bs]
+                gens = cl.complete_batch(S[name], [[{"role": "user", "content": PROGRAM_PROMPT.format(q=r["prompt_raw"])}]
+                                                   for r in chunk], 0.0, [0] * len(chunk), "program")
+                for r, g in zip(chunk, gens):
+                    ex = run_program(g["text"])
+                    pot = normalize_number(ex["stdout"]) if ex["stdout"].strip() else None
+                    r0 = extract(r["initial_response"], "number").value
+                    fa = extract(r["critique"], "number").value
+                    out.append({"trace_id": r["trace_id"], "pot_answer": pot, "pot_error": ex["error"],
+                                "pot_ran": int(pot is not None),
+                                "pot_agree_r0": float(is_correct(r0, pot, "number")) if pot is not None else np.nan,
+                                "pot_agree_f": float(is_correct(fa, pot, "number")) if pot is not None else np.nan})
+                if (i // bs) % max(1, 25 // bs) == 0:
+                    print(f"  verify {set_name} {name}: {min(i + bs, len(rows))}/{len(rows)}", flush=True)
+            LOCAL.free()
+        write_jsonl(D(cfg, "features", f"{set_name}_verifier.jsonl"), out)
+        print(f"verify {set_name}: {len(out)} GSM8K traces, program ran for {sum(o['pot_ran'] for o in out)}", flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["build", "features", "evaluate"])
+    ap.add_argument("cmd", choices=["build", "features", "evaluate", "verify"])
     ap.add_argument("--config", required=True)
     a = ap.parse_args()
     cfg = yaml.safe_load(open(a.config))
-    {"build": cmd_build, "features": cmd_features, "evaluate": cmd_evaluate}[a.cmd](cfg)
+    {"build": cmd_build, "features": cmd_features, "evaluate": cmd_evaluate, "verify": cmd_verify}[a.cmd](cfg)
 
 
 if __name__ == "__main__":

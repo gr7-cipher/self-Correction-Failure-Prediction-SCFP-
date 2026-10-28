@@ -16,10 +16,11 @@ from scipy import sparse
 
 from ..stages import read_jsonl
 from .metrics import bootstrap, mcnemar, summarize
-from .signals import D, SCALARS, grouped_folds, load_set
+from .signals import D, SCALARS, VERIFIER, grouped_folds, load_set
 
 SOURCES = ["gsm8k", "strategyqa", "logiqa"]
 HIDDEN = "L24_R0"
+NO_VERIFIER = False  # --no-verifier: ignore verifier features (to reproduce earlier tables)
 
 
 def _lr(Cs):
@@ -28,7 +29,8 @@ def _lr(Cs):
 
 
 def scalar_matrix(rows):
-    X = np.array([[r[s] for s in SCALARS] for r in rows], float)
+    cols = SCALARS + [v for v in VERIFIER if any(v in r for r in rows)]  # verifier only if run
+    X = np.array([[r.get(s, np.nan) for s in cols] for r in rows], float)
     src = np.array([[r["source"] == s for s in SOURCES] for r in rows], float)
     return np.hstack([X, src])
 
@@ -120,8 +122,15 @@ def predict(name, data, y, tr, te, groups):
     return stack_fit_predict(what, data, y, tr, te, groups)
 
 
-def load(cfg, set_name, target):
+def load(cfg, set_name, target, model=None):
     feats = read_jsonl(D(cfg, "features", f"{set_name}.jsonl"))
+    feats = [r for r in feats if r["source_model"] in cfg["signals"]["models"] and model in (None, r["source_model"])]
+    if len(feats) < 30:  # too few traces for 5-fold CV (e.g. a generator absent from SCFP v1)
+        return feats, None, np.zeros(len(feats))
+    vp = D(cfg, "features", f"{set_name}_verifier.jsonl")
+    if os.path.exists(vp) and not NO_VERIFIER:
+        ver = {v["trace_id"]: v for v in read_jsonl(vp)}
+        feats = [{**r, **{k: ver.get(r["trace_id"], {}).get(k, np.nan) for k in VERIFIER}} for r in feats]
     H = dict(np.load(D(cfg, "features", f"{set_name}_hidden.npz")))
     text = {r["trace_id"]: r for r in load_set(cfg, set_name)}
     dim = H[next(iter(H))].shape
@@ -133,8 +142,10 @@ def load(cfg, set_name, target):
     return feats, data, y
 
 
-def evaluate(cfg, set_name, target):
-    feats, data, y = load(cfg, set_name, target)
+def evaluate(cfg, set_name, target, model=None):
+    feats, data, y = load(cfg, set_name, target, model)
+    if len(y) < 30:
+        return y, None
     folds = grouped_folds(feats)
     groups = [r["problem_id"] for r in feats]
     out = {}
@@ -144,7 +155,7 @@ def evaluate(cfg, set_name, target):
             tr, te = np.where(folds != k)[0], np.where(folds == k)[0]
             p[te] = predict(name, data, y, tr, te, groups)
         out[name] = p
-        print(f"  {set_name} {target} {name}: AUC {summarize(y, (p >= .5).astype(int), p)['auc']:.3f}", flush=True)
+        print(f"  {set_name} {target} {model or ''} {name}: AUC {summarize(y, (p >= .5).astype(int), p)['auc']:.3f}", flush=True)
     return y, out
 
 
@@ -177,27 +188,36 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", required=True)
     ap.add_argument("--no-curve", action="store_true")
+    ap.add_argument("--no-verifier", action="store_true")
+    ap.add_argument("--out", default="improve_summary")
     args = ap.parse_args()
+    global NO_VERIFIER
+    NO_VERIFIER = args.no_verifier
     cfg = yaml.safe_load(open(args.config))
     lines, results = [], {}
-    for set_name in ("natural", "v1"):
-        for target in ("rf_wrong", "r0_wrong"):
-            y, preds = evaluate(cfg, set_name, target)
-            base = (preds["text_tfidf"] >= .5).astype(int)
-            maj = np.full(len(y), int(y.mean() >= .5))
-            lines += [f"\n## {set_name} set, target: {'final answer wrong (paper label)' if target == 'rf_wrong' else 'initial answer wrong (diagnostic)'}\n",
-                      f"Majority class: {max(y.mean(), 1 - y.mean()):.1%} (n = {len(y)})\n",
-                      "| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |",
-                      "|---|---|---|---|---|---|"]
-            for name, p in preds.items():
-                yp = (p >= .5).astype(int)
-                s, ci = summarize(y, yp, p), bootstrap(y, yp, p)
-                pm = mcnemar(y, yp, maj)["p_value"]
-                pt = "--" if name == "text_tfidf" else f"{mcnemar(y, yp, base)['p_value']:.3f}"
-                lines.append(f"| {name} | {s['auc']:.3f} [{ci['auc'][0]:.3f}, {ci['auc'][1]:.3f}] | "
-                             f"{s['accuracy']:.1%} [{ci['accuracy'][0]:.1%}, {ci['accuracy'][1]:.1%}] | "
-                             f"{s['macro_f1']:.3f} | {pm:.3f} | {pt} |")
-                results[f"{set_name}|{target}|{name}"] = {**s, "ci": ci, "p_vs_majority": pm}
+    gens = cfg["signals"]["models"]
+    # one generator: as before; several: each generator alone, then one model pooled over all
+    groups = [None] if len(gens) == 1 else gens + [None]
+    for set_name, target, gen in [(s, t, g) for s in ("natural", "v1") for t in ("rf_wrong", "r0_wrong") for g in groups]:
+        y, preds = evaluate(cfg, set_name, target, gen)
+        if preds is None:
+            continue
+        tag = "" if len(gens) == 1 else f", generator: {gen or 'pooled (one model over all generators)'}"
+        base = (preds["text_tfidf"] >= .5).astype(int)
+        maj = np.full(len(y), int(y.mean() >= .5))
+        lines += [f"\n## {set_name} set, target: {'final answer wrong (paper label)' if target == 'rf_wrong' else 'initial answer wrong (diagnostic)'}{tag}\n",
+                  f"Majority class: {max(y.mean(), 1 - y.mean()):.1%} (n = {len(y)})\n",
+                  "| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |",
+                  "|---|---|---|---|---|---|"]
+        for name, p in preds.items():
+            yp = (p >= .5).astype(int)
+            s, ci = summarize(y, yp, p), bootstrap(y, yp, p)
+            pm = mcnemar(y, yp, maj)["p_value"]
+            pt = "--" if name == "text_tfidf" else f"{mcnemar(y, yp, base)['p_value']:.3f}"
+            lines.append(f"| {name} | {s['auc']:.3f} [{ci['auc'][0]:.3f}, {ci['auc'][1]:.3f}] | "
+                         f"{s['accuracy']:.1%} [{ci['accuracy'][0]:.1%}, {ci['accuracy'][1]:.1%}] | "
+                         f"{s['macro_f1']:.3f} | {pm:.3f} | {pt} |")
+            results[f"{set_name}|{target}|{name}" + ("" if len(gens) == 1 else f"|{gen or 'pooled'}")] = {**s, "ci": ci, "p_vs_majority": pm}
     if not args.no_curve:
         names = ["text_tfidf", "stack_text_scalar_hidden"]
         lc = learning_curve(cfg, "natural", "rf_wrong", names)
@@ -210,8 +230,8 @@ def main():
     os.makedirs(D(cfg, "results"), exist_ok=True)
     md = ("# Combining text and generator-side signals (5-fold grouped CV, nested stacking)\n\n"
           "Accuracy uses a 0.5 threshold on class-balanced models. Hidden state: " + HIDDEN + ".\n" + "\n".join(lines) + "\n")
-    open(D(cfg, "results", "improve_summary.md"), "w").write(md)
-    json.dump(results, open(D(cfg, "results", "improve_summary.json"), "w"), indent=1)
+    open(D(cfg, "results", args.out + ".md"), "w").write(md)
+    json.dump(results, open(D(cfg, "results", args.out + ".json"), "w"), indent=1)
     print(md)
 
 
