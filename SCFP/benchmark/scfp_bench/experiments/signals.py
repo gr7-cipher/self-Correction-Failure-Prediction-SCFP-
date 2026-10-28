@@ -108,7 +108,9 @@ def cmd_build(cfg):
     rows = []
     for t in traces:
         p = gold[t["problem_id"]]
-        e0, ef = extract(t["initial_response"], p.answer_type), extract(t["final_response"], p.answer_type)
+        ab = sc.get("accept_boxed", False)
+        e0 = extract(t["initial_response"], p.answer_type, accept_boxed=ab)
+        ef = extract(t["final_response"], p.answer_type, accept_boxed=ab)
         rows.append({**t, "gold": p.gold, "r0_answer": e0.value, "rf_answer": ef.value,
                      "r0_parsed_from_final_line": e0.from_final_line, "rf_parsed_from_final_line": ef.from_final_line,
                      "r0_correct": is_correct(e0.value, p.gold, p.answer_type),
@@ -122,7 +124,7 @@ def cmd_build(cfg):
     print(f"natural set: {len(keep)} traces kept, {len(rows) - len(keep)} without a final-answer line", flush=True)
 
     # samples for self-consistency, for both sets
-    K, T = sc["samples"], sc["sample_temperature"]
+    K, T = sc.get("samples", 0), sc.get("sample_temperature", 0.7)
     sample_spec = {n: ModelSpec(**{**S[n].__dict__, "max_tokens": sc.get("sample_max_tokens", S[n].max_tokens)})
                    for n in sc["models"]}
     for set_name in ("natural", "v1"):

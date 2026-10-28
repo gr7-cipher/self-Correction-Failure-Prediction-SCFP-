@@ -53,10 +53,27 @@ def normalize_choice(s: str, n_options: int = 4) -> Optional[str]:
     return m[0] if m else None
 
 
-def extract(text: str, answer_type: str, n_options: int = 4) -> Extraction:
+def _boxed_segment(text: str) -> Optional[str]:
+    """Content of the last \\boxed{...} (balanced braces), Qwen's default answer format."""
+    i = (text or "").rfind("\\boxed{")
+    if i < 0:
+        return None
+    j, depth = i + len("\\boxed{"), 1
+    for k in range(j, len(text)):
+        depth += {"{": 1, "}": -1}.get(text[k], 0)
+        if depth == 0:
+            return text[j:k]
+    return None
+
+
+def extract(text: str, answer_type: str, n_options: int = 4, accept_boxed: bool = False) -> Extraction:
+    """accept_boxed: also treat a final \\boxed{...} as an explicit answer when there is no
+    "Final answer:" line (off by default, so SCFP v1 labels are unchanged)."""
     norm = {"number": normalize_number, "bool": normalize_bool,
             "choice": lambda s: normalize_choice(s, n_options)}[answer_type]
     seg = _final_segment(text)
+    if seg is None and accept_boxed:
+        seg = _boxed_segment(text)
     if seg is not None:
         val = norm(seg)
         if val is not None:

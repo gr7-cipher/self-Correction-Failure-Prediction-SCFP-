@@ -1,0 +1,26 @@
+# Scale-up of signals_mac.yaml: 2,000 unfiltered problems with Qwen2.5-0.5B. The learning curve
+# was still rising at 377 training traces. About 6 h on an M1; earlier calls are reused.
+run_dir: scfp_runs/signals_mac_q05_big
+seed: 42
+batch_size: 1
+
+models:
+  - {name: qwen2.5-0.5b, provider: local, model: Qwen/Qwen2.5-0.5B-Instruct, max_tokens: 512}
+
+signals:
+  models: [qwen2.5-0.5b]
+  sources:
+    gsm8k: [train, test]
+    strategyqa: [train, test]
+    logiqa: [train, validation, test]
+  # same seed and exclusions, so the first 250/175/175 are the problems of signals_mac_q05
+  natural_per_source: {gsm8k: 850, strategyqa: 575, logiqa: 575}
+  exclude_problem_files:
+    - scfp_runs/laptop_v1/splits/train.jsonl
+    - scfp_runs/laptop_v1/splits/val.jsonl
+    - scfp_runs/laptop_v1/splits/test.jsonl
+    - scfp_runs/laptop_v1/holdout.jsonl
+  v1_run_dir: scfp_runs/laptop_v1
+  samples: 0             # self-consistency did not beat TF-IDF in signals_mac_q05; skipped (~4 h)
+  accept_boxed: true     # a final \boxed{} counts as an explicit answer (53 of 129 exclusions before)
+  layers_frac: [0.5, 1.0]
