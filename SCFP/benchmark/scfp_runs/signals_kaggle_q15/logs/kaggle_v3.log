@@ -1,0 +1,721 @@
+[{"stream_name":"stdout","time":22.630824784,"data":"resumed from /kaggle/input/datasets/gaith7/scfp-gpu-package/scfp_signals_results/benchmark/scfp_runs/signals_v2\n"}
+,{"stream_name":"stdout","time":22.662764322,"data":"Thu Oct 29 05:07:20 2026       \n"}
+,{"stream_name":"stdout","time":22.662802573,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":22.66281044,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":22.662814655,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":22.662818272,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":22.662821662,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":22.662825126,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":22.662828572,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":22.737185699,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":22.737223378,"data":"| N/A   53C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":22.737227935,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":22.737230598,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":22.737233305,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":22.737235856,"data":"| N/A   54C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":22.737238461,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":22.737240983,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":22.737809494,"data":"\n"}
+,{"stream_name":"stdout","time":22.737821658,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":22.737825779,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":22.737829598,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":22.737833599,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":22.73783737,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":22.739415447,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":22.739427887,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":29.216846848,"data":"name, memory.total [MiB]\n"}
+,{"stream_name":"stdout","time":29.216877656,"data":"Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":29.21689058,"data":"Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":29.232407355,"data":"=== build  2026-10-29 05:07:26\n"}
+,{"stream_name":"stdout","time":36.525294227,"data":"natural set: 2000 problems x 1 models\n"}
+,{"stream_name":"stdout","time":36.526172841,"data":"  natural qwen2.5-1.5b: 8/2000\n"}
+,{"stream_name":"stdout","time":36.527145412,"data":"  natural qwen2.5-1.5b: 16/2000\n"}
+,{"stream_name":"stdout","time":36.528082858,"data":"  natural qwen2.5-1.5b: 24/2000\n"}
+,{"stream_name":"stdout","time":36.529015452,"data":"  natural qwen2.5-1.5b: 32/2000\n"}
+,{"stream_name":"stdout","time":36.529806819,"data":"  natural qwen2.5-1.5b: 40/2000\n"}
+,{"stream_name":"stdout","time":36.530679837,"data":"  natural qwen2.5-1.5b: 48/2000\n"}
+,{"stream_name":"stdout","time":36.531486351,"data":"  natural qwen2.5-1.5b: 56/2000\n"}
+,{"stream_name":"stdout","time":36.532382816,"data":"  natural qwen2.5-1.5b: 64/2000\n"}
+,{"stream_name":"stdout","time":36.533329443,"data":"  natural qwen2.5-1.5b: 72/2000\n"}
+,{"stream_name":"stdout","time":36.534236615,"data":"  natural qwen2.5-1.5b: 80/2000\n"}
+,{"stream_name":"stdout","time":36.535133774,"data":"  natural qwen2.5-1.5b: 88/2000\n"}
+,{"stream_name":"stdout","time":36.535881124,"data":"  natural qwen2.5-1.5b: 96/2000\n"}
+,{"stream_name":"stdout","time":36.536641702,"data":"  natural qwen2.5-1.5b: 104/2000\n"}
+,{"stream_name":"stdout","time":36.537481108,"data":"  natural qwen2.5-1.5b: 112/2000\n"}
+,{"stream_name":"stdout","time":36.538371166,"data":"  natural qwen2.5-1.5b: 120/2000\n"}
+,{"stream_name":"stdout","time":36.539177326,"data":"  natural qwen2.5-1.5b: 128/2000\n"}
+,{"stream_name":"stdout","time":36.540021021,"data":"  natural qwen2.5-1.5b: 136/2000\n"}
+,{"stream_name":"stdout","time":36.540820225,"data":"  natural qwen2.5-1.5b: 144/2000\n"}
+,{"stream_name":"stdout","time":36.541691368,"data":"  natural qwen2.5-1.5b: 152/2000\n"}
+,{"stream_name":"stdout","time":36.542532919,"data":"  natural qwen2.5-1.5b: 160/2000\n"}
+,{"stream_name":"stdout","time":36.543399192,"data":"  natural qwen2.5-1.5b: 168/2000\n"}
+,{"stream_name":"stdout","time":36.544228569,"data":"  natural qwen2.5-1.5b: 176/2000\n"}
+,{"stream_name":"stdout","time":36.545032948,"data":"  natural qwen2.5-1.5b: 184/2000\n"}
+,{"stream_name":"stdout","time":36.545906159,"data":"  natural qwen2.5-1.5b: 192/2000\n"}
+,{"stream_name":"stdout","time":36.546809482,"data":"  natural qwen2.5-1.5b: 200/2000\n"}
+,{"stream_name":"stdout","time":36.547634843,"data":"  natural qwen2.5-1.5b: 208/2000\n"}
+,{"stream_name":"stdout","time":36.548526345,"data":"  natural qwen2.5-1.5b: 216/2000\n"}
+,{"stream_name":"stdout","time":36.549422844,"data":"  natural qwen2.5-1.5b: 224/2000\n"}
+,{"stream_name":"stdout","time":36.550357764,"data":"  natural qwen2.5-1.5b: 232/2000\n"}
+,{"stream_name":"stdout","time":36.551203263,"data":"  natural qwen2.5-1.5b: 240/2000\n"}
+,{"stream_name":"stdout","time":36.552110074,"data":"  natural qwen2.5-1.5b: 248/2000\n"}
+,{"stream_name":"stdout","time":36.552997579,"data":"  natural qwen2.5-1.5b: 256/2000\n"}
+,{"stream_name":"stdout","time":36.553834179,"data":"  natural qwen2.5-1.5b: 264/2000\n"}
+,{"stream_name":"stdout","time":36.554695332,"data":"  natural qwen2.5-1.5b: 272/2000\n"}
+,{"stream_name":"stdout","time":36.555551892,"data":"  natural qwen2.5-1.5b: 280/2000\n"}
+,{"stream_name":"stdout","time":36.556437409,"data":"  natural qwen2.5-1.5b: 288/2000\n"}
+,{"stream_name":"stdout","time":36.557361977,"data":"  natural qwen2.5-1.5b: 296/2000\n"}
+,{"stream_name":"stdout","time":36.558272879,"data":"  natural qwen2.5-1.5b: 304/2000\n"}
+,{"stream_name":"stdout","time":36.559126416,"data":"  natural qwen2.5-1.5b: 312/2000\n"}
+,{"stream_name":"stdout","time":36.560061781,"data":"  natural qwen2.5-1.5b: 320/2000\n"}
+,{"stream_name":"stdout","time":36.561065749,"data":"  natural qwen2.5-1.5b: 328/2000\n"}
+,{"stream_name":"stdout","time":36.561907763,"data":"  natural qwen2.5-1.5b: 336/2000\n"}
+,{"stream_name":"stdout","time":36.56279575,"data":"  natural qwen2.5-1.5b: 344/2000\n"}
+,{"stream_name":"stdout","time":36.563685111,"data":"  natural qwen2.5-1.5b: 352/2000\n"}
+,{"stream_name":"stdout","time":36.564559294,"data":"  natural qwen2.5-1.5b: 360/2000\n"}
+,{"stream_name":"stdout","time":36.565512297,"data":"  natural qwen2.5-1.5b: 368/2000\n"}
+,{"stream_name":"stdout","time":36.566390216,"data":"  natural qwen2.5-1.5b: 376/2000\n"}
+,{"stream_name":"stdout","time":36.56730991,"data":"  natural qwen2.5-1.5b: 384/2000\n"}
+,{"stream_name":"stdout","time":36.568208764,"data":"  natural qwen2.5-1.5b: 392/2000\n"}
+,{"stream_name":"stdout","time":36.569119877,"data":"  natural qwen2.5-1.5b: 400/2000\n"}
+,{"stream_name":"stdout","time":36.569998921,"data":"  natural qwen2.5-1.5b: 408/2000\n"}
+,{"stream_name":"stdout","time":36.570812792,"data":"  natural qwen2.5-1.5b: 416/2000\n"}
+,{"stream_name":"stdout","time":36.571687703,"data":"  natural qwen2.5-1.5b: 424/2000\n"}
+,{"stream_name":"stdout","time":36.572550857,"data":"  natural qwen2.5-1.5b: 432/2000\n"}
+,{"stream_name":"stdout","time":36.573458548,"data":"  natural qwen2.5-1.5b: 440/2000\n"}
+,{"stream_name":"stdout","time":36.574347565,"data":"  natural qwen2.5-1.5b: 448/2000\n"}
+,{"stream_name":"stdout","time":36.575212402,"data":"  natural qwen2.5-1.5b: 456/2000\n"}
+,{"stream_name":"stdout","time":36.576069121,"data":"  natural qwen2.5-1.5b: 464/2000\n"}
+,{"stream_name":"stdout","time":36.576942875,"data":"  natural qwen2.5-1.5b: 472/2000\n"}
+,{"stream_name":"stdout","time":36.577737745,"data":"  natural qwen2.5-1.5b: 480/2000\n"}
+,{"stream_name":"stdout","time":36.578563005,"data":"  natural qwen2.5-1.5b: 488/2000\n"}
+,{"stream_name":"stdout","time":36.579515336,"data":"  natural qwen2.5-1.5b: 496/2000\n"}
+,{"stream_name":"stdout","time":36.580591949,"data":"  natural qwen2.5-1.5b: 504/2000\n"}
+,{"stream_name":"stdout","time":36.581833478,"data":"  natural qwen2.5-1.5b: 512/2000\n"}
+,{"stream_name":"stdout","time":36.582658972,"data":"  natural qwen2.5-1.5b: 520/2000\n"}
+,{"stream_name":"stdout","time":36.583557622,"data":"  natural qwen2.5-1.5b: 528/2000\n"}
+,{"stream_name":"stdout","time":36.584542543,"data":"  natural qwen2.5-1.5b: 536/2000\n"}
+,{"stream_name":"stdout","time":36.585574941,"data":"  natural qwen2.5-1.5b: 544/2000\n"}
+,{"stream_name":"stdout","time":36.58649731,"data":"  natural qwen2.5-1.5b: 552/2000\n"}
+,{"stream_name":"stdout","time":36.587428631,"data":"  natural qwen2.5-1.5b: 560/2000\n"}
+,{"stream_name":"stdout","time":36.588325206,"data":"  natural qwen2.5-1.5b: 568/2000\n"}
+,{"stream_name":"stdout","time":36.589227652,"data":"  natural qwen2.5-1.5b: 576/2000\n"}
+,{"stream_name":"stdout","time":36.590099652,"data":"  natural qwen2.5-1.5b: 584/2000\n"}
+,{"stream_name":"stdout","time":36.591020367,"data":"  natural qwen2.5-1.5b: 592/2000\n"}
+,{"stream_name":"stdout","time":36.591807574,"data":"  natural qwen2.5-1.5b: 600/2000\n"}
+,{"stream_name":"stdout","time":36.592662099,"data":"  natural qwen2.5-1.5b: 608/2000\n"}
+,{"stream_name":"stdout","time":36.593544196,"data":"  natural qwen2.5-1.5b: 616/2000\n"}
+,{"stream_name":"stdout","time":36.594478274,"data":"  natural qwen2.5-1.5b: 624/2000\n"}
+,{"stream_name":"stdout","time":36.595433753,"data":"  natural qwen2.5-1.5b: 632/2000\n"}
+,{"stream_name":"stdout","time":36.596354513,"data":"  natural qwen2.5-1.5b: 640/2000\n"}
+,{"stream_name":"stdout","time":36.597234199,"data":"  natural qwen2.5-1.5b: 648/2000\n"}
+,{"stream_name":"stdout","time":36.598159745,"data":"  natural qwen2.5-1.5b: 656/2000\n"}
+,{"stream_name":"stdout","time":36.599152382,"data":"  natural qwen2.5-1.5b: 664/2000\n"}
+,{"stream_name":"stdout","time":36.599974812,"data":"  natural qwen2.5-1.5b: 672/2000\n"}
+,{"stream_name":"stdout","time":36.600717412,"data":"  natural qwen2.5-1.5b: 680/2000\n"}
+,{"stream_name":"stdout","time":36.601527459,"data":"  natural qwen2.5-1.5b: 688/2000\n"}
+,{"stream_name":"stdout","time":36.602435775000004,"data":"  natural qwen2.5-1.5b: 696/2000\n"}
+,{"stream_name":"stdout","time":36.603337111,"data":"  natural qwen2.5-1.5b: 704/2000\n"}
+,{"stream_name":"stdout","time":36.604232657,"data":"  natural qwen2.5-1.5b: 712/2000\n"}
+,{"stream_name":"stdout","time":36.605130083,"data":"  natural qwen2.5-1.5b: 720/2000\n"}
+,{"stream_name":"stdout","time":36.606222884,"data":"  natural qwen2.5-1.5b: 728/2000\n"}
+,{"stream_name":"stdout","time":36.607154934,"data":"  natural qwen2.5-1.5b: 736/2000\n"}
+,{"stream_name":"stdout","time":36.608173958,"data":"  natural qwen2.5-1.5b: 744/2000\n"}
+,{"stream_name":"stdout","time":36.609133376,"data":"  natural qwen2.5-1.5b: 752/2000\n"}
+,{"stream_name":"stdout","time":36.610153567,"data":"  natural qwen2.5-1.5b: 760/2000\n"}
+,{"stream_name":"stdout","time":36.611042419,"data":"  natural qwen2.5-1.5b: 768/2000\n"}
+,{"stream_name":"stdout","time":36.611955728,"data":"  natural qwen2.5-1.5b: 776/2000\n"}
+,{"stream_name":"stdout","time":36.612877021,"data":"  natural qwen2.5-1.5b: 784/2000\n"}
+,{"stream_name":"stdout","time":36.613844955,"data":"  natural qwen2.5-1.5b: 792/2000\n"}
+,{"stream_name":"stdout","time":36.614653493,"data":"  natural qwen2.5-1.5b: 800/2000\n"}
+,{"stream_name":"stdout","time":36.615558583,"data":"  natural qwen2.5-1.5b: 808/2000\n"}
+,{"stream_name":"stdout","time":36.616487552,"data":"  natural qwen2.5-1.5b: 816/2000\n"}
+,{"stream_name":"stdout","time":36.617397569,"data":"  natural qwen2.5-1.5b: 824/2000\n"}
+,{"stream_name":"stdout","time":36.618285757,"data":"  natural qwen2.5-1.5b: 832/2000\n"}
+,{"stream_name":"stdout","time":36.619199388,"data":"  natural qwen2.5-1.5b: 840/2000\n"}
+,{"stream_name":"stdout","time":36.62006631,"data":"  natural qwen2.5-1.5b: 848/2000\n"}
+,{"stream_name":"stdout","time":36.620917531,"data":"  natural qwen2.5-1.5b: 856/2000\n"}
+,{"stream_name":"stdout","time":36.621579172,"data":"  natural qwen2.5-1.5b: 864/2000\n"}
+,{"stream_name":"stdout","time":36.622370889,"data":"  natural qwen2.5-1.5b: 872/2000\n"}
+,{"stream_name":"stdout","time":36.623093464,"data":"  natural qwen2.5-1.5b: 880/2000\n"}
+,{"stream_name":"stdout","time":36.623811963,"data":"  natural qwen2.5-1.5b: 888/2000\n"}
+,{"stream_name":"stdout","time":36.624534828,"data":"  natural qwen2.5-1.5b: 896/2000\n"}
+,{"stream_name":"stdout","time":36.625296695,"data":"  natural qwen2.5-1.5b: 904/2000\n"}
+,{"stream_name":"stdout","time":36.626061411,"data":"  natural qwen2.5-1.5b: 912/2000\n"}
+,{"stream_name":"stdout","time":36.626726202,"data":"  natural qwen2.5-1.5b: 920/2000\n"}
+,{"stream_name":"stdout","time":36.627379876,"data":"  natural qwen2.5-1.5b: 928/2000\n"}
+,{"stream_name":"stdout","time":36.628117512,"data":"  natural qwen2.5-1.5b: 936/2000\n"}
+,{"stream_name":"stdout","time":36.628891253,"data":"  natural qwen2.5-1.5b: 944/2000\n"}
+,{"stream_name":"stdout","time":36.629739582,"data":"  natural qwen2.5-1.5b: 952/2000\n"}
+,{"stream_name":"stdout","time":36.63055928,"data":"  natural qwen2.5-1.5b: 960/2000\n"}
+,{"stream_name":"stdout","time":36.631405946,"data":"  natural qwen2.5-1.5b: 968/2000\n"}
+,{"stream_name":"stdout","time":36.632164645,"data":"  natural qwen2.5-1.5b: 976/2000\n"}
+,{"stream_name":"stdout","time":36.632897233,"data":"  natural qwen2.5-1.5b: 984/2000\n"}
+,{"stream_name":"stdout","time":36.63366918,"data":"  natural qwen2.5-1.5b: 992/2000\n"}
+,{"stream_name":"stdout","time":36.634467845,"data":"  natural qwen2.5-1.5b: 1000/2000\n"}
+,{"stream_name":"stdout","time":36.635443071,"data":"  natural qwen2.5-1.5b: 1008/2000\n"}
+,{"stream_name":"stdout","time":36.636189644,"data":"  natural qwen2.5-1.5b: 1016/2000\n"}
+,{"stream_name":"stdout","time":36.636884114,"data":"  natural qwen2.5-1.5b: 1024/2000\n"}
+,{"stream_name":"stdout","time":36.637637819,"data":"  natural qwen2.5-1.5b: 1032/2000\n"}
+,{"stream_name":"stdout","time":36.638421646,"data":"  natural qwen2.5-1.5b: 1040/2000\n"}
+,{"stream_name":"stdout","time":36.63917876,"data":"  natural qwen2.5-1.5b: 1048/2000\n"}
+,{"stream_name":"stdout","time":36.639861675,"data":"  natural qwen2.5-1.5b: 1056/2000\n"}
+,{"stream_name":"stdout","time":36.640612145,"data":"  natural qwen2.5-1.5b: 1064/2000\n"}
+,{"stream_name":"stdout","time":36.641405557,"data":"  natural qwen2.5-1.5b: 1072/2000\n"}
+,{"stream_name":"stdout","time":36.642224317,"data":"  natural qwen2.5-1.5b: 1080/2000\n"}
+,{"stream_name":"stdout","time":36.642957965,"data":"  natural qwen2.5-1.5b: 1088/2000\n"}
+,{"stream_name":"stdout","time":36.643721436,"data":"  natural qwen2.5-1.5b: 1096/2000\n"}
+,{"stream_name":"stdout","time":36.644466773,"data":"  natural qwen2.5-1.5b: 1104/2000\n"}
+,{"stream_name":"stdout","time":36.645197956,"data":"  natural qwen2.5-1.5b: 1112/2000\n"}
+,{"stream_name":"stdout","time":36.645909357,"data":"  natural qwen2.5-1.5b: 1120/2000\n"}
+,{"stream_name":"stdout","time":36.646618726,"data":"  natural qwen2.5-1.5b: 1128/2000\n"}
+,{"stream_name":"stdout","time":36.647367355,"data":"  natural qwen2.5-1.5b: 1136/2000\n"}
+,{"stream_name":"stdout","time":36.648215127,"data":"  natural qwen2.5-1.5b: 1144/2000\n"}
+,{"stream_name":"stdout","time":36.648956396,"data":"  natural qwen2.5-1.5b: 1152/2000\n"}
+,{"stream_name":"stdout","time":36.64972407,"data":"  natural qwen2.5-1.5b: 1160/2000\n"}
+,{"stream_name":"stdout","time":36.650440028,"data":"  natural qwen2.5-1.5b: 1168/2000\n"}
+,{"stream_name":"stdout","time":36.651224018,"data":"  natural qwen2.5-1.5b: 1176/2000\n"}
+,{"stream_name":"stdout","time":36.651968472,"data":"  natural qwen2.5-1.5b: 1184/2000\n"}
+,{"stream_name":"stdout","time":36.652682325,"data":"  natural qwen2.5-1.5b: 1192/2000\n"}
+,{"stream_name":"stdout","time":36.653487331,"data":"  natural qwen2.5-1.5b: 1200/2000\n"}
+,{"stream_name":"stdout","time":36.654385464,"data":"  natural qwen2.5-1.5b: 1208/2000\n"}
+,{"stream_name":"stdout","time":36.655297295,"data":"  natural qwen2.5-1.5b: 1216/2000\n"}
+,{"stream_name":"stdout","time":36.656076141,"data":"  natural qwen2.5-1.5b: 1224/2000\n"}
+,{"stream_name":"stdout","time":36.656724437,"data":"  natural qwen2.5-1.5b: 1232/2000\n"}
+,{"stream_name":"stdout","time":36.65743082,"data":"  natural qwen2.5-1.5b: 1240/2000\n"}
+,{"stream_name":"stdout","time":36.658196947,"data":"  natural qwen2.5-1.5b: 1248/2000\n"}
+,{"stream_name":"stdout","time":36.659006443,"data":"  natural qwen2.5-1.5b: 1256/2000\n"}
+,{"stream_name":"stdout","time":36.659663331,"data":"  natural qwen2.5-1.5b: 1264/2000\n"}
+,{"stream_name":"stdout","time":36.6604191,"data":"  natural qwen2.5-1.5b: 1272/2000\n"}
+,{"stream_name":"stdout","time":36.661189459,"data":"  natural qwen2.5-1.5b: 1280/2000\n"}
+,{"stream_name":"stdout","time":36.661985594,"data":"  natural qwen2.5-1.5b: 1288/2000\n"}
+,{"stream_name":"stdout","time":36.662709679,"data":"  natural qwen2.5-1.5b: 1296/2000\n"}
+,{"stream_name":"stdout","time":36.663443015,"data":"  natural qwen2.5-1.5b: 1304/2000\n"}
+,{"stream_name":"stdout","time":36.664174434,"data":"  natural qwen2.5-1.5b: 1312/2000\n"}
+,{"stream_name":"stdout","time":36.664830219,"data":"  natural qwen2.5-1.5b: 1320/2000\n"}
+,{"stream_name":"stdout","time":36.665507394,"data":"  natural qwen2.5-1.5b: 1328/2000\n"}
+,{"stream_name":"stdout","time":36.666272957,"data":"  natural qwen2.5-1.5b: 1336/2000\n"}
+,{"stream_name":"stdout","time":36.66704692,"data":"  natural qwen2.5-1.5b: 1344/2000\n"}
+,{"stream_name":"stdout","time":36.667879516,"data":"  natural qwen2.5-1.5b: 1352/2000\n"}
+,{"stream_name":"stdout","time":36.668609517,"data":"  natural qwen2.5-1.5b: 1360/2000\n"}
+,{"stream_name":"stdout","time":36.669411785,"data":"  natural qwen2.5-1.5b: 1368/2000\n"}
+,{"stream_name":"stdout","time":36.670327492,"data":"  natural qwen2.5-1.5b: 1376/2000\n"}
+,{"stream_name":"stdout","time":36.671144149,"data":"  natural qwen2.5-1.5b: 1384/2000\n"}
+,{"stream_name":"stdout","time":36.671797141,"data":"  natural qwen2.5-1.5b: 1392/2000\n"}
+,{"stream_name":"stdout","time":36.672583754,"data":"  natural qwen2.5-1.5b: 1400/2000\n"}
+,{"stream_name":"stdout","time":36.67334212,"data":"  natural qwen2.5-1.5b: 1408/2000\n"}
+,{"stream_name":"stdout","time":36.674090572,"data":"  natural qwen2.5-1.5b: 1416/2000\n"}
+,{"stream_name":"stdout","time":36.674768251,"data":"  natural qwen2.5-1.5b: 1424/2000\n"}
+,{"stream_name":"stdout","time":36.675800803,"data":"  natural qwen2.5-1.5b: 1432/2000\n"}
+,{"stream_name":"stdout","time":36.676869125,"data":"  natural qwen2.5-1.5b: 1440/2000\n"}
+,{"stream_name":"stdout","time":36.677992157,"data":"  natural qwen2.5-1.5b: 1448/2000\n"}
+,{"stream_name":"stdout","time":36.679265019,"data":"  natural qwen2.5-1.5b: 1456/2000\n"}
+,{"stream_name":"stdout","time":36.680398065,"data":"  natural qwen2.5-1.5b: 1464/2000\n"}
+,{"stream_name":"stdout","time":36.681671071,"data":"  natural qwen2.5-1.5b: 1472/2000\n"}
+,{"stream_name":"stdout","time":36.682628178,"data":"  natural qwen2.5-1.5b: 1480/2000\n"}
+,{"stream_name":"stdout","time":36.683685694,"data":"  natural qwen2.5-1.5b: 1488/2000\n"}
+,{"stream_name":"stdout","time":36.684782676,"data":"  natural qwen2.5-1.5b: 1496/2000\n"}
+,{"stream_name":"stdout","time":36.685841251,"data":"  natural qwen2.5-1.5b: 1504/2000\n"}
+,{"stream_name":"stdout","time":36.689418298,"data":"  natural qwen2.5-1.5b: 1512/2000\n"}
+,{"stream_name":"stdout","time":36.69061257,"data":"  natural qwen2.5-1.5b: 1520/2000\n"}
+,{"stream_name":"stdout","time":36.691750592,"data":"  natural qwen2.5-1.5b: 1528/2000\n"}
+,{"stream_name":"stdout","time":36.692880185,"data":"  natural qwen2.5-1.5b: 1536/2000\n"}
+,{"stream_name":"stdout","time":36.693876375,"data":"  natural qwen2.5-1.5b: 1544/2000\n"}
+,{"stream_name":"stdout","time":36.695027494,"data":"  natural qwen2.5-1.5b: 1552/2000\n"}
+,{"stream_name":"stdout","time":36.696016558,"data":"  natural qwen2.5-1.5b: 1560/2000\n"}
+,{"stream_name":"stdout","time":36.697133974,"data":"  natural qwen2.5-1.5b: 1568/2000\n"}
+,{"stream_name":"stdout","time":36.69826763,"data":"  natural qwen2.5-1.5b: 1576/2000\n"}
+,{"stream_name":"stdout","time":36.699371744,"data":"  natural qwen2.5-1.5b: 1584/2000\n"}
+,{"stream_name":"stdout","time":36.700506076,"data":"  natural qwen2.5-1.5b: 1592/2000\n"}
+,{"stream_name":"stdout","time":36.701719697,"data":"  natural qwen2.5-1.5b: 1600/2000\n"}
+,{"stream_name":"stdout","time":36.702767082,"data":"  natural qwen2.5-1.5b: 1608/2000\n"}
+,{"stream_name":"stdout","time":36.703982028,"data":"  natural qwen2.5-1.5b: 1616/2000\n"}
+,{"stream_name":"stdout","time":36.705116873,"data":"  natural qwen2.5-1.5b: 1624/2000\n"}
+,{"stream_name":"stdout","time":36.706295474,"data":"  natural qwen2.5-1.5b: 1632/2000\n"}
+,{"stream_name":"stdout","time":36.7074869,"data":"  natural qwen2.5-1.5b: 1640/2000\n"}
+,{"stream_name":"stdout","time":36.708692542,"data":"  natural qwen2.5-1.5b: 1648/2000\n"}
+,{"stream_name":"stdout","time":36.709913515,"data":"  natural qwen2.5-1.5b: 1656/2000\n"}
+,{"stream_name":"stdout","time":36.711153513,"data":"  natural qwen2.5-1.5b: 1664/2000\n"}
+,{"stream_name":"stdout","time":36.71232722,"data":"  natural qwen2.5-1.5b: 1672/2000\n"}
+,{"stream_name":"stdout","time":36.713594164,"data":"  natural qwen2.5-1.5b: 1680/2000\n"}
+,{"stream_name":"stdout","time":36.71484114,"data":"  natural qwen2.5-1.5b: 1688/2000\n"}
+,{"stream_name":"stdout","time":36.716062055,"data":"  natural qwen2.5-1.5b: 1696/2000\n"}
+,{"stream_name":"stdout","time":36.717282211,"data":"  natural qwen2.5-1.5b: 1704/2000\n"}
+,{"stream_name":"stdout","time":36.718421597,"data":"  natural qwen2.5-1.5b: 1712/2000\n"}
+,{"stream_name":"stdout","time":36.719600466,"data":"  natural qwen2.5-1.5b: 1720/2000\n"}
+,{"stream_name":"stdout","time":36.720728283,"data":"  natural qwen2.5-1.5b: 1728/2000\n"}
+,{"stream_name":"stdout","time":36.721842978,"data":"  natural qwen2.5-1.5b: 1736/2000\n"}
+,{"stream_name":"stdout","time":36.723103683,"data":"  natural qwen2.5-1.5b: 1744/2000\n"}
+,{"stream_name":"stdout","time":36.724212404,"data":"  natural qwen2.5-1.5b: 1752/2000\n"}
+,{"stream_name":"stdout","time":36.725591093,"data":"  natural qwen2.5-1.5b: 1760/2000\n"}
+,{"stream_name":"stdout","time":36.726737545,"data":"  natural qwen2.5-1.5b: 1768/2000\n"}
+,{"stream_name":"stdout","time":36.728000063,"data":"  natural qwen2.5-1.5b: 1776/2000\n"}
+,{"stream_name":"stdout","time":36.72922241,"data":"  natural qwen2.5-1.5b: 1784/2000\n"}
+,{"stream_name":"stdout","time":36.730323332,"data":"  natural qwen2.5-1.5b: 1792/2000\n"}
+,{"stream_name":"stdout","time":36.73142969,"data":"  natural qwen2.5-1.5b: 1800/2000\n"}
+,{"stream_name":"stdout","time":36.732659416,"data":"  natural qwen2.5-1.5b: 1808/2000\n"}
+,{"stream_name":"stdout","time":36.733635373,"data":"  natural qwen2.5-1.5b: 1816/2000\n"}
+,{"stream_name":"stdout","time":36.734674084,"data":"  natural qwen2.5-1.5b: 1824/2000\n"}
+,{"stream_name":"stdout","time":36.735737768,"data":"  natural qwen2.5-1.5b: 1832/2000\n"}
+,{"stream_name":"stdout","time":36.737069838,"data":"  natural qwen2.5-1.5b: 1840/2000\n"}
+,{"stream_name":"stdout","time":36.738151045,"data":"  natural qwen2.5-1.5b: 1848/2000\n"}
+,{"stream_name":"stdout","time":36.739075404,"data":"  natural qwen2.5-1.5b: 1856/2000\n"}
+,{"stream_name":"stdout","time":36.740117572,"data":"  natural qwen2.5-1.5b: 1864/2000\n"}
+,{"stream_name":"stdout","time":36.741220748,"data":"  natural qwen2.5-1.5b: 1872/2000\n"}
+,{"stream_name":"stdout","time":36.74237612,"data":"  natural qwen2.5-1.5b: 1880/2000\n"}
+,{"stream_name":"stdout","time":36.743713036,"data":"  natural qwen2.5-1.5b: 1888/2000\n"}
+,{"stream_name":"stdout","time":36.744650467,"data":"  natural qwen2.5-1.5b: 1896/2000\n"}
+,{"stream_name":"stdout","time":36.745663437,"data":"  natural qwen2.5-1.5b: 1904/2000\n"}
+,{"stream_name":"stdout","time":36.74671608,"data":"  natural qwen2.5-1.5b: 1912/2000\n"}
+,{"stream_name":"stdout","time":36.747785506,"data":"  natural qwen2.5-1.5b: 1920/2000\n"}
+,{"stream_name":"stdout","time":36.749057325,"data":"  natural qwen2.5-1.5b: 1928/2000\n"}
+,{"stream_name":"stdout","time":36.750132754,"data":"  natural qwen2.5-1.5b: 1936/2000\n"}
+,{"stream_name":"stdout","time":36.751166502,"data":"  natural qwen2.5-1.5b: 1944/2000\n"}
+,{"stream_name":"stdout","time":36.752233066,"data":"  natural qwen2.5-1.5b: 1952/2000\n"}
+,{"stream_name":"stdout","time":36.753316827,"data":"  natural qwen2.5-1.5b: 1960/2000\n"}
+,{"stream_name":"stdout","time":36.754421375,"data":"  natural qwen2.5-1.5b: 1968/2000\n"}
+,{"stream_name":"stdout","time":36.755549493,"data":"  natural qwen2.5-1.5b: 1976/2000\n"}
+,{"stream_name":"stdout","time":36.756804943,"data":"  natural qwen2.5-1.5b: 1984/2000\n"}
+,{"stream_name":"stdout","time":36.757897748,"data":"  natural qwen2.5-1.5b: 1992/2000\n"}
+,{"stream_name":"stdout","time":36.758959382,"data":"  natural qwen2.5-1.5b: 2000/2000\n"}
+,{"stream_name":"stdout","time":49.7813688,"data":"natural set: 1236 traces kept, 764 without a final-answer line\n"}
+,{"stream_name":"stdout","time":56.199953062,"data":"=== features  2026-10-29 05:07:53\n"}
+,{"stream_name":"stdout","time":94.182388467,"data":"  loading Qwen/Qwen2.5-1.5B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":94.424848112,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":132.494715005,"data":"  features natural qwen2.5-1.5b: 50/1236\n"}
+,{"stream_name":"stdout","time":140.814696022,"data":"  features natural qwen2.5-1.5b: 100/1236\n"}
+,{"stream_name":"stdout","time":149.414622868,"data":"  features natural qwen2.5-1.5b: 150/1236\n"}
+,{"stream_name":"stdout","time":158.368763815,"data":"  features natural qwen2.5-1.5b: 200/1236\n"}
+,{"stream_name":"stdout","time":168.014927581,"data":"  features natural qwen2.5-1.5b: 250/1236\n"}
+,{"stream_name":"stdout","time":177.768574422,"data":"  features natural qwen2.5-1.5b: 300/1236\n"}
+,{"stream_name":"stdout","time":187.968034038,"data":"  features natural qwen2.5-1.5b: 350/1236\n"}
+,{"stream_name":"stdout","time":198.97032044,"data":"  features natural qwen2.5-1.5b: 400/1236\n"}
+,{"stream_name":"stdout","time":209.618709239,"data":"  features natural qwen2.5-1.5b: 450/1236\n"}
+,{"stream_name":"stdout","time":220.221322031,"data":"  features natural qwen2.5-1.5b: 500/1236\n"}
+,{"stream_name":"stdout","time":230.502212566,"data":"  features natural qwen2.5-1.5b: 550/1236\n"}
+,{"stream_name":"stdout","time":240.197766206,"data":"  features natural qwen2.5-1.5b: 600/1236\n"}
+,{"stream_name":"stdout","time":249.996809311,"data":"  features natural qwen2.5-1.5b: 650/1236\n"}
+,{"stream_name":"stdout","time":259.326372536,"data":"  features natural qwen2.5-1.5b: 700/1236\n"}
+,{"stream_name":"stdout","time":265.320488398,"data":"  features natural qwen2.5-1.5b: 750/1236\n"}
+,{"stream_name":"stdout","time":271.384450377,"data":"  features natural qwen2.5-1.5b: 800/1236\n"}
+,{"stream_name":"stdout","time":277.3835002,"data":"  features natural qwen2.5-1.5b: 850/1236\n"}
+,{"stream_name":"stdout","time":287.969302552,"data":"  features natural qwen2.5-1.5b: 900/1236\n"}
+,{"stream_name":"stdout","time":300.65910744,"data":"  features natural qwen2.5-1.5b: 950/1236\n"}
+,{"stream_name":"stdout","time":312.915278204,"data":"  features natural qwen2.5-1.5b: 1000/1236\n"}
+,{"stream_name":"stdout","time":325.598116024,"data":"  features natural qwen2.5-1.5b: 1050/1236\n"}
+,{"stream_name":"stdout","time":337.429321566,"data":"  features natural qwen2.5-1.5b: 1100/1236\n"}
+,{"stream_name":"stdout","time":349.380859381,"data":"  features natural qwen2.5-1.5b: 1150/1236\n"}
+,{"stream_name":"stdout","time":361.516060696,"data":"  features natural qwen2.5-1.5b: 1200/1236\n"}
+,{"stream_name":"stdout","time":371.888443055,"data":"features natural: 1236 traces, 4944 hidden vectors, 0 skipped (text not found in chat template)\n"}
+,{"stream_name":"stdout","time":372.124837337,"data":"  loading Qwen/Qwen2.5-1.5B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":385.147862671,"data":"  features v1 qwen2.5-1.5b: 50/177\n"}
+,{"stream_name":"stdout","time":394.814025093,"data":"  features v1 qwen2.5-1.5b: 100/177\n"}
+,{"stream_name":"stdout","time":405.359508781,"data":"  features v1 qwen2.5-1.5b: 150/177\n"}
+,{"stream_name":"stdout","time":410.945415293,"data":"features v1: 177 traces, 708 hidden vectors, 0 skipped (text not found in chat template)\n"}
+,{"stream_name":"stdout","time":412.453556774,"data":"=== verify  2026-10-29 05:13:50\n"}
+,{"stream_name":"stdout","time":414.688534918,"data":"  verify natural qwen2.5-1.5b: 8/697\n"}
+,{"stream_name":"stdout","time":414.957353978,"data":"  verify natural qwen2.5-1.5b: 32/697\n"}
+,{"stream_name":"stdout","time":415.210289701,"data":"  verify natural qwen2.5-1.5b: 56/697\n"}
+,{"stream_name":"stdout","time":415.452968149,"data":"  verify natural qwen2.5-1.5b: 80/697\n"}
+,{"stream_name":"stdout","time":415.713792775,"data":"  verify natural qwen2.5-1.5b: 104/697\n"}
+,{"stream_name":"stdout","time":415.966319125,"data":"  verify natural qwen2.5-1.5b: 128/697\n"}
+,{"stream_name":"stdout","time":416.224507646,"data":"  verify natural qwen2.5-1.5b: 152/697\n"}
+,{"stream_name":"stdout","time":416.504101533,"data":"  verify natural qwen2.5-1.5b: 176/697\n"}
+,{"stream_name":"stdout","time":416.75835771,"data":"  verify natural qwen2.5-1.5b: 200/697\n"}
+,{"stream_name":"stdout","time":417.06217782,"data":"  verify natural qwen2.5-1.5b: 224/697\n"}
+,{"stream_name":"stdout","time":417.364090893,"data":"  verify natural qwen2.5-1.5b: 248/697\n"}
+,{"stream_name":"stdout","time":417.620949196,"data":"  verify natural qwen2.5-1.5b: 272/697\n"}
+,{"stream_name":"stdout","time":417.881793946,"data":"  verify natural qwen2.5-1.5b: 296/697\n"}
+,{"stream_name":"stdout","time":418.136687187,"data":"  verify natural qwen2.5-1.5b: 320/697\n"}
+,{"stream_name":"stdout","time":418.417693346,"data":"  verify natural qwen2.5-1.5b: 344/697\n"}
+,{"stream_name":"stdout","time":418.677696426,"data":"  verify natural qwen2.5-1.5b: 368/697\n"}
+,{"stream_name":"stdout","time":418.955680776,"data":"  verify natural qwen2.5-1.5b: 392/697\n"}
+,{"stream_name":"stdout","time":419.211792564,"data":"  verify natural qwen2.5-1.5b: 416/697\n"}
+,{"stream_name":"stdout","time":419.451924775,"data":"  verify natural qwen2.5-1.5b: 440/697\n"}
+,{"stream_name":"stdout","time":419.698270065,"data":"  verify natural qwen2.5-1.5b: 464/697\n"}
+,{"stream_name":"stdout","time":420.001400146,"data":"  verify natural qwen2.5-1.5b: 488/697\n"}
+,{"stream_name":"stdout","time":420.274581996,"data":"  verify natural qwen2.5-1.5b: 512/697\n"}
+,{"stream_name":"stdout","time":420.527889337,"data":"  verify natural qwen2.5-1.5b: 536/697\n"}
+,{"stream_name":"stdout","time":420.788149045,"data":"  verify natural qwen2.5-1.5b: 560/697\n"}
+,{"stream_name":"stdout","time":421.086329309,"data":"  verify natural qwen2.5-1.5b: 584/697\n"}
+,{"stream_name":"stdout","time":421.365298922,"data":"  verify natural qwen2.5-1.5b: 608/697\n"}
+,{"stream_name":"stdout","time":421.624731749,"data":"  verify natural qwen2.5-1.5b: 632/697\n"}
+,{"stream_name":"stdout","time":421.898327359,"data":"  verify natural qwen2.5-1.5b: 656/697\n"}
+,{"stream_name":"stdout","time":422.155754899,"data":"  verify natural qwen2.5-1.5b: 680/697\n"}
+,{"stream_name":"stdout","time":422.334384168,"data":"  verify natural qwen2.5-1.5b: 697/697\n"}
+,{"stream_name":"stdout","time":424.292368527,"data":"verify natural: 697 GSM8K traces, program ran for 678\n"}
+,{"stream_name":"stdout","time":424.400795801,"data":"  verify v1 qwen2.5-1.5b: 8/96\n"}
+,{"stream_name":"stdout","time":424.65941877,"data":"  verify v1 qwen2.5-1.5b: 32/96\n"}
+,{"stream_name":"stdout","time":424.904494043,"data":"  verify v1 qwen2.5-1.5b: 56/96\n"}
+,{"stream_name":"stdout","time":425.180616035,"data":"  verify v1 qwen2.5-1.5b: 80/96\n"}
+,{"stream_name":"stdout","time":425.474270849,"data":"verify v1: 96 GSM8K traces, program ran for 94\n"}
+,{"stream_name":"stdout","time":426.202761604,"data":"=== evaluate  2026-10-29 05:14:03\n"}
+,{"stream_name":"stdout","time":451.33669158,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.336732354,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.382853733,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.382876125,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.386858518,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.386870385,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.429335753,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.429350216,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.433198101,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.433213894,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.477291369,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.477305619,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.481092849,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.481117415,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.524094685,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.524106804,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.527771286,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.527795619,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":451.57286793,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":451.572880034,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":480.211646824,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":480.21168774,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":481.943910073,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":481.944094736,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":482.104388538,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":482.104632262,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":483.017950396,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":483.018005244,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":483.155479831,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":483.155533953,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":484.277753942,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":484.277796635,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":484.434673366,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":484.434748632,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":485.542104522,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":485.544880878,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":485.736308054,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":485.736363881,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":487.097923551,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":487.097956515,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":568.918293689,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":568.918332804,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":568.963618535,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":568.963640781,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":568.967181791,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":568.967192352,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.009295428,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.009306888,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.012878343,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.012890113,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.056175399,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.056187464,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.059974464,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.059984562,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.103108504,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.103119664,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.106546715,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.10657354,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":569.149356949,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":569.14937663,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":598.168915278,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":598.168963173,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":599.098959218,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":599.098991075,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":599.243089676,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":599.243127245,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":600.610663133,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":600.610697337,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":600.770790743,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":600.770832248,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":603.031681306,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":603.031714694,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":603.233340425,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":603.233382137,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":604.708930141,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":604.70897917,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":604.893766166,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":604.893812002,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":605.791978823,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":605.792044761,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.755453678,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.755496616,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.789703299,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.789728299,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.792522792,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.79253574,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.827947882,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.82796031,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.830742417,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.830753804,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.865802047,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.865815686,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.868610332,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.868621197,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.905004505,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.905017314,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.9076567,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.907666607,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":665.942740315,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":665.94275211,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":678.955950187,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":678.95599713,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":679.442164315,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":679.442228306,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":679.503616362,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":679.503707755,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":679.843028381,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":679.843159371,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":679.908885365,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":679.909018408,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":680.541083919,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":680.541116729,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":680.570590514,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":680.570618688,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":681.257207878,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":681.257248382,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":681.307682331,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":681.307699684,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":681.886310078,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":681.886337942,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.792530909,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.792604484,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.830312158,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.830336274,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.833058298,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.833076425,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.865537815,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.865563578,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.868207483,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.868222645,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.901589901,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.901607094,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.904142316,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.904157445,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.936872093,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.936889346,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.939490032,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.939521099,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":734.972236707,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":734.972253452,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":747.094981236,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":747.09512488,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":747.515471209,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":747.51567646,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":747.532422952,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":747.532581107,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":747.910624476,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":747.910751094,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":747.92915932,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":747.929303611,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":748.352991248,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":748.353023854,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":748.421941945,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":748.421972036,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":749.014427261,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":749.01453829,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":749.031971375,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":749.032145851,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":749.436265628,"data":"/usr/local/lib/python3.13/dist-packages/sklearn/impute/_base.py:635: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.\n"}
+,{"stream_name":"stdout","time":749.436490489,"data":"  warnings.warn(\n"}
+,{"stream_name":"stdout","time":801.202196103,"data":"# Generator-side signals: out-of-fold results (5-fold, grouped by problem)\n"}
+,{"stream_name":"stdout","time":801.202223605,"data":"\n"}
+,{"stream_name":"stdout","time":801.202229395,"data":"## natural set, target: final answer wrong (paper label)\n"}
+,{"stream_name":"stdout","time":801.20223456,"data":"\n"}
+,{"stream_name":"stdout","time":801.202239463,"data":"| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":801.202244634,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":801.202249284,"data":"| qwen2.5-1.5b | majority | 1236 | 0.500 [0.500, 0.500] | 66.7% | 0.400 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202261789,"data":"| qwen2.5-1.5b | text_tfidf | 1236 | 0.703 [0.674, 0.734] | 68.3% | 0.665 | 0.437 | -- |\n"}
+,{"stream_name":"stdout","time":801.202270078,"data":"| qwen2.5-1.5b | signals_scalar | 1236 | 0.722 [0.693, 0.751] | 67.9% | 0.659 | 0.572 | 0.762 |\n"}
+,{"stream_name":"stdout","time":801.202274337,"data":"| qwen2.5-1.5b | hidden_L14_F | 1236 | 0.718 [0.689, 0.747] | 67.3% | 0.657 | 0.799 | 0.366 |\n"}
+,{"stream_name":"stdout","time":801.202278318,"data":"| qwen2.5-1.5b | hidden_L14_R0 | 1236 | 0.716 [0.686, 0.747] | 68.4% | 0.663 | 0.405 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202282331,"data":"| qwen2.5-1.5b | hidden_L28_F | 1236 | 0.717 [0.688, 0.745] | 67.5% | 0.658 | 0.734 | 0.440 |\n"}
+,{"stream_name":"stdout","time":801.202286513,"data":"| qwen2.5-1.5b | hidden_L28_R0 | 1236 | 0.720 [0.690, 0.750] | 66.9% | 0.653 | 0.966 | 0.036 |\n"}
+,{"stream_name":"stdout","time":801.202290467,"data":"| qwen2.5-1.5b | combined | 1236 | 0.718 [0.688, 0.747] | 67.9% | 0.663 | 0.583 | 0.756 |\n"}
+,{"stream_name":"stdout","time":801.20229412,"data":"| all | majority | 1236 | 0.500 [0.500, 0.500] | 66.7% | 0.400 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202297983,"data":"| all | text_tfidf | 1236 | 0.703 [0.674, 0.734] | 68.3% | 0.665 | 0.437 | -- |\n"}
+,{"stream_name":"stdout","time":801.202301892,"data":"| all | signals_scalar | 1236 | 0.722 [0.693, 0.751] | 67.9% | 0.659 | 0.572 | 0.762 |\n"}
+,{"stream_name":"stdout","time":801.202305697,"data":"| all | hidden_L14_F | 1236 | 0.718 [0.689, 0.747] | 67.3% | 0.657 | 0.799 | 0.366 |\n"}
+,{"stream_name":"stdout","time":801.202309554,"data":"| all | hidden_L14_R0 | 1236 | 0.716 [0.686, 0.747] | 68.4% | 0.663 | 0.405 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202313308,"data":"| all | hidden_L28_F | 1236 | 0.717 [0.688, 0.745] | 67.5% | 0.658 | 0.734 | 0.440 |\n"}
+,{"stream_name":"stdout","time":801.202317257,"data":"| all | hidden_L28_R0 | 1236 | 0.720 [0.690, 0.750] | 66.9% | 0.653 | 0.966 | 0.036 |\n"}
+,{"stream_name":"stdout","time":801.20232096,"data":"| all | combined | 1236 | 0.718 [0.688, 0.747] | 67.9% | 0.663 | 0.583 | 0.756 |\n"}
+,{"stream_name":"stdout","time":801.202324745,"data":"\n"}
+,{"stream_name":"stdout","time":801.202328586,"data":"## natural set, target: initial answer wrong (diagnostic)\n"}
+,{"stream_name":"stdout","time":801.202332861,"data":"\n"}
+,{"stream_name":"stdout","time":801.202336677,"data":"| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":801.202340575,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":801.202344131,"data":"| qwen2.5-1.5b | majority | 1236 | 0.500 [0.500, 0.500] | 70.2% | 0.413 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202348045,"data":"| qwen2.5-1.5b | text_tfidf | 1236 | 0.699 [0.664, 0.732] | 67.7% | 0.651 | 0.192 | -- |\n"}
+,{"stream_name":"stdout","time":801.202353328,"data":"| qwen2.5-1.5b | signals_scalar | 1236 | 0.722 [0.690, 0.750] | 68.7% | 0.657 | 0.421 | 0.402 |\n"}
+,{"stream_name":"stdout","time":801.20235734,"data":"| qwen2.5-1.5b | hidden_L14_F | 1236 | 0.717 [0.685, 0.746] | 67.5% | 0.646 | 0.147 | 0.882 |\n"}
+,{"stream_name":"stdout","time":801.202361935,"data":"| qwen2.5-1.5b | hidden_L14_R0 | 1236 | 0.713 [0.680, 0.745] | 67.3% | 0.643 | 0.120 | 0.625 |\n"}
+,{"stream_name":"stdout","time":801.202366234,"data":"| qwen2.5-1.5b | hidden_L28_F | 1236 | 0.722 [0.692, 0.750] | 67.6% | 0.650 | 0.166 | 0.940 |\n"}
+,{"stream_name":"stdout","time":801.20237017,"data":"| qwen2.5-1.5b | hidden_L28_R0 | 1236 | 0.719 [0.689, 0.752] | 67.7% | 0.652 | 0.195 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202378051,"data":"| qwen2.5-1.5b | combined | 1236 | 0.721 [0.688, 0.750] | 67.7% | 0.648 | 0.185 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202382205,"data":"| all | majority | 1236 | 0.500 [0.500, 0.500] | 70.2% | 0.413 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.2023861,"data":"| all | text_tfidf | 1236 | 0.699 [0.664, 0.732] | 67.7% | 0.651 | 0.192 | -- |\n"}
+,{"stream_name":"stdout","time":801.20238994,"data":"| all | signals_scalar | 1236 | 0.722 [0.690, 0.750] | 68.7% | 0.657 | 0.421 | 0.402 |\n"}
+,{"stream_name":"stdout","time":801.202393818,"data":"| all | hidden_L14_F | 1236 | 0.717 [0.685, 0.746] | 67.5% | 0.646 | 0.147 | 0.882 |\n"}
+,{"stream_name":"stdout","time":801.202397588,"data":"| all | hidden_L14_R0 | 1236 | 0.713 [0.680, 0.745] | 67.3% | 0.643 | 0.120 | 0.625 |\n"}
+,{"stream_name":"stdout","time":801.202401414,"data":"| all | hidden_L28_F | 1236 | 0.722 [0.692, 0.750] | 67.6% | 0.650 | 0.166 | 0.940 |\n"}
+,{"stream_name":"stdout","time":801.202405365,"data":"| all | hidden_L28_R0 | 1236 | 0.719 [0.689, 0.752] | 67.7% | 0.652 | 0.195 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.20240944,"data":"| all | combined | 1236 | 0.721 [0.688, 0.750] | 67.7% | 0.648 | 0.185 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202413328,"data":"\n"}
+,{"stream_name":"stdout","time":801.202417011,"data":"## v1 set, target: final answer wrong (paper label)\n"}
+,{"stream_name":"stdout","time":801.202420896,"data":"\n"}
+,{"stream_name":"stdout","time":801.202424585,"data":"| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":801.202437318,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":801.202441106,"data":"| qwen2.5-1.5b | majority | 177 | 0.500 [0.500, 0.500] | 65.0% | 0.394 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202444989,"data":"| qwen2.5-1.5b | text_tfidf | 177 | 0.777 [0.704, 0.840] | 75.1% | 0.741 | 0.057 | -- |\n"}
+,{"stream_name":"stdout","time":801.202448924,"data":"| qwen2.5-1.5b | signals_scalar | 177 | 0.745 [0.667, 0.808] | 71.8% | 0.698 | 0.188 | 0.263 |\n"}
+,{"stream_name":"stdout","time":801.202452913,"data":"| qwen2.5-1.5b | hidden_L14_F | 177 | 0.723 [0.642, 0.797] | 69.5% | 0.676 | 0.410 | 0.031 |\n"}
+,{"stream_name":"stdout","time":801.202456822,"data":"| qwen2.5-1.5b | hidden_L14_R0 | 177 | 0.774 [0.693, 0.845] | 77.4% | 0.760 | 0.013 | 0.344 |\n"}
+,{"stream_name":"stdout","time":801.20246059,"data":"| qwen2.5-1.5b | hidden_L28_F | 177 | 0.697 [0.607, 0.778] | 72.3% | 0.701 | 0.142 | 0.359 |\n"}
+,{"stream_name":"stdout","time":801.202465067,"data":"| qwen2.5-1.5b | hidden_L28_R0 | 177 | 0.793 [0.722, 0.857] | 75.7% | 0.743 | 0.034 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202469345,"data":"| qwen2.5-1.5b | combined | 177 | 0.727 [0.648, 0.802] | 70.1% | 0.683 | 0.349 | 0.035 |\n"}
+,{"stream_name":"stdout","time":801.202473536,"data":"| all | majority | 177 | 0.500 [0.500, 0.500] | 65.0% | 0.394 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202477295,"data":"| all | text_tfidf | 177 | 0.777 [0.704, 0.840] | 75.1% | 0.741 | 0.057 | -- |\n"}
+,{"stream_name":"stdout","time":801.202481104,"data":"| all | signals_scalar | 177 | 0.745 [0.667, 0.808] | 71.8% | 0.698 | 0.188 | 0.263 |\n"}
+,{"stream_name":"stdout","time":801.202484896,"data":"| all | hidden_L14_F | 177 | 0.723 [0.642, 0.797] | 69.5% | 0.676 | 0.410 | 0.031 |\n"}
+,{"stream_name":"stdout","time":801.202488824,"data":"| all | hidden_L14_R0 | 177 | 0.774 [0.693, 0.845] | 77.4% | 0.760 | 0.013 | 0.344 |\n"}
+,{"stream_name":"stdout","time":801.202492906,"data":"| all | hidden_L28_F | 177 | 0.697 [0.607, 0.778] | 72.3% | 0.701 | 0.142 | 0.359 |\n"}
+,{"stream_name":"stdout","time":801.202500147,"data":"| all | hidden_L28_R0 | 177 | 0.793 [0.722, 0.857] | 75.7% | 0.743 | 0.034 | 1.000 |\n"}
+,{"stream_name":"stdout","time":801.202504135,"data":"| all | combined | 177 | 0.727 [0.648, 0.802] | 70.1% | 0.683 | 0.349 | 0.035 |\n"}
+,{"stream_name":"stdout","time":801.202507992,"data":"\n"}
+,{"stream_name":"stdout","time":801.202511603,"data":"## v1 set, target: initial answer wrong (diagnostic)\n"}
+,{"stream_name":"stdout","time":801.202515743,"data":"\n"}
+,{"stream_name":"stdout","time":801.202519459,"data":"| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":801.202523735,"data":"|---|---|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":801.202527378,"data":"| qwen2.5-1.5b | majority | 177 | 0.500 [0.500, 0.500] | 69.5% | 0.410 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202531198,"data":"| qwen2.5-1.5b | text_tfidf | 177 | 0.768 [0.690, 0.843] | 72.9% | 0.710 | 0.572 | -- |\n"}
+,{"stream_name":"stdout","time":801.202535066,"data":"| qwen2.5-1.5b | signals_scalar | 177 | 0.769 [0.685, 0.848] | 75.1% | 0.725 | 0.275 | 0.523 |\n"}
+,{"stream_name":"stdout","time":801.202538946,"data":"| qwen2.5-1.5b | hidden_L14_F | 177 | 0.646 [0.553, 0.738] | 63.8% | 0.593 | 0.260 | 0.011 |\n"}
+,{"stream_name":"stdout","time":801.202548806,"data":"| qwen2.5-1.5b | hidden_L14_R0 | 177 | 0.731 [0.652, 0.809] | 68.9% | 0.660 | 1.000 | 0.092 |\n"}
+,{"stream_name":"stdout","time":801.202552669,"data":"| qwen2.5-1.5b | hidden_L28_F | 177 | 0.689 [0.604, 0.778] | 68.4% | 0.652 | 0.905 | 0.096 |\n"}
+,{"stream_name":"stdout","time":801.202556598,"data":"| qwen2.5-1.5b | hidden_L28_R0 | 177 | 0.735 [0.653, 0.821] | 71.8% | 0.692 | 0.724 | 0.774 |\n"}
+,{"stream_name":"stdout","time":801.202560652,"data":"| qwen2.5-1.5b | combined | 177 | 0.668 [0.580, 0.757] | 65.5% | 0.611 | 0.450 | 0.041 |\n"}
+,{"stream_name":"stdout","time":801.202564824,"data":"| all | majority | 177 | 0.500 [0.500, 0.500] | 69.5% | 0.410 | -- | -- |\n"}
+,{"stream_name":"stdout","time":801.202568555,"data":"| all | text_tfidf | 177 | 0.768 [0.690, 0.843] | 72.9% | 0.710 | 0.572 | -- |\n"}
+,{"stream_name":"stdout","time":801.202572721,"data":"| all | signals_scalar | 177 | 0.769 [0.685, 0.848] | 75.1% | 0.725 | 0.275 | 0.523 |\n"}
+,{"stream_name":"stdout","time":801.20257681,"data":"| all | hidden_L14_F | 177 | 0.646 [0.553, 0.738] | 63.8% | 0.593 | 0.260 | 0.011 |\n"}
+,{"stream_name":"stdout","time":801.202581213,"data":"| all | hidden_L14_R0 | 177 | 0.731 [0.652, 0.809] | 68.9% | 0.660 | 1.000 | 0.092 |\n"}
+,{"stream_name":"stdout","time":801.202585366,"data":"| all | hidden_L28_F | 177 | 0.689 [0.604, 0.778] | 68.4% | 0.652 | 0.905 | 0.096 |\n"}
+,{"stream_name":"stdout","time":801.202589747,"data":"| all | hidden_L28_R0 | 177 | 0.735 [0.653, 0.821] | 71.8% | 0.692 | 0.724 | 0.774 |\n"}
+,{"stream_name":"stdout","time":801.202593539,"data":"| all | combined | 177 | 0.668 [0.580, 0.757] | 65.5% | 0.611 | 0.450 | 0.041 |\n"}
+,{"stream_name":"stdout","time":801.202597513,"data":"\n"}
+,{"stream_name":"stdout","time":801.508133472,"data":"=== stacking  2026-10-29 05:20:19\n"}
+,{"stream_name":"stdout","time":829.056067328,"data":"  natural rf_wrong  text_tfidf: AUC 0.703\n"}
+,{"stream_name":"stdout","time":829.353172553,"data":"  natural rf_wrong  signals_scalar: AUC 0.749\n"}
+,{"stream_name":"stdout","time":830.288744269,"data":"  natural rf_wrong  signals_gbm: AUC 0.752\n"}
+,{"stream_name":"stdout","time":839.241947147,"data":"  natural rf_wrong  hidden_last_R0: AUC 0.720\n"}
+,{"stream_name":"stdout","time":955.412303064,"data":"  natural rf_wrong  concat_text_scalar: AUC 0.741\n"}
+,{"stream_name":"stdout","time":1083.770992122,"data":"  natural rf_wrong  stack_text_scalar: AUC 0.749\n"}
+,{"stream_name":"stdout","time":1265.544505056,"data":"  natural rf_wrong  stack_text_scalar_hidden: AUC 0.737\n"}
+,{"stream_name":"stdout","time":1474.46791537,"data":"  natural rf_wrong  stack_all: AUC 0.762\n"}
+,{"stream_name":"stdout","time":1536.93727563,"data":"  natural r0_wrong  text_tfidf: AUC 0.699\n"}
+,{"stream_name":"stdout","time":1537.228914624,"data":"  natural r0_wrong  signals_scalar: AUC 0.787\n"}
+,{"stream_name":"stdout","time":1538.205910392,"data":"  natural r0_wrong  signals_gbm: AUC 0.776\n"}
+,{"stream_name":"stdout","time":1544.413958664,"data":"  natural r0_wrong  hidden_last_R0: AUC 0.719\n"}
+,{"stream_name":"stdout","time":1647.206189154,"data":"  natural r0_wrong  concat_text_scalar: AUC 0.781\n"}
+,{"stream_name":"stdout","time":1768.000999335,"data":"  natural r0_wrong  stack_text_scalar: AUC 0.786\n"}
+,{"stream_name":"stdout","time":1956.669332607,"data":"  natural r0_wrong  stack_text_scalar_hidden: AUC 0.790\n"}
+,{"stream_name":"stdout","time":2173.985938472,"data":"  natural r0_wrong  stack_all: AUC 0.790\n"}
+,{"stream_name":"stdout","time":2203.99121961,"data":"  v1 rf_wrong  text_tfidf: AUC 0.777\n"}
+,{"stream_name":"stdout","time":2204.197434711,"data":"  v1 rf_wrong  signals_scalar: AUC 0.757\n"}
+,{"stream_name":"stdout","time":2204.847389972,"data":"  v1 rf_wrong  signals_gbm: AUC 0.777\n"}
+,{"stream_name":"stdout","time":2208.680937417,"data":"  v1 rf_wrong  hidden_last_R0: AUC 0.793\n"}
+,{"stream_name":"stdout","time":2210.837953918,"data":"  v1 rf_wrong  concat_text_scalar: AUC 0.777\n"}
+,{"stream_name":"stdout","time":2219.617701415,"data":"  v1 rf_wrong  stack_text_scalar: AUC 0.724\n"}
+,{"stream_name":"stdout","time":2242.759218127,"data":"  v1 rf_wrong  stack_text_scalar_hidden: AUC 0.791\n"}
+,{"stream_name":"stdout","time":2279.223487403,"data":"  v1 rf_wrong  stack_all: AUC 0.797\n"}
+,{"stream_name":"stdout","time":2305.919870831,"data":"  v1 r0_wrong  text_tfidf: AUC 0.768\n"}
+,{"stream_name":"stdout","time":2306.128400573,"data":"  v1 r0_wrong  signals_scalar: AUC 0.826\n"}
+,{"stream_name":"stdout","time":2306.739268567,"data":"  v1 r0_wrong  signals_gbm: AUC 0.805\n"}
+,{"stream_name":"stdout","time":2309.531898404,"data":"  v1 r0_wrong  hidden_last_R0: AUC 0.735\n"}
+,{"stream_name":"stdout","time":2311.92147372,"data":"  v1 r0_wrong  concat_text_scalar: AUC 0.864\n"}
+,{"stream_name":"stdout","time":2320.830095213,"data":"  v1 r0_wrong  stack_text_scalar: AUC 0.818\n"}
+,{"stream_name":"stdout","time":2342.993947269,"data":"  v1 r0_wrong  stack_text_scalar_hidden: AUC 0.799\n"}
+,{"stream_name":"stdout","time":2379.640918693,"data":"  v1 r0_wrong  stack_all: AUC 0.819\n"}
+,{"stream_name":"stdout","time":2413.61120634,"data":"  curve text_tfidf frac 0.25: AUC 0.695\n"}
+,{"stream_name":"stdout","time":2504.598928704,"data":"  curve stack_text_scalar_hidden frac 0.25: AUC 0.707\n"}
+,{"stream_name":"stdout","time":2548.780869765,"data":"  curve text_tfidf frac 0.5: AUC 0.694\n"}
+,{"stream_name":"stdout","time":2918.409943189,"data":"  curve stack_text_scalar_hidden frac 0.5: AUC 0.731\n"}
+,{"stream_name":"stdout","time":2982.496731453,"data":"  curve text_tfidf frac 0.75: AUC 0.706\n"}
+,{"stream_name":"stdout","time":3467.266919965,"data":"  curve stack_text_scalar_hidden frac 0.75: AUC 0.740\n"}
+,{"stream_name":"stdout","time":3493.959892091,"data":"  curve text_tfidf frac 1.0: AUC 0.703\n"}
+,{"stream_name":"stdout","time":3677.703970053,"data":"  curve stack_text_scalar_hidden frac 1.0: AUC 0.737\n"}
+,{"stream_name":"stdout","time":3677.717091603,"data":"# Combining text and generator-side signals (5-fold grouped CV, nested stacking)\n"}
+,{"stream_name":"stdout","time":3677.717148668,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717154003,"data":"Accuracy uses a 0.5 threshold on class-balanced models. Hidden state: last_R0.\n"}
+,{"stream_name":"stdout","time":3677.717158501,"data":"\n"}
+,{"stream_name":"stdout","time":3677.71716261,"data":"## natural set, target: final answer wrong (paper label)\n"}
+,{"stream_name":"stdout","time":3677.717166968,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717170906,"data":"Majority class: 66.7% (n = 1236)\n"}
+,{"stream_name":"stdout","time":3677.717175133,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717179102,"data":"| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":3677.717183657,"data":"|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":3677.717187793,"data":"| text_tfidf | 0.703 [0.674, 0.734] | 68.3% [65.7%, 70.9%] | 0.665 | 0.437 | -- |\n"}
+,{"stream_name":"stdout","time":3677.717192162,"data":"| signals_scalar | 0.749 [0.721, 0.775] | 69.3% [66.7%, 72.0%] | 0.677 | 0.186 | 0.187 |\n"}
+,{"stream_name":"stdout","time":3677.717196465,"data":"| signals_gbm | 0.752 [0.725, 0.780] | 69.7% [67.3%, 72.2%] | 0.683 | 0.141 | 0.286 |\n"}
+,{"stream_name":"stdout","time":3677.717200847,"data":"| hidden_last_R0 | 0.720 [0.690, 0.750] | 66.9% [64.3%, 69.5%] | 0.653 | 0.966 | 0.036 |\n"}
+,{"stream_name":"stdout","time":3677.717205181,"data":"| concat_text_scalar | 0.741 [0.715, 0.769] | 69.8% [67.5%, 72.4%] | 0.670 | 0.086 | 0.228 |\n"}
+,{"stream_name":"stdout","time":3677.717209601,"data":"| stack_text_scalar | 0.749 [0.720, 0.775] | 69.0% [66.4%, 71.7%] | 0.674 | 0.251 | 0.368 |\n"}
+,{"stream_name":"stdout","time":3677.71723175,"data":"| stack_text_scalar_hidden | 0.737 [0.709, 0.766] | 68.3% [65.7%, 70.8%] | 0.667 | 0.445 | 1.000 |\n"}
+,{"stream_name":"stdout","time":3677.717236339,"data":"| stack_all | 0.762 [0.734, 0.789] | 69.5% [67.1%, 72.0%] | 0.684 | 0.177 | 0.232 |\n"}
+,{"stream_name":"stdout","time":3677.717240668,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717244648,"data":"## natural set, target: initial answer wrong (diagnostic)\n"}
+,{"stream_name":"stdout","time":3677.71724888,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717252866,"data":"Majority class: 70.2% (n = 1236)\n"}
+,{"stream_name":"stdout","time":3677.717256993,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717260935,"data":"| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":3677.717265341,"data":"|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":3677.717269477,"data":"| text_tfidf | 0.699 [0.664, 0.732] | 67.7% [65.0%, 70.3%] | 0.651 | 0.192 | -- |\n"}
+,{"stream_name":"stdout","time":3677.717273771,"data":"| signals_scalar | 0.787 [0.758, 0.811] | 68.7% [66.0%, 71.2%] | 0.675 | 0.475 | 0.488 |\n"}
+,{"stream_name":"stdout","time":3677.717278172,"data":"| signals_gbm | 0.776 [0.747, 0.801] | 70.5% [67.9%, 73.0%] | 0.685 | 0.932 | 0.034 |\n"}
+,{"stream_name":"stdout","time":3677.71728255,"data":"| hidden_last_R0 | 0.719 [0.689, 0.752] | 67.7% [64.8%, 70.4%] | 0.652 | 0.195 | 1.000 |\n"}
+,{"stream_name":"stdout","time":3677.717286921,"data":"| concat_text_scalar | 0.781 [0.753, 0.807] | 69.7% [67.1%, 72.2%] | 0.680 | 0.804 | 0.166 |\n"}
+,{"stream_name":"stdout","time":3677.717307647,"data":"| stack_text_scalar | 0.786 [0.757, 0.811] | 68.2% [65.5%, 70.7%] | 0.672 | 0.349 | 0.744 |\n"}
+,{"stream_name":"stdout","time":3677.717312246,"data":"| stack_text_scalar_hidden | 0.790 [0.762, 0.814] | 69.6% [66.8%, 72.2%] | 0.684 | 0.780 | 0.094 |\n"}
+,{"stream_name":"stdout","time":3677.717316661,"data":"| stack_all | 0.790 [0.762, 0.814] | 69.5% [66.7%, 72.2%] | 0.684 | 0.751 | 0.137 |\n"}
+,{"stream_name":"stdout","time":3677.717324764,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717329733,"data":"## v1 set, target: final answer wrong (paper label)\n"}
+,{"stream_name":"stdout","time":3677.717333952,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717337873,"data":"Majority class: 65.0% (n = 177)\n"}
+,{"stream_name":"stdout","time":3677.717341973,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717345897,"data":"| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":3677.717350204,"data":"|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":3677.717354248,"data":"| text_tfidf | 0.777 [0.704, 0.840] | 75.1% [68.9%, 81.4%] | 0.741 | 0.057 | -- |\n"}
+,{"stream_name":"stdout","time":3677.717358571,"data":"| signals_scalar | 0.757 [0.680, 0.829] | 73.4% [67.2%, 79.1%] | 0.722 | 0.110 | 0.250 |\n"}
+,{"stream_name":"stdout","time":3677.717362939,"data":"| signals_gbm | 0.777 [0.696, 0.847] | 73.4% [66.1%, 79.1%] | 0.715 | 0.091 | 0.711 |\n"}
+,{"stream_name":"stdout","time":3677.717367197,"data":"| hidden_last_R0 | 0.793 [0.722, 0.857] | 75.7% [69.5%, 81.9%] | 0.743 | 0.034 | 1.000 |\n"}
+,{"stream_name":"stdout","time":3677.717371469,"data":"| concat_text_scalar | 0.777 [0.702, 0.843] | 74.0% [67.8%, 80.2%] | 0.727 | 0.085 | 0.688 |\n"}
+,{"stream_name":"stdout","time":3677.717392779,"data":"| stack_text_scalar | 0.724 [0.644, 0.797] | 67.8% [61.0%, 74.6%] | 0.671 | 0.672 | 0.001 |\n"}
+,{"stream_name":"stdout","time":3677.71739717,"data":"| stack_text_scalar_hidden | 0.791 [0.720, 0.855] | 76.3% [70.1%, 81.9%] | 0.752 | 0.031 | 0.625 |\n"}
+,{"stream_name":"stdout","time":3677.717401573,"data":"| stack_all | 0.797 [0.719, 0.861] | 77.4% [71.2%, 83.1%] | 0.764 | 0.017 | 0.344 |\n"}
+,{"stream_name":"stdout","time":3677.717405949,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717409869,"data":"## v1 set, target: initial answer wrong (diagnostic)\n"}
+,{"stream_name":"stdout","time":3677.717414087,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717418021,"data":"Majority class: 69.5% (n = 177)\n"}
+,{"stream_name":"stdout","time":3677.717422098,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717425994,"data":"| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |\n"}
+,{"stream_name":"stdout","time":3677.717430374,"data":"|---|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":3677.717445714,"data":"| text_tfidf | 0.768 [0.690, 0.843] | 72.9% [66.1%, 79.7%] | 0.710 | 0.572 | -- |\n"}
+,{"stream_name":"stdout","time":3677.717449712,"data":"| signals_scalar | 0.826 [0.762, 0.886] | 74.6% [68.4%, 80.8%] | 0.727 | 0.362 | 0.581 |\n"}
+,{"stream_name":"stdout","time":3677.717453708,"data":"| signals_gbm | 0.805 [0.738, 0.862] | 71.8% [65.0%, 78.5%] | 0.690 | 0.720 | 0.878 |\n"}
+,{"stream_name":"stdout","time":3677.717457721,"data":"| hidden_last_R0 | 0.735 [0.653, 0.821] | 71.8% [65.0%, 78.0%] | 0.692 | 0.724 | 0.774 |\n"}
+,{"stream_name":"stdout","time":3677.717461752,"data":"| concat_text_scalar | 0.864 [0.805, 0.913] | 74.6% [68.4%, 80.8%] | 0.727 | 0.362 | 0.711 |\n"}
+,{"stream_name":"stdout","time":3677.717480629,"data":"| stack_text_scalar | 0.818 [0.753, 0.876] | 68.4% [61.6%, 75.1%] | 0.676 | 0.919 | 0.185 |\n"}
+,{"stream_name":"stdout","time":3677.717484796,"data":"| stack_text_scalar_hidden | 0.799 [0.731, 0.865] | 74.0% [67.2%, 80.2%] | 0.724 | 0.434 | 0.791 |\n"}
+,{"stream_name":"stdout","time":3677.717488872,"data":"| stack_all | 0.819 [0.754, 0.874] | 71.2% [64.4%, 78.0%] | 0.701 | 0.832 | 0.701 |\n"}
+,{"stream_name":"stdout","time":3677.717492907,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717499621,"data":"## Learning curve (natural set, paper label): out-of-fold AUC vs. training traces per fold\n"}
+,{"stream_name":"stdout","time":3677.71750372,"data":"\n"}
+,{"stream_name":"stdout","time":3677.717507347,"data":"| Predictor | 25% (~247 traces) | 50% (~494 traces) | 75% (~742 traces) | 100% (~989 traces) |\n"}
+,{"stream_name":"stdout","time":3677.717511412,"data":"|---|---|---|---|---|\n"}
+,{"stream_name":"stdout","time":3677.717515507,"data":"| text_tfidf | 0.695 ± 0.019 | 0.694 ± 0.007 | 0.706 ± 0.008 | 0.703 ± 0.000 |\n"}
+,{"stream_name":"stdout","time":3677.717520149,"data":"| stack_text_scalar_hidden | 0.707 ± 0.024 | 0.731 ± 0.013 | 0.740 ± 0.008 | 0.737 ± 0.000 |\n"}
+,{"stream_name":"stdout","time":3677.71752431,"data":"\n"}
+,{"stream_name":"stdout","time":3679.151110439,"data":"\u003e\u003e\u003e Done. Send back: /kaggle/working/SCFP_GPU_package/scfp_signals_results.zip\n"}
+,{"stream_name":"stdout","time":3679.151143852,"data":"    (hidden-state .npz files are excluded from the zip; they can be regenerated)\n"}
+,{"stream_name":"stdout","time":3679.156629015,"data":"run_signals exit: 0\n"}
+,{"stream_name":"stdout","time":3680.196657108,"data":"COMPLETE\n"}
+,{"stream_name":"stderr","time":3682.58980051,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":3682.589836164,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":3682.987017358,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":3682.987043766,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":3683.864158705,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":3685.217692259,"data":"[NbConvertApp] Writing 282764 bytes to __results__.html\n"}
+]

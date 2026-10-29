@@ -1,0 +1,279 @@
+[{"stream_name":"stdout","time":6.969536876,"data":"Wed Oct 28 18:12:22 2026       \n"}
+,{"stream_name":"stdout","time":6.969588637,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":6.96959392,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":6.969596992,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":6.969599907,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":6.969602714,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":6.969605413,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":6.969608377,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":7.025353571,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":7.025389083,"data":"| N/A   34C    P8              8W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":7.025394969,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":7.025399477,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":7.02540365,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":7.025409992,"data":"| N/A   36C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":7.02541892,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":7.025422056,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":7.026063429,"data":"\n"}
+,{"stream_name":"stdout","time":7.026076645,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":7.026081125,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":7.026085284,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":7.026089347,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":7.026093365,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":7.027727753,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":7.027746537,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.903020777,"data":"name, memory.total [MiB]\n"}
+,{"stream_name":"stdout","time":11.903057088,"data":"Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":11.903062933,"data":"Tesla T4, 15360 MiB\n"}
+,{"stream_name":"stdout","time":11.915268748,"data":"=== build  2026-10-28 18:12:27\n"}
+,{"stream_name":"stdout","time":18.03060986,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":19.909956944,"data":"\rGenerating train split:   0%|          | 0/7473 [00:00\u003c?, ? examples/s]\rGenerating train split:  13%|█▎        | 1000/7473 [00:00\u003c00:00, 9968.16 examples/s]\rGenerating train split: 100%|██████████| 7473/7473 [00:00\u003c00:00, 69741.90 examples/s]\n"}
+,{"stream_name":"stdout","time":19.915590317,"data":"\rGenerating test split:   0%|          | 0/1319 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 1319/1319 [00:00\u003c00:00, 263542.63 examples/s]\n"}
+,{"stream_name":"stdout","time":21.714344197,"data":"\rGenerating train split:   0%|          | 0/1603 [00:00\u003c?, ? examples/s]\rGenerating train split: 100%|██████████| 1603/1603 [00:00\u003c00:00, 205441.05 examples/s]\n"}
+,{"stream_name":"stdout","time":21.718764857,"data":"\rGenerating test split:   0%|          | 0/687 [00:00\u003c?, ? examples/s]\rGenerating test split: 100%|██████████| 687/687 [00:00\u003c00:00, 182626.88 examples/s]\n"}
+,{"stream_name":"stdout","time":24.163288265,"data":"\rGenerating train split: 0 examples [00:00, ? examples/s]\rGenerating train split: 7376 examples [00:00, 239698.65 examples/s]\n"}
+,{"stream_name":"stdout","time":24.16798684,"data":"\rGenerating validation split: 0 examples [00:00, ? examples/s]\rGenerating validation split: 651 examples [00:00, 158087.77 examples/s]\n"}
+,{"stream_name":"stdout","time":24.172381106,"data":"\rGenerating test split: 0 examples [00:00, ? examples/s]\rGenerating test split: 651 examples [00:00, 167094.54 examples/s]\n"}
+,{"stream_name":"stdout","time":25.400471785,"data":"natural set: 2000 problems x 3 models\n"}
+,{"stream_name":"stdout","time":58.858442487,"data":"  loading Qwen/Qwen2.5-1.5B-Instruct on cuda (torch.bfloat16)\n"}
+,{"stream_name":"stdout","time":370.588087115,"data":"  natural qwen2.5-1.5b: 16/2000\n"}
+,{"stream_name":"stdout","time":739.248450167,"data":"  natural qwen2.5-1.5b: 32/2000\n"}
+,{"stream_name":"stdout","time":1087.158335329,"data":"  natural qwen2.5-1.5b: 48/2000\n"}
+,{"stream_name":"stdout","time":1417.150068875,"data":"  natural qwen2.5-1.5b: 64/2000\n"}
+,{"stream_name":"stdout","time":1778.69686519,"data":"  natural qwen2.5-1.5b: 80/2000\n"}
+,{"stream_name":"stdout","time":2162.788008806,"data":"  natural qwen2.5-1.5b: 96/2000\n"}
+,{"stream_name":"stdout","time":2489.511506201,"data":"  natural qwen2.5-1.5b: 112/2000\n"}
+,{"stream_name":"stdout","time":2791.474886922,"data":"  natural qwen2.5-1.5b: 128/2000\n"}
+,{"stream_name":"stdout","time":3043.554553283,"data":"  natural qwen2.5-1.5b: 144/2000\n"}
+,{"stream_name":"stdout","time":3410.833632973,"data":"  natural qwen2.5-1.5b: 160/2000\n"}
+,{"stream_name":"stdout","time":3637.168926333,"data":"  natural qwen2.5-1.5b: 176/2000\n"}
+,{"stream_name":"stdout","time":3891.058573305,"data":"  natural qwen2.5-1.5b: 192/2000\n"}
+,{"stream_name":"stdout","time":4194.718912274,"data":"  natural qwen2.5-1.5b: 208/2000\n"}
+,{"stream_name":"stdout","time":4572.685924182,"data":"  natural qwen2.5-1.5b: 224/2000\n"}
+,{"stream_name":"stdout","time":4856.669332636,"data":"  natural qwen2.5-1.5b: 240/2000\n"}
+,{"stream_name":"stdout","time":5129.715376913,"data":"  natural qwen2.5-1.5b: 256/2000\n"}
+,{"stream_name":"stdout","time":5425.983822859,"data":"  natural qwen2.5-1.5b: 272/2000\n"}
+,{"stream_name":"stdout","time":5761.532635741,"data":"  natural qwen2.5-1.5b: 288/2000\n"}
+,{"stream_name":"stdout","time":6082.710634582,"data":"  natural qwen2.5-1.5b: 304/2000\n"}
+,{"stream_name":"stdout","time":6446.827761551,"data":"  natural qwen2.5-1.5b: 320/2000\n"}
+,{"stream_name":"stdout","time":6707.132695129,"data":"  natural qwen2.5-1.5b: 336/2000\n"}
+,{"stream_name":"stdout","time":6966.070455059,"data":"  natural qwen2.5-1.5b: 352/2000\n"}
+,{"stream_name":"stdout","time":7315.97098557,"data":"  natural qwen2.5-1.5b: 368/2000\n"}
+,{"stream_name":"stdout","time":7639.792306272,"data":"  natural qwen2.5-1.5b: 384/2000\n"}
+,{"stream_name":"stdout","time":7956.448505448,"data":"  natural qwen2.5-1.5b: 400/2000\n"}
+,{"stream_name":"stdout","time":8245.85089772,"data":"  natural qwen2.5-1.5b: 416/2000\n"}
+,{"stream_name":"stdout","time":8628.578758049,"data":"  natural qwen2.5-1.5b: 432/2000\n"}
+,{"stream_name":"stdout","time":8945.651084953,"data":"  natural qwen2.5-1.5b: 448/2000\n"}
+,{"stream_name":"stdout","time":9279.380828777,"data":"  natural qwen2.5-1.5b: 464/2000\n"}
+,{"stream_name":"stdout","time":9613.663121873,"data":"  natural qwen2.5-1.5b: 480/2000\n"}
+,{"stream_name":"stdout","time":9872.747422963,"data":"  natural qwen2.5-1.5b: 496/2000\n"}
+,{"stream_name":"stdout","time":10187.793936417,"data":"  natural qwen2.5-1.5b: 512/2000\n"}
+,{"stream_name":"stdout","time":10429.964039824,"data":"  natural qwen2.5-1.5b: 528/2000\n"}
+,{"stream_name":"stdout","time":10685.448061707,"data":"  natural qwen2.5-1.5b: 544/2000\n"}
+,{"stream_name":"stdout","time":11066.877730606,"data":"  natural qwen2.5-1.5b: 560/2000\n"}
+,{"stream_name":"stdout","time":11357.944104942,"data":"  natural qwen2.5-1.5b: 576/2000\n"}
+,{"stream_name":"stdout","time":11662.514346924,"data":"  natural qwen2.5-1.5b: 592/2000\n"}
+,{"stream_name":"stdout","time":12014.106968878,"data":"  natural qwen2.5-1.5b: 608/2000\n"}
+,{"stream_name":"stdout","time":12302.84020636,"data":"  natural qwen2.5-1.5b: 624/2000\n"}
+,{"stream_name":"stdout","time":12659.339316213,"data":"  natural qwen2.5-1.5b: 640/2000\n"}
+,{"stream_name":"stdout","time":12912.804011934,"data":"  natural qwen2.5-1.5b: 656/2000\n"}
+,{"stream_name":"stdout","time":13180.233369277,"data":"  natural qwen2.5-1.5b: 672/2000\n"}
+,{"stream_name":"stdout","time":13399.667384925,"data":"  natural qwen2.5-1.5b: 688/2000\n"}
+,{"stream_name":"stdout","time":13735.008859846,"data":"  natural qwen2.5-1.5b: 704/2000\n"}
+,{"stream_name":"stdout","time":14017.736342081,"data":"  natural qwen2.5-1.5b: 720/2000\n"}
+,{"stream_name":"stdout","time":14286.801699025,"data":"  natural qwen2.5-1.5b: 736/2000\n"}
+,{"stream_name":"stdout","time":14632.104547792,"data":"  natural qwen2.5-1.5b: 752/2000\n"}
+,{"stream_name":"stdout","time":14876.085723433,"data":"  natural qwen2.5-1.5b: 768/2000\n"}
+,{"stream_name":"stdout","time":15139.372052279,"data":"  natural qwen2.5-1.5b: 784/2000\n"}
+,{"stream_name":"stdout","time":15372.642295051,"data":"  natural qwen2.5-1.5b: 800/2000\n"}
+,{"stream_name":"stdout","time":15707.438475002,"data":"  natural qwen2.5-1.5b: 816/2000\n"}
+,{"stream_name":"stdout","time":16005.757739598,"data":"  natural qwen2.5-1.5b: 832/2000\n"}
+,{"stream_name":"stdout","time":16272.987061042,"data":"  natural qwen2.5-1.5b: 848/2000\n"}
+,{"stream_name":"stdout","time":16485.143272361,"data":"  natural qwen2.5-1.5b: 864/2000\n"}
+,{"stream_name":"stdout","time":16663.204896099,"data":"  natural qwen2.5-1.5b: 880/2000\n"}
+,{"stream_name":"stdout","time":16903.249862382,"data":"  natural qwen2.5-1.5b: 896/2000\n"}
+,{"stream_name":"stdout","time":17033.633716259,"data":"  natural qwen2.5-1.5b: 912/2000\n"}
+,{"stream_name":"stdout","time":17165.44980588,"data":"  natural qwen2.5-1.5b: 928/2000\n"}
+,{"stream_name":"stdout","time":17356.01374065,"data":"  natural qwen2.5-1.5b: 944/2000\n"}
+,{"stream_name":"stdout","time":17519.011843936,"data":"  natural qwen2.5-1.5b: 960/2000\n"}
+,{"stream_name":"stdout","time":17688.960391935,"data":"  natural qwen2.5-1.5b: 976/2000\n"}
+,{"stream_name":"stdout","time":17889.083033261,"data":"  natural qwen2.5-1.5b: 992/2000\n"}
+,{"stream_name":"stdout","time":18046.7323916,"data":"  natural qwen2.5-1.5b: 1008/2000\n"}
+,{"stream_name":"stdout","time":18212.845678031,"data":"  natural qwen2.5-1.5b: 1024/2000\n"}
+,{"stream_name":"stdout","time":18431.790668459,"data":"  natural qwen2.5-1.5b: 1040/2000\n"}
+,{"stream_name":"stdout","time":18563.837354066,"data":"  natural qwen2.5-1.5b: 1056/2000\n"}
+,{"stream_name":"stdout","time":18717.304571656,"data":"  natural qwen2.5-1.5b: 1072/2000\n"}
+,{"stream_name":"stdout","time":18895.833633817,"data":"  natural qwen2.5-1.5b: 1088/2000\n"}
+,{"stream_name":"stdout","time":19019.959601939,"data":"  natural qwen2.5-1.5b: 1104/2000\n"}
+,{"stream_name":"stdout","time":19204.284858457,"data":"  natural qwen2.5-1.5b: 1120/2000\n"}
+,{"stream_name":"stdout","time":19325.681176617,"data":"  natural qwen2.5-1.5b: 1136/2000\n"}
+,{"stream_name":"stdout","time":19573.338839977,"data":"  natural qwen2.5-1.5b: 1152/2000\n"}
+,{"stream_name":"stdout","time":19728.232127158,"data":"  natural qwen2.5-1.5b: 1168/2000\n"}
+,{"stream_name":"stdout","time":19863.261937356,"data":"  natural qwen2.5-1.5b: 1184/2000\n"}
+,{"stream_name":"stdout","time":20116.320146872,"data":"  natural qwen2.5-1.5b: 1200/2000\n"}
+,{"stream_name":"stdout","time":20381.741708082,"data":"  natural qwen2.5-1.5b: 1216/2000\n"}
+,{"stream_name":"stdout","time":20513.369328959,"data":"  natural qwen2.5-1.5b: 1232/2000\n"}
+,{"stream_name":"stdout","time":20641.743552957,"data":"  natural qwen2.5-1.5b: 1248/2000\n"}
+,{"stream_name":"stdout","time":20808.285007407,"data":"  natural qwen2.5-1.5b: 1264/2000\n"}
+,{"stream_name":"stdout","time":20932.109965409,"data":"  natural qwen2.5-1.5b: 1280/2000\n"}
+,{"stream_name":"stdout","time":21128.364849822,"data":"  natural qwen2.5-1.5b: 1296/2000\n"}
+,{"stream_name":"stdout","time":21268.735572121,"data":"  natural qwen2.5-1.5b: 1312/2000\n"}
+,{"stream_name":"stdout","time":21402.101693887,"data":"  natural qwen2.5-1.5b: 1328/2000\n"}
+,{"stream_name":"stdout","time":21577.751964374,"data":"  natural qwen2.5-1.5b: 1344/2000\n"}
+,{"stream_name":"stdout","time":21768.225524606,"data":"  natural qwen2.5-1.5b: 1360/2000\n"}
+,{"stream_name":"stdout","time":21962.239934561,"data":"  natural qwen2.5-1.5b: 1376/2000\n"}
+,{"stream_name":"stdout","time":22078.698358038,"data":"  natural qwen2.5-1.5b: 1392/2000\n"}
+,{"stream_name":"stdout","time":22283.472481355,"data":"  natural qwen2.5-1.5b: 1408/2000\n"}
+,{"stream_name":"stdout","time":22403.832022502,"data":"  natural qwen2.5-1.5b: 1424/2000\n"}
+,{"stream_name":"stdout","time":22762.416649246,"data":"  natural qwen2.5-1.5b: 1440/2000\n"}
+,{"stream_name":"stdout","time":23097.215988854,"data":"  natural qwen2.5-1.5b: 1456/2000\n"}
+,{"stream_name":"stdout","time":23456.343809387,"data":"  natural qwen2.5-1.5b: 1472/2000\n"}
+,{"stream_name":"stdout","time":23724.049311727,"data":"  natural qwen2.5-1.5b: 1488/2000\n"}
+,{"stream_name":"stdout","time":24005.668250945,"data":"  natural qwen2.5-1.5b: 1504/2000\n"}
+,{"stream_name":"stdout","time":24336.406954031,"data":"  natural qwen2.5-1.5b: 1520/2000\n"}
+,{"stream_name":"stdout","time":24716.647834699,"data":"  natural qwen2.5-1.5b: 1536/2000\n"}
+,{"stream_name":"stdout","time":25023.851708212,"data":"  natural qwen2.5-1.5b: 1552/2000\n"}
+,{"stream_name":"stdout","time":25346.607407869,"data":"  natural qwen2.5-1.5b: 1568/2000\n"}
+,{"stream_name":"stdout","time":25685.617218948,"data":"  natural qwen2.5-1.5b: 1584/2000\n"}
+,{"stream_name":"stdout","time":26007.541037996,"data":"  natural qwen2.5-1.5b: 1600/2000\n"}
+,{"stream_name":"stdout","time":26362.35020746,"data":"  natural qwen2.5-1.5b: 1616/2000\n"}
+,{"stream_name":"stdout","time":26651.572589275,"data":"  natural qwen2.5-1.5b: 1632/2000\n"}
+,{"stream_name":"stdout","time":27052.157938165,"data":"  natural qwen2.5-1.5b: 1648/2000\n"}
+,{"stream_name":"stdout","time":27416.113021155,"data":"  natural qwen2.5-1.5b: 1664/2000\n"}
+,{"stream_name":"stdout","time":27763.625554036,"data":"  natural qwen2.5-1.5b: 1680/2000\n"}
+,{"stream_name":"stdout","time":28170.931933511,"data":"  natural qwen2.5-1.5b: 1696/2000\n"}
+,{"stream_name":"stdout","time":28486.620043257,"data":"  natural qwen2.5-1.5b: 1712/2000\n"}
+,{"stream_name":"stdout","time":28784.770348325,"data":"  natural qwen2.5-1.5b: 1728/2000\n"}
+,{"stream_name":"stdout","time":29153.657298445,"data":"  natural qwen2.5-1.5b: 1744/2000\n"}
+,{"stream_name":"stdout","time":29499.28009526,"data":"  natural qwen2.5-1.5b: 1760/2000\n"}
+,{"stream_name":"stdout","time":29748.208079279,"data":"  natural qwen2.5-1.5b: 1776/2000\n"}
+,{"stream_name":"stdout","time":30128.563891749,"data":"  natural qwen2.5-1.5b: 1792/2000\n"}
+,{"stream_name":"stdout","time":30493.793328845,"data":"  natural qwen2.5-1.5b: 1808/2000\n"}
+,{"stream_name":"stdout","time":30806.710949542,"data":"  natural qwen2.5-1.5b: 1824/2000\n"}
+,{"stream_name":"stdout","time":31211.62765254,"data":"  natural qwen2.5-1.5b: 1840/2000\n"}
+,{"stream_name":"stdout","time":31536.643263914,"data":"  natural qwen2.5-1.5b: 1856/2000\n"}
+,{"stream_name":"stdout","time":31902.760952204,"data":"  natural qwen2.5-1.5b: 1872/2000\n"}
+,{"stream_name":"stdout","time":32305.404022367,"data":"  natural qwen2.5-1.5b: 1888/2000\n"}
+,{"stream_name":"stdout","time":32702.297097059,"data":"  natural qwen2.5-1.5b: 1904/2000\n"}
+,{"stream_name":"stdout","time":33058.97097339,"data":"  natural qwen2.5-1.5b: 1920/2000\n"}
+,{"stream_name":"stdout","time":33382.061959318,"data":"  natural qwen2.5-1.5b: 1936/2000\n"}
+,{"stream_name":"stdout","time":33707.450360093,"data":"  natural qwen2.5-1.5b: 1952/2000\n"}
+,{"stream_name":"stdout","time":34118.12312261,"data":"  natural qwen2.5-1.5b: 1968/2000\n"}
+,{"stream_name":"stdout","time":34501.429963003,"data":"  natural qwen2.5-1.5b: 1984/2000\n"}
+,{"stream_name":"stdout","time":34842.460179266,"data":"  natural qwen2.5-1.5b: 2000/2000\n"}
+,{"stream_name":"stdout","time":34843.017710679,"data":"  loading HuggingFaceTB/SmolLM2-1.7B-Instruct on cuda (torch.bfloat16)\n"}
+,{"stream_name":"stdout","time":35058.308583887,"data":"  natural smollm2-1.7b: 16/2000\n"}
+,{"stream_name":"stdout","time":35307.804054514,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":35307.807840669,"data":"  File \"\u003cfrozen runpy\u003e\", line 203, in _run_module_as_main\n"}
+,{"stream_name":"stdout","time":35307.807868279,"data":"  File \"\u003cfrozen runpy\u003e\", line 88, in _run_code\n"}
+,{"stream_name":"stdout","time":35307.807872688,"data":"  File \"/kaggle/working/SCFP_GPU_package/benchmark/scfp_bench/experiments/signals.py\", line 453, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":35307.807876209,"data":"    main()\n"}
+,{"stream_name":"stdout","time":35307.807879241,"data":"    ~~~~^^\n"}
+,{"stream_name":"stdout","time":35307.807882143,"data":"  File \"/kaggle/working/SCFP_GPU_package/benchmark/scfp_bench/experiments/signals.py\", line 449, in main\n"}
+,{"stream_name":"stdout","time":35307.807885407,"data":"    {\"build\": cmd_build, \"features\": cmd_features, \"evaluate\": cmd_evaluate, \"verify\": cmd_verify}[a.cmd](cfg)\n"}
+,{"stream_name":"stdout","time":35307.807916265,"data":"    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^\n"}
+,{"stream_name":"stdout","time":35307.807921845,"data":"  File \"/kaggle/working/SCFP_GPU_package/benchmark/scfp_bench/experiments/signals.py\", line 102, in cmd_build\n"}
+,{"stream_name":"stdout","time":35307.807926327,"data":"    rf = cl.complete_batch(spec, [prompts.revise_messages(p.question, p.answer_type, a[\"text\"], b[\"text\"])\n"}
+,{"stream_name":"stdout","time":35307.807947802,"data":"                                  for p, a, b in zip(chunk, r0, f)], 0.0, z, \"Rf\")\n"}
+,{"stream_name":"stdout","time":35307.807951808,"data":"  File \"/kaggle/working/SCFP_GPU_package/benchmark/scfp_bench/llm.py\", line 159, in complete_batch\n"}
+,{"stream_name":"stdout","time":35307.807955879,"data":"    resps = LOCAL.generate_batch(spec, [messages_list[i] for i in miss], temperature, seed)\n"}
+,{"stream_name":"stdout","time":35307.80795981,"data":"  File \"/kaggle/working/SCFP_GPU_package/benchmark/scfp_bench/llm.py\", line 313, in generate_batch\n"}
+,{"stream_name":"stdout","time":35307.807963846,"data":"    out = self.model.generate(**enc, **kw)\n"}
+,{"stream_name":"stdout","time":35307.807967723,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n"}
+,{"stream_name":"stdout","time":35307.807973745,"data":"    return func(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.80798102,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/generation/utils.py\", line 2668, in generate\n"}
+,{"stream_name":"stdout","time":35307.807983871,"data":"    result = decoding_method(\n"}
+,{"stream_name":"stdout","time":35307.807986403,"data":"        self,\n"}
+,{"stream_name":"stdout","time":35307.807988947,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.80800482,"data":"        **model_kwargs,\n"}
+,{"stream_name":"stdout","time":35307.808009071,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.808013341,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/generation/utils.py\", line 2868, in _sample\n"}
+,{"stream_name":"stdout","time":35307.808017855,"data":"    outputs = self._prefill(\n"}
+,{"stream_name":"stdout","time":35307.808021978,"data":"        input_ids,\n"}
+,{"stream_name":"stdout","time":35307.808026304,"data":"    ...\u003c2 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.808030121,"data":"        is_first_iteration=not generation_config.is_assistant,\n"}
+,{"stream_name":"stdout","time":35307.808033859,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.808037445,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/generation/utils.py\", line 3948, in _prefill\n"}
+,{"stream_name":"stdout","time":35307.808041532,"data":"    return self(**model_inputs, return_dict=True)\n"}
+,{"stream_name":"stdout","time":35307.808045227,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":35307.808050337,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808054448,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808058218,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":35307.808062316,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808066092,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/utils/generic.py\", line 939, in wrapper\n"}
+,{"stream_name":"stdout","time":35307.808074669,"data":"    output = func(self, *args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808078461,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/models/llama/modeling_llama.py\", line 467, in forward\n"}
+,{"stream_name":"stdout","time":35307.80808439,"data":"    outputs: BaseModelOutputWithPast = self.model(\n"}
+,{"stream_name":"stdout","time":35307.808092371,"data":"                                       ~~~~~~~~~~^\n"}
+,{"stream_name":"stdout","time":35307.808108278,"data":"        input_ids=input_ids,\n"}
+,{"stream_name":"stdout","time":35307.808112334,"data":"        ^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808116632,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.808120847,"data":"        **kwargs,\n"}
+,{"stream_name":"stdout","time":35307.808125196,"data":"        ^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808129411,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.808132949,"data":"    ^\n"}
+,{"stream_name":"stdout","time":35307.808136524,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":35307.808140562,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808147067,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808150881,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":35307.808154922,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808158637,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/utils/generic.py\", line 1068, in wrapper\n"}
+,{"stream_name":"stdout","time":35307.808162684,"data":"    output = func(self, *args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808166354,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/utils/output_capturing.py\", line 262, in wrapper\n"}
+,{"stream_name":"stdout","time":35307.808170412,"data":"    outputs = func(self, *args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808174125,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/models/llama/modeling_llama.py\", line 403, in forward\n"}
+,{"stream_name":"stdout","time":35307.808178079,"data":"    hidden_states = decoder_layer(\n"}
+,{"stream_name":"stdout","time":35307.808181821,"data":"        hidden_states,\n"}
+,{"stream_name":"stdout","time":35307.808192217,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.808219975,"data":"        **kwargs,\n"}
+,{"stream_name":"stdout","time":35307.808224262,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.80822813,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/modeling_layers.py\", line 114, in __call__\n"}
+,{"stream_name":"stdout","time":35307.808232619,"data":"    return super().__call__(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808236603,"data":"           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808240154,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":35307.808243988,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.80824819,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808252364,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":35307.80826032,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808263792,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/models/llama/modeling_llama.py\", line 308, in forward\n"}
+,{"stream_name":"stdout","time":35307.808267588,"data":"    hidden_states, _ = self.self_attn(\n"}
+,{"stream_name":"stdout","time":35307.808271018,"data":"                       ~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stdout","time":35307.808274448,"data":"        hidden_states=hidden_states,\n"}
+,{"stream_name":"stdout","time":35307.808277892,"data":"        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.80828131,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.808284804,"data":"        **kwargs,\n"}
+,{"stream_name":"stdout","time":35307.808288087,"data":"        ^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808291433,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.808294682,"data":"    ^\n"}
+,{"stream_name":"stdout","time":35307.808298066,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":35307.808301922,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808318052,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808322693,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":35307.808327422,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":35307.808331961,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/models/llama/modeling_llama.py\", line 268, in forward\n"}
+,{"stream_name":"stdout","time":35307.808335922,"data":"    attn_output, attn_weights = attention_interface(\n"}
+,{"stream_name":"stdout","time":35307.808339362,"data":"                                ~~~~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stdout","time":35307.808342876,"data":"        self,\n"}
+,{"stream_name":"stdout","time":35307.80834648,"data":"        ^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808349797,"data":"    ...\u003c6 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.808353288,"data":"        **kwargs,\n"}
+,{"stream_name":"stdout","time":35307.808356577,"data":"        ^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":35307.808359982,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.808363295,"data":"    ^\n"}
+,{"stream_name":"stdout","time":35307.808366748,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/integrations/sdpa_attention.py\", line 158, in sdpa_attention_forward\n"}
+,{"stream_name":"stdout","time":35307.808370597,"data":"    attn_output = torch.nn.functional.scaled_dot_product_attention(\n"}
+,{"stream_name":"stdout","time":35307.808374173,"data":"        query,\n"}
+,{"stream_name":"stdout","time":35307.808377536,"data":"    ...\u003c6 lines\u003e...\n"}
+,{"stream_name":"stdout","time":35307.808381028,"data":"        **sdpa_kwargs,\n"}
+,{"stream_name":"stdout","time":35307.808384348,"data":"    )\n"}
+,{"stream_name":"stdout","time":35307.808396124,"data":"torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 800.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 366.81 MiB is free. Including non-PyTorch memory, this process has 14.20 GiB memory in use. Of the allocated memory 13.11 GiB is allocated by PyTorch, and 987.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"}
+,{"stream_name":"stdout","time":35312.421128229,"data":"!!! build failed\n"}
+,{"stream_name":"stdout","time":35312.424752181,"data":"run_signals exit: 0\n"}
+,{"stream_name":"stdout","time":35313.16727967,"data":"PARTIAL: re-run with this output attached to resume\n"}
+,{"stream_name":"stderr","time":35315.24710258,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":35315.247128749,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":35315.525996283,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":35315.526019801,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":35316.324806161,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":35317.367707522,"data":"[NbConvertApp] Writing 280417 bytes to __results__.html\n"}
+]
