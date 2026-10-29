@@ -218,8 +218,8 @@ class LocalHF:
         self.free()
         device = spec.device or ("cuda" if torch.cuda.is_available()
                                  else "mps" if torch.backends.mps.is_available() else "cpu")
-        if device == "cuda":  # T4/V100 (free Colab/Kaggle) lack fast bf16
-            dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+        if device == "cuda":  # T4/V100 (free Colab/Kaggle) only emulate bf16, which is slow
+            dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
         else:
             dtype = {"mps": torch.float16, "cpu": torch.float32}[device]
         print(f"  loading {spec.model} on {device} ({dtype})", flush=True)
