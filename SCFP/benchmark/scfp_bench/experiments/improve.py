@@ -19,7 +19,7 @@ from .metrics import bootstrap, mcnemar, summarize
 from .signals import D, SCALARS, VERIFIER, grouped_folds, load_set
 
 SOURCES = ["gsm8k", "strategyqa", "logiqa"]
-HIDDEN = "L24_R0"
+HIDDEN = "last_R0"  # last layer at the end of R0 (L24 for Qwen2.5-0.5B, L28 for 1.5B)
 NO_VERIFIER = False  # --no-verifier: ignore verifier features (to reproduce earlier tables)
 
 
@@ -134,11 +134,17 @@ def load(cfg, set_name, target, model=None):
     H = dict(np.load(D(cfg, "features", f"{set_name}_hidden.npz")))
     text = {r["trace_id"]: r for r in load_set(cfg, set_name)}
     dim = H[next(iter(H))].shape
+    last = {}  # trace id -> key of its last-layer R0 vector (layer count differs per generator)
+    for k in H:
+        tid, _, lay = k.rpartition("|")
+        if lay.endswith("_R0") and int(lay[1:-3]) > int(last.get(tid, "|L0_R0").rpartition("|")[2][1:-3]):
+            last[tid] = k
     y = np.array([r["label"] if target == "rf_wrong" else int(not r["r0_correct"]) for r in feats])
     data = {"text": [" [SEP] ".join([text[r["trace_id"]][k] for k in ("prompt", "initial_response", "critique")])
                      for r in feats],
             "scalar": scalar_matrix(feats),
-            "hidden": np.array([H.get(f"{r['trace_id']}|{HIDDEN}", np.full(dim, np.nan)) for r in feats], float)}
+            "hidden": np.array([H[last[r["trace_id"]]] if r["trace_id"] in last else np.full(dim, np.nan)
+                                for r in feats], float)}
     return feats, data, y
 
 
