@@ -2,7 +2,7 @@
 # Same 2,000 unfiltered problems as the Mac run with Qwen2.5-0.5B (same seed and exclusions),
 # so results can be compared per problem. The Mac results are in
 # scfp_runs/scfp_v1/reference_mac_results/signals_q05_big/.
-run_dir: scfp_runs/signals_kaggle_q15
+run_dir: scfp_runs/signals_kaggle
 seed: 42
 batch_size: 8           # generation batch on CUDA (16 ran out of memory with SmolLM2 on a T4)
 
@@ -14,7 +14,7 @@ models:
 signals:
   # Session 1 generated all Qwen2.5-1.5B traces (about 10 h on a T4); this session evaluates them.
   # Add smollm2-1.7b / qwen2.5-3b back for later sessions.
-  models: [qwen2.5-1.5b]
+  models: [qwen2.5-1.5b, smollm2-1.7b]
   sources:
     gsm8k: [train, test]
     strategyqa: [train, test]
