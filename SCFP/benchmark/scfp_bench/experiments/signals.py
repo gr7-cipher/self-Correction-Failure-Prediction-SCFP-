@@ -335,7 +335,6 @@ def cmd_evaluate(cfg):
         feats = read_jsonl(fp)
         H = dict(np.load(D(cfg, "features", f"{set_name}_hidden.npz")))
         text = {r["trace_id"]: r for r in load_set(cfg, set_name)}
-        hkeys = sorted({k.split("|")[1] for k in H})
         for target in ("rf_wrong", "r0_wrong"):
             pooled = {}
             for name in sc["models"] + ["all"]:
@@ -354,13 +353,17 @@ def cmd_evaluate(cfg):
                                                                    text[r["trace_id"]]["critique"]]) for r in rows], y, folds, "text"),
                         "signals_scalar": oof_predict(np.array([[r[s] for s in SCALARS] for r in rows], float), y, folds, "scalar"),
                     }
-                    for hk in hkeys:
-                        Xh = np.array([H.get(f"{r['trace_id']}|{hk}", np.full(H[next(iter(H))].shape, np.nan)) for r in rows], float)
-                        preds[f"hidden_{hk}"] = oof_predict(Xh, y, folds, "hidden")
-                    best_h = [k for k in preds if k.startswith("hidden_") and k.endswith("_F")]
-                    if best_h:
-                        Xc = np.hstack([np.array([[r[s] for s in SCALARS] for r in rows], float),
-                                        np.array([H.get(f"{r['trace_id']}|{best_h[0][7:]}", np.full(H[next(iter(H))].shape, np.nan)) for r in rows], float)])
+                    # this generator's layers, named mid/last so generators of different depth pool
+                    ids = {r["trace_id"] for r in rows}
+                    hk = sorted({k.split("|")[1] for k in H if k.split("|")[0] in ids}, key=lambda k: (int(k[1:].split("_")[0]), k))
+                    dim = next(H[k] for k in H if k.split("|")[0] in ids).shape if hk else None
+                    hx = {}
+                    for k in hk:
+                        tag = ("last" if k.split("_")[0] == hk[-1].split("_")[0] else "mid") + "_" + k.split("_", 1)[1]
+                        hx[tag] = np.array([H.get(f"{r['trace_id']}|{k}", np.full(dim, np.nan)) for r in rows], float)
+                        preds[f"hidden_{tag}"] = oof_predict(hx[tag], y, folds, "hidden")
+                    if "mid_F" in hx:
+                        Xc = np.hstack([np.array([[r[s] for s in SCALARS] for r in rows], float), hx["mid_F"]])
                         preds["combined"] = oof_predict(Xc, y, folds, "hidden")
                     for k, v in preds.items():
                         pooled.setdefault(k, ([], []))

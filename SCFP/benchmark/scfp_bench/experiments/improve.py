@@ -115,6 +115,12 @@ PREDICTORS = {
 }
 
 
+def usable(data, names=PREDICTORS):
+    """Predictors whose inputs exist (no hidden-state probe when pooling generators of different sizes)."""
+    kinds = lambda n: [PREDICTORS[n][1]] if PREDICTORS[n][0] == "base" else PREDICTORS[n][1]
+    return [n for n in names if data["hidden"] is not None or "hidden" not in kinds(n)]
+
+
 def predict(name, data, y, tr, te, groups):
     how, what = PREDICTORS[name]
     if how == "base":
@@ -143,8 +149,10 @@ def load(cfg, set_name, target, model=None):
     data = {"text": [" [SEP] ".join([text[r["trace_id"]][k] for k in ("prompt", "initial_response", "critique")])
                      for r in feats],
             "scalar": scalar_matrix(feats),
-            "hidden": np.array([H[last[r["trace_id"]]] if r["trace_id"] in last else np.full(dim, np.nan)
-                                for r in feats], float)}
+            "hidden": None}
+    vecs = [H[last[r["trace_id"]]] if r["trace_id"] in last else np.full(dim, np.nan) for r in feats]
+    if len({v.shape for v in vecs}) == 1:  # generators with different hidden sizes cannot share one probe
+        data["hidden"] = np.array(vecs, float)
     return feats, data, y
 
 
@@ -155,7 +163,7 @@ def evaluate(cfg, set_name, target, model=None):
     folds = grouped_folds(feats)
     groups = [r["problem_id"] for r in feats]
     out = {}
-    for name in PREDICTORS:
+    for name in usable(data):
         p = np.zeros(len(y))
         for k in range(5):
             tr, te = np.where(folds != k)[0], np.where(folds == k)[0]
@@ -171,6 +179,7 @@ def learning_curve(cfg, set_name, target, names, fracs=(0.25, 0.5, 0.75, 1.0), s
     feats, data, y = load(cfg, set_name, target)
     folds = grouped_folds(feats)
     groups = np.array([r["problem_id"] for r in feats])
+    names = [n if usable(data, [n]) else "stack_text_scalar" for n in names]  # pooled: no shared probe
     res = {n: {} for n in names}
     for frac in fracs:
         for n in names:
@@ -225,8 +234,8 @@ def main():
                          f"{s['macro_f1']:.3f} | {pm:.3f} | {pt} |")
             results[f"{set_name}|{target}|{name}" + ("" if len(gens) == 1 else f"|{gen or 'pooled'}")] = {**s, "ci": ci, "p_vs_majority": pm}
     if not args.no_curve:
-        names = ["text_tfidf", "stack_text_scalar_hidden"]
-        lc = learning_curve(cfg, "natural", "rf_wrong", names)
+        lc = learning_curve(cfg, "natural", "rf_wrong", ["text_tfidf", "stack_text_scalar_hidden"])
+        names = list(lc)
         lines += ["\n## Learning curve (natural set, paper label): out-of-fold AUC vs. training traces per fold\n",
                   "| Predictor | " + " | ".join(f"{int(f * 100)}% (~{v[2]} traces)" for f, v in lc[names[0]].items()) + " |",
                   "|---|" + "---|" * len(lc[names[0]])]
