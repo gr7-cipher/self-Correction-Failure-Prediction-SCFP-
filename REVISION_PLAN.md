@@ -249,3 +249,49 @@ The confidence intervals still use 1,000 resamples, as registered.
 **Decision rule.**
 - The paper will say a correctness-prediction baseline matches or beats the generator signals only on the CI of the within-source AUC difference.
 - §3.2 will be rewritten in any case, as the reviewer requested, to say that the rf_wrong label largely reduces to verifying R0 and that the Δ-label is what decides whether to self-correct.
+
+### M3 clarification (2026-10-31, written after the CPU run, before writing any paper text)
+
+The gate's conditional models need P(repair | R0 wrong) and P(harm | R0 right). The text above says "trained on all traces", which cannot give those conditional probabilities.
+
+As implemented:
+- The conditional models are fit on the **training-fold** traces of the respective R0 group. The true R0 correctness is used only to select training examples.
+- They are applied to every test trace, with the stage-1 out-of-fold p̂₀ as a feature.
+- At prediction time nothing uses the true R0 correctness, which is what makes the gate deployable.
+
+---
+
+## M8: external validity (registered 2026-10-31, before any M8 run)
+
+**Subset.**
+- 600 of the 2,000 natural-set problems (300 GSM8K, 150 StrategyQA, 150 LogiQA), sampled with seed 42, stratified by source.
+- Fixed by `scripts/revision/m8_subset.py` and saved to `results/revision/m8/subset.json` before any generation.
+
+**(1) Larger generator.**
+- `Qwen/Qwen2.5-7B-Instruct`, commit pinned and recorded. A T4 cannot hold it in float16, so it runs in 4-bit NF4 (bitsandbytes), stated as a precision difference.
+- Full pipeline on the subset: R0, F, Rf, the PoT program on GSM8K, labels, and teacher-forced features (log-probs, cues). Calls are logged.
+- Estimate: about 3 T4-hours. I'll ask the author before running the full 2,000.
+- **Report:** outcomes; within-source AUC (cluster bootstrap) of text, signals without the verifier, and signals with the verifier (LR), using 5-fold CV grouped by problem within the subset.
+
+**(2) Prompt sensitivity.**
+- Alternative critique: "Assume there may be an error in your previous answer. Solve the problem again independently, step by step, without relying on your previous solution. Then compare the two solutions and state clearly whether your previous answer was correct."
+- Alternative revision: "Based on your independent solution and the comparison, give your final answer to the question." followed by the same format line.
+- **Generators:** Qwen2.5-3B and SmolLM2-1.7B, on the same 600 problems. R0 is reused from the logged calls, and only F and Rf are new.
+- **Report:** failure rate, repair and harm under both templates, with a paired cluster-bootstrap CI on the failure-rate difference. Also the within-source AUC of text and of signals + verifier under each template, re-fit on the subset with identical CV.
+- Features for the new traces are recomputed in the same way, and pot_agree_f uses the new F.
+
+**(3) Exclusion sensitivity.**
+- Traces without an explicit final answer are counted as **failures** (label 1) instead of being excluded.
+- Recomputed: the SCFP outcome rates and the natural-set outcome rates; TF-IDF on the SCFP test split, retrained on the train split with exclusions included and the same selection; text, signals and signals + verifier within-source AUC on the natural set.
+- The excluded natural traces need teacher-forced features, which the GPU job computes. Their verifier uses the existing per-problem program output: pot_agree_r0 = 0 when R0 has no answer.
+- Both versions are reported side by side.
+
+**(4) Answer-extraction audit.**
+- 100 retained natural-set traces, stratified over generator × source (12 strata, 8–9 each, seed 42), written to `audit/extraction_audit.csv` with columns (trace_id, raw_text_tail, parsed_answer, gold, auto_label, human_label="").
+- A second, independent parser is written without looking at the pipeline parser's code paths. It takes the last number, yes/no, or option letter in the final 300 characters of the response.
+- Reported: its agreement with the pipeline parser on all retained traces, by generator × source, for R0 and Rf.
+- `human_label` stays empty for the author to fill.
+
+**(5) Precision check.**
+- Qwen2.5-1.5B greedy R0 on 200 problems from the subset (first 200 by problem id), regenerated in float16 and in bfloat16 on the T4 with the same batch size (16) and separate call logs.
+- Reported: the share of final answers that differ between the two precisions, and how many differ from the logged original.
