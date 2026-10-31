@@ -109,3 +109,39 @@ The main M5 run showed that pooled AUC is strongly confounded by source. Two mor
 **Check.** Compute AUC within source × fold strata, i.e. within source × fold × generator for the pooled rows. This removes between-fold intercept differences.
 
 **Reporting.** This is a sensitivity analysis only. The headline stays the pre-registered within-source AUC. If the source × fold version changes which predictor beats text, I'll say so.
+
+---
+
+## Decision recorded 2026-10-31 (author)
+
+After M5, the authors chose to keep the filter finding as a contribution, restated as a general caution: difficulty-filtered problems carry less within-source signal for every generator tested, and metrics pooled over datasets can reward recognizing the dataset. It is no longer stated as specific to the filter model.
+
+## M6: isolating the PoT verifier (registered 2026-10-31, before any M6 generation)
+
+**Generation** (Kaggle T4; approved by the author: about 5.4 GPU-h, k = 1 and k = 3).
+- For each of the four generators, on its kept natural-set GSM8K traces (3,118 traces), draw 3 answers with the **same initial prompt** as R0.
+- Settings: temperature 0.7, at most 512 new tokens (as for R0), the pinned commits of Appendix B, and calls logged with the existing `CallLog` format. Seeds come from the call id, as in the pipeline.
+- Precision: all four run in float16. Qwen2.5-1.5B's R0 was generated in bfloat16, so this is noted as a limitation.
+- Sample 1 is the cost-matched baseline: one extra generation, like the PoT program. Samples 1–3 give k = 3.
+- An unparsable sample counts as disagreeing with R0.
+
+**Features:**
+- `pot_ran`, `pot_agree_r0` (existing);
+- `sc1_agree`: sample 1's answer equals R0's answer;
+- `sc3_agree_frac`: share of the 3 samples equal to R0;
+- `sc3_majority_is_r0`.
+
+**Analyses** (per generator, GSM8K traces only, target rf_wrong; also reported for r0_wrong):
+1. **Single binary or score features:** `pot_ran`, `pot_agree_r0`, `sc1_agree`, `sc3_agree_frac`.
+   - Metrics: AUC (failure score = 1 − agreement); accuracy of "predict failure iff disagreement"; AUPRC.
+2. **Models:** class-balanced logistic regression on the signals without the verifier, plus one of {nothing, PoT, SC1, SC1 + PoT, SC3, SC3 + PoT}.
+   - Same LR settings as the paper, with 5-fold CV grouped by problem (seed 42), on the GSM8K traces of each generator.
+3. **Paired comparisons:** cluster bootstrap over problems (1,000 resamples, seed 0) of the AUC difference for:
+   - (+PoT) − (+SC1), the cost-matched comparison;
+   - (+SC1+PoT) − (+SC1), what PoT adds beyond two-sample agreement;
+   - (+SC3+PoT) − (+SC3).
+
+**Decision rule.**
+- The paper will say that PoT adds information beyond two-sample agreement for a generator only if the CI of (+SC1+PoT) − (+SC1) excludes 0.
+- It will say that PoT is better than the cost-matched SC1 only if the CI of (+PoT) − (+SC1) excludes 0.
+- The number of generators for which each holds is reported. If it is 0, the paper says the verifier adds nothing beyond two-sample agreement.
