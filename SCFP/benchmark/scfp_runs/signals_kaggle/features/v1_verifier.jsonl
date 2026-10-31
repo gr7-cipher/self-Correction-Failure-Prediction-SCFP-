@@ -61,7 +61,7 @@
 {"trace_id": "f16ff7e20af583ee", "pot_answer": "4", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "f30f4a23cb4c9509", "pot_answer": "88", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 0.0}
 {"trace_id": "f4fa7415e913c1d7", "pot_answer": "27", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
-{"trace_id": "f6760a03b0197b02", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/tmp/tmp71zwajon/prog.py\", line 9, in <module>\n    muscovy = cayuga + 4\n              ~~~~~~~^~~\nTypeError: unsupported operand type(s) for +: 'NoneType' and 'int'\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "f6760a03b0197b02", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/tmp/tmplzyk1whu/prog.py\", line 9, in <module>\n    muscovy = cayuga + 4\n              ~~~~~~~^~~\nTypeError: unsupported operand type(s) for +: 'NoneType' and 'int'\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "f92c5d493a53bc7e", "pot_answer": "420", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "fa908e10f23cebf0", "pot_answer": "10", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "fa96fe518514f97c", "pot_answer": "-21", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}

@@ -32,17 +32,32 @@ Majority class: 52.9% (n = 1950)
 | stack_text_scalar_hidden | 0.709 [0.686, 0.734] | 67.4% [65.4%, 69.5%] | 0.672 | 0.000 | 0.000 |
 | stack_all | 0.709 [0.686, 0.733] | 67.1% [65.1%, 69.2%] | 0.669 | 0.000 | 0.000 |
 
-## natural set, target: final answer wrong (paper label), generator: pooled (one model over all generators)
+## natural set, target: final answer wrong (paper label), generator: qwen2.5-3b
 
-Majority class: 54.7% (n = 3186)
+Majority class: 74.0% (n = 1920)
 
 | Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |
 |---|---|---|---|---|---|
-| text_tfidf | 0.646 [0.626, 0.664] | 58.6% [56.8%, 60.2%] | 0.586 | 0.002 | -- |
-| signals_scalar | 0.719 [0.701, 0.736] | 65.1% [63.5%, 66.7%] | 0.650 | 0.000 | 0.000 |
-| signals_gbm | 0.738 [0.721, 0.754] | 67.4% [65.8%, 69.0%] | 0.674 | 0.000 | 0.000 |
-| concat_text_scalar | 0.729 [0.713, 0.748] | 66.9% [65.3%, 68.7%] | 0.669 | 0.000 | 0.000 |
-| stack_text_scalar | 0.722 [0.705, 0.740] | 65.6% [63.9%, 67.3%] | 0.656 | 0.000 | 0.000 |
+| text_tfidf | 0.744 [0.722, 0.765] | 71.5% [69.5%, 73.4%] | 0.645 | 0.044 | -- |
+| signals_scalar | 0.783 [0.762, 0.803] | 67.8% [65.8%, 69.9%] | 0.655 | 0.000 | 0.001 |
+| signals_gbm | 0.786 [0.765, 0.807] | 67.8% [65.8%, 70.0%] | 0.654 | 0.000 | 0.002 |
+| hidden_last_R0 | 0.747 [0.723, 0.770] | 65.9% [63.8%, 68.0%] | 0.639 | 0.000 | 0.000 |
+| concat_text_scalar | 0.787 [0.766, 0.807] | 74.1% [72.3%, 75.9%] | 0.674 | 0.966 | 0.003 |
+| stack_text_scalar | 0.771 [0.749, 0.793] | 67.5% [65.4%, 69.6%] | 0.653 | 0.000 | 0.000 |
+| stack_text_scalar_hidden | 0.771 [0.749, 0.793] | 66.2% [64.2%, 68.5%] | 0.642 | 0.000 | 0.000 |
+| stack_all | 0.788 [0.766, 0.808] | 65.5% [63.5%, 67.8%] | 0.640 | 0.000 | 0.000 |
+
+## natural set, target: final answer wrong (paper label), generator: pooled (one model over all generators)
+
+Majority class: 62.0% (n = 5106)
+
+| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |
+|---|---|---|---|---|---|
+| text_tfidf | 0.716 [0.701, 0.730] | 64.8% [63.5%, 66.2%] | 0.631 | 0.002 | -- |
+| signals_scalar | 0.754 [0.741, 0.768] | 66.2% [64.9%, 67.5%] | 0.662 | 0.000 | 0.074 |
+| signals_gbm | 0.774 [0.761, 0.787] | 67.6% [66.3%, 68.9%] | 0.674 | 0.000 | 0.000 |
+| concat_text_scalar | 0.756 [0.743, 0.770] | 68.4% [67.1%, 69.6%] | 0.670 | 0.000 | 0.000 |
+| stack_text_scalar | 0.763 [0.751, 0.778] | 67.3% [66.0%, 68.5%] | 0.671 | 0.000 | 0.000 |
 
 ## natural set, target: initial answer wrong (diagnostic), generator: qwen2.5-1.5b
 
@@ -74,17 +89,32 @@ Majority class: 58.2% (n = 1950)
 | stack_text_scalar_hidden | 0.782 [0.761, 0.802] | 70.6% [68.5%, 72.7%] | 0.700 | 0.000 | 0.000 |
 | stack_all | 0.783 [0.762, 0.802] | 70.2% [68.2%, 72.3%] | 0.697 | 0.000 | 0.000 |
 
-## natural set, target: initial answer wrong (diagnostic), generator: pooled (one model over all generators)
+## natural set, target: initial answer wrong (diagnostic), generator: qwen2.5-3b
 
-Majority class: 52.9% (n = 3186)
+Majority class: 75.9% (n = 1920)
 
 | Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |
 |---|---|---|---|---|---|
-| text_tfidf | 0.730 [0.713, 0.748] | 66.3% [64.5%, 67.9%] | 0.662 | 0.000 | -- |
-| signals_scalar | 0.785 [0.770, 0.800] | 69.7% [68.1%, 71.3%] | 0.697 | 0.000 | 0.001 |
-| signals_gbm | 0.804 [0.789, 0.818] | 72.2% [70.6%, 73.8%] | 0.722 | 0.000 | 0.000 |
-| concat_text_scalar | 0.803 [0.788, 0.819] | 71.7% [70.0%, 73.2%] | 0.716 | 0.000 | 0.000 |
-| stack_text_scalar | 0.802 [0.787, 0.817] | 71.9% [70.3%, 73.5%] | 0.719 | 0.000 | 0.000 |
+| text_tfidf | 0.744 [0.721, 0.766] | 70.8% [68.7%, 72.8%] | 0.612 | 0.000 | -- |
+| signals_scalar | 0.770 [0.750, 0.791] | 66.4% [64.3%, 68.4%] | 0.633 | 0.000 | 0.000 |
+| signals_gbm | 0.762 [0.740, 0.784] | 65.6% [63.4%, 67.7%] | 0.626 | 0.000 | 0.000 |
+| hidden_last_R0 | 0.757 [0.734, 0.782] | 67.4% [65.2%, 69.4%] | 0.644 | 0.000 | 0.004 |
+| concat_text_scalar | 0.770 [0.747, 0.789] | 72.3% [70.4%, 74.2%] | 0.640 | 0.003 | 0.081 |
+| stack_text_scalar | 0.764 [0.742, 0.785] | 66.6% [64.4%, 68.5%] | 0.639 | 0.000 | 0.000 |
+| stack_text_scalar_hidden | 0.773 [0.752, 0.794] | 66.0% [63.9%, 68.2%] | 0.636 | 0.000 | 0.000 |
+| stack_all | 0.774 [0.753, 0.794] | 64.7% [62.4%, 66.8%] | 0.627 | 0.000 | 0.000 |
+
+## natural set, target: initial answer wrong (diagnostic), generator: pooled (one model over all generators)
+
+Majority class: 61.5% (n = 5106)
+
+| Predictor | AUC [95% CI] | Accuracy [95% CI] | Macro F1 | p vs majority | p vs TF-IDF |
+|---|---|---|---|---|---|
+| text_tfidf | 0.753 [0.739, 0.765] | 68.1% [66.8%, 69.3%] | 0.673 | 0.000 | -- |
+| signals_scalar | 0.786 [0.773, 0.797] | 69.1% [67.9%, 70.4%] | 0.687 | 0.000 | 0.168 |
+| signals_gbm | 0.809 [0.797, 0.820] | 70.2% [69.0%, 71.5%] | 0.698 | 0.000 | 0.002 |
+| concat_text_scalar | 0.808 [0.796, 0.819] | 72.4% [71.1%, 73.5%] | 0.712 | 0.000 | 0.000 |
+| stack_text_scalar | 0.804 [0.791, 0.814] | 68.8% [67.5%, 69.9%] | 0.686 | 0.000 | 0.273 |
 
 ## v1 set, target: final answer wrong (paper label), generator: qwen2.5-1.5b
 
@@ -172,7 +202,7 @@ Majority class: 51.5% (n = 472)
 
 ## Learning curve (natural set, paper label): out-of-fold AUC vs. training traces per fold
 
-| Predictor | 25% (~637 traces) | 50% (~1274 traces) | 75% (~1912 traces) | 100% (~2549 traces) |
+| Predictor | 25% (~1021 traces) | 50% (~2042 traces) | 75% (~3064 traces) | 100% (~4085 traces) |
 |---|---|---|---|---|
-| text_tfidf | 0.640 ± 0.010 | 0.643 ± 0.011 | 0.651 ± 0.008 | 0.646 ± 0.000 |
-| stack_text_scalar | 0.698 ± 0.007 | 0.708 ± 0.007 | 0.712 ± 0.006 | 0.722 ± 0.000 |
+| text_tfidf | 0.691 ± 0.002 | 0.703 ± 0.004 | 0.714 ± 0.001 | 0.716 ± 0.000 |
+| stack_text_scalar | 0.737 ± 0.006 | 0.750 ± 0.002 | 0.756 ± 0.001 | 0.763 ± 0.000 |
