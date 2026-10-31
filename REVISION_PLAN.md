@@ -295,3 +295,11 @@ As implemented:
 **(5) Precision check.**
 - Qwen2.5-1.5B greedy R0 on 200 problems from the subset (first 200 by problem id), regenerated in float16 and in bfloat16 on the T4 with the same batch size (16) and separate call logs.
 - Reported: the share of final answers that differ between the two precisions, and how many differ from the logged original.
+
+### M3 implementation note (2026-10-31, smoke test on 6 traces, before the real run)
+
+With the registered P(True) prompt, Qwen2.5-0.5B put only 0.5% of its next-token mass on "A"/"B". The rest went to the merged tokens "(A"/"(B".
+
+The assistant turn therefore starts with the prefix "The answer is (". The registered score is unchanged: P("A") normalized over {A, B}. With the prefix, A/B carry 99.7% of the mass on the smoke trace.
+
+The A/B mass is recorded for every trace (`ab_mass`), and the judge's Yes/No mass likewise (`yes_no_mass`).

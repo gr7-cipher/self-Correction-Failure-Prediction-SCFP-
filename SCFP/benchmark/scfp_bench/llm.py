@@ -30,6 +30,8 @@ class ModelSpec:
     max_tokens: int = 1024
     revision: Optional[str] = None  # local: pin a Hugging Face commit for reproducibility
     device: Optional[str] = None    # local: mps | cuda | cpu (auto-detected if unset)
+    dtype: Optional[str] = None     # local: float16 | bfloat16 | float32 (auto if unset; revision M8)
+    quant: Optional[str] = None     # local: "nf4" loads 4-bit with bitsandbytes (7-8B models on a T4)
 
     @staticmethod
     def from_dict(d: dict) -> "ModelSpec":
@@ -212,7 +214,7 @@ class LocalHF:
     def _load(self, spec: ModelSpec):
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
-        key = (spec.model, spec.revision)
+        key = (spec.model, spec.revision, spec.dtype, spec.quant)
         if self.key == key:
             return
         self.free()
@@ -222,7 +224,9 @@ class LocalHF:
             dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
         else:
             dtype = {"mps": torch.float16, "cpu": torch.float32}[device]
-        print(f"  loading {spec.model} on {device} ({dtype})", flush=True)
+        if spec.dtype:
+            dtype = getattr(torch, spec.dtype)
+        print(f"  loading {spec.model} on {device} ({dtype}{', ' + spec.quant if spec.quant else ''})", flush=True)
         self.tok = AutoTokenizer.from_pretrained(spec.model, revision=spec.revision,
                                                  padding_side="left")
         if self.tok.pad_token is None:
@@ -230,9 +234,14 @@ class LocalHF:
         # Load straight onto the device: from_pretrained(...).to(device) briefly
         # held a CPU copy and a GPU copy, which thrashed swap on an 8 GB Mac.
         import gc
+        extra = {}
+        if spec.quant == "nf4":
+            from transformers import BitsAndBytesConfig
+            extra["quantization_config"] = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                                                              bnb_4bit_compute_dtype=dtype)
         self.model = AutoModelForCausalLM.from_pretrained(
             spec.model, revision=spec.revision, dtype=dtype, device_map=device,
-            low_cpu_mem_usage=True).eval()
+            low_cpu_mem_usage=True, **extra).eval()
         gc.collect()
         commit = spec.revision or getattr(self.model.config, "_commit_hash", None)
         if not commit:
