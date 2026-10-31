@@ -145,3 +145,45 @@ After M5, the authors chose to keep the filter finding as a contribution, restat
 - The paper will say that PoT adds information beyond two-sample agreement for a generator only if the CI of (+SC1+PoT) − (+SC1) excludes 0.
 - It will say that PoT is better than the cost-matched SC1 only if the CI of (+PoT) − (+SC1) excludes 0.
 - The number of generators for which each holds is reported. If it is 0, the paper says the verifier adds nothing beyond two-sample agreement.
+
+---
+
+## M7: statistical rigor (registered 2026-10-31, before any M7 computation or training)
+
+**1. Seeds** (author decision: Kaggle T4).
+- Each Table 8 encoder (deberta-scfp, deberta-plain, roberta-base, bert-base) and each Table 9 ablation (no-segments, no-attention, inputs P-R0, P-F, R0-F, deberta-xsmall) is retrained with seeds 1, 2, 3 and 4.
+- Everything else is the exact command line of `run_mac_overnight.sh`: same splits, budgets, batch 2 × 8 accumulation and frozen word embeddings.
+- Precision is float32 (`--no-amp`), as on the M1. The device is CUDA instead of MPS, and each result records its hardware.
+- Seed 42 is the existing M1 run.
+- Reported: mean ± sd over the 5 seeds of test accuracy, macro-F1 and AUC, with per-seed results in an appendix. Model selection is on validation macro-F1, as before; the test split is evaluated once per run.
+
+**2. Cluster-aware intervals and tests.**
+- All intervals become 95% bootstrap intervals over problems: 1,000 resamples, seed 0, all traces of a resampled problem kept together. That means 45 problems and 108 traces for the SCFP test split, and 2,000 problems pooled for the natural set.
+- Paired accuracy tests become a **problem-level paired permutation test**: per-problem summed differences in correctness, signs flipped at random, 10,000 permutations, seed 0, two-sided.
+- Natural-set AUC differences: the cluster-bootstrap p-value, two-sided, equal to 2 × min(share of differences ≤ 0, share ≥ 0).
+
+**3. Families and Holm–Bonferroni.**
+- One family per table:
+  - Table 7: each baseline vs TF-IDF.
+  - Table 8: each encoder vs TF-IDF, and each encoder vs majority (two families).
+  - Table 9: each ablation vs the full model.
+  - Table 11: each policy vs no correction.
+  - Table 14: each predictor vs text, within each generator row, with the five rows as one family of 25.
+- **Pre-specified** in the submitted paper: Table 7 vs TF-IDF and vs majority; Table 8 vs TF-IDF and vs majority; Table 14 vs TF-IDF.
+- **Added in revision:** Table 9 vs the full model, and Table 11 vs no correction.
+- Holm-adjusted p-values are reported next to the raw ones.
+
+**4. Power.**
+- For the SCFP test split (108 traces in 45 problems), the minimum detectable difference at 80% power and two-sided α = 0.05:
+  - for paired accuracy, using the observed discordance rate between the full model and TF-IDF, inflated by the design effect 1 + (m̄ − 1)·ICC, with the ICC of correctness within problems estimated from the test predictions;
+  - for AUC against 0.5 and for paired AUC, by Hanley–McNeil with the observed class sizes and inter-model correlation, inflated by the same design effect.
+- Both are checked by simulation (resampling problems under an injected difference). The assumptions are stated in the appendix.
+
+**5. Calibration.**
+- ECE (15 equal-width bins), Brier score and a reliability diagram for:
+  - the best natural-set predictor per generator and pooled (out-of-fold);
+  - the DeBERTa p_fail on the SCFP test split and on the routing evaluation set.
+- The confidence-router score is a rank, not a probability, so it gets no ECE; I'll say so.
+- The class-balanced models are not calibrated to the base rate by design, and this is reported as a finding, not fixed.
+
+**Decision rule.** A claimed difference survives only if its Holm-adjusted p < 0.05. Any claim that loses significance after clustering or Holm correction is rewritten.
