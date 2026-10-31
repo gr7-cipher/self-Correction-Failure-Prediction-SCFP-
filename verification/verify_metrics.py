@@ -689,8 +689,25 @@ def check_revision(rev_tables, routing_dir, manuscript):
         record(s, f"M5: sub-task r0_wrong within-source AUC ({g})", f"{v:.3f}" == N[f"sw{m}Rzero"], f"{v:.3f}")
     rule = sum(all(wauc(sub[(g, t)]) > wauc(sub[(g, "r0_wrong")]) for t in ("changed", "repair", "harm")) for g in codes)
     record(s, "M5: behaviour > R0 correctness holds for the stated number of generators", str(rule) == N["swRuleHolds"], str(rule))
+    # M7: claims in the power paragraph and calibration sentence
+    st = json.load(open(os.path.join(os.path.dirname(rev_tables), "..", "results", "revision", "m7", "stats_m7.json")))
+    P_ = st["scfp"]["predictors"]
+    enc = ["deberta-scfp", "deberta-plain", "roberta-base", "bert-base", "abl-no-segments", "abl-no-attention",
+           "abl-inputs-P-R0", "abl-inputs-P-F", "abl-inputs-R0-F", "abl-deberta-xsmall"]
+    accs = [P_[k]["accuracy"] for k in enc + ["tfidf_lr"]]
+    aucs = [P_[k]["auc"] for k in enc + ["tfidf_lr"]]
+    record(s, "M7: every encoder/ablation/TF-IDF accuracy difference is below the accuracy MDE",
+           max(accs) - min(accs) < st["power"]["mde_accuracy_paired"], f"max diff {max(accs) - min(accs):.3f}")
+    record(s, "M7: every encoder/ablation/TF-IDF AUC difference is below the paired-AUC MDE",
+           max(aucs) - min(aucs) < st["power"]["mde_auc_paired"], f"max diff {max(aucs) - min(aucs):.3f}")
+    cal = st["calibration"]
+    record(s, "M7: mean p exceeds the failure rate for the Qwen2.5-1.5B and Qwen2.5-3B best predictors",
+           all(v["mean_p"] > v["failure_rate"] for k, v in cal.items()
+               if k.startswith("natural|qwen2.5-1.5b") or k.startswith("natural|qwen2.5-3b")), "")
+    record(s, "M7: R0-only vs extrinsic not significant after Holm",
+           [x for x in st["routing"] if x["policy"] == "Always Extrinsic"][0]["p_holm"] >= 0.05, "")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
 
 

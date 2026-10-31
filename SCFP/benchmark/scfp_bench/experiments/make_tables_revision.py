@@ -44,17 +44,21 @@ def m4(res_dir, out, M):
              "Confidence-based": "Confidence-based router", "Dynamic (our predictor)": "Dynamic router (DeBERTa)",
              "Always Human (oracle)": "Always Human (oracle)$^\\dagger$",
              "Random (uniform, expected)": "Random (uniform, expected)$^\\dagger$"}
+    st7 = os.path.join(res_dir, "m7", "stats_m7.json")
+    holm7 = {x["policy"]: x for x in json.load(open(st7))["routing"]} if os.path.exists(st7) else {}
     lines = []
     for n in order:
         v = P[n]
         acc = pct(v["accuracy"]) + (f" {ci_pct(v['accuracy_ci95'])}" if v["accuracy_ci95"] else "")
         d = v["paired_vs_r0_only"]
         dd = "--" if d is None else f"{100 * d['diff']:+.1f} {ci_pct(d['ci95'])}"
-        lines.append(f"{label.get(n, n)} & {acc} & {dd} & {v['relative_cost']:.2f}$\\times$ & "
+        hp = f" & {pval(holm7[n]['p'])} ({pval(holm7[n]['p_holm'])})" if n in holm7 else (" & --" if holm7 else "")
+        lines.append(f"{label.get(n, n)} & {acc} & {dd}{hp} & {v['relative_cost']:.2f}$\\times$ & "
                      f"{v['latency_s']:.1f} & {pct(v['share_human'])}\\% \\\\")
     write(out, "tab_routing_rev.tex",
-          "\\begin{tabular}{@{}lccccc@{}}\n\\toprule\nStrategy & Accuracy (\\%) [95\\% CI] & "
-          "$\\Delta$ vs no correction (pp) [95\\% CI] & Cost & Latency (s) & To human \\\\\n\\midrule\n"
+          "\\begin{tabular}{@{}lc" + ("cc" if holm7 else "c") + "ccc@{}}\n\\toprule\nStrategy & Accuracy (\\%) [95\\% CI] & "
+          "$\\Delta$ vs no correction (pp) [95\\% CI] & " + ("$p$ (Holm) & " if holm7 else "")
+          + "Cost & Latency (s) & To human \\\\\n\\midrule\n"
           + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
 
     # secondary table: Overall Score at the paper's setting, and which policy wins across settings
@@ -230,13 +234,103 @@ def m5(res_dir, out, M):
     M["swRuleHolds"] = str(sum(Q["subtask_rule_holds"].values()))
 
 
+def m7(res_dir, out, M):
+    p = os.path.join(res_dir, "m7", "stats_m7.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    S = R["scfp"]
+    names = {"majority": "Majority class", "random": "Random (train prior)", "length": "Length heuristic",
+             "confidence": "Confidence heuristic (critique log-prob)", "tfidf_lr": "TF-IDF + logistic regression"}
+    tv = {x["a"]: x for x in S["tests"]["t7_vs_tfidf"]}
+    tm = {x["a"]: x for x in S["tests"]["t7_vs_majority"]}
+    ci = lambda c: f"[{c[0]:.3f}, {c[1]:.3f}]"
+    lines = []
+    for k, lab in names.items():
+        v = S["predictors"][k]
+        a_ = "--" if v["auc"] is None else f"{v['auc']:.3f} {ci(v['auc_ci95'])}"
+        pt = "--" if k not in tv else f"{pval(tv[k]['p'])} ({pval(tv[k]['p_holm'])})"
+        pm = "--" if k not in tm else f"{pval(tm[k]['p'])} ({pval(tm[k]['p_holm'])})"
+        lines.append(f"{lab} & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['macro_f1']:.3f} {ci(v['macro_f1_ci95'])} "
+                     f"& {a_} & {pt} & {pm} \\\\")
+    write(out, "tab_binary_results_rev.tex",
+          "\\begin{tabular}{@{}lccccc@{}}\n\\toprule\nPredictor & Accuracy [95\\% CI] & Macro-F1 [95\\% CI] & AUC [95\\% CI] "
+          "& $p$ vs TF-IDF (Holm) & $p$ vs majority (Holm) \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
+    for k, mk in (("tfidf_lr", "Tfidf"), ("majority", "Maj"), ("random", "Rand"), ("length", "Len"), ("confidence", "Conf")):
+        v = S["predictors"][k]
+        M[f"sc{mk}Acc"] = pct(v["accuracy"]); M[f"sc{mk}AccLo"] = pct(v["accuracy_ci95"][0]); M[f"sc{mk}AccHi"] = pct(v["accuracy_ci95"][1])
+        M[f"sc{mk}Fone"] = f"{v['macro_f1']:.3f}"
+        if v["auc"] is not None:
+            M[f"sc{mk}AUC"] = f"{v['auc']:.3f}"
+        if k in tv:
+            M[f"sc{mk}PTfidf"], M[f"sc{mk}PTfidfHolm"] = pval(tv[k]["p"]), pval(tv[k]["p_holm"])
+    M["scTfidfPMaj"], M["scTfidfPMajHolm"] = pval(tm["tfidf_lr"]["p"]), pval(tm["tfidf_lr"]["p_holm"])
+    M["scNProblems"] = str(S["n_problems"])
+    # power
+    W = R["power"]
+    M.update({"pwICC": f"{W['icc_correctness']:.3f}", "pwICCd": f"{W['icc_paired_difference']:.3f}",
+              "pwDeff": f"{W['deff_difference']:.2f}", "pwDisc": f"{W['discordance']:.3f}",
+              "pwMdeAcc": pct(W["mde_accuracy_paired"]), "pwMdeAccBoot": pct(W["bootstrap_mde_accuracy"]),
+              "pwMdeAucHalf": f"{W['mde_auc_vs_half']:.3f}", "pwMdeAucPaired": f"{W['mde_auc_paired']:.3f}",
+              "pwMdeAucBoot": f"{W['bootstrap_mde_auc']:.3f}", "pwAucCorr": f"{W['auc_score_correlation']:.2f}",
+              "pwClusterSize": f"{W['mean_cluster_size']:.1f}"})
+    sim = W["simulated_power_accuracy"]
+    M["pwSimTypeI"] = f"{sim['0.00']:.2f}"
+    M["pwSimFifteen"], M["pwSimTwenty"], M["pwSimTen"] = f"{sim['0.15']:.2f}", f"{sim['0.20']:.2f}", f"{sim['0.10']:.2f}"
+    # routing Holm
+    rt = {x["policy"]: x for x in R["routing"]}
+    M["rtExtPHolm"] = pval(rt["Always Extrinsic"]["p_holm"]); M["rtExtPPerm"] = pval(rt["Always Extrinsic"]["p"])
+    M["rtDynPHolm"] = pval(rt["Dynamic (our predictor)"]["p_holm"])
+    M["rtIntPHolm"] = pval(rt["Always Intrinsic"]["p_holm"])
+    # natural-set tests (appendix)
+    N = R["natural"]
+    gl = {"qwen2.5-0.5b": "Qwen2.5-0.5B", "qwen2.5-1.5b": "Qwen2.5-1.5B", "smollm2-1.7b": "SmolLM2-1.7B",
+          "qwen2.5-3b": "Qwen2.5-3B", "pooled": "Pooled"}
+    pl = [("identity", "Source only"), ("signals_noverifier", "Signals, no verifier"), ("signals", "Signals + verifier (LR)"),
+          ("signals_gbm", "Signals + verifier (GBM)"), ("concat_text_signals", "Text + signals + verifier")]
+    rows = []
+    for g, gn in gl.items():
+        for k, kn in pl:
+            v = N[g][k]
+            rows.append(f"{gn} & {kn} & {pval(v['within_auc_diff_p'])} & {pval(v['within_auc_diff_p_holm'])} & "
+                        f"{pct(v['accuracy'])} vs {pct(v['accuracy_text'])} & {pval(v['accuracy_perm_p'])} & {pval(v['accuracy_perm_p_holm'])} \\\\")
+        rows.append("\\midrule")
+    rows.pop()
+    write(out, "tab_nat_tests.tex",
+          "\\begin{tabular}{@{}llccccc@{}}\n\\toprule\n & & \\multicolumn{2}{c}{Within-source AUC vs text} & "
+          "\\multicolumn{3}{c}{Accuracy vs text} \\\\\n\\cmidrule(lr){3-4}\\cmidrule(lr){5-7}\nGenerator & Predictor & $p$ & Holm & "
+          "Accuracy (\\%) & $p$ & Holm \\\\\n\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
+    sig = lambda g, k, key: N[g][k][key] < 0.05
+    M["ntBestHolmMax"] = pval(max(N[g][k]["within_auc_diff_p_holm"] for g in gl for k in ("signals", "signals_gbm", "concat_text_signals")))
+    M["ntQCAccConcatHolm"] = pval(N["qwen2.5-3b"]["concat_text_signals"]["accuracy_perm_p_holm"])
+    M["ntQCAccGbmHolm"] = pval(N["qwen2.5-3b"]["signals_gbm"]["accuracy_perm_p_holm"])
+    M["ntNoVerSigCount"] = str(sum(sig(g, "signals_noverifier", "within_auc_diff_p_holm") for g in gl if g != "pooled"))
+    # calibration
+    C = R["calibration"]
+    lab = {"scfp_test|deberta-scfp": "DeBERTa (SCFP v1.0 test split)", "routing_eval|deberta-scfp": "DeBERTa (routing evaluation set)"}
+    cl_ = []
+    for k, v in C.items():
+        if "ece" not in v:
+            continue
+        name = lab.get(k) or (f"{gl[k.split('|')[1]]}, " + dict(pl).get(k.split('|')[2], "") + " (natural set)")
+        cl_.append(f"{name} & {v['n']:,} & {pct(v['failure_rate'])} & {pct(v['mean_p'])} & {v['ece']:.3f} & {v['brier']:.3f} \\\\")
+    write(out, "tab_calibration.tex",
+          "\\begin{tabular}{@{}lrcccc@{}}\n\\toprule\nPredictor & $n$ & Failure rate (\\%) & Mean $\\hat p$ (\\%) & ECE & Brier \\\\\n"
+          "\\midrule\n" + "\n".join(cl_) + "\n\\bottomrule\n\\end{tabular}\n")
+    eces = [v["ece"] for k, v in C.items() if k.startswith("natural") and "ece" in v]
+    M["calNatEceMin"], M["calNatEceMax"] = f"{min(eces):.3f}", f"{max(eces):.3f}"
+    M["calScfpEce"] = f"{C['scfp_test|deberta-scfp']['ece']:.3f}"
+    M["calRouteEce"] = f"{C['routing_eval|deberta-scfp']['ece']:.3f}"
+    shutil.copy(os.path.join(res_dir, "m7", "fig_reliability.pdf"), os.path.join(out, "rev_fig_reliability.pdf"))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m4, m5):
+    for section in (m7, m4, m5):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)

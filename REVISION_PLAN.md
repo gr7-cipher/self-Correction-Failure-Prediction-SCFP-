@@ -187,3 +187,11 @@ After M5, the authors chose to keep the filter finding as a contribution, restat
 - The class-balanced models are not calibrated to the base rate by design, and this is reported as a finding, not fixed.
 
 **Decision rule.** A claimed difference survives only if its Holm-adjusted p < 0.05. Any claim that loses significance after clustering or Holm correction is rewritten.
+
+### M7 implementation note (2026-10-31, after the first run of m7_stats.py)
+
+I raised the bootstrap resamples behind the natural-set AUC-difference p-values from 1,000 to 10,000. The p-value definition is unchanged.
+
+With 1,000 resamples, the smallest attainable p is 2/1001. Holm over 25 comparisons then gives at least 0.05 for every test, so no comparison could ever reach significance. All 25 adjusted values came out at exactly 0.05. This is a resolution fix, made before looking at any adjusted value from the new run.
+
+The confidence intervals still use 1,000 resamples, as registered.
