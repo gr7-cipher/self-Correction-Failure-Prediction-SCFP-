@@ -87,3 +87,17 @@ I append each entry before running the experiment it describes. I don't edit an 
 - If the identity baseline's pooled AUC is within 0.05 of a predictor's pooled AUC, I'll state that most of that predictor's pooled AUC is explained by dataset identity.
 
 **Expectation (not a target):** within-source AUC is lower than pooled AUC, more so for generators whose failure rate differs strongly by source.
+
+### M5 addendum (registered 2026-10-31, after the main M5 run and before these computations)
+
+The main M5 run showed that pooled AUC is strongly confounded by source. Two more tables are pooled across sources, so I'm extending the same treatment to them. Metrics, bootstrap and decision rules are as above.
+
+- **(a) Filter effect (Table 13).**
+  - Within-source AUC on SCFP v1.0 and on the natural set, per generator, for text and for signals with the verifier.
+  - SCFP v1.0 predictions come from the same saved file (`set == "v1"`). The intervals use the cluster bootstrap over problems.
+  - The §8.3 claim ("the filter removes the signal for the filter model") stands only if Qwen2.5-0.5B's within-source text AUC on SCFP v1.0 is below its natural-set within-source text AUC, with the cluster-bootstrap CI of the difference excluding 0 (natural minus v1, resampling each set's problems independently). Otherwise the claim is weakened in the text.
+- **(b) Sub-tasks (Table 16).**
+  - Out-of-fold predictions for r0_wrong, changed, repair and harm are recomputed with the paper_v7 code: GBM on signals with the verifier, same folds. The results.json aggregates are checked to match first.
+  - These predictions are now saved per trace.
+  - Within-source AUC is reported next to the pooled AUC.
+  - The §8.6 claim ("revision behaviour is predictable, R0 correctness is not") stands only if the within-source AUC for changed, repair and harm exceeds that for r0_wrong for every generator.
