@@ -1,0 +1,2182 @@
+{
+ "Dynamic (our predictor)": [
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.15,
+   "relative_cost": 15.512496363934241,
+   "latency_s": 93.9573860784753,
+   "accuracy": 1.0,
+   "share_hum": 1.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.2,
+   "relative_cost": 15.512496363934241,
+   "latency_s": 93.9573860784753,
+   "accuracy": 1.0,
+   "share_hum": 1.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.25,
+   "relative_cost": 15.512496363934241,
+   "latency_s": 93.9573860784753,
+   "accuracy": 1.0,
+   "share_hum": 1.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.3,
+   "relative_cost": 12.4368404511062,
+   "latency_s": 86.49929941180864,
+   "accuracy": 0.9533333333333334,
+   "share_hum": 0.7933333333333333
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.35,
+   "relative_cost": 3.417037851862502,
+   "latency_s": 65.65989274514196,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.4,
+   "relative_cost": 2.722688381641462,
+   "latency_s": 63.931679411808645,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.14
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.45,
+   "relative_cost": 2.1273425458144284,
+   "latency_s": 62.52097274514197,
+   "accuracy": 0.66,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.5,
+   "relative_cost": 2.028081461247062,
+   "latency_s": 62.270132745141964,
+   "accuracy": 0.66,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.55,
+   "relative_cost": 1.7311808938536282,
+   "latency_s": 61.6643660784753,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.6,
+   "relative_cost": 1.1372928278393912,
+   "latency_s": 60.34591274514198,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.65,
+   "relative_cost": 0.8398071464155913,
+   "latency_s": 59.61741941180863,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.7,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.75,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.8,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.85,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.9,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.2,
+   "relative_cost": 15.512496363934241,
+   "latency_s": 93.9573860784753,
+   "accuracy": 1.0,
+   "share_hum": 1.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.25,
+   "relative_cost": 15.512496363934241,
+   "latency_s": 93.9573860784753,
+   "accuracy": 1.0,
+   "share_hum": 1.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.3,
+   "relative_cost": 12.4368404511062,
+   "latency_s": 86.49929941180864,
+   "accuracy": 0.9533333333333334,
+   "share_hum": 0.7933333333333333
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.35,
+   "relative_cost": 3.417037851862502,
+   "latency_s": 65.65989274514196,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.4,
+   "relative_cost": 2.722688381641462,
+   "latency_s": 63.931679411808645,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.14
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.45,
+   "relative_cost": 2.1273425458144284,
+   "latency_s": 62.52097274514197,
+   "accuracy": 0.66,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.5,
+   "relative_cost": 2.028081461247062,
+   "latency_s": 62.270132745141964,
+   "accuracy": 0.66,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.55,
+   "relative_cost": 1.7311808938536282,
+   "latency_s": 61.6643660784753,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.6,
+   "relative_cost": 1.1372928278393912,
+   "latency_s": 60.34591274514198,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.65,
+   "relative_cost": 0.8398071464155913,
+   "latency_s": 59.61741941180863,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.7,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.75,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.8,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.85,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.9,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.25,
+   "relative_cost": 15.512496363934241,
+   "latency_s": 93.9573860784753,
+   "accuracy": 1.0,
+   "share_hum": 1.0
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.3,
+   "relative_cost": 12.4368404511062,
+   "latency_s": 86.49929941180864,
+   "accuracy": 0.9533333333333334,
+   "share_hum": 0.7933333333333333
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.35,
+   "relative_cost": 3.417037851862502,
+   "latency_s": 65.65989274514196,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.4,
+   "relative_cost": 2.722688381641462,
+   "latency_s": 63.931679411808645,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.14
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.45,
+   "relative_cost": 2.1273425458144284,
+   "latency_s": 62.52097274514197,
+   "accuracy": 0.66,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.5,
+   "relative_cost": 2.028081461247062,
+   "latency_s": 62.270132745141964,
+   "accuracy": 0.66,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.55,
+   "relative_cost": 1.7311808938536282,
+   "latency_s": 61.6643660784753,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.6,
+   "relative_cost": 1.1372928278393912,
+   "latency_s": 60.34591274514198,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.65,
+   "relative_cost": 0.8398071464155913,
+   "latency_s": 59.61741941180863,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.7,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.75,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.8,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.85,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.9,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.3,
+   "relative_cost": 12.4368404511062,
+   "latency_s": 86.49929941180864,
+   "accuracy": 0.9533333333333334,
+   "share_hum": 0.7933333333333333
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.35,
+   "relative_cost": 3.417037851862502,
+   "latency_s": 65.65989274514196,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.4,
+   "relative_cost": 2.722688381641462,
+   "latency_s": 63.931679411808645,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.14
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.45,
+   "relative_cost": 2.1273425458144284,
+   "latency_s": 62.52097274514197,
+   "accuracy": 0.66,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.5,
+   "relative_cost": 2.028081461247062,
+   "latency_s": 62.270132745141964,
+   "accuracy": 0.66,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.55,
+   "relative_cost": 1.7311808938536282,
+   "latency_s": 61.6643660784753,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.6,
+   "relative_cost": 1.1372928278393912,
+   "latency_s": 60.34591274514198,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.65,
+   "relative_cost": 0.8398071464155913,
+   "latency_s": 59.61741941180863,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.7,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.75,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.8,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.85,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.9,
+   "relative_cost": 0.6414655267530852,
+   "latency_s": 59.13866607847531,
+   "accuracy": 0.6133333333333333,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.35,
+   "relative_cost": 3.471486891773966,
+   "latency_s": 68.59858607847531,
+   "accuracy": 0.7,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.4,
+   "relative_cost": 2.777137421552926,
+   "latency_s": 66.87037274514196,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.14
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.45,
+   "relative_cost": 2.1817915857258923,
+   "latency_s": 65.45966607847531,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.5,
+   "relative_cost": 2.082530501158526,
+   "latency_s": 65.20882607847531,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.55,
+   "relative_cost": 1.785629933765092,
+   "latency_s": 64.60305941180864,
+   "accuracy": 0.66,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.6,
+   "relative_cost": 1.191741867750855,
+   "latency_s": 63.28460607847531,
+   "accuracy": 0.64,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.65,
+   "relative_cost": 0.8942561863270553,
+   "latency_s": 62.55611274514197,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.7,
+   "relative_cost": 0.6959145666645492,
+   "latency_s": 62.07735941180865,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.75,
+   "relative_cost": 0.6959145666645492,
+   "latency_s": 62.07735941180865,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.8,
+   "relative_cost": 0.6959145666645492,
+   "latency_s": 62.07735941180865,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.85,
+   "relative_cost": 0.6959145666645492,
+   "latency_s": 62.07735941180865,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.9,
+   "relative_cost": 0.6959145666645492,
+   "latency_s": 62.07735941180865,
+   "accuracy": 0.6266666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.4,
+   "relative_cost": 3.022497467292126,
+   "latency_s": 81.52176607847531,
+   "accuracy": 0.74,
+   "share_hum": 0.14
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.45,
+   "relative_cost": 2.427151631465092,
+   "latency_s": 80.11105941180863,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.5,
+   "relative_cost": 2.3278905468977253,
+   "latency_s": 79.86021941180863,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.55,
+   "relative_cost": 2.0309899795042914,
+   "latency_s": 79.25445274514198,
+   "accuracy": 0.7133333333333334,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.6,
+   "relative_cost": 1.4371019134900547,
+   "latency_s": 77.93599941180864,
+   "accuracy": 0.6933333333333334,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.65,
+   "relative_cost": 1.139616232066255,
+   "latency_s": 77.2075060784753,
+   "accuracy": 0.68,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.7,
+   "relative_cost": 0.9412746124037487,
+   "latency_s": 76.72875274514197,
+   "accuracy": 0.68,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.75,
+   "relative_cost": 0.9412746124037487,
+   "latency_s": 76.72875274514197,
+   "accuracy": 0.68,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.8,
+   "relative_cost": 0.9412746124037487,
+   "latency_s": 76.72875274514197,
+   "accuracy": 0.68,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.85,
+   "relative_cost": 0.9412746124037487,
+   "latency_s": 76.72875274514197,
+   "accuracy": 0.68,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.9,
+   "relative_cost": 0.9412746124037487,
+   "latency_s": 76.72875274514197,
+   "accuracy": 0.68,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.45,
+   "relative_cost": 2.4418597264341146,
+   "latency_s": 80.86418607847531,
+   "accuracy": 0.7333333333333333,
+   "share_hum": 0.1
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.5,
+   "relative_cost": 2.342598641866748,
+   "latency_s": 80.6133460784753,
+   "accuracy": 0.7333333333333333,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.55,
+   "relative_cost": 2.045698074473314,
+   "latency_s": 80.00757941180865,
+   "accuracy": 0.72,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.6,
+   "relative_cost": 1.4518100084590773,
+   "latency_s": 78.68912607847531,
+   "accuracy": 0.7,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.65,
+   "relative_cost": 1.1543243270352774,
+   "latency_s": 77.96063274514196,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.7,
+   "relative_cost": 0.9559827073727711,
+   "latency_s": 77.48187941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.75,
+   "relative_cost": 0.9559827073727711,
+   "latency_s": 77.48187941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.8,
+   "relative_cost": 0.9559827073727711,
+   "latency_s": 77.48187941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.85,
+   "relative_cost": 0.9559827073727711,
+   "latency_s": 77.48187941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.9,
+   "relative_cost": 0.9559827073727711,
+   "latency_s": 77.48187941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.5,
+   "relative_cost": 2.3554009368511504,
+   "latency_s": 81.4795460784753,
+   "accuracy": 0.7333333333333333,
+   "share_hum": 0.09333333333333334
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.55,
+   "relative_cost": 2.058500369457716,
+   "latency_s": 80.87377941180863,
+   "accuracy": 0.72,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.6,
+   "relative_cost": 1.4646123034434797,
+   "latency_s": 79.5553260784753,
+   "accuracy": 0.7,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.65,
+   "relative_cost": 1.1671266220196799,
+   "latency_s": 78.82683274514197,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.7,
+   "relative_cost": 0.9687850023571737,
+   "latency_s": 78.34807941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.75,
+   "relative_cost": 0.9687850023571737,
+   "latency_s": 78.34807941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.8,
+   "relative_cost": 0.9687850023571737,
+   "latency_s": 78.34807941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.85,
+   "relative_cost": 0.9687850023571737,
+   "latency_s": 78.34807941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.9,
+   "relative_cost": 0.9687850023571737,
+   "latency_s": 78.34807941180865,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.55,
+   "relative_cost": 2.060680337159422,
+   "latency_s": 80.98482607847531,
+   "accuracy": 0.72,
+   "share_hum": 0.07333333333333333
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.6,
+   "relative_cost": 1.4667922711451853,
+   "latency_s": 79.66637274514197,
+   "accuracy": 0.7,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.65,
+   "relative_cost": 1.1693065897213855,
+   "latency_s": 78.93787941180864,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.7,
+   "relative_cost": 0.9709649700588792,
+   "latency_s": 78.45912607847531,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.75,
+   "relative_cost": 0.9709649700588792,
+   "latency_s": 78.45912607847531,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.8,
+   "relative_cost": 0.9709649700588792,
+   "latency_s": 78.45912607847531,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.85,
+   "relative_cost": 0.9709649700588792,
+   "latency_s": 78.45912607847531,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.9,
+   "relative_cost": 0.9709649700588792,
+   "latency_s": 78.45912607847531,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.6,
+   "relative_cost": 1.47343916653014,
+   "latency_s": 80.00413941180864,
+   "accuracy": 0.7133333333333334,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.65,
+   "relative_cost": 1.1759534851063405,
+   "latency_s": 79.2756460784753,
+   "accuracy": 0.7,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.7,
+   "relative_cost": 0.977611865443834,
+   "latency_s": 78.79689274514199,
+   "accuracy": 0.7,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.75,
+   "relative_cost": 0.977611865443834,
+   "latency_s": 78.79689274514199,
+   "accuracy": 0.7,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.8,
+   "relative_cost": 0.977611865443834,
+   "latency_s": 78.79689274514199,
+   "accuracy": 0.7,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.85,
+   "relative_cost": 0.977611865443834,
+   "latency_s": 78.79689274514199,
+   "accuracy": 0.7,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.9,
+   "relative_cost": 0.977611865443834,
+   "latency_s": 78.79689274514199,
+   "accuracy": 0.7,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.65,
+   "relative_cost": 1.1906248014791683,
+   "latency_s": 80.08465941180864,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.013333333333333334
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.7,
+   "relative_cost": 0.9922831818166621,
+   "latency_s": 79.60590607847531,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.75,
+   "relative_cost": 0.9922831818166621,
+   "latency_s": 79.60590607847531,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.8,
+   "relative_cost": 0.9922831818166621,
+   "latency_s": 79.60590607847531,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.85,
+   "relative_cost": 0.9922831818166621,
+   "latency_s": 79.60590607847531,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.9,
+   "relative_cost": 0.9922831818166621,
+   "latency_s": 79.60590607847531,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.7,
+   "relative_cost": 0.9978534673857439,
+   "latency_s": 80.02345274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.75,
+   "relative_cost": 0.9978534673857439,
+   "latency_s": 80.02345274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.8,
+   "relative_cost": 0.9978534673857439,
+   "latency_s": 80.02345274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.85,
+   "relative_cost": 0.9978534673857439,
+   "latency_s": 80.02345274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.9,
+   "relative_cost": 0.9978534673857439,
+   "latency_s": 80.02345274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.75,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.8,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.85,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.9,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.75,
+   "tau_high": 0.8,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.75,
+   "tau_high": 0.85,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.75,
+   "tau_high": 0.9,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.8,
+   "tau_high": 0.85,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.8,
+   "tau_high": 0.9,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  },
+  {
+   "tau_low": 0.85,
+   "tau_high": 0.9,
+   "relative_cost": 1.0,
+   "latency_s": 80.24517274514197,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.0
+  }
+ ],
+ "Confidence-based": [
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.15,
+   "relative_cost": 14.234747414631862,
+   "latency_s": 93.30979449776966,
+   "accuracy": 0.9466666666666667,
+   "share_hum": 0.9133333333333333
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.2,
+   "relative_cost": 13.045439955598203,
+   "latency_s": 90.57164783110301,
+   "accuracy": 0.9133333333333333,
+   "share_hum": 0.8333333333333334
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.25,
+   "relative_cost": 12.054484146753286,
+   "latency_s": 88.31430783110301,
+   "accuracy": 0.8733333333333333,
+   "share_hum": 0.7666666666666667
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.3,
+   "relative_cost": 11.657620357956048,
+   "latency_s": 87.32656116443634,
+   "accuracy": 0.8666666666666667,
+   "share_hum": 0.74
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.35,
+   "relative_cost": 10.964156917552419,
+   "latency_s": 85.86189449776967,
+   "accuracy": 0.8533333333333334,
+   "share_hum": 0.6933333333333334
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.4,
+   "relative_cost": 9.774006894315031,
+   "latency_s": 82.98060116443634,
+   "accuracy": 0.8133333333333334,
+   "share_hum": 0.6133333333333333
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.45,
+   "relative_cost": 8.980844369698449,
+   "latency_s": 81.08803449776967,
+   "accuracy": 0.7933333333333333,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.5,
+   "relative_cost": 7.989142958403408,
+   "latency_s": 78.74322116443633,
+   "accuracy": 0.7733333333333333,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.55,
+   "relative_cost": 7.196445181502372,
+   "latency_s": 76.95121449776967,
+   "accuracy": 0.76,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.6,
+   "relative_cost": 6.700089606034365,
+   "latency_s": 75.70893449776969,
+   "accuracy": 0.7466666666666667,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.65,
+   "relative_cost": 5.509484865607666,
+   "latency_s": 72.760427831103,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.7,
+   "relative_cost": 4.4188801251809675,
+   "latency_s": 70.149307831103,
+   "accuracy": 0.68,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.75,
+   "relative_cost": 3.427178713885926,
+   "latency_s": 67.81040116443633,
+   "accuracy": 0.6666666666666666,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.8,
+   "relative_cost": 3.030151093160184,
+   "latency_s": 66.785287831103,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.85,
+   "relative_cost": 1.2453406533884788,
+   "latency_s": 62.470167831103005,
+   "accuracy": 0.6066666666666667,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.1,
+   "tau_high": 0.9,
+   "relative_cost": 1.1461063168910717,
+   "latency_s": 62.215047831103,
+   "accuracy": 0.6066666666666667,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.2,
+   "relative_cost": 13.074147321682322,
+   "latency_s": 92.21173449776967,
+   "accuracy": 0.94,
+   "share_hum": 0.8333333333333334
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.25,
+   "relative_cost": 12.083191512837402,
+   "latency_s": 89.95439449776968,
+   "accuracy": 0.9,
+   "share_hum": 0.7666666666666667
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.3,
+   "relative_cost": 11.686327724040163,
+   "latency_s": 88.966647831103,
+   "accuracy": 0.8933333333333333,
+   "share_hum": 0.74
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.35,
+   "relative_cost": 10.992864283636534,
+   "latency_s": 87.50198116443634,
+   "accuracy": 0.88,
+   "share_hum": 0.6933333333333334
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.4,
+   "relative_cost": 9.80271426039915,
+   "latency_s": 84.62068783110301,
+   "accuracy": 0.84,
+   "share_hum": 0.6133333333333333
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.45,
+   "relative_cost": 9.009551735782566,
+   "latency_s": 82.72812116443633,
+   "accuracy": 0.82,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.5,
+   "relative_cost": 8.017850324487524,
+   "latency_s": 80.38330783110301,
+   "accuracy": 0.8,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.55,
+   "relative_cost": 7.225152547586489,
+   "latency_s": 78.59130116443633,
+   "accuracy": 0.7866666666666666,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.6,
+   "relative_cost": 6.728796972118482,
+   "latency_s": 77.34902116443635,
+   "accuracy": 0.7733333333333333,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.65,
+   "relative_cost": 5.538192231691782,
+   "latency_s": 74.40051449776966,
+   "accuracy": 0.7333333333333333,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.7,
+   "relative_cost": 4.447587491265083,
+   "latency_s": 71.78939449776966,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.75,
+   "relative_cost": 3.4558860799700413,
+   "latency_s": 69.45048783110302,
+   "accuracy": 0.6933333333333334,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.8,
+   "relative_cost": 3.0588584592442998,
+   "latency_s": 68.42537449776968,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.85,
+   "relative_cost": 1.2740480194725947,
+   "latency_s": 64.11025449776969,
+   "accuracy": 0.6333333333333333,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.15,
+   "tau_high": 0.9,
+   "relative_cost": 1.1748136829751876,
+   "latency_s": 63.85513449776968,
+   "accuracy": 0.6333333333333333,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.25,
+   "relative_cost": 12.11605820380023,
+   "latency_s": 92.549067831103,
+   "accuracy": 0.9133333333333333,
+   "share_hum": 0.7666666666666667
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.3,
+   "relative_cost": 11.71919441500299,
+   "latency_s": 91.56132116443634,
+   "accuracy": 0.9066666666666666,
+   "share_hum": 0.74
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.35,
+   "relative_cost": 11.025730974599364,
+   "latency_s": 90.09665449776968,
+   "accuracy": 0.8933333333333333,
+   "share_hum": 0.6933333333333334
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.4,
+   "relative_cost": 9.835580951361978,
+   "latency_s": 87.21536116443635,
+   "accuracy": 0.8533333333333334,
+   "share_hum": 0.6133333333333333
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.45,
+   "relative_cost": 9.042418426745396,
+   "latency_s": 85.32279449776966,
+   "accuracy": 0.8333333333333334,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.5,
+   "relative_cost": 8.050717015450354,
+   "latency_s": 82.97798116443634,
+   "accuracy": 0.8133333333333334,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.55,
+   "relative_cost": 7.25801923854932,
+   "latency_s": 81.18597449776968,
+   "accuracy": 0.8,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.6,
+   "relative_cost": 6.761663663081311,
+   "latency_s": 79.94369449776967,
+   "accuracy": 0.7866666666666666,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.65,
+   "relative_cost": 5.571058922654612,
+   "latency_s": 76.99518783110301,
+   "accuracy": 0.7466666666666667,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.7,
+   "relative_cost": 4.480454182227914,
+   "latency_s": 74.38406783110301,
+   "accuracy": 0.72,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.75,
+   "relative_cost": 3.488752770932872,
+   "latency_s": 72.04516116443634,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.8,
+   "relative_cost": 3.09172515020713,
+   "latency_s": 71.020047831103,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.85,
+   "relative_cost": 1.306914710435425,
+   "latency_s": 66.704927831103,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.2,
+   "tau_high": 0.9,
+   "relative_cost": 1.207680373938018,
+   "latency_s": 66.449807831103,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.3,
+   "relative_cost": 11.745354027423458,
+   "latency_s": 93.03595449776967,
+   "accuracy": 0.9133333333333333,
+   "share_hum": 0.74
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.35,
+   "relative_cost": 11.05189058701983,
+   "latency_s": 91.571287831103,
+   "accuracy": 0.9,
+   "share_hum": 0.6933333333333334
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.4,
+   "relative_cost": 9.861740563782444,
+   "latency_s": 88.68999449776969,
+   "accuracy": 0.86,
+   "share_hum": 0.6133333333333333
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.45,
+   "relative_cost": 9.068578039165862,
+   "latency_s": 86.79742783110301,
+   "accuracy": 0.84,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.5,
+   "relative_cost": 8.07687662787082,
+   "latency_s": 84.45261449776967,
+   "accuracy": 0.82,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.55,
+   "relative_cost": 7.284178850969787,
+   "latency_s": 82.66060783110302,
+   "accuracy": 0.8066666666666666,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.6,
+   "relative_cost": 6.787823275501777,
+   "latency_s": 81.41832783110301,
+   "accuracy": 0.7933333333333333,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.65,
+   "relative_cost": 5.597218535075079,
+   "latency_s": 78.46982116443635,
+   "accuracy": 0.7533333333333333,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.7,
+   "relative_cost": 4.50661379464838,
+   "latency_s": 75.85870116443634,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.75,
+   "relative_cost": 3.5149123833533387,
+   "latency_s": 73.51979449776968,
+   "accuracy": 0.7133333333333334,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.8,
+   "relative_cost": 3.1178847626275963,
+   "latency_s": 72.49468116443634,
+   "accuracy": 0.6933333333333334,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.85,
+   "relative_cost": 1.3330743228558914,
+   "latency_s": 68.17956116443634,
+   "accuracy": 0.6533333333333333,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.25,
+   "tau_high": 0.9,
+   "relative_cost": 1.2338399863584844,
+   "latency_s": 67.92444116443633,
+   "accuracy": 0.6533333333333333,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.35,
+   "relative_cost": 11.061346029750542,
+   "latency_s": 92.02504116443633,
+   "accuracy": 0.8933333333333333,
+   "share_hum": 0.6933333333333334
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.4,
+   "relative_cost": 9.871196006513156,
+   "latency_s": 89.143747831103,
+   "accuracy": 0.8533333333333334,
+   "share_hum": 0.6133333333333333
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.45,
+   "relative_cost": 9.078033481896572,
+   "latency_s": 87.25118116443633,
+   "accuracy": 0.8333333333333334,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.5,
+   "relative_cost": 8.086332070601532,
+   "latency_s": 84.906367831103,
+   "accuracy": 0.8133333333333334,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.55,
+   "relative_cost": 7.293634293700494,
+   "latency_s": 83.11436116443635,
+   "accuracy": 0.8,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.6,
+   "relative_cost": 6.797278718232488,
+   "latency_s": 81.87208116443634,
+   "accuracy": 0.7866666666666666,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.65,
+   "relative_cost": 5.606673977805788,
+   "latency_s": 78.92357449776968,
+   "accuracy": 0.7466666666666667,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.7,
+   "relative_cost": 4.5160692373790905,
+   "latency_s": 76.31245449776968,
+   "accuracy": 0.72,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.75,
+   "relative_cost": 3.524367826084049,
+   "latency_s": 73.973547831103,
+   "accuracy": 0.7066666666666667,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.8,
+   "relative_cost": 3.127340205358307,
+   "latency_s": 72.94843449776968,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.85,
+   "relative_cost": 1.3425297655866018,
+   "latency_s": 68.63331449776967,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.3,
+   "tau_high": 0.9,
+   "relative_cost": 1.2432954290891947,
+   "latency_s": 68.37819449776968,
+   "accuracy": 0.6466666666666666,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.4,
+   "relative_cost": 9.889498373382995,
+   "latency_s": 90.16878116443634,
+   "accuracy": 0.86,
+   "share_hum": 0.6133333333333333
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.45,
+   "relative_cost": 9.096335848766412,
+   "latency_s": 88.27621449776967,
+   "accuracy": 0.84,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.5,
+   "relative_cost": 8.104634437471372,
+   "latency_s": 85.93140116443634,
+   "accuracy": 0.82,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.55,
+   "relative_cost": 7.311936660570336,
+   "latency_s": 84.13939449776969,
+   "accuracy": 0.8066666666666666,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.6,
+   "relative_cost": 6.8155810851023295,
+   "latency_s": 82.89711449776968,
+   "accuracy": 0.7933333333333333,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.65,
+   "relative_cost": 5.62497634467563,
+   "latency_s": 79.94860783110302,
+   "accuracy": 0.7533333333333333,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.7,
+   "relative_cost": 4.534371604248931,
+   "latency_s": 77.33748783110302,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.75,
+   "relative_cost": 3.542670192953889,
+   "latency_s": 74.99858116443635,
+   "accuracy": 0.7133333333333334,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.8,
+   "relative_cost": 3.145642572228147,
+   "latency_s": 73.97346783110301,
+   "accuracy": 0.6933333333333334,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.85,
+   "relative_cost": 1.3608321324564425,
+   "latency_s": 69.65834783110301,
+   "accuracy": 0.6533333333333333,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.35,
+   "tau_high": 0.9,
+   "relative_cost": 1.2615977959590354,
+   "latency_s": 69.40322783110302,
+   "accuracy": 0.6533333333333333,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.45,
+   "relative_cost": 9.122779659430199,
+   "latency_s": 89.73941449776966,
+   "accuracy": 0.86,
+   "share_hum": 0.56
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.5,
+   "relative_cost": 8.131078248135157,
+   "latency_s": 87.39460116443634,
+   "accuracy": 0.84,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.55,
+   "relative_cost": 7.338380471234123,
+   "latency_s": 85.60259449776967,
+   "accuracy": 0.8266666666666667,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.6,
+   "relative_cost": 6.842024895766116,
+   "latency_s": 84.36031449776969,
+   "accuracy": 0.8133333333333334,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.65,
+   "relative_cost": 5.651420155339417,
+   "latency_s": 81.41180783110302,
+   "accuracy": 0.7733333333333333,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.7,
+   "relative_cost": 4.560815414912717,
+   "latency_s": 78.800687831103,
+   "accuracy": 0.7466666666666667,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.75,
+   "relative_cost": 3.5691140036176763,
+   "latency_s": 76.46178116443635,
+   "accuracy": 0.7333333333333333,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.8,
+   "relative_cost": 3.172086382891934,
+   "latency_s": 75.43666783110302,
+   "accuracy": 0.7133333333333334,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.85,
+   "relative_cost": 1.387275943120229,
+   "latency_s": 71.12154783110302,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.4,
+   "tau_high": 0.9,
+   "relative_cost": 1.288041606622822,
+   "latency_s": 70.86642783110301,
+   "accuracy": 0.6733333333333333,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.5,
+   "relative_cost": 8.15373386339092,
+   "latency_s": 89.04771449776968,
+   "accuracy": 0.8533333333333334,
+   "share_hum": 0.49333333333333335
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.55,
+   "relative_cost": 7.361036086489885,
+   "latency_s": 87.25570783110301,
+   "accuracy": 0.84,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.6,
+   "relative_cost": 6.864680511021876,
+   "latency_s": 86.01342783110302,
+   "accuracy": 0.8266666666666667,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.65,
+   "relative_cost": 5.674075770595177,
+   "latency_s": 83.06492116443636,
+   "accuracy": 0.7866666666666666,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.7,
+   "relative_cost": 4.58347103016848,
+   "latency_s": 80.45380116443634,
+   "accuracy": 0.76,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.75,
+   "relative_cost": 3.5917696188734376,
+   "latency_s": 78.11489449776968,
+   "accuracy": 0.7466666666666667,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.8,
+   "relative_cost": 3.1947419981476957,
+   "latency_s": 77.08978116443636,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.85,
+   "relative_cost": 1.409931558375991,
+   "latency_s": 72.77466116443635,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.45,
+   "tau_high": 0.9,
+   "relative_cost": 1.310697221878584,
+   "latency_s": 72.51954116443635,
+   "accuracy": 0.6866666666666666,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.55,
+   "relative_cost": 7.382177092284184,
+   "latency_s": 88.34722783110301,
+   "accuracy": 0.8466666666666667,
+   "share_hum": 0.44
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.6,
+   "relative_cost": 6.8858215168161765,
+   "latency_s": 87.104947831103,
+   "accuracy": 0.8333333333333334,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.65,
+   "relative_cost": 5.695216776389479,
+   "latency_s": 84.15644116443636,
+   "accuracy": 0.7933333333333333,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.7,
+   "relative_cost": 4.60461203596278,
+   "latency_s": 81.54532116443637,
+   "accuracy": 0.7666666666666667,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.75,
+   "relative_cost": 3.612910624667739,
+   "latency_s": 79.20641449776969,
+   "accuracy": 0.7533333333333333,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.8,
+   "relative_cost": 3.2158830039419968,
+   "latency_s": 78.18130116443635,
+   "accuracy": 0.7333333333333333,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.85,
+   "relative_cost": 1.4310725641702915,
+   "latency_s": 73.86618116443634,
+   "accuracy": 0.6933333333333334,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.5,
+   "tau_high": 0.9,
+   "relative_cost": 1.3318382276728844,
+   "latency_s": 73.61106116443635,
+   "accuracy": 0.6933333333333334,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.6,
+   "relative_cost": 6.90332144158723,
+   "latency_s": 88.10330116443635,
+   "accuracy": 0.84,
+   "share_hum": 0.4066666666666667
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.65,
+   "relative_cost": 5.712716701160533,
+   "latency_s": 85.15479449776969,
+   "accuracy": 0.8,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.7,
+   "relative_cost": 4.622111960733834,
+   "latency_s": 82.54367449776969,
+   "accuracy": 0.7733333333333333,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.75,
+   "relative_cost": 3.6304105494387917,
+   "latency_s": 80.20476783110301,
+   "accuracy": 0.76,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.8,
+   "relative_cost": 3.23338292871305,
+   "latency_s": 79.17965449776969,
+   "accuracy": 0.74,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.85,
+   "relative_cost": 1.4485724889413447,
+   "latency_s": 74.86453449776968,
+   "accuracy": 0.7,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.55,
+   "tau_high": 0.9,
+   "relative_cost": 1.3493381524439376,
+   "latency_s": 74.60941449776969,
+   "accuracy": 0.7,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.65,
+   "relative_cost": 5.722784005991568,
+   "latency_s": 85.57028783110302,
+   "accuracy": 0.8,
+   "share_hum": 0.32666666666666666
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.7,
+   "relative_cost": 4.632179265564869,
+   "latency_s": 82.95916783110302,
+   "accuracy": 0.7733333333333333,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.75,
+   "relative_cost": 3.640477854269828,
+   "latency_s": 80.62026116443636,
+   "accuracy": 0.76,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.8,
+   "relative_cost": 3.243450233544086,
+   "latency_s": 79.59514783110302,
+   "accuracy": 0.74,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.85,
+   "relative_cost": 1.4586397937723807,
+   "latency_s": 75.28002783110303,
+   "accuracy": 0.7,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.6,
+   "tau_high": 0.9,
+   "relative_cost": 1.3594054572749734,
+   "latency_s": 75.02490783110302,
+   "accuracy": 0.7,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.7,
+   "relative_cost": 4.657268955186953,
+   "latency_s": 84.42198116443635,
+   "accuracy": 0.7933333333333333,
+   "share_hum": 0.25333333333333335
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.75,
+   "relative_cost": 3.6655675438919118,
+   "latency_s": 82.08307449776967,
+   "accuracy": 0.78,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.8,
+   "relative_cost": 3.2685399231661694,
+   "latency_s": 81.05796116443635,
+   "accuracy": 0.76,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.85,
+   "relative_cost": 1.4837294833944639,
+   "latency_s": 76.74284116443634,
+   "accuracy": 0.72,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.65,
+   "tau_high": 0.9,
+   "relative_cost": 1.3844951468970566,
+   "latency_s": 76.48772116443635,
+   "accuracy": 0.72,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.75,
+   "relative_cost": 3.6894067612433847,
+   "latency_s": 83.28248783110301,
+   "accuracy": 0.78,
+   "share_hum": 0.18666666666666668
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.8,
+   "relative_cost": 3.2923791405176424,
+   "latency_s": 82.25737449776967,
+   "accuracy": 0.76,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.85,
+   "relative_cost": 1.5075687007459369,
+   "latency_s": 77.94225449776967,
+   "accuracy": 0.72,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.7,
+   "tau_high": 0.9,
+   "relative_cost": 1.4083343642485298,
+   "latency_s": 77.68713449776966,
+   "accuracy": 0.72,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.75,
+   "tau_high": 0.8,
+   "relative_cost": 3.313336253330971,
+   "latency_s": 83.52034783110301,
+   "accuracy": 0.76,
+   "share_hum": 0.16
+  },
+  {
+   "tau_low": 0.75,
+   "tau_high": 0.85,
+   "relative_cost": 1.5285258135592654,
+   "latency_s": 79.20522783110302,
+   "accuracy": 0.72,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.75,
+   "tau_high": 0.9,
+   "relative_cost": 1.429291477061858,
+   "latency_s": 78.95010783110301,
+   "accuracy": 0.72,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.8,
+   "tau_high": 0.85,
+   "relative_cost": 1.5401545369741911,
+   "latency_s": 80.08536116443635,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.04
+  },
+  {
+   "tau_low": 0.8,
+   "tau_high": 0.9,
+   "relative_cost": 1.440920200476784,
+   "latency_s": 79.83024116443634,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.03333333333333333
+  },
+  {
+   "tau_low": 0.85,
+   "tau_high": 0.9,
+   "relative_cost": 1.4767626142226176,
+   "latency_s": 81.34700783110301,
+   "accuracy": 0.7266666666666667,
+   "share_hum": 0.03333333333333333
+  }
+ ]
+}
