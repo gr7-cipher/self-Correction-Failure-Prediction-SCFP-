@@ -168,6 +168,9 @@ def main():
         C[f"hid{MACRO[g]}MidAUC"] = f"{h['hidden_mid_F']['auc']:.3f}"
 
     write(a.out, "macros_v7.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(C.items())))
+    # the stand-alone natural-set paper: the same macros without the SCFP v1 comparison
+    write(a.out, "macros_natural.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n"
+                                               for k, v in sorted(C.items()) if not k.startswith("filt")))
     json.dump(C, open(os.path.join(a.out, "numbers_v7.json"), "w"), indent=1, sort_keys=True)
     print(f"wrote {len(C)} macros and 5 tables to {a.out}")
 
