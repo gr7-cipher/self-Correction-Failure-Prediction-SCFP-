@@ -137,9 +137,10 @@ def load(cfg, set_name, target, model=None):
     if os.path.exists(vp) and not NO_VERIFIER:
         ver = {v["trace_id"]: v for v in read_jsonl(vp)}
         feats = [{**r, **{k: ver.get(r["trace_id"], {}).get(k, np.nan) for k in VERIFIER}} for r in feats]
-    H = dict(np.load(D(cfg, "features", f"{set_name}_hidden.npz")))
+    hp = D(cfg, "features", f"{set_name}_hidden.npz")
+    H = dict(np.load(hp)) if os.path.exists(hp) else {}  # hidden states are not in the results zip
     text = {r["trace_id"]: r for r in load_set(cfg, set_name)}
-    dim = H[next(iter(H))].shape
+    dim = H[next(iter(H))].shape if H else None
     last = {}  # trace id -> key of its last-layer R0 vector (layer count differs per generator)
     for k in H:
         tid, _, lay = k.rpartition("|")
@@ -151,7 +152,7 @@ def load(cfg, set_name, target, model=None):
             "scalar": scalar_matrix(feats),
             "hidden": None}
     vecs = [H[last[r["trace_id"]]] if r["trace_id"] in last else np.full(dim, np.nan) for r in feats]
-    if len({v.shape for v in vecs}) == 1:  # generators with different hidden sizes cannot share one probe
+    if H and len({v.shape for v in vecs}) == 1:  # generators with different hidden sizes cannot share one probe
         data["hidden"] = np.array(vecs, float)
     return feats, data, y
 

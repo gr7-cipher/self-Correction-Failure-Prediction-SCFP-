@@ -53,7 +53,7 @@
 {"trace_id": "eac7e2e8570a6b75", "pot_answer": "-8", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "eba5306548b625d6", "pot_answer": "13", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "ef74ebb5ca7c544f", "pot_answer": "9", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "f41d70665133dd30", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmplenxusxg/prog.py\", line 2, in <module>\n    clay_watermelon_weight = 3 * michael_watermelon_weight\nNameError: name 'michael_watermelon_weight' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "f41d70665133dd30", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp5ykp8uqu/prog.py\", line 2, in <module>\n    clay_watermelon_weight = 3 * michael_watermelon_weight\nNameError: name 'michael_watermelon_weight' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "f5e2df01e970f4e6", "pot_answer": "100000", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "38916683010bcb64", "pot_answer": "2100", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "44545e092d7d88d8", "pot_answer": "57", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}

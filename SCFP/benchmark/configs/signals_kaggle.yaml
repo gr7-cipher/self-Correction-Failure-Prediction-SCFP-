@@ -1,7 +1,8 @@
 # Natural-set experiment with stronger generators (run on a GPU; see run_signals.sh).
+# Local copy of the Kaggle run: SCFP v1 (scfp_runs/scfp_v1 in the GPU package) is scfp_runs/laptop_v1 here (identical splits).
 # Same 2,000 unfiltered problems as the Mac run with Qwen2.5-0.5B (same seed and exclusions),
 # so results can be compared per problem. The Mac results are in
-# scfp_runs/scfp_v1/reference_mac_results/signals_q05_big/.
+# scfp_runs/scfp_v1/reference_mac_results/signals_q05_big/ in the GPU package.
 run_dir: scfp_runs/signals_kaggle
 seed: 42
 batch_size: 8           # generation batch on CUDA (16 ran out of memory with SmolLM2 on a T4)
@@ -23,11 +24,11 @@ signals:
   natural_per_source: {gsm8k: 850, strategyqa: 575, logiqa: 575}
   # keep the natural set disjoint from SCFP v1 and from the routing hold-out
   exclude_problem_files:
-    - scfp_runs/scfp_v1/splits/train.jsonl
-    - scfp_runs/scfp_v1/splits/val.jsonl
-    - scfp_runs/scfp_v1/splits/test.jsonl
-    - scfp_runs/scfp_v1/holdout.jsonl
-  v1_run_dir: scfp_runs/scfp_v1
+    - scfp_runs/laptop_v1/splits/train.jsonl
+    - scfp_runs/laptop_v1/splits/val.jsonl
+    - scfp_runs/laptop_v1/splits/test.jsonl
+    - scfp_runs/laptop_v1/holdout.jsonl
+  v1_run_dir: scfp_runs/laptop_v1
   samples: 0               # self-consistency did not beat TF-IDF on the Mac run; skipped
   accept_boxed: true       # a final \boxed{} counts as an explicit answer
   layers_frac: [0.5, 1.0]  # hidden states at the middle and last layer

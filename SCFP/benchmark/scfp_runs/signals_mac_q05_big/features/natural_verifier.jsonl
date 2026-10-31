@@ -1,6 +1,6 @@
 {"trace_id": "b4dd5571aa86b780", "pot_answer": "10.6667", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "4272ee631586e199", "pot_answer": "40", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "630d396a2cc9a925", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp4t59uce_/prog.py\", line 2, in <module>\n    total_cost = 10000 + (0.2 * total_profit)\nNameError: name 'total_profit' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "630d396a2cc9a925", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpu6ai7oqo/prog.py\", line 2, in <module>\n    total_cost = 10000 + (0.2 * total_profit)\nNameError: name 'total_profit' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "ebef365c11c9d12d", "pot_answer": "8", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "9c211f9083c91175", "pot_answer": "36", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "c7d5e83982977d5a", "pot_answer": "10", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
@@ -18,7 +18,7 @@
 {"trace_id": "17bdcc5bb7db007b", "pot_answer": "150", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "4805a79b7bdfa78f", "pot_answer": "4", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "a9ddae552d227daa", "pot_answer": "78", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "5fa8464c4585ad7d", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp3c6v2lo2/prog.py\", line 4, in <module>\n    initial_gumballs = x\nNameError: name 'x' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "5fa8464c4585ad7d", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp1tqirtad/prog.py\", line 4, in <module>\n    initial_gumballs = x\nNameError: name 'x' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "d55de10639427914", "pot_answer": "364000", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "c41c3c11a068030a", "pot_answer": "10", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "9b342ba5e937fd18", "pot_answer": "6", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
@@ -67,7 +67,7 @@
 {"trace_id": "56fa6182fb03fcc8", "pot_answer": "450", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "1895b6e16028dea1", "pot_answer": "36", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "cc98637d1f77c8ee", "pot_answer": "800", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
-{"trace_id": "f3c02ca0386a6422", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpvbbnr270/prog.py\", line 11, in <module>\n    total_fish_brought_home = ken_fish + kend_fish - ken_released\nNameError: name 'kend_fish' is not defined. Did you mean: 'ken_fish'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "f3c02ca0386a6422", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp5wcjo04j/prog.py\", line 11, in <module>\n    total_fish_brought_home = ken_fish + kend_fish - ken_released\nNameError: name 'kend_fish' is not defined. Did you mean: 'ken_fish'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "71349065551847de", "pot_answer": "-110", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "dab11ce172ea9fe8", "pot_answer": "5500", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "bd2da798cf61f410", "pot_answer": "720000", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -350,7 +350,7 @@
 {"trace_id": "82d40a162cdfa34a", "pot_answer": "33.3333", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "35089f393c6499cb", "pot_answer": "144", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "6b0de6b8776b1edc", "pot_answer": "27", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "d8b0df0394ac25cf", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmppzeo1m3b/prog.py\", line 8, in <module>\n    sam_age = (math.floor(0.5 * int(d)) + 1) * 2\nValueError: invalid literal for int() with base 10: 'Drew'\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "d8b0df0394ac25cf", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpbecjuesk/prog.py\", line 8, in <module>\n    sam_age = (math.floor(0.5 * int(d)) + 1) * 2\nValueError: invalid literal for int() with base 10: 'Drew'\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "90228757f5949bbc", "pot_answer": "50", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "ff97f39a0152b983", "pot_answer": "2075", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "1eb19238b1901ef6", "pot_answer": "828", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -369,7 +369,7 @@
 {"trace_id": "558ec03fa08b3605", "pot_answer": "87.5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "f161473887828a8a", "pot_answer": "8", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "c3e4eadc8cc37a6f", "pot_answer": "5.5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "5b6562b332565a4f", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpz0bg70ir/prog.py\", line 10, in <module>\n    jafari_candies = total_candy - (taquon_mack_candies * shared_candy)\nNameError: name 'taquon_mack_candies' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "5b6562b332565a4f", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp89esew67/prog.py\", line 10, in <module>\n    jafari_candies = total_candy - (taquon_mack_candies * shared_candy)\nNameError: name 'taquon_mack_candies' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "b04c6204502dc2c8", "pot_answer": "213", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "94e331aa77839bdd", "pot_answer": "0.03", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "9760c21e523a48ec", "pot_answer": "34", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -398,7 +398,7 @@
 {"trace_id": "2cd3c6366eeda276", "pot_answer": "64", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "6ce2d4ce80cd094c", "pot_answer": "166", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "378c70e5a83db8c4", "pot_answer": "55", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "f54cda0f54166ecd", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp7xfroixf/prog.py\", line 13, in <module>\n    genevieve_coffee_gallons = genevieve_coffee_pints * (coffee_per_thermos_gallons / 2)\nNameError: name 'genevieve_coffee_pints' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "f54cda0f54166ecd", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpw1akmx6t/prog.py\", line 13, in <module>\n    genevieve_coffee_gallons = genevieve_coffee_pints * (coffee_per_thermos_gallons / 2)\nNameError: name 'genevieve_coffee_pints' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "f4665c24f9ef16d9", "pot_answer": "21", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "f2915ff2630f088a", "pot_answer": "6", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 0.0}
 {"trace_id": "4ffa934240ce7b05", "pot_answer": "20", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -416,7 +416,7 @@
 {"trace_id": "f189396dc8828999", "pot_answer": "100", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "e2f9114be68b5ef7", "pot_answer": "75", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "bf6e23dc478e2cb0", "pot_answer": "14", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "ea0da96406463fc2", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpkjmtqafr/prog.py\", line 4, in <module>\n    num_dogs = (total_legs / 4)\nNameError: name 'total_legs' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "ea0da96406463fc2", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpahvqz2xc/prog.py\", line 4, in <module>\n    num_dogs = (total_legs / 4)\nNameError: name 'total_legs' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "bce308b1b2c4d524", "pot_answer": "140", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "4c41a88707321bae", "pot_answer": "18", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "231169e196aeb43e", "pot_answer": "9", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
@@ -489,7 +489,7 @@
 {"trace_id": "2d843b9804b5c9e8", "pot_answer": "14", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "70324579b7fb4422", "pot_answer": "190", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "d698d42f3c885638", "pot_answer": "85", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
-{"trace_id": "a4533594de6ed5f2", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmprucn03hb/prog.py\", line 2, in <module>\n    matthew_strawberries = 2 * betty_strawberries\nNameError: name 'betty_strawberries' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "a4533594de6ed5f2", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpq1hkx9gq/prog.py\", line 2, in <module>\n    matthew_strawberries = 2 * betty_strawberries\nNameError: name 'betty_strawberries' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "0f4ac70fa8b1bb92", "pot_answer": "6600", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "f2c28b68765fe8f3", "pot_answer": "5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "0ec92a41dd22ed45", "pot_answer": "60", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
@@ -508,7 +508,7 @@
 {"trace_id": "75da44cd6e131e59", "pot_answer": "6.75", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "93bcfc392744c2fd", "pot_answer": "5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "a352323786efc3fe", "pot_answer": "33", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "b7bf71c89114a3d1", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp0s5g4rba/prog.py\", line 14, in <module>\n    initial_contribution_harry = 30 / (1 - 3/3)\nZeroDivisionError: float division by zero\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "b7bf71c89114a3d1", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpcjh9siav/prog.py\", line 14, in <module>\n    initial_contribution_harry = 30 / (1 - 3/3)\nZeroDivisionError: float division by zero\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "01f7d0a9337e2697", "pot_answer": "42", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "d8eed9ac3c45ad98", "pot_answer": "150", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "260833b420aef3d9", "pot_answer": "6", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -522,7 +522,7 @@
 {"trace_id": "f212fcfc9b9af409", "pot_answer": "1820", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "ee8ff2919ce38d7b", "pot_answer": "15360", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "62efec149a3171e6", "pot_answer": "10", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
-{"trace_id": "10223c08ed801850", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmptm8edtmo/prog.py\", line 8, in <module>\n    total_time = prejean_time + ricky_time\nNameError: name 'ricky_time' is not defined. Did you mean: 'rickey_time'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "10223c08ed801850", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpe25q6o1k/prog.py\", line 8, in <module>\n    total_time = prejean_time + ricky_time\nNameError: name 'ricky_time' is not defined. Did you mean: 'rickey_time'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "587cbfa5c1c99b5b", "pot_answer": "165", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "836d2cc8205df227", "pot_answer": "6", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "1312edbd8e80e257", "pot_answer": "31.5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -594,12 +594,12 @@
 {"trace_id": "4510fe03a2a78f22", "pot_answer": "84", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "eef074b20132aba2", "pot_answer": "1", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 0.0}
 {"trace_id": "3783ee0bb15da646", "pot_answer": "7", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
-{"trace_id": "5eb1a0a53f97ce1c", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpk3pcq_iv/prog.py\", line 2, in <module>\n    santo_earnings = 0.5 * salvador_earnings\nNameError: name 'salvador_earnings' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "5eb1a0a53f97ce1c", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpz_5x7csw/prog.py\", line 2, in <module>\n    santo_earnings = 0.5 * salvador_earnings\nNameError: name 'salvador_earnings' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "3069d35cecd17e6b", "pot_answer": "105", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "e9da846fcc9bc5c8", "pot_answer": "47.5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "f92272e905964002", "pot_answer": "-0.5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "6dbc057f1bb3057c", "pot_answer": "180", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "1a4572d904eb7b57", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpgir8kulf/prog.py\", line 13, in <module>\n    total_students = total_desks + absen_students\nNameError: name 'absen_students' is not defined. Did you mean: 'absent_students'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "1a4572d904eb7b57", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpgwsde7wq/prog.py\", line 13, in <module>\n    total_students = total_desks + absen_students\nNameError: name 'absen_students' is not defined. Did you mean: 'absent_students'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "fe4b5a7f40e9df50", "pot_answer": "336", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "41faa6a36955e6ac", "pot_answer": "10", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "b650b9b0ab118d9d", "pot_answer": "60", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -651,7 +651,7 @@
 {"trace_id": "be22da766ec45fdc", "pot_answer": "6", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "c627e12e40d1e20e", "pot_answer": "39", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "bc0118d4ce9665ca", "pot_answer": "32", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
-{"trace_id": "eab33388584bae03", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpw3pac0yk/prog.py\", line 2, in <module>\n    total_students = (gift_cards / 10) * 3\nNameError: name 'gift_cards' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "eab33388584bae03", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpeq9o372j/prog.py\", line 2, in <module>\n    total_students = (gift_cards / 10) * 3\nNameError: name 'gift_cards' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "c24bb0a630a23c12", "pot_answer": "1520", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "8b1afaaaa6629468", "pot_answer": "500", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "815645cce10d7c1b", "pot_answer": "14400", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -688,14 +688,14 @@
 {"trace_id": "afea3a01051c63fe", "pot_answer": "38000", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "f3b7a5ac939dee1c", "pot_answer": "24", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "6b7532ef41f0da2f", "pot_answer": "16", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "e1128db7bbf17f0f", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpkn0zh6c5/prog.py\", line 11, in <module>\n    total_presents_value = engagement_ring_price + wedding_car_price + bracelet_price\nNameError: name 'bracelet_price' is not defined. Did you mean: 'brace_price'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "e1128db7bbf17f0f", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpf6x0q1m1/prog.py\", line 11, in <module>\n    total_presents_value = engagement_ring_price + wedding_car_price + bracelet_price\nNameError: name 'bracelet_price' is not defined. Did you mean: 'brace_price'?\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "4dd7e54996f603e1", "pot_answer": "22.5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "423a02d56a852274", "pot_answer": "33", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "71987f5f6972ff1a", "pot_answer": "127", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "9a549188170c2490", "pot_answer": "32", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "38cb7b01fa21620a", "pot_answer": "108", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "cd515b89a22a99ad", "pot_answer": "16", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "bf959bd88a6d6e7b", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpxxkw14xt/prog.py\", line 4, in <module>\n    pogo_footprints = pogo_distance * 4\nNameError: name 'pogo_distance' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "bf959bd88a6d6e7b", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp9pl4m4wy/prog.py\", line 4, in <module>\n    pogo_footprints = pogo_distance * 4\nNameError: name 'pogo_distance' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "3da2cbfe3853dc49", "pot_answer": "77", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "10198a60a09b261e", "pot_answer": "10", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "0c2199188666b1ac", "pot_answer": "6.25", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -726,7 +726,7 @@
 {"trace_id": "d875b00b8434d273", "pot_answer": "5", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "858e26e1d11dcef9", "pot_answer": "50", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "23f6c2011466d5da", "pot_answer": "-30", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "1c4db31af6d58ebe", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmpdr6cyyjz/prog.py\", line 2, in <module>\n    rory_jellybeans = gigi_jellybeans + 30\nNameError: name 'gigi_jellybeans' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "1c4db31af6d58ebe", "pot_answer": null, "pot_error": "Traceback (most recent call last):\n  File \"/var/folders/ff/6dvt6v7174z5lm0b41qntpwc0000gq/T/tmp6nmyuyul/prog.py\", line 2, in <module>\n    rory_jellybeans = gigi_jellybeans + 30\nNameError: name 'gigi_jellybeans' is not defined\n", "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
 {"trace_id": "a468725e93be93ee", "pot_answer": "90", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "d3b904db3cd34b5a", "pot_answer": "3", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 1.0}
 {"trace_id": "a6fbdb0f276bbd88", "pot_answer": "276", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
@@ -760,6 +760,6 @@
 {"trace_id": "3fb60ec03d28b3e1", "pot_answer": "-50", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "847f31471fd3a73c", "pot_answer": "109200000", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "5c181f9b9a1251ee", "pot_answer": "30", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
-{"trace_id": "c4bb2788b925f03c", "pot_answer": null, "pot_error": null, "pot_ran": 0, "pot_agree_r0": NaN, "pot_agree_f": NaN}
+{"trace_id": "c4bb2788b925f03c", "pot_answer": "20", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 1.0}
 {"trace_id": "70cea76ed5973a67", "pot_answer": "128000", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 0.0, "pot_agree_f": 0.0}
 {"trace_id": "da5dcb7e1ed71110", "pot_answer": "18", "pot_error": null, "pot_ran": 1, "pot_agree_r0": 1.0, "pot_agree_f": 0.0}

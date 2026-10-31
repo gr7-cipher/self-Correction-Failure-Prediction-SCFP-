@@ -333,7 +333,8 @@ def cmd_evaluate(cfg):
         if not os.path.exists(fp):
             continue
         feats = read_jsonl(fp)
-        H = dict(np.load(D(cfg, "features", f"{set_name}_hidden.npz")))
+        hp = D(cfg, "features", f"{set_name}_hidden.npz")
+        H = dict(np.load(hp)) if os.path.exists(hp) else {}  # hidden states are not in the results zip
         text = {r["trace_id"]: r for r in load_set(cfg, set_name)}
         for target in ("rf_wrong", "r0_wrong"):
             pooled = {}

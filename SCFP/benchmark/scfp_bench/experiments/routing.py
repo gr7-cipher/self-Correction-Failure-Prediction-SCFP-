@@ -76,12 +76,25 @@ def screen(code: str):
     return None
 
 
+def print_last_expression(code: str) -> str:
+    """Notebook-style programs end with a bare expression instead of print(); print it, as the REPL would."""
+    tree = ast.parse(code)
+    if tree.body and isinstance(tree.body[-1], ast.Expr) and not (
+            isinstance(tree.body[-1].value, ast.Call) and getattr(tree.body[-1].value.func, "id", None) == "print"):
+        last = tree.body[-1]
+        tree.body[-1] = ast.Expr(ast.Call(ast.Name("print", ast.Load()), [last.value], []))
+        ast.fix_missing_locations(tree)
+        return ast.unparse(tree)
+    return code
+
+
 def run_program(text: str, timeout=10.0):
     m = re.findall(r"```(?:python)?\s*\n(.*?)```", text, re.S)
     code = m[0] if m else text
     reason = screen(code)
     if reason:
         return {"stdout": "", "error": f"rejected: {reason}", "exec_s": 0.0}
+    code = print_last_expression(code)
     with tempfile.TemporaryDirectory() as d:
         p = os.path.join(d, "prog.py")
         open(p, "w").write(code)
