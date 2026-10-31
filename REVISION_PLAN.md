@@ -195,3 +195,57 @@ I raised the bootstrap resamples behind the natural-set AUC-difference p-values 
 With 1,000 resamples, the smallest attainable p is 2/1001. Holm over 25 comparisons then gives at least 0.05 for every test, so no comparison could ever reach significance. All 25 adjusted values came out at exactly 0.05. This is a resolution fix, made before looking at any adjusted value from the new run.
 
 The confidence intervals still use 1,000 resamples, as registered.
+
+---
+
+## M9: hidden-state probing at the answer tokens (registered 2026-10-31, before any M9 extraction)
+
+**Extraction** (Kaggle T4, about 0.5 GPU-h; within the author's approved budget for the revision).
+- For every kept natural-set trace (6,824), run each generator by teacher forcing on (P, R0) in the chat template, with the pinned commit and float16.
+- Store, at **every layer**, the residual-stream state averaged over the tokens of R0's answer span (the value on the last "Final answer:" line, or else the final `\boxed{}`). Also store the state at the last token of R0, for comparison with the existing probe.
+- Traces whose answer span cannot be located get no answer-token state; their number is reported.
+
+**Probe.**
+- Standardization, then L2-regularized logistic regression with no PCA, class-balanced. C is chosen from {1e-4, 1e-3, 1e-2, 1e-1, 1} by 3-fold inner CV.
+- 5-fold CV grouped by problem, using the paper's folds. Target: rf_wrong; r0_wrong is also reported.
+
+**Reporting.**
+- Within-source AUC per layer, per generator (figure), with the cluster-bootstrap CI at the best layer. The best layer is identified **after the fact** and labeled as such.
+- Comparison: the existing last-token PCA-64 probe (the paper's numbers, recomputed within source if the arrays are available; otherwise its pooled value, labeled as pooled).
+
+**Stacking.**
+- The layer is chosen **inside each outer training fold** by inner CV over layers, so the test fold never informs the choice.
+- That probe's out-of-fold probability is added as a feature to the best M5 predictor (signals + verifier, LR) for each generator.
+- Report the within-source AUC change with a cluster-bootstrap CI.
+
+**Decision rule.** §8.4 will say that hidden states add to the signals only if the stacked model's within-source AUC exceeds that of the signals model, with the CI excluding 0. Otherwise it says they do not.
+
+---
+
+## M3: separating initial-answer error from correction failure (registered 2026-10-31, before any M3 computation)
+
+**CPU part** (from the existing features; same folds; within-source AUC, cluster bootstrap as in M5).
+- **(a) Δ-label.** helped (R0 wrong → Rf right), neutral (correctness unchanged), harmed (R0 right → Rf wrong).
+  - Class-balanced multinomial logistic regression on the signals with the verifier.
+  - Reported: macro one-vs-rest within-source AUC, per-class AUC, and macro-F1.
+- **(b) Two-stage gate.**
+  - Stage 1 predicts P(R0 correct) from pre-revision signals (signals + verifier, LR, out-of-fold).
+  - Stage 2 predicts P(harm) and P(repair) from the same signals plus the stage-1 out-of-fold probability, trained on all traces. Labels: harm = R0 right and Rf wrong; repair = R0 wrong and Rf right.
+  - The gate's P(final wrong) = (1 − p̂₀)(1 − P̂(repair | R0 wrong)) + p̂₀ · P̂(harm | R0 right). The conditional models condition on the **predicted** p̂₀ as a feature, never on the true R0 correctness.
+  - Compared with the direct predictor by within-source AUC.
+- **(c) Answer-span mean log-prob of R0 alone** (existing feature `lp_answer_mean`): within-source AUC for rf_wrong and r0_wrong. Score = −log-prob.
+
+**GPU part** (Kaggle T4). All prompts see only P and R0, or P, R0 and F.
+1. **P(True)** from each generator. The prompt is: "Question: … Proposed answer: … Is the proposed answer correct? (A) True (B) False. Answer:". The score is the next-token probability of "A" normalized over {A, B}, and failure score = 1 − P(True).
+2. **Verbalized confidence** (0–100) from each generator: greedy decoding, at most 8 new tokens, parsed as the first integer. Unparsable answers are missing and imputed in models but excluded from the single-feature AUC (count reported).
+3. **Reward model:** `Skywork/Skywork-Reward-Llama-3.1-8B-v0.2` in 4-bit NF4 (bitsandbytes). It scores (P as user, R0 as assistant), and failure score = −reward. The exact commit is recorded.
+4. **LLM judge:** `Qwen/Qwen2.5-7B-Instruct` in 4-bit NF4. It sees (P, R0, F) and is asked whether the final answer after revision will be wrong. Score = P("Yes") normalized over {Yes, No}. The exact commit is recorded.
+
+**Reporting** (all items).
+- Within-source AUC, stratified AUC, AUPRC and Brier, with cluster-bootstrap CIs, per generator and pooled, for rf_wrong and r0_wrong.
+- Holm-adjusted tests against text, as in M7.
+- The scores are added to Table 14, or to a new table if that is too wide.
+
+**Decision rule.**
+- The paper will say a correctness-prediction baseline matches or beats the generator signals only on the CI of the within-source AUC difference.
+- §3.2 will be rewritten in any case, as the reviewer requested, to say that the rf_wrong label largely reduces to verifying R0 and that the Δ-label is what decides whether to self-correct.
