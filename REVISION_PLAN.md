@@ -101,3 +101,11 @@ The main M5 run showed that pooled AUC is strongly confounded by source. Two mor
   - These predictions are now saved per trace.
   - Within-source AUC is reported next to the pooled AUC.
   - The §8.6 claim ("revision behaviour is predictable, R0 correctness is not") stands only if the within-source AUC for changed, repair and harm exceeds that for r0_wrong for every generator.
+
+### M5 post-hoc check (registered 2026-10-31, after seeing the identity baseline; labeled post hoc in the paper)
+
+**Observation.** The identity baseline's within-source AUC is 0.45–0.48, not the 0.5 expected by construction. A likely cause: each fold's model is fit on the other folds, so a fold with more failures has a lower predicted base rate. That anti-correlates the fold intercept with the labels and biases within-source AUC downward for every predictor.
+
+**Check.** Compute AUC within source × fold strata, i.e. within source × fold × generator for the pooled rows. This removes between-fold intercept differences.
+
+**Reporting.** This is a sensitivity analysis only. The headline stays the pre-registered within-source AUC. If the source × fold version changes which predictor beats text, I'll say so.
