@@ -57,3 +57,33 @@ I append each entry before running the experiment it describes. I don't edit an 
 - The human cost and latency are labeled as assumptions throughout.
 
 **Expected outcome (the reviewer's prediction, not mine).** R0 only is at least as accurate as Always Intrinsic (73.3% vs 70.7%) and cheaper. Whatever happens, the result is reported as is.
+
+---
+
+## M5: domain and base-rate confounding in natural-set AUCs (registered 2026-10-31, before any M5 computation)
+
+**Data:** the existing out-of-fold predictions (`scfp_runs/paper_v7/predictions.jsonl`), on the natural set with the rf_wrong target. Folds and models are unchanged. The only new fit is the identity baseline.
+
+**New baseline: identity only.**
+- Logistic regression on one-hot source, with the same grouped 5-fold CV, folds, class balancing and inner CV as the other models.
+- It is fit per generator. The pooled version is fit on all generators together, with source and generator one-hots.
+- By construction, its within-source AUC is 0.5. I report that as a sanity check.
+
+**Metrics for every predictor (rows of Table 14):**
+1. **Within-source AUC (headline).** AUC per source, averaged with weights equal to each source's number of traces. For the pooled rows, the strata are source × generator.
+2. **Stratified AUC.** The share of correctly ordered (failure, success) pairs, counting only pairs from the same stratum (ties count ½). This is AUC with the comparison restricted within strata, weighted by pairs instead of traces.
+3. **Pooled AUC**, as before, for reference only.
+4. **AUPRC** with failure as the positive class (average precision), reported next to the failure rate, which is the chance level.
+5. **Brier score** of the predicted probabilities as they are. The models are class-balanced, so the probabilities are not calibrated for the base rate. I'll say so; M7 adds calibration.
+
+**Intervals and tests.**
+- 95% cluster bootstrap over problems: 1,000 resamples, seed 0. Within one generator there is one trace per problem; pooled, all traces of a resampled problem go in together.
+- Comparison with text: the cluster-bootstrap distribution of the difference in within-source AUC.
+- A predictor "beats text" only if that 95% CI excludes 0.
+- The existing McNemar accuracy tests stay as they are until M7 replaces them.
+
+**Decision rule.**
+- The abstract, §8, §9 and §10 will quote within-source AUC ranges in place of 0.710–0.794 and 0.761.
+- If the identity baseline's pooled AUC is within 0.05 of a predictor's pooled AUC, I'll state that most of that predictor's pooled AUC is explained by dataset identity.
+
+**Expectation (not a target):** within-source AUC is lower than pooled AUC, more so for generators whose failure rate differs strongly by source.
