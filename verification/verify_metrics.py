@@ -648,8 +648,49 @@ def check_revision(rev_tables, routing_dir, manuscript):
     aurc = np.mean(np.cumsum(wrong[o]) / np.arange(1, len(o) + 1))
     record(s, "M4: DeBERTa AURC", f"{aurc:.3f}" == N["rtAurcDeberta"], f"{aurc:.3f} vs {N['rtAurcDeberta']}")
     record(s, "M4: random AURC equals the intrinsic error rate", f"{wrong.mean():.3f}" == N["rtAurcRandom"], "")
+    # M5: within-source AUC recomputed with sklearn from the saved out-of-fold predictions
+    bench = os.path.dirname(os.path.dirname(routing_dir.rstrip("/")))
+    preds = defaultdict(list)
+    for l in open(os.path.join(bench, "paper_v7", "predictions.jsonl")):
+        r = json.loads(l)
+        if r["target"] == "rf_wrong":
+            preds[(r["set"], r["generator"], r["predictor"])].append(r)
+
+    def wauc(rows, key=lambda r: r["source"]):
+        g = defaultdict(list)
+        for r in rows:
+            g[key(r)].append(r)
+        a_ = [(roc_auc_score([x["y"] for x in v], [x["p"] for x in v]), len(v)) for v in g.values()
+              if 0 < sum(x["y"] for x in v) < len(v)]
+        return sum(x * n for x, n in a_) / sum(n for _, n in a_)
+    codes = {"qwen2.5-0.5b": "QA", "qwen2.5-1.5b": "QB", "smollm2-1.7b": "SM", "qwen2.5-3b": "QC"}
+    pc = {"text_tfidf": "Tfidf", "signals_noverifier": "SigNoVer", "signals": "Sig", "signals_gbm": "Gbm",
+          "concat_text_signals": "Concat"}
+    for g, m in codes.items():
+        for k, mk in pc.items():
+            v = wauc(preds[("natural", g, k)])
+            record(s, f"M5: within-source AUC {g} {k}", f"{v:.3f}" == N[f"w{m}{mk}AUC"], f"{v:.3f} vs {N[f'w{m}{mk}AUC']}")
+    for k, mk in pc.items():
+        rows = [r for g in codes for r in preds[("natural", g, k)]]
+        v = wauc(rows, key=lambda r: (r["source"], r["generator"]))
+        record(s, f"M5: pooled within-source AUC {k}", f"{v:.3f}" == N[f"wPool{mk}AUC"], f"{v:.3f} vs {N[f'wPool{mk}AUC']}")
+    v = wauc(preds[("v1", "qwen2.5-0.5b", "text_tfidf")])
+    record(s, "M5: SCFP v1.0 within-source text AUC (filter model)", f"{v:.3f}" == N["fwQATfidfVone"], f"{v:.3f}")
+    for g, m in codes.items():
+        best = max(pc, key=lambda k: wauc(preds[("natural", g, k)]))
+        lo = float(N[f"w{m}{pc[best]}DiffLo"])
+        record(s, f"M5: best within-source predictor beats text, CI excludes 0 ({g})", lo > 0, f"{best}, CI low {lo}")
+    sub = defaultdict(list)
+    for l in open(os.path.join(os.path.dirname(rev_tables), "..", "results", "revision", "m5", "subtask_predictions.jsonl")):
+        r = json.loads(l)
+        sub[(r["generator"], r["target"])].append(r)
+    for g, m in codes.items():
+        v = wauc(sub[(g, "r0_wrong")])
+        record(s, f"M5: sub-task r0_wrong within-source AUC ({g})", f"{v:.3f}" == N[f"sw{m}Rzero"], f"{v:.3f}")
+    rule = sum(all(wauc(sub[(g, t)]) > wauc(sub[(g, "r0_wrong")]) for t in ("changed", "repair", "harm")) for g in codes)
+    record(s, "M5: behaviour > R0 correctness holds for the stated number of generators", str(rule) == N["swRuleHolds"], str(rule))
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\(rt[A-Z][A-Za-z]*)", tex))
+    used = set(re.findall(r"\\((?:rt|w|fw|sw)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
 
 

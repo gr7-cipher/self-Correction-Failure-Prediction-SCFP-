@@ -120,13 +120,123 @@ def m4(res_dir, out, M):
     })
 
 
+GEN5 = [("qwen2.5-0.5b", "QA", "Qwen2.5-0.5B"), ("qwen2.5-1.5b", "QB", "Qwen2.5-1.5B"),
+        ("smollm2-1.7b", "SM", "SmolLM2-1.7B"), ("qwen2.5-3b", "QC", "Qwen2.5-3B"),
+        ("pooled", "Pool", "Pooled (four generators)")]
+PRED5 = [("identity", "Id", "Source only"), ("text_tfidf", "Tfidf", "Text (TF-IDF)"),
+         ("signals_noverifier", "SigNoVer", "Signals, no verifier"),
+         ("signals", "Sig", "Signals + verifier (LR)"),
+         ("signals_gbm", "Gbm", "Signals + verifier (GBM)"),
+         ("concat_text_signals", "Concat", "Text + signals + verifier")]
+
+
+def f3(x):
+    return f"{x:.3f}"
+
+
+def m5(res_dir, out, M):
+    p = os.path.join(res_dir, "m5", "deconfounded.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    F = json.load(open(os.path.join(res_dir, "m5", "within_source_fold.json")))
+    lines = []
+    for g, m, name in GEN5:
+        r = R[g]
+        best = max((k for k, _, _ in PRED5 if k != "identity"), key=lambda k: r[k]["within_auc"])
+        ident = "source + generator only" if g == "pooled" else "source only"
+        lines.append(f"\\multicolumn{{7}}{{l}}{{\\textit{{{name}}}: {r['text_tfidf']['n']:,} traces, "
+                     f"{r['_n_clusters']:,} problems, failure rate {100 * r['text_tfidf']['failure_rate']:.1f}\\%}} \\\\")
+        for k, mk, label in PRED5:
+            v = r[k]
+            ci = v["ci95"]["within_auc"]
+            w = f"{f3(v['within_auc'])} [{f3(ci[0])}, {f3(ci[1])}]"
+            if k == best:
+                w = f"\\textbf{{{f3(v['within_auc'])}}} [{f3(ci[0])}, {f3(ci[1])}]"
+            d = "--" if k == "text_tfidf" else (f"{v['within_auc_diff_vs_text']:+.3f} "
+                                                f"[{v['within_auc_diff_vs_text_ci95'][0]:+.3f}, {v['within_auc_diff_vs_text_ci95'][1]:+.3f}]")
+            lab = label if k != "identity" else ident[0].upper() + ident[1:]
+            lines.append(f"\\quad {lab} & {w} & {d} & {f3(v['stratified_auc'])} & {f3(v['pooled_auc'])} & "
+                         f"{f3(v['auprc'])} & {f3(v['brier'])} \\\\")
+            for mt, key in (("AUC", "within_auc"), ("Strat", "stratified_auc"), ("Pooled", "pooled_auc"),
+                            ("Auprc", "auprc"), ("Brier", "brier")):
+                M[f"w{m}{mk}{mt}"] = f3(v[key])
+            M[f"w{m}{mk}AUCLo"], M[f"w{m}{mk}AUCHi"] = f3(ci[0]), f3(ci[1])
+            M[f"w{m}{mk}Diff"] = f"{v['within_auc_diff_vs_text']:.3f}"
+            M[f"w{m}{mk}DiffLo"] = f"{v['within_auc_diff_vs_text_ci95'][0]:.3f}"
+            M[f"w{m}{mk}DiffHi"] = f"{v['within_auc_diff_vs_text_ci95'][1]:.3f}"
+            M[f"w{m}{mk}Fold"] = f3(F[g][k])
+        M[f"w{m}Fail"] = f"{100 * r['text_tfidf']['failure_rate']:.1f}"
+        M[f"w{m}Best"] = f3(r[best]["within_auc"])
+        lines.append("\\midrule")
+    lines.pop()
+    write(out, "tab_nat_main_rev.tex",
+          "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\nPredictor & Within-source AUC & $\\Delta$ vs text & Strat. & Pooled & AUPRC & Brier \\\\\n"
+          " & [95\\% CI] & [95\\% CI] & AUC & AUC &  &  \\\\\n\\midrule\n" + "\n".join(lines)
+          + "\n\\bottomrule\n\\end{tabular}\n")
+    gens = [x for x in GEN5 if x[0] != "pooled"]
+    bests = {m: float(M[f"w{m}Best"]) for _, m, _ in gens}
+    M["wBestMin"], M["wBestMax"] = f3(min(bests.values())), f3(max(bests.values()))
+    texts = {m: R[g]["text_tfidf"]["within_auc"] for g, m, _ in gens}
+    M["wTextMin"], M["wTextMax"] = f3(min(texts.values())), f3(max(texts.values()))
+    ids = {m: R[g]["identity"]["pooled_auc"] for g, m, _ in gens}
+    M["wIdPooledMin"], M["wIdPooledMax"] = f3(min(ids.values())), f3(max(ids.values()))
+    gain = {m: R[g]["signals_noverifier"]["within_auc"] - R[g]["text_tfidf"]["within_auc"] for g, m, _ in GEN5}
+    M["wNoVerGainMax"] = f"{max(gain.values()):.2f}"
+    drop = [max(R[g][k]["pooled_auc"] for k, _, _ in PRED5 if k != "identity") - float(M[f"w{m}Best"]) for g, m, _ in GEN5]
+    M["wDropMin"], M["wDropMax"] = f"{min(drop):.3f}", f"{max(drop):.3f}"
+    M["wFoldShiftMax"] = f"{max(abs(F[g][k] - R[g][k]['within_auc']) for g, _, _ in GEN5 for k, _, _ in PRED5 if k != 'identity'):.3f}"
+
+    # filter effect, within source
+    Q = json.load(open(os.path.join(res_dir, "m5", "filter_subtasks.json")))
+    fl = []
+    for g, m, name in gens[:3]:
+        t, sg = Q["filter_effect"][g]["text_tfidf"], Q["filter_effect"][g]["signals"]
+        cell = lambda d: f"{f3(d['within_auc'])} [{f3(d['within_auc_ci95'][0])}, {f3(d['within_auc_ci95'][1])}]"
+        dd = lambda d: f"{d['natural_minus_v1']:+.3f} [{d['natural_minus_v1_ci95'][0]:+.3f}, {d['natural_minus_v1_ci95'][1]:+.3f}]"
+        fl.append(f"{name}{' (filter model)' if m == 'QA' else ''} & {t['v1']['n']} & {cell(t['v1'])} & "
+                  f"{f3(t['natural']['within_auc'])} & {dd(t)} & {cell(sg['v1'])} & {f3(sg['natural']['within_auc'])} & {dd(sg)} \\\\")
+        for k, d in (("Tfidf", t), ("Sig", sg)):
+            M[f"fw{m}{k}Vone"] = f3(d["v1"]["within_auc"])
+            M[f"fw{m}{k}VoneLo"], M[f"fw{m}{k}VoneHi"] = f3(d["v1"]["within_auc_ci95"][0]), f3(d["v1"]["within_auc_ci95"][1])
+            M[f"fw{m}{k}VonePooled"] = f3(d["v1"]["pooled_auc"])
+            M[f"fw{m}{k}Nat"] = f3(d["natural"]["within_auc"])
+            M[f"fw{m}{k}Diff"] = f3(d["natural_minus_v1"])
+            M[f"fw{m}{k}DiffLo"], M[f"fw{m}{k}DiffHi"] = f3(d["natural_minus_v1_ci95"][0]), f3(d["natural_minus_v1_ci95"][1])
+        M[f"fw{m}VoneN"] = str(t["v1"]["n"])
+    write(out, "tab_filter_effect_rev.tex",
+          "\\begin{tabular}{lrccccccc}\n\\toprule\n & & \\multicolumn{3}{c}{Text (TF-IDF)} & \\multicolumn{3}{c}{Signals + verifier} \\\\\n"
+          "\\cmidrule(lr){3-5}\\cmidrule(lr){6-8}\nGenerator & $n$ (SCFP) & SCFP v1.0 [95\\% CI] & Natural & $\\Delta$ [95\\% CI] "
+          "& SCFP v1.0 [95\\% CI] & Natural & $\\Delta$ [95\\% CI] \\\\\n\\midrule\n" + "\n".join(fl)
+          + "\n\\bottomrule\n\\end{tabular}\n")
+
+    # sub-tasks, within source
+    sl = []
+    order = [("r0_wrong", "Rzero"), ("changed", "Changed"), ("repair", "Repair"), ("harm", "Harm")]
+    for g, m, name in gens:
+        S = Q["subtasks"][g]
+        cells = [f"{f3(R[g]['signals_gbm']['within_auc'])}"]
+        for t, mt in order:
+            cells.append(f"{f3(S[t]['within_auc'])} ({f3(S[t]['pooled_auc'])})")
+            M[f"sw{m}{mt}"] = f3(S[t]["within_auc"])
+        sl.append(f"{name} & " + " & ".join(cells) + " \\\\")
+    write(out, "tab_nat_subtasks_rev.tex",
+          "\\begin{tabular}{lccccc}\n\\toprule\nGenerator & Final wrong & $R_0$ wrong & Answer changes & Repair & Harm \\\\\n"
+          " & (all) & (all) & (all) & ($R_0$ wrong) & ($R_0$ correct) \\\\\n\\midrule\n" + "\n".join(sl)
+          + "\n\\bottomrule\n\\end{tabular}\n")
+    for t, mt in order:
+        v = {m: float(M[f"sw{m}{mt}"]) for _, m, _ in gens}
+        M[f"sw{mt}Min"], M[f"sw{mt}Max"] = f3(min(v.values())), f3(max(v.values()))
+    M["swRuleHolds"] = str(sum(Q["subtask_rule_holds"].values()))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m4,):
+    for section in (m4, m5):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)
