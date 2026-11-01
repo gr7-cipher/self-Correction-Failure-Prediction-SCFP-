@@ -19,4 +19,5 @@ pdf:
 	cd paper && tectonic -X compile main.tex
 
 diff:
-	cd paper && latexdiff --flatten submitted_v7.tex main.tex > diff.tex && tectonic -X compile diff.tex
+	# tables are marked as whole blocks (markup inside tabular rows breaks \\hline/\\midrule)
+	cd paper && rm -f main.bbl submitted_v7.bbl && latexdiff --flatten -t CFONT --config="PICTUREENV=(?:picture|DIFnomarkup|tabular|tikzpicture)[\w\d*@]*" submitted_v7.tex main.tex > diff.tex && python3 ../scripts/revision/diff_fix_labels.py diff.tex && tectonic -X compile diff.tex

@@ -1,0 +1,182 @@
+# tables are marked as whole blocks (markup inside tabular rows breaks \\hline/\\midrule)
+cd paper && rm -f main.bbl submitted_v7.bbl && latexdiff --flatten -t CFONT --config="PICTUREENV=(?:picture|DIFnomarkup|tabular|tikzpicture)[\w\d*@]*" submitted_v7.tex main.tex > diff.tex && python3 ../scripts/revision/diff_fix_labels.py diff.tex && tectonic -X compile diff.tex
+Bibliography file /Users/gaith/Downloads/SCFP_Framework/repo/paper/submitted_v7.bbl cannot be found. No flattening of \bibliography done. Run bibtex on old and new files first at /opt/homebrew/bin/latexdiff line 2168.
+Bibliography file /Users/gaith/Downloads/SCFP_Framework/repo/paper/main.bbl cannot be found. No flattening of \bibliography done. Run bibtex on old and new files first at /opt/homebrew/bin/latexdiff line 2168.
+Can't exec "kpsewhich": No such file or directory at /opt/homebrew/bin/latexdiff line 1542, <DATA> line 85549.
+Use of uninitialized value in string ne at /opt/homebrew/bin/latexdiff line 1542, <DATA> line 85549.
+WARNING: listings package not detected. Disabling mark-up in verbatim environments 
+note: "version 2" Tectonic command-line interface activated
+note: Running TeX ...
+warning: algorithm.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: algorithmic.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: diff.tex:1815: Overfull \hbox (2.22pt too wide) has occurred while \output is active
+warning: diff.tex:1843: Overfull \hbox (0.83467pt too wide) in paragraph at lines 1843--1843
+warning: diff.tex:1969: Overfull \hbox (2.07335pt too wide) in paragraph at lines 1968--1969
+warning: diff.tex:2019: Overfull \hbox (91.1483pt too wide) in paragraph at lines 2008--2019
+note: downloading lmsans10-oblique.otf
+warning: diff.tex:2417: Overfull \hbox (3.90892pt too wide) in paragraph at lines 2414--2417
+warning: diff.tex:2422: Overfull \hbox (11.15837pt too wide) in paragraph at lines 2421--2422
+warning: diff.tex:2422: Overfull \hbox (2.4389pt too wide) in paragraph at lines 2421--2422
+warning: diff.tex:2423: Overfull \hbox (13.70837pt too wide) in paragraph at lines 2422--2423
+warning: diff.tex:2433: Underfull \hbox (badness 1371) in paragraph at lines 2433--2433
+warning: diff.tex:2452: Overfull \hbox (2.05238pt too wide) in paragraph at lines 2451--2452
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1418) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1472) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 3250) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 7576) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1337) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 4556) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:3459: Underfull \hbox (badness 10000) in paragraph at lines 3458--3459
+warning: diff.tex:3464: Overfull \hbox (6.19928pt too wide) in paragraph at lines 3463--3464
+warning: diff.tex:3470: Overfull \hbox (1.81091pt too wide) in paragraph at lines 3469--3470
+warning: diff.tex:3478: Underfull \hbox (badness 10000) in paragraph at lines 3477--3478
+warning: diff.tex:3533: Overfull \hbox (104.77359pt too wide) in paragraph at lines 3532--3533
+warning: diff.tex:3571: Overfull \hbox (19.27863pt too wide) in paragraph at lines 3570--3571
+note: downloading cmss10.tfm
+note: downloading cmss8.tfm
+note: downloading cmss9.tfm
+warning: diff.tex:3762: Overfull \hbox (19.70111pt too wide) in paragraph at lines 3754--3762
+warning: diff.tex:3969: Overfull \hbox (6.79999pt too wide) in paragraph at lines 3968--3969
+warning: diff.tex:4005: Underfull \hbox (badness 10000) in paragraph at lines 4005--4005
+warning: diff.tex:4025: Overfull \hbox (105.8872pt too wide) in paragraph at lines 4008--4025
+note: Running BibTeX on diff.aux ...
+note: warnings were issued by BibTeX; use --print and/or --keep-logs for details.
+note: Rerunning TeX because bibtex was run ...
+warning: algorithm.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: algorithmic.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: diff.tex:1815: Overfull \hbox (2.22pt too wide) has occurred while \output is active
+warning: diff.tex:1843: Overfull \hbox (0.83467pt too wide) in paragraph at lines 1843--1843
+warning: diff.tex:1969: Overfull \hbox (2.07335pt too wide) in paragraph at lines 1968--1969
+warning: diff.tex:2019: Overfull \hbox (91.1483pt too wide) in paragraph at lines 2008--2019
+warning: diff.tex:2417: Overfull \hbox (3.90892pt too wide) in paragraph at lines 2414--2417
+warning: diff.tex:2422: Overfull \hbox (11.15837pt too wide) in paragraph at lines 2421--2422
+warning: diff.tex:2422: Overfull \hbox (2.4389pt too wide) in paragraph at lines 2421--2422
+warning: diff.tex:2423: Overfull \hbox (13.70837pt too wide) in paragraph at lines 2422--2423
+warning: diff.tex:2433: Underfull \hbox (badness 1371) in paragraph at lines 2433--2433
+warning: diff.tex:2452: Overfull \hbox (2.05238pt too wide) in paragraph at lines 2451--2452
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1418) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1472) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 3250) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 7576) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1337) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 4556) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:3459: Underfull \hbox (badness 10000) in paragraph at lines 3458--3459
+warning: diff.tex:3464: Overfull \hbox (6.19928pt too wide) in paragraph at lines 3463--3464
+warning: diff.tex:3470: Overfull \hbox (1.81091pt too wide) in paragraph at lines 3469--3470
+warning: diff.tex:3478: Underfull \hbox (badness 10000) in paragraph at lines 3477--3478
+warning: diff.bbl:55: Underfull \hbox (badness 1028) in paragraph at lines 52--55
+warning: diff.bbl:125: Underfull \hbox (badness 1953) in paragraph at lines 122--125
+warning: diff.bbl:145: Underfull \hbox (badness 2401) in paragraph at lines 141--145
+warning: diff.bbl:176: Underfull \hbox (badness 2302) in paragraph at lines 173--176
+warning: diff.tex:3533: Overfull \hbox (99.41359pt too wide) in paragraph at lines 3532--3533
+warning: diff.tex:3571: Overfull \hbox (19.27863pt too wide) in paragraph at lines 3570--3571
+warning: diff.tex:3762: Overfull \hbox (19.70111pt too wide) in paragraph at lines 3754--3762
+warning: diff.tex:3969: Overfull \hbox (6.79999pt too wide) in paragraph at lines 3968--3969
+warning: diff.tex:4005: Underfull \hbox (badness 10000) in paragraph at lines 4005--4005
+warning: diff.tex:4025: Overfull \hbox (105.8872pt too wide) in paragraph at lines 4008--4025
+note: Rerunning TeX because "diff.aux" changed ...
+warning: algorithm.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: algorithmic.sty:11: 
+Invalid UTF-8 byte or sequence at line 11 replaced by U+FFFD.
+warning: diff.tex:1815: Overfull \hbox (2.22pt too wide) has occurred while \output is active
+warning: diff.tex:1843: Overfull \hbox (0.83467pt too wide) in paragraph at lines 1843--1843
+warning: diff.tex:1969: Overfull \hbox (2.07335pt too wide) in paragraph at lines 1968--1969
+warning: diff.tex:2019: Overfull \hbox (91.1483pt too wide) in paragraph at lines 2008--2019
+warning: diff.tex:2417: Overfull \hbox (3.90892pt too wide) in paragraph at lines 2414--2417
+warning: diff.tex:2422: Overfull \hbox (11.15837pt too wide) in paragraph at lines 2421--2422
+warning: diff.tex:2422: Overfull \hbox (2.4389pt too wide) in paragraph at lines 2421--2422
+warning: diff.tex:2423: Overfull \hbox (13.70837pt too wide) in paragraph at lines 2422--2423
+warning: diff.tex:2433: Underfull \hbox (badness 1371) in paragraph at lines 2433--2433
+warning: diff.tex:2452: Overfull \hbox (2.05238pt too wide) in paragraph at lines 2451--2452
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1418) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1472) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 3250) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 7576) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 1337) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 4556) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:2612: Underfull \hbox (badness 10000) in paragraph at lines 2612--2612
+warning: diff.tex:3459: Underfull \hbox (badness 10000) in paragraph at lines 3458--3459
+warning: diff.tex:3464: Overfull \hbox (6.19928pt too wide) in paragraph at lines 3463--3464
+warning: diff.tex:3470: Overfull \hbox (1.81091pt too wide) in paragraph at lines 3469--3470
+warning: diff.tex:3478: Underfull \hbox (badness 10000) in paragraph at lines 3477--3478
+warning: diff.bbl:55: Underfull \hbox (badness 1028) in paragraph at lines 52--55
+warning: diff.bbl:125: Underfull \hbox (badness 1953) in paragraph at lines 122--125
+warning: diff.bbl:145: Underfull \hbox (badness 2401) in paragraph at lines 141--145
+warning: diff.bbl:176: Underfull \hbox (badness 2302) in paragraph at lines 173--176
+warning: diff.tex:3533: Overfull \hbox (99.41359pt too wide) in paragraph at lines 3532--3533
+warning: diff.tex:3571: Overfull \hbox (19.27863pt too wide) in paragraph at lines 3570--3571
+warning: diff.tex:3762: Overfull \hbox (19.70111pt too wide) in paragraph at lines 3754--3762
+warning: diff.tex:3969: Overfull \hbox (6.79999pt too wide) in paragraph at lines 3968--3969
+warning: diff.tex:4005: Underfull \hbox (badness 10000) in paragraph at lines 4005--4005
+warning: diff.tex:4025: Overfull \hbox (105.8872pt too wide) in paragraph at lines 4008--4025
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+warning: Object @subsection.4.5 already defined.
+note: downloading cmbx7.pfb
+note: downloading msbm7.pfb
+note: downloading cmsy5.pfb
+warning: Object @subsection.5.1 already defined.
+warning: Object @subsection.5.1 already defined.
+warning: Object @subsection.5.1 already defined.
+warning: Object @subsection.5.1 already defined.
+warning: Object @section.6 already defined.
+warning: Object @subsection.6.3 already defined.
+warning: Object @subsection.6.3 already defined.
+warning: Object @subsection.7.1 already defined.
+warning: Object @subsection.7.1 already defined.
+warning: Object @subsection.7.1 already defined.
+warning: Object @subsection.7.1 already defined.
+warning: Object @subsection.7.1 already defined.
+warning: Object @subsection.7.2 already defined.
+warning: Object @subsection.7.2 already defined.
+warning: Object @section.8 already defined.
+note: downloading cmss10.pfb
+note: downloading cmss8.pfb
+note: Writing `diff.pdf` (607.8486328125 KiB)
+note: Skipped writing 4 intermediate files (use --keep-intermediates to keep them)
