@@ -354,3 +354,10 @@ The A/B mass is recorded for every trace (`ab_mass`), and the judge's Yes/No mas
 - The paper's description of the signals must match what the models used. The revised paper therefore uses the version **without** `sc_*` for Qwen2.5-0.5B, so that all four generators have the same feature set, the one §8.2 describes.
 - The change and its size are reported in the response to reviewers and in the log.
 - If any Qwen2.5-0.5B claim changes direction (a predictor's CI against text flips between excluding and including 0), the text is rewritten accordingly.
+
+### M8 implementation details for (3) exclusion sensitivity (2026-11-01, before computing it)
+- No program was ever generated for an excluded trace: the verifier ran only on kept traces, one program per trace. So for excluded GSM8K traces, `pot_ran` and `pot_agree_f` are missing (imputed with the training median, as for non-GSM8K traces). `pot_agree_r0` = 0 when R0 has no explicit final-answer line, as registered; otherwise it is missing too.
+- The `sc_*` features are blank for every generator, as for the kept traces after the post-hoc fix.
+- Folds come from `grouped_folds` on the combined rows, with the same function and seed. Adding problems changes the fold assignment, so the "with exclusions" models are refit from scratch rather than reusing the original folds.
+- SCFP v1.0: excluded traces join the split of their problem (train 128, val 29, test 27). The TF-IDF baseline is refit with the same code path (C chosen on validation macro-F1) and evaluated on the enlarged test split (135 traces), and also on the 108 original test traces.
+- Labels: excluded traces get label 1 (failure).
