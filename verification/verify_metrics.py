@@ -706,6 +706,30 @@ def check_revision(rev_tables, routing_dir, manuscript):
                if k.startswith("natural|qwen2.5-1.5b") or k.startswith("natural|qwen2.5-3b")), "")
     record(s, "M7: R0-only vs extrinsic not significant after Holm",
            [x for x in st["routing"] if x["policy"] == "Always Extrinsic"][0]["p_holm"] >= 0.05, "")
+    # M6: the self-consistency samples (raw call logs) and the claims made from pot_vs_sc.json
+    rev = os.path.join(os.path.dirname(rev_tables), "..", "results", "revision")
+    m6 = json.load(open(os.path.join(rev, "m6", "pot_vs_sc.json")))
+    pinned = {"qwen2.5-0.5b": "7ae557604adf67be50417f59c2c2f167def9a775", "qwen2.5-1.5b": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+              "smollm2-1.7b": "31b70e2e869a7173562077fd711b654946d38674", "qwen2.5-3b": "aa8e72537993ba99e69dfaafa59ed015b17504d1"}
+    for g, m in codes.items():
+        calls = [json.loads(l) for l in open(os.path.join(rev, "m6", "gen", f"calls_{g}.jsonl"))]
+        ok = (len(calls) == 3 * m6[g]["n"] and all(c["ok"] and c["temperature"] == 0.7 and c["max_tokens"] == 512
+                                                    and c["model_version"].endswith("@" + pinned[g]) for c in calls)
+              and len({(c["messages"][0]["content"], c["sample"]) for c in calls}) == len(calls))
+        record(s, f"M6: {g} has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit", ok,
+               f"{len(calls)} calls, n={m6[g]['n']}")
+        for k, mk in (("pot - sc1", "PotSc"), ("sc1_pot - sc1", "ScPotSc"), ("sc3_pot - sc3", "ScThPotScTh")):
+            c = m6[g]["compare"][k]
+            record(s, f"M6: {g} {k} macro", N[f"sc{m}{mk}"] == f"{c['diff']:+.3f}" and N[f"sc{m}{mk}Lo"] == f"{c['ci95'][0]:.3f}",
+                   f"{N[f'sc{m}{mk}']} vs {c['diff']:+.3f}")
+    words = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
+    for k, mk in (("sc1_pot - sc1", "scRuleScPot"), ("pot - sc1", "scRulePotSc"), ("sc3_pot - sc3", "scRuleScThPot")):
+        n = sum(m6[g]["compare"][k]["ci95"][0] > 0 for g in codes)
+        record(s, f"M6: decision-rule count for {k}", N[mk] == words[n], f"{N[mk]} vs {n}")
+    record(s, "M6: PoT is significantly worse than SC1 for no generator",
+           all(m6[g]["compare"]["pot - sc1"]["ci95"][1] > 0 for g in codes), "")
+    q = m6["qwen2.5-1.5b"]["compare"]["sc1_pot - sc1"]["ci95"]
+    record(s, "M6: PoT adds nothing measurable beyond SC1 for Qwen2.5-1.5B (CI includes 0)", q[0] <= 0 <= q[1], "")
     tex = open(manuscript).read()
     used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")

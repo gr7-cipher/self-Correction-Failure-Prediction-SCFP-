@@ -234,6 +234,57 @@ def m5(res_dir, out, M):
     M["swRuleHolds"] = str(sum(Q["subtask_rule_holds"].values()))
 
 
+GEN6 = [g for g in GEN5 if g[0] != "pooled"]
+
+
+def m6(res_dir, out, M):
+    p = os.path.join(res_dir, "m6", "pot_vs_sc.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    head = " & ".join(name for _, _, name in GEN6)
+    sub = (" & " + " & ".join(f"{R[g]['n']:,} traces, {100 * R[g]['failure_rate']:.1f}\\% fail" for g, _, _ in GEN6))
+    single = [("pot_agree_r0", "PoT agrees with $R_0$"), ("sc1_agree", "1 sample agrees with $R_0$ (SC1)"),
+              ("sc3_agree_frac", "Share of 3 samples agreeing (SC3)")]
+    models = [("base", "Signals, no verifier"), ("pot", "+ PoT"), ("sc1", "+ SC1"), ("sc1_pot", "+ SC1 + PoT"),
+              ("sc3", "+ SC3"), ("sc3_pot", "+ SC3 + PoT")]
+    comps = [("pot - sc1", "(+PoT) $-$ (+SC1), cost-matched"), ("sc1_pot - sc1", "(+SC1+PoT) $-$ (+SC1)"),
+             ("sc3_pot - sc3", "(+SC3+PoT) $-$ (+SC3)")]
+    L = [f"\\multicolumn{{{1 + len(GEN6)}}}{{l}}{{\\textit{{Single feature: AUC for final wrong (initial wrong)}}}} \\\\"]
+    for k, lab in single:
+        L.append(lab + " & " + " & ".join(f"{f3(R[g]['single'][k]['rf_wrong']['auc'])} ({f3(R[g]['single'][k]['r0_wrong']['auc'])})"
+                                         for g, _, _ in GEN6) + " \\\\")
+    L.append("\\midrule")
+    L.append(f"\\multicolumn{{{1 + len(GEN6)}}}{{l}}{{\\textit{{Logistic regression on the signals: AUC for final wrong}}}} \\\\")
+    for k, lab in models:
+        L.append(lab + " & " + " & ".join(f3(R[g]["models"][k]["auc"]) for g, _, _ in GEN6) + " \\\\")
+    L.append("\\midrule")
+    L.append(f"\\multicolumn{{{1 + len(GEN6)}}}{{l}}{{\\textit{{Paired AUC difference [95\\% CI over problems]}}}} \\\\")
+    for k, lab in comps:
+        cells = []
+        for g, _, _ in GEN6:
+            c = R[g]["compare"][k]
+            t = f"{c['diff']:+.3f} [{f3(c['ci95'][0])}, {f3(c['ci95'][1])}]"
+            cells.append(f"\\textbf{{{t}}}" if c["ci95"][0] > 0 else t)
+        L.append(lab + " & " + " & ".join(cells) + " \\\\")
+    write(out, "tab_pot_vs_sc.tex", "\\begin{tabular}{@{}l" + "c" * len(GEN6) + "@{}}\n\\toprule\n & " + head
+          + " \\\\\n" + sub + " \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    for g, m, _ in GEN6:
+        for k, mk in (("pot - sc1", "PotSc"), ("sc1_pot - sc1", "ScPotSc"), ("sc3_pot - sc3", "ScThPotScTh")):
+            c = R[g]["compare"][k]
+            M[f"sc{m}{mk}"] = f"{c['diff']:+.3f}"
+            M[f"sc{m}{mk}Lo"], M[f"sc{m}{mk}Hi"] = f3(c["ci95"][0]), f3(c["ci95"][1])
+        for k, mk in (("base", "Base"), ("pot", "Pot"), ("sc1", "Sc"), ("sc1_pot", "ScPot"), ("sc3", "ScTh"), ("sc3_pot", "ScThPot")):
+            M[f"sc{m}Mod{mk}"] = f3(R[g]["models"][k]["auc"])
+        M[f"sc{m}ScThRzero"] = f3(R[g]["single"]["sc3_agree_frac"]["r0_wrong"]["auc"])
+        M[f"sc{m}PotRzero"] = f3(R[g]["single"]["pot_agree_r0"]["r0_wrong"]["auc"])
+    words = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
+    rc = R["_rule_counts"]
+    M["scRuleScPot"], M["scRulePotSc"], M["scRuleScThPot"] = (words[rc["sc1_pot - sc1"]], words[rc["pot - sc1"]],
+                                                              words[rc["sc3_pot - sc3"]])
+    M["scNTraces"] = f"{sum(R[g]['n'] for g, _, _ in GEN6):,}"
+
+
 def m7(res_dir, out, M):
     p = os.path.join(res_dir, "m7", "stats_m7.json")
     if not os.path.exists(p):
@@ -330,7 +381,7 @@ def main():
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m4, m5):
+    for section in (m7, m4, m5, m6):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)
