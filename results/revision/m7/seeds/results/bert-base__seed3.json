@@ -1,0 +1,93 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "google-bert/bert-base-uncased",
+    "name": "bert-base__seed3",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 512,
+    "patience": 5,
+    "seed": 3,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 398.1,
+  "best_val_macro_f1": 0.6559682654165164,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.6056547619047619
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6559682654165164
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.5913939937247872
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.6280701754385964
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5859375
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.5267857142857143
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.5546616608563512
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.6203703703703703,
+    "macro_f1": 0.6195549445828679,
+    "weighted_f1": 0.6182502633228641,
+    "auc": 0.636551724137931,
+    "ci95": {
+      "accuracy": [
+        0.5277777777777778,
+        0.7129629629629629
+      ],
+      "macro_f1": [
+        0.5228276877761413,
+        0.7117520447696943
+      ],
+      "auc": [
+        0.5298657896714085,
+        0.736527744602781
+      ]
+    }
+  }
+}

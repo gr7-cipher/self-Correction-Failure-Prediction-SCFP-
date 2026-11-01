@@ -1,0 +1,98 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "microsoft/deberta-v3-small",
+    "name": "deberta-plain__seed1",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 768,
+    "patience": 5,
+    "seed": 1,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 370.3,
+  "best_val_macro_f1": 0.6494144989720212,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.43610900010856585
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6304639313488871
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.6494144989720212
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.5159817351598174
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5159817351598174
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.5165703861356035
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.589923526765632
+    },
+    {
+      "stage": "binary",
+      "epoch": 8,
+      "val_binary_macro_f1": 0.5662202380952381
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.6111111111111112,
+    "macro_f1": 0.6023842917251052,
+    "weighted_f1": 0.6067477014181081,
+    "auc": 0.6058620689655172,
+    "ci95": {
+      "accuracy": [
+        0.5185185185185185,
+        0.7037037037037037
+      ],
+      "macro_f1": [
+        0.509200622655518,
+        0.6883526999316473
+      ],
+      "auc": [
+        0.4920974942396313,
+        0.7039214138718457
+      ]
+    }
+  }
+}

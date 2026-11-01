@@ -1,0 +1,93 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "google-bert/bert-base-uncased",
+    "name": "bert-base__seed2",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 512,
+    "patience": 5,
+    "seed": 2,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 404.5,
+  "best_val_macro_f1": 0.6413817663817664,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.6368553912729895
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6413817663817664
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.5299103183206859
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.5457142857142857
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.6123450182856123
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.6029962546816479
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.5023474178403755
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.5555555555555556,
+    "macro_f1": 0.551712210307852,
+    "weighted_f1": 0.5547868865060148,
+    "auc": 0.6186206896551724,
+    "ci95": {
+      "accuracy": [
+        0.4722222222222222,
+        0.6481481481481481
+      ],
+      "macro_f1": [
+        0.46277873070325903,
+        0.6451330347451663
+      ],
+      "auc": [
+        0.5117097651860176,
+        0.7220593128358421
+      ]
+    }
+  }
+}

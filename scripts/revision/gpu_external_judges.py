@@ -67,7 +67,9 @@ def run_rm(rows, out):
             if r["trace_id"] + r["source_model"] in done:
                 continue
             conv = prompts.initial_messages(r["prompt_raw"], ATYPE[r["source"]]) + [{"role": "assistant", "content": r["initial_response"]}]
-            ids = tok.apply_chat_template(conv, tokenize=True, return_tensors="pt").to("cuda")
+            # render then tokenize: newer transformers return a BatchEncoding from tokenize=True
+            text = tok.apply_chat_template(conv, tokenize=False)
+            ids = tok(text, add_special_tokens=False, return_tensors="pt")["input_ids"].to("cuda")
             with torch.no_grad():
                 s = float(m(ids).logits[0][0])
             f.write(json.dumps({"trace_id": r["trace_id"], "generator": r["source_model"], "reward": s, "model_version": ver,

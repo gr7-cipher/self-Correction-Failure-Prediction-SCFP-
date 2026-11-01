@@ -730,8 +730,41 @@ def check_revision(rev_tables, routing_dir, manuscript):
            all(m6[g]["compare"]["pot - sc1"]["ci95"][1] > 0 for g in codes), "")
     q = m6["qwen2.5-1.5b"]["compare"]["sc1_pot - sc1"]["ci95"]
     record(s, "M6: PoT adds nothing measurable beyond SC1 for Qwen2.5-1.5B (CI includes 0)", q[0] <= 0 <= q[1], "")
+    # M7 seeds: recompute every seed's test accuracy and AUC from the prediction files (sklearn), then the macros
+    run_v1 = os.path.join(bench, "laptop_v1")
+    sd_dir = os.path.join(rev, "m7", "seeds")
+    order = sorted(json.loads(l)["trace_id"] for l in open(os.path.join(run_v1, "splits", "test.jsonl")))
+
+    def seed_metrics(path):
+        rr = {r["trace_id"]: r for r in (json.loads(l) for l in open(path))}
+        y = [rr[t]["y_true"] for t in order]
+        return float(np.mean([rr[t]["y_pred"] == rr[t]["y_true"] for t in order])), roc_auc_score(y, [rr[t]["p_fail"] for t in order])
+    tf_acc, tf_auc = seed_metrics(os.path.join(run_v1, "predictions", "tfidf_lr__binary.jsonl"))
+    sdcode = {"deberta-scfp": "DebScfp", "deberta-plain": "DebPlain", "roberta-base": "Roberta", "bert-base": "Bert",
+              "abl-no-segments": "AblNoSeg", "abl-no-attention": "AblNoAtt", "abl-inputs-P-R0": "AblPR", "abl-inputs-P-F": "AblPF",
+              "abl-inputs-R0-F": "AblRF", "abl-deberta-xsmall": "AblXs"}
+    per = {}
+    for k, mk in sdcode.items():
+        ms = [seed_metrics(os.path.join(run_v1, "predictions", f"{k}__binary.jsonl"))]
+        ms += [seed_metrics(os.path.join(sd_dir, "predictions", f"{k}__seed{x}__binary.jsonl")) for x in (1, 2, 3, 4)]
+        per[k] = np.array(ms)
+        acc, au = per[k][:, 0], per[k][:, 1]
+        ok = (N[f"sd{mk}AccMean"] == f"{acc.mean():.3f}" and N[f"sd{mk}AccSd"] == f"{acc.std(ddof=1):.3f}"
+              and N[f"sd{mk}AUCMean"] == f"{au.mean():.3f}" and N[f"sd{mk}AUCSd"] == f"{au.std(ddof=1):.3f}")
+        record(s, f"M7 seeds: {k} 5-seed mean/sd of accuracy and AUC", ok,
+               f"acc {acc.mean():.3f}±{acc.std(ddof=1):.3f} auc {au.mean():.3f}±{au.std(ddof=1):.3f}")
+    record(s, "M7 seeds: our model's accuracy is below TF-IDF for all five seeds", bool(np.all(per["deberta-scfp"][:, 0] < tf_acc)), "")
+    record(s, "M7 seeds: our model's AUC above TF-IDF for the stated number of seeds",
+           str(int(np.sum(per["deberta-scfp"][:, 1] > tf_auc))) == N["sdDebScfpAucAboveTfidf"], "")
+    above = {k: int(np.sum(per[k][:, 1] > per["deberta-scfp"][:, 1])) for k in sdcode if k.startswith("abl-")}
+    record(s, "M7 seeds: no-segments AUC above full for 5/5; other ablations for 2 or 3 of 5",
+           above["abl-no-segments"] == 5 and all(v in (2, 3) for k, v in above.items() if k != "abl-no-segments"), str(above))
+    record(s, "M7 seeds: every ablation's Holm-adjusted p vs full is 1.000",
+           all(N[f"sd{sdcode[k]}PFullHolm"] == "1.000" for k in above), "")
+    sds = [per[k][:, 0].std(ddof=1) for k in sdcode]
+    record(s, "M7 seeds: accuracy sd range", f"{min(sds):.3f}" == N["sdAccSdMin"] and f"{max(sds):.3f}" == N["sdAccSdMax"], "")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
 
 

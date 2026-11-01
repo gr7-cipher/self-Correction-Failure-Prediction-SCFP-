@@ -375,13 +375,86 @@ def m7(res_dir, out, M):
     shutil.copy(os.path.join(res_dir, "m7", "fig_reliability.pdf"), os.path.join(out, "rev_fig_reliability.pdf"))
 
 
+ENC7 = [("deberta-scfp", "DebScfp", "Our model (segment-aware DeBERTa-v3-small)"), ("deberta-plain", "DebPlain", "DeBERTa-v3-small"),
+        ("roberta-base", "Roberta", "RoBERTa-base"), ("bert-base", "Bert", "BERT-base")]
+ABL7 = [("abl-no-segments", "AblNoSeg", "Without segment embeddings"), ("abl-no-attention", "AblNoAtt", "Without segment attention"),
+        ("abl-inputs-P-R0", "AblPR", "Inputs $(P, R_0)$"), ("abl-inputs-P-F", "AblPF", "Inputs $(P, F)$"),
+        ("abl-inputs-R0-F", "AblRF", "Inputs $(R_0, F)$"), ("abl-deberta-xsmall", "AblXs", "DeBERTa-v3-xsmall backbone")]
+
+
+def m7_seeds(res_dir, out, M):
+    p = os.path.join(res_dir, "m7", "seeds_m7.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    S = json.load(open(os.path.join(res_dir, "m7", "stats_m7.json")))["scfp"]
+    T = S["tests"]
+    tv, tm = ({x["a"]: x for x in T[f]} for f in ("t8_vs_tfidf", "t8_vs_majority"))
+    tf = {x["a"]: x for x in T["t9_vs_full"]}
+    ci = lambda c: f"[{c[0]:.3f}, {c[1]:.3f}]"
+    ms = lambda d: f"{d['mean']:.3f} $\\pm$ {d['sd']:.3f}"
+    lines = []
+    for k, mk, lab in ENC7:
+        v, g = S["predictors"][k], R["models"][k]["summary"]
+        lines.append(f"{lab} & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['macro_f1']:.3f} & {v['auc']:.3f} {ci(v['auc_ci95'])} & "
+                     f"{pval(tv[k]['p'])} ({pval(tv[k]['p_holm'])}) & {pval(tm[k]['p'])} ({pval(tm[k]['p_holm'])}) & "
+                     f"{ms(g['accuracy'])} & {ms(g['auc'])} \\\\")
+    write(out, "tab_encoder_results_rev.tex",
+          "\\begin{tabular}{@{}lccccccc@{}}\n\\toprule\n & \\multicolumn{5}{c}{Seed 42 (submitted run)} & \\multicolumn{2}{c}{Five seeds} \\\\\n"
+          "\\cmidrule(lr){2-6}\\cmidrule(lr){7-8}\nPredictor & Accuracy [95\\% CI] & Macro-F1 & AUC [95\\% CI] & $p$ vs TF-IDF (Holm) & "
+          "$p$ vs majority (Holm) & Accuracy & AUC \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
+    full = R["models"]["deberta-scfp"]["summary"]
+    v = S["predictors"]["deberta-scfp"]
+    lines = [f"Full model & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['auc']:.3f} {ci(v['auc_ci95'])} & -- & "
+             f"{ms(full['accuracy'])} & {ms(full['auc'])} & -- \\\\"]
+    for k, mk, lab in ABL7:
+        v, g, d = S["predictors"][k], R["models"][k]["summary"], R["ablation_minus_full"][k]
+        lines.append(f"{lab} & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['auc']:.3f} {ci(v['auc_ci95'])} & "
+                     f"{pval(tf[k]['p'])} ({pval(tf[k]['p_holm'])}) & {ms(g['accuracy'])} & {ms(g['auc'])} & {d['auc']['seeds_above_full']} of 5 \\\\")
+    write(out, "tab_ablations_rev.tex",
+          "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n & \\multicolumn{3}{c}{Seed 42 (submitted run)} & \\multicolumn{3}{c}{Five seeds} \\\\\n"
+          "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\nVariant & Accuracy [95\\% CI] & AUC [95\\% CI] & $p$ vs full (Holm) & Accuracy & AUC & "
+          "AUC above full \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
+    seeds = list(R["models"]["deberta-scfp"]["per_seed"])
+    rows = []
+    for k, mk, lab in ENC7 + ABL7:
+        ps = R["models"][k]["per_seed"]
+        rows.append(f"{lab} & " + " & ".join(f"{ps[s]['accuracy']:.3f} / {ps[s]['auc']:.3f}" for s in seeds) + " \\\\")
+    rows.insert(len(ENC7), "\\midrule")
+    write(out, "tab_seeds.tex", "\\begin{tabular}{@{}l" + "c" * len(seeds) + "@{}}\n\\toprule\nModel & "
+          + " & ".join(f"Seed {s}" for s in seeds) + " \\\\\n\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
+    for k, mk, _ in ENC7 + ABL7:
+        g = R["models"][k]["summary"]
+        for met, mm in (("accuracy", "Acc"), ("auc", "AUC"), ("macro_f1", "Fone")):
+            M[f"sd{mk}{mm}Mean"], M[f"sd{mk}{mm}Sd"] = f"{g[met]['mean']:.3f}", f"{g[met]['sd']:.3f}"
+            M[f"sd{mk}{mm}Min"], M[f"sd{mk}{mm}Max"] = f"{g[met]['min']:.3f}", f"{g[met]['max']:.3f}"
+        M[f"sd{mk}AccAboveTfidf"] = str(g["accuracy"]["seeds_above_tfidf"])
+        M[f"sd{mk}AucAboveTfidf"] = str(g["auc"]["seeds_above_tfidf"])
+        v = S["predictors"][k]
+        M[f"sd{mk}Acc"], M[f"sd{mk}AccLo"], M[f"sd{mk}AccHi"] = pct(v["accuracy"]), pct(v["accuracy_ci95"][0]), pct(v["accuracy_ci95"][1])
+        M[f"sd{mk}AUC"] = f"{v['auc']:.3f}"
+        M[f"sd{mk}Fone"] = f"{v['macro_f1']:.3f}"
+        if k in tv:
+            M[f"sd{mk}PTfidf"], M[f"sd{mk}PTfidfHolm"] = pval(tv[k]["p"]), pval(tv[k]["p_holm"])
+            M[f"sd{mk}PMaj"], M[f"sd{mk}PMajHolm"] = pval(tm[k]["p"]), pval(tm[k]["p_holm"])
+        if k in tf:
+            M[f"sd{mk}PFull"], M[f"sd{mk}PFullHolm"] = pval(tf[k]["p"]), pval(tf[k]["p_holm"])
+            M[f"sd{mk}AucAboveFull"] = str(R["ablation_minus_full"][k]["auc"]["seeds_above_full"])
+    allm = [R["models"][k]["summary"] for k, _, _ in ENC7 + ABL7]
+    M["sdMinHolmEnc"] = pval(min(min(x["p_holm"] for x in T[f]) for f in ("t8_vs_tfidf", "t8_vs_majority", "t9_vs_full")))
+    M["sdAccSdMin"], M["sdAccSdMax"] = f"{min(g['accuracy']['sd'] for g in allm):.3f}", f"{max(g['accuracy']['sd'] for g in allm):.3f}"
+    M["sdAucSdMin"], M["sdAucSdMax"] = f"{min(g['auc']['sd'] for g in allm):.3f}", f"{max(g['auc']['sd'] for g in allm):.3f}"
+    M["sdTfidfAcc"], M["sdTfidfAUC"] = f"{R['reference']['tfidf_lr']['accuracy']:.3f}", f"{R['reference']['tfidf_lr']['auc']:.3f}"
+    M["sdNAblAboveFullAll"] = str(sum(R["ablation_minus_full"][k]["auc"]["seeds_above_full"] == 5 for k, _, _ in ABL7))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m4, m5, m6):
+    for section in (m7, m7_seeds, m4, m5, m6):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)
