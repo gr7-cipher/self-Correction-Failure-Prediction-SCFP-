@@ -566,13 +566,57 @@ def m3(res_dir, out, M):
     M["cbAbMassMin"] = f"{100 * min(G['ptrue_ab_mass'].values()):.1f}"
 
 
+def m8(res_dir, out, M):
+    p = os.path.join(res_dir, "m8", "exclusion_sensitivity.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    ci = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
+    S = R["scfp"]
+    L = []
+    for k, lab in (("original", "Excluded (submitted)"), ("with_exclusions", "Counted as failures"),
+                   ("with_exclusions_on_original_test", "Counted as failures, original test traces")):
+        v = S[k]
+        L.append(f"{lab} & {v['n']} & {pct(v['failure_rate'])} & {pct(v['majority_accuracy'])} & {f3(v['accuracy'])} {ci(v['accuracy_ci95'])} & "
+                 f"{f3(v['macro_f1'])} & {f3(v['auc'])} {ci(v['auc_ci95'])} \\\\")
+    A = "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n\\multicolumn{7}{l}{\\textit{SCFP v1.0 test split, TF-IDF + logistic regression}} \\\\\n" \
+        "Traces without a final answer & $n$ & Failure rate (\\%) & Majority (\\%) & Accuracy [95\\% CI] & Macro-F1 & AUC [95\\% CI] \\\\\n\\midrule\n" \
+        + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n"
+    N = R["natural"]
+    L = []
+    for g, m, name in GEN6:
+        v = N[g]
+        cells = [f"{v['excluded']:,} / {v['kept'] + v['excluded']:,}", f"{pct(v['failure_rate_excluding'])} $\\to$ {pct(v['failure_rate_with'])}"]
+        for k in ("text_tfidf", "signals_noverifier", "signals"):
+            cells.append(f"{f3(v[k]['within_auc_original'])} $\\to$ {f3(v[k]['within_auc_with_exclusions'])}")
+        d = v["signals_minus_text_with_exclusions_ci95"]
+        cells.append(f"{v['signals_minus_text_with_exclusions']:+.3f} {ci(d)}")
+        L.append(f"{name} & " + " & ".join(cells) + " \\\\")
+        M[f"ex{m}SigText"], M[f"ex{m}SigTextLo"], M[f"ex{m}SigTextHi"] = f"{v['signals_minus_text_with_exclusions']:+.3f}", f3(d[0]), f3(d[1])
+        M[f"ex{m}FailWith"], M[f"ex{m}FailWithout"] = pct(v["failure_rate_with"]), pct(v["failure_rate_excluding"])
+    Bt = "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n\\multicolumn{7}{l}{\\textit{Natural set, within-source AUC (excluded $\\to$ counted as failures)}} \\\\\n" \
+         "Generator & Excluded / all & Failure rate (\\%) & Text & Signals, no verifier & Signals + verifier & Signals $-$ text [95\\% CI] \\\\\n\\midrule\n" \
+         + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n"
+    write(out, "tab_exclusion_sens.tex", A + "\n\\vspace{6pt}\n\n" + Bt)
+    for k, mk in (("original", "Orig"), ("with_exclusions", "With")):
+        v = S[k]
+        M[f"exScfp{mk}Acc"], M[f"exScfp{mk}AUC"], M[f"exScfp{mk}Maj"] = f3(v["accuracy"]), f3(v["auc"]), pct(v["majority_accuracy"])
+        M[f"exScfp{mk}AccLo"], M[f"exScfp{mk}AccHi"] = f3(v["accuracy_ci95"][0]), f3(v["accuracy_ci95"][1])
+        M[f"exScfp{mk}N"] = str(v["n"])
+        M[f"exScfp{mk}PMaj"] = pval(v["p_vs_majority"])
+    lo = [N[g]["signals_minus_text_with_exclusions_ci95"][0] for g, _, _ in GEN6]
+    M["exSigTextAll"] = "all four" if min(lo) > 0 else f"{sum(x > 0 for x in lo)}"
+    M["exSigTextMin"] = f"{min(N[g]['signals_minus_text_with_exclusions'] for g, _, _ in GEN6):+.3f}"
+    M["exSigTextMax"] = f"{max(N[g]['signals_minus_text_with_exclusions'] for g, _, _ in GEN6):+.3f}"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)

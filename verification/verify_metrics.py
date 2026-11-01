@@ -808,8 +808,23 @@ def check_revision(rev_tables, routing_dir, manuscript):
     calls = [json.loads(l) for l in open(os.path.join(rev, "gpuA", "calls_verbal_smollm2-1.7b.jsonl"))]
     bad = sum(1 for c in calls if not re.search(r"\d+", c["text"]) or int(re.search(r"\d+", c["text"]).group()) > 100)
     record(s, "M3: SmolLM2 unparsable verbalized confidences", f"{bad:,}" == N["cbVerbalUnparsedSM"], f"{bad}")
+    # M8 exclusion sensitivity: counts recomputed from the raw excluded files; claims checked against the JSON
+    ex8 = json.load(open(os.path.join(rev, "m8", "exclusion_sensitivity.json")))
+    v1ex = [json.loads(l) for l in open(os.path.join(bench, "laptop_v1", "excluded.jsonl"))]
+    test_p = {json.loads(l)["problem_id"] for l in open(os.path.join(bench, "laptop_v1", "splits", "test.jsonl"))}
+    n_te = sum(r["problem_id"] in test_p for r in v1ex)
+    record(s, "M8: SCFP test split with exclusions has 108 + excluded test traces", ex8["scfp"]["with_exclusions"]["n"] == 108 + n_te
+           and N["exScfpWithN"] == str(108 + n_te), f"{108 + n_te}")
+    record(s, "M8: TF-IDF not significantly above majority under either exclusion rule",
+           ex8["scfp"]["original"]["p_vs_majority"] >= 0.05 and ex8["scfp"]["with_exclusions"]["p_vs_majority"] >= 0.05, "")
+    record(s, "M8: signals beat text within source for every generator with exclusions counted as failures",
+           all(ex8["natural"][g]["signals_minus_text_with_exclusions_ci95"][0] > 0 for g in codes) and N["exSigTextAll"] == "all four", "")
+    for g, m in codes.items():
+        run = "signals_mac_q05_big" if g == "qwen2.5-0.5b" else "signals_kaggle"
+        ne = sum(1 for l in open(os.path.join(bench, run, "natural", "excluded.jsonl")) if json.loads(l)["source_model"] == g)
+        record(s, f"M8: {g} excluded natural traces", ex8["natural"][g]["excluded"] == ne, f"{ne}")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
 
 

@@ -1,778 +1,794 @@
 
 === D  v5 tables vs. run directory
-[     PASS     ] no source problem appears in two splits                                                
+[     PASS     ] no source problem appears in two splits                                                    
                  0 conflicts
-[     PASS     ] no routing hold-out problem in the benchmark                                           
+[     PASS     ] no routing hold-out problem in the benchmark                                               
                  0 traces
-[     PASS     ] train: traces/problems match tab_composition                                           
+[     PASS     ] train: traces/problems match tab_composition                                               
                  data 502/210, table 502/210
-[     PASS     ] val: traces/problems match tab_composition                                             
+[     PASS     ] val: traces/problems match tab_composition                                                 
                  data 106/45, table 106/45
-[     PASS     ] test: traces/problems match tab_composition                                            
+[     PASS     ] test: traces/problems match tab_composition                                                
                  data 108/45, table 108/45
-[     PASS     ] outcome cells match tab_composition                                                    
+[     PASS     ] outcome cells match tab_composition                                                        
                  {'right->wrong': 80, 'wrong->right': 120, 'right->right': 259, 'wrong->wrong': 257}
-[     PASS     ] generated = kept + excluded                                                            
+[     PASS     ] generated = kept + excluded                                                                
                  kept 716, excluded 184, table {'generated': 900, 'kept': 716, 'excluded': 184}
-[     PASS     ] every excluded trace really lacks a final-answer line                                  
+[     PASS     ] every excluded trace really lacks a final-answer line                                      
                  0 wrongly excluded
-[     PASS     ] abl-deberta-xsmall: predictions cover exactly the test split                           
+[     PASS     ] abl-deberta-xsmall: predictions cover exactly the test split                               
                  108 rows
-[     PASS     ] abl-deberta-xsmall: y_true equals the split label                                      
+[     PASS     ] abl-deberta-xsmall: y_true equals the split label                                          
                  
-[     PASS     ] abl-deberta-xsmall: prose macro \resAblDebertaXsmallAcc matches recomputed accuracy    
+[     PASS     ] abl-deberta-xsmall: prose macro \resAblDebertaXsmallAcc matches recomputed accuracy        
                  macro 58.3, recomputed 58.3
-[     PASS     ] abl-inputs-P-F: predictions cover exactly the test split                               
+[     PASS     ] abl-inputs-P-F: predictions cover exactly the test split                                   
                  108 rows
-[     PASS     ] abl-inputs-P-F: y_true equals the split label                                          
+[     PASS     ] abl-inputs-P-F: y_true equals the split label                                              
                  
-[     PASS     ] abl-inputs-P-F: prose macro \resAblInputsPFAcc matches recomputed accuracy             
+[     PASS     ] abl-inputs-P-F: prose macro \resAblInputsPFAcc matches recomputed accuracy                 
                  macro 59.3, recomputed 59.3
-[     PASS     ] abl-inputs-P-R0: predictions cover exactly the test split                              
+[     PASS     ] abl-inputs-P-R0: predictions cover exactly the test split                                  
                  108 rows
-[     PASS     ] abl-inputs-P-R0: y_true equals the split label                                         
+[     PASS     ] abl-inputs-P-R0: y_true equals the split label                                             
                  
-[     PASS     ] abl-inputs-P-R0: prose macro \resAblInputsPRAcc matches recomputed accuracy            
+[     PASS     ] abl-inputs-P-R0: prose macro \resAblInputsPRAcc matches recomputed accuracy                
                  macro 57.4, recomputed 57.4
-[     PASS     ] abl-inputs-R0-F: predictions cover exactly the test split                              
+[     PASS     ] abl-inputs-R0-F: predictions cover exactly the test split                                  
                  108 rows
-[     PASS     ] abl-inputs-R0-F: y_true equals the split label                                         
+[     PASS     ] abl-inputs-R0-F: y_true equals the split label                                             
                  
-[     PASS     ] abl-inputs-R0-F: prose macro \resAblInputsRFAcc matches recomputed accuracy            
+[     PASS     ] abl-inputs-R0-F: prose macro \resAblInputsRFAcc matches recomputed accuracy                
                  macro 57.4, recomputed 57.4
-[     PASS     ] abl-no-attention: predictions cover exactly the test split                             
+[     PASS     ] abl-no-attention: predictions cover exactly the test split                                 
                  108 rows
-[     PASS     ] abl-no-attention: y_true equals the split label                                        
+[     PASS     ] abl-no-attention: y_true equals the split label                                            
                  
-[     PASS     ] abl-no-attention: prose macro \resAblNoAttentionAcc matches recomputed accuracy        
+[     PASS     ] abl-no-attention: prose macro \resAblNoAttentionAcc matches recomputed accuracy            
                  macro 58.3, recomputed 58.3
-[     PASS     ] abl-no-segments: predictions cover exactly the test split                              
+[     PASS     ] abl-no-segments: predictions cover exactly the test split                                  
                  108 rows
-[     PASS     ] abl-no-segments: y_true equals the split label                                         
+[     PASS     ] abl-no-segments: y_true equals the split label                                             
                  
-[     PASS     ] abl-no-segments: prose macro \resAblNoSegmentsAcc matches recomputed accuracy          
+[     PASS     ] abl-no-segments: prose macro \resAblNoSegmentsAcc matches recomputed accuracy              
                  macro 61.1, recomputed 61.1
-[     PASS     ] bert-base: predictions cover exactly the test split                                    
+[     PASS     ] bert-base: predictions cover exactly the test split                                        
                  108 rows
-[     PASS     ] bert-base: y_true equals the split label                                               
+[     PASS     ] bert-base: y_true equals the split label                                                   
                  
-[     PASS     ] bert-base: prose macro \resBertBaseAcc matches recomputed accuracy                     
+[     PASS     ] bert-base: prose macro \resBertBaseAcc matches recomputed accuracy                         
                  macro 60.2, recomputed 60.2
-[     PASS     ] confidence: predictions cover exactly the test split                                   
+[     PASS     ] confidence: predictions cover exactly the test split                                       
                  108 rows
-[     PASS     ] confidence: y_true equals the split label                                              
+[     PASS     ] confidence: y_true equals the split label                                                  
                  
-[     PASS     ] confidence: prose macro \resConfidenceAcc matches recomputed accuracy                  
+[     PASS     ] confidence: prose macro \resConfidenceAcc matches recomputed accuracy                      
                  macro 53.7, recomputed 53.7
-[     PASS     ] confidence: accuracy / macro-F1 / AUC match the table                                  
+[     PASS     ] confidence: accuracy / macro-F1 / AUC match the table                                      
                  recomputed 0.5370 / 0.5238 / 0.5645; table 0.5370 / 0.5238 / 0.5645
-[     PASS     ] deberta-plain: predictions cover exactly the test split                                
+[     PASS     ] deberta-plain: predictions cover exactly the test split                                    
                  108 rows
-[     PASS     ] deberta-plain: y_true equals the split label                                           
+[     PASS     ] deberta-plain: y_true equals the split label                                               
                  
-[     PASS     ] deberta-plain: prose macro \resDebertaPlainAcc matches recomputed accuracy             
+[     PASS     ] deberta-plain: prose macro \resDebertaPlainAcc matches recomputed accuracy                 
                  macro 55.6, recomputed 55.6
-[     PASS     ] deberta-scfp: predictions cover exactly the test split                                 
+[     PASS     ] deberta-scfp: predictions cover exactly the test split                                     
                  108 rows
-[     PASS     ] deberta-scfp: y_true equals the split label                                            
+[     PASS     ] deberta-scfp: y_true equals the split label                                                
                  
-[     PASS     ] deberta-scfp: prose macro \resDebertaScfpAcc matches recomputed accuracy               
+[     PASS     ] deberta-scfp: prose macro \resDebertaScfpAcc matches recomputed accuracy                   
                  macro 53.7, recomputed 53.7
-[     PASS     ] length: predictions cover exactly the test split                                       
+[     PASS     ] length: predictions cover exactly the test split                                           
                  108 rows
-[     PASS     ] length: y_true equals the split label                                                  
+[     PASS     ] length: y_true equals the split label                                                      
                  
-[     PASS     ] length: prose macro \resLengthAcc matches recomputed accuracy                          
+[     PASS     ] length: prose macro \resLengthAcc matches recomputed accuracy                              
                  macro 55.6, recomputed 55.6
-[     PASS     ] length: accuracy / macro-F1 / AUC match the table                                      
+[     PASS     ] length: accuracy / macro-F1 / AUC match the table                                          
                  recomputed 0.5556 / 0.4764 / 0.5103; table 0.5556 / 0.4764 / 0.5103
-[     PASS     ] majority: predictions cover exactly the test split                                     
+[     PASS     ] majority: predictions cover exactly the test split                                         
                  108 rows
-[     PASS     ] majority: y_true equals the split label                                                
+[     PASS     ] majority: y_true equals the split label                                                    
                  
-[     PASS     ] majority: prose macro \resMajorityAcc matches recomputed accuracy                      
+[     PASS     ] majority: prose macro \resMajorityAcc matches recomputed accuracy                          
                  macro 53.7, recomputed 53.7
-[     PASS     ] majority: accuracy / macro-F1 / AUC match the table                                    
+[     PASS     ] majority: accuracy / macro-F1 / AUC match the table                                        
                  recomputed 0.5370 / 0.3494 / 0.5000; table 0.5370 / 0.3494 / 0.5000
-[     PASS     ] random: predictions cover exactly the test split                                       
+[     PASS     ] random: predictions cover exactly the test split                                           
                  108 rows
-[     PASS     ] random: y_true equals the split label                                                  
+[     PASS     ] random: y_true equals the split label                                                      
                  
-[     PASS     ] random: prose macro \resRandomAcc matches recomputed accuracy                          
+[     PASS     ] random: prose macro \resRandomAcc matches recomputed accuracy                              
                  macro 44.4, recomputed 44.4
-[     PASS     ] random: accuracy / macro-F1 / AUC match the table                                      
+[     PASS     ] random: accuracy / macro-F1 / AUC match the table                                          
                  recomputed 0.4444 / 0.4437 / 0.4986; table 0.4444 / 0.4437 / 0.4986
-[     PASS     ] roberta-base: predictions cover exactly the test split                                 
+[     PASS     ] roberta-base: predictions cover exactly the test split                                     
                  108 rows
-[     PASS     ] roberta-base: y_true equals the split label                                            
+[     PASS     ] roberta-base: y_true equals the split label                                                
                  
-[     PASS     ] roberta-base: prose macro \resRobertaBaseAcc matches recomputed accuracy               
+[     PASS     ] roberta-base: prose macro \resRobertaBaseAcc matches recomputed accuracy                   
                  macro 61.1, recomputed 61.1
-[     PASS     ] tfidf_lr: predictions cover exactly the test split                                     
+[     PASS     ] tfidf_lr: predictions cover exactly the test split                                         
                  108 rows
-[     PASS     ] tfidf_lr: y_true equals the split label                                                
+[     PASS     ] tfidf_lr: y_true equals the split label                                                    
                  
-[     PASS     ] tfidf_lr: prose macro \resTfidfLrAcc matches recomputed accuracy                       
+[     PASS     ] tfidf_lr: prose macro \resTfidfLrAcc matches recomputed accuracy                           
                  macro 63.0, recomputed 63.0
-[     PASS     ] tfidf_lr: accuracy / macro-F1 / AUC match the table                                    
+[     PASS     ] tfidf_lr: accuracy / macro-F1 / AUC match the table                                        
                  recomputed 0.6296 / 0.6285 / 0.6090; table 0.6296 / 0.6285 / 0.6090
-[     PASS     ] xmodel-qwen-to-all: predictions cover exactly the test split                           
+[     PASS     ] xmodel-qwen-to-all: predictions cover exactly the test split                               
                  108 rows
-[     PASS     ] xmodel-qwen-to-all: y_true equals the split label                                      
+[     PASS     ] xmodel-qwen-to-all: y_true equals the split label                                          
                  
-[     PASS     ] xmodel-qwen-to-all: prose macro \resXmodelQwenToAllAcc matches recomputed accuracy     
+[     PASS     ] xmodel-qwen-to-all: prose macro \resXmodelQwenToAllAcc matches recomputed accuracy         
                  macro 60.2, recomputed 60.2
-[     PASS     ] routing: Always Intrinsic accuracy recomputed                                          
+[     PASS     ] routing: Always Intrinsic accuracy recomputed                                              
                  0.7067
-[     PASS     ] routing: Always Extrinsic accuracy recomputed                                          
+[     PASS     ] routing: Always Extrinsic accuracy recomputed                                              
                  0.6133
-[     PASS     ] routing: Always Intrinsic cost is 1.0x by definition                                   
+[     PASS     ] routing: Always Intrinsic cost is 1.0x by definition                                       
                  
-[     PASS     ] routing: Always Extrinsic cost recomputed from token counts                            
+[     PASS     ] routing: Always Extrinsic cost recomputed from token counts                                
                  0.6415
-[     PASS     ] routing: Always Intrinsic satisfies the cost and latency lower bounds                  
+[     PASS     ] routing: Always Intrinsic satisfies the cost and latency lower bounds                      
                  cost 1.00 >= 0.64; latency 80.1 >= 59.0
-[     PASS     ] routing: Always Extrinsic satisfies the cost and latency lower bounds                  
+[     PASS     ] routing: Always Extrinsic satisfies the cost and latency lower bounds                      
                  cost 0.64 >= 0.64; latency 59.0 >= 59.0
-[     PASS     ] routing: Always Human (oracle) satisfies the cost and latency lower bounds             
+[     PASS     ] routing: Always Human (oracle) satisfies the cost and latency lower bounds                 
                  cost 15.51 >= 15.51; latency 93.8 >= 93.8
-[     PASS     ] routing: Random (uniform, expected) satisfies the cost and latency lower bounds        
+[     PASS     ] routing: Random (uniform, expected) satisfies the cost and latency lower bounds            
                  cost 5.72 >= 5.60; latency 77.6 >= 70.6
-[     PASS     ] routing: Confidence-based satisfies the cost and latency lower bounds                  
+[     PASS     ] routing: Confidence-based satisfies the cost and latency lower bounds                      
                  cost 1.21 >= 1.14; latency 66.4 >= 60.1
-[     PASS     ] routing: Dynamic (our predictor) satisfies the cost and latency lower bounds           
+[     PASS     ] routing: Dynamic (our predictor) satisfies the cost and latency lower bounds               
                  cost 0.84 >= 0.84; latency 59.6 >= 59.4
-[     PASS     ] routing: prose macro \routeDynAcc matches routing.json                                 
+[     PASS     ] routing: prose macro \routeDynAcc matches routing.json                                     
                  61.3 vs 61.3
-[     PASS     ] routing: prose macro \routeIntAcc matches routing.json                                 
+[     PASS     ] routing: prose macro \routeIntAcc matches routing.json                                     
                  70.7 vs 70.7
-[     PASS     ] routing: prose macro \routeExtAcc matches routing.json                                 
+[     PASS     ] routing: prose macro \routeExtAcc matches routing.json                                     
                  61.3 vs 61.3
-[     PASS     ] macros.tex is generated                                                                
+[     PASS     ] macros.tex is generated                                                                    
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] macros_natural.tex is generated                                                        
+[     PASS     ] macros_natural.tex is generated                                                            
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] macros_rev.tex is generated                                                            
+[     PASS     ] macros_rev.tex is generated                                                                
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] macros_v7.tex is generated                                                             
+[     PASS     ] macros_v7.tex is generated                                                                 
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] tab_ablations.tex is generated                                                         
+[     PASS     ] tab_ablations.tex is generated                                                             
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_ablations_rev.tex is generated                                                     
+[     PASS     ] tab_ablations_rev.tex is generated                                                         
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_binary_results.tex is generated                                                    
+[     PASS     ] tab_binary_results.tex is generated                                                        
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_binary_results_rev.tex is generated                                                
+[     PASS     ] tab_binary_results_rev.tex is generated                                                    
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_calibration.tex is generated                                                       
+[     PASS     ] tab_calibration.tex is generated                                                           
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_composition.tex is generated                                                       
+[     PASS     ] tab_composition.tex is generated                                                           
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_cross_model.tex is generated                                                       
+[     PASS     ] tab_cross_model.tex is generated                                                           
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_encoder_results.tex is generated                                                   
+[     PASS     ] tab_encoder_results.tex is generated                                                       
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_encoder_results_rev.tex is generated                                               
+[     PASS     ] tab_encoder_results_rev.tex is generated                                                   
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_exclusion.tex is generated                                                         
+[     PASS     ] tab_exclusion.tex is generated                                                             
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_filter.tex is generated                                                            
+[     PASS     ] tab_exclusion_sens.tex is generated                                                        
+                 % generated by scfp_bench.experiments.make_tables_revision -
+[     PASS     ] tab_filter.tex is generated                                                                
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_filter_effect.tex is generated                                                     
+[     PASS     ] tab_filter_effect.tex is generated                                                         
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] tab_filter_effect_rev.tex is generated                                                 
+[     PASS     ] tab_filter_effect_rev.tex is generated                                                     
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_hidden_layers.tex is generated                                                     
+[     PASS     ] tab_hidden_layers.tex is generated                                                         
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_m3_baselines.tex is generated                                                      
+[     PASS     ] tab_m3_baselines.tex is generated                                                          
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_m3_delta.tex is generated                                                          
+[     PASS     ] tab_m3_delta.tex is generated                                                              
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_nat_main.tex is generated                                                          
+[     PASS     ] tab_nat_main.tex is generated                                                              
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] tab_nat_main_rev.tex is generated                                                      
+[     PASS     ] tab_nat_main_rev.tex is generated                                                          
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_nat_outcomes.tex is generated                                                      
+[     PASS     ] tab_nat_outcomes.tex is generated                                                          
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] tab_nat_subtasks.tex is generated                                                      
+[     PASS     ] tab_nat_subtasks.tex is generated                                                          
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] tab_nat_subtasks_rev.tex is generated                                                  
+[     PASS     ] tab_nat_subtasks_rev.tex is generated                                                      
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_nat_tests.tex is generated                                                         
+[     PASS     ] tab_nat_tests.tex is generated                                                             
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_nat_verifier.tex is generated                                                      
+[     PASS     ] tab_nat_verifier.tex is generated                                                          
                  % generated by scfp_bench.experiments.make_tables_v7 -- do n
-[     PASS     ] tab_outcomes_by_model.tex is generated                                                 
+[     PASS     ] tab_outcomes_by_model.tex is generated                                                     
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_pot_vs_sc.tex is generated                                                         
+[     PASS     ] tab_pot_vs_sc.tex is generated                                                             
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_real_examples.tex is generated                                                     
+[     PASS     ] tab_real_examples.tex is generated                                                         
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_routing.tex is generated                                                           
+[     PASS     ] tab_routing.tex is generated                                                               
                  % generated by scfp_bench.experiments.make_tables -- do not 
-[     PASS     ] tab_routing_rev.tex is generated                                                       
+[     PASS     ] tab_routing_rev.tex is generated                                                           
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_routing_sensitivity.tex is generated                                               
+[     PASS     ] tab_routing_sensitivity.tex is generated                                                   
                  % generated by scfp_bench.experiments.make_tables_revision -
-[     PASS     ] tab_seeds.tex is generated                                                             
+[     PASS     ] tab_seeds.tex is generated                                                                 
                  % generated by scfp_bench.experiments.make_tables_revision -
 
 === B  artifact-based metrics
-[     PASS     ] abl-deberta-xsmall / binary                                                            
+[     PASS     ] abl-deberta-xsmall / binary                                                                
                  N=108, acc=trace/sum=0.5833 [95% CI 0.4907, 0.6759], macro-F1=0.5772, row sums=[58, 50], AUC=0.5786 (continuous scores)
-[     PASS     ] abl-inputs-P-F / binary                                                                
+[     PASS     ] abl-inputs-P-F / binary                                                                    
                  N=108, acc=trace/sum=0.5926 [95% CI 0.5000, 0.6852], macro-F1=0.5913, row sums=[58, 50], AUC=0.6059 (continuous scores)
-[     PASS     ] abl-inputs-P-R0 / binary                                                               
+[     PASS     ] abl-inputs-P-R0 / binary                                                                   
                  N=108, acc=trace/sum=0.5741 [95% CI 0.4722, 0.6574], macro-F1=0.5688, row sums=[58, 50], AUC=0.5338 (continuous scores)
-[     PASS     ] abl-inputs-R0-F / binary                                                               
+[     PASS     ] abl-inputs-R0-F / binary                                                                   
                  N=108, acc=trace/sum=0.5741 [95% CI 0.4815, 0.6667], macro-F1=0.5688, row sums=[58, 50], AUC=0.6066 (continuous scores)
-[     PASS     ] abl-no-attention / binary                                                              
+[     PASS     ] abl-no-attention / binary                                                                  
                  N=108, acc=trace/sum=0.5833 [95% CI 0.4907, 0.6669], macro-F1=0.5830, row sums=[58, 50], AUC=0.5997 (continuous scores)
-[     PASS     ] abl-no-segments / binary                                                               
+[     PASS     ] abl-no-segments / binary                                                                   
                  N=108, acc=trace/sum=0.6111 [95% CI 0.5185, 0.7037], macro-F1=0.6110, row sums=[58, 50], AUC=0.6421 (continuous scores)
-[     PASS     ] bert-base / binary                                                                     
+[     PASS     ] bert-base / binary                                                                         
                  N=108, acc=trace/sum=0.6019 [95% CI 0.5185, 0.6852], macro-F1=0.6002, row sums=[58, 50], AUC=0.5838 (continuous scores)
-[     PASS     ] confidence / binary                                                                    
+[     PASS     ] confidence / binary                                                                        
                  N=108, acc=trace/sum=0.5370 [95% CI 0.4444, 0.6296], macro-F1=0.5238, row sums=[58, 50], AUC=0.5645 (continuous scores)
-[     PASS     ] deberta-plain / binary                                                                 
+[     PASS     ] deberta-plain / binary                                                                     
                  N=108, acc=trace/sum=0.5556 [95% CI 0.4630, 0.6481], macro-F1=0.5500, row sums=[58, 50], AUC=0.5683 (continuous scores)
-[     PASS     ] deberta-scfp / binary                                                                  
+[     PASS     ] deberta-scfp / binary                                                                      
                  N=108, acc=trace/sum=0.5370 [95% CI 0.4444, 0.6296], macro-F1=0.5356, row sums=[58, 50], AUC=0.5855 (continuous scores)
-[     PASS     ] length / binary                                                                        
+[     PASS     ] length / binary                                                                            
                  N=108, acc=trace/sum=0.5556 [95% CI 0.4627, 0.6481], macro-F1=0.4764, row sums=[58, 50], AUC=0.5103 (continuous scores)
-[     PASS     ] majority / binary                                                                      
+[     PASS     ] majority / binary                                                                          
                  N=108, acc=trace/sum=0.5370 [95% CI 0.4352, 0.6296], macro-F1=0.3494, row sums=[58, 50], AUC=0.5000 (continuous scores)
-[     PASS     ] random / binary                                                                        
+[     PASS     ] random / binary                                                                            
                  N=108, acc=trace/sum=0.4444 [95% CI 0.3519, 0.5370], macro-F1=0.4437, row sums=[58, 50], AUC=0.4986 (continuous scores)
-[     PASS     ] roberta-base / binary                                                                  
+[     PASS     ] roberta-base / binary                                                                      
                  N=108, acc=trace/sum=0.6111 [95% CI 0.5185, 0.6944], macro-F1=0.6062, row sums=[58, 50], AUC=0.6152 (continuous scores)
-[     PASS     ] tfidf_lr / binary                                                                      
+[     PASS     ] tfidf_lr / binary                                                                          
                  N=108, acc=trace/sum=0.6296 [95% CI 0.5370, 0.7222], macro-F1=0.6285, row sums=[58, 50], AUC=0.6090 (continuous scores)
-[     PASS     ] xmodel-qwen-to-all / binary                                                            
+[     PASS     ] xmodel-qwen-to-all / binary                                                                
                  N=108, acc=trace/sum=0.6019 [95% CI 0.5093, 0.7037], macro-F1=0.5661, row sums=[58, 50], AUC=0.6362 (continuous scores)
 
 === E  v7 natural-set results (recomputed from predictions.jsonl)
-[     PASS     ] qwen2.5-0.5b text_tfidf: AUC, accuracy, macro-F1                                       
+[     PASS     ] qwen2.5-0.5b text_tfidf: AUC, accuracy, macro-F1                                           
                  macro 0.611, recomputed 0.611; macro 59.7, recomputed 59.7; macro 0.589, recomputed 0.589
-[     PASS     ] qwen2.5-0.5b text_tfidf: AUC interval contains the estimate                            
+[     PASS     ] qwen2.5-0.5b text_tfidf: AUC interval contains the estimate                                
                  [0.585, 0.637] vs 0.611
-[     PASS     ] qwen2.5-0.5b signals_noverifier: AUC, accuracy, macro-F1                               
+[     PASS     ] qwen2.5-0.5b signals_noverifier: AUC, accuracy, macro-F1                                   
                  macro 0.616, recomputed 0.616; macro 59.3, recomputed 59.3; macro 0.591, recomputed 0.591
-[     PASS     ] qwen2.5-0.5b signals_noverifier: AUC interval contains the estimate                    
+[     PASS     ] qwen2.5-0.5b signals_noverifier: AUC interval contains the estimate                        
                  [0.59, 0.641] vs 0.616
-[     PASS     ] qwen2.5-0.5b signals_noverifier: McNemar p vs TF-IDF                                   
+[     PASS     ] qwen2.5-0.5b signals_noverifier: McNemar p vs TF-IDF                                       
                  macro = 0.752, recomputed = 0.752
-[     PASS     ] qwen2.5-0.5b signals: AUC, accuracy, macro-F1                                          
+[     PASS     ] qwen2.5-0.5b signals: AUC, accuracy, macro-F1                                              
                  macro 0.732, recomputed 0.732; macro 68.5, recomputed 68.5; macro 0.678, recomputed 0.678
-[     PASS     ] qwen2.5-0.5b signals: AUC interval contains the estimate                               
+[     PASS     ] qwen2.5-0.5b signals: AUC interval contains the estimate                                   
                  [0.709, 0.754] vs 0.732
-[     PASS     ] qwen2.5-0.5b signals: McNemar p vs TF-IDF                                              
+[     PASS     ] qwen2.5-0.5b signals: McNemar p vs TF-IDF                                                  
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] qwen2.5-0.5b signals_gbm: AUC, accuracy, macro-F1                                      
+[     PASS     ] qwen2.5-0.5b signals_gbm: AUC, accuracy, macro-F1                                          
                  macro 0.728, recomputed 0.728; macro 66.5, recomputed 66.5; macro 0.659, recomputed 0.659
-[     PASS     ] qwen2.5-0.5b signals_gbm: AUC interval contains the estimate                           
+[     PASS     ] qwen2.5-0.5b signals_gbm: AUC interval contains the estimate                               
                  [0.705, 0.751] vs 0.728
-[     PASS     ] qwen2.5-0.5b signals_gbm: McNemar p vs TF-IDF                                          
+[     PASS     ] qwen2.5-0.5b signals_gbm: McNemar p vs TF-IDF                                              
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] qwen2.5-0.5b concat_text_signals: AUC, accuracy, macro-F1                              
+[     PASS     ] qwen2.5-0.5b concat_text_signals: AUC, accuracy, macro-F1                                  
                  macro 0.736, recomputed 0.736; macro 68.7, recomputed 68.7; macro 0.680, recomputed 0.68
-[     PASS     ] qwen2.5-0.5b concat_text_signals: AUC interval contains the estimate                   
+[     PASS     ] qwen2.5-0.5b concat_text_signals: AUC interval contains the estimate                       
                  [0.712, 0.757] vs 0.736
-[     PASS     ] qwen2.5-0.5b concat_text_signals: McNemar p vs TF-IDF                                  
+[     PASS     ] qwen2.5-0.5b concat_text_signals: McNemar p vs TF-IDF                                      
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] qwen2.5-0.5b: majority-class rate                                                      
+[     PASS     ] qwen2.5-0.5b: majority-class rate                                                          
                  macro 56.6, recomputed 56.6
-[     PASS     ] qwen2.5-1.5b text_tfidf: AUC, accuracy, macro-F1                                       
+[     PASS     ] qwen2.5-1.5b text_tfidf: AUC, accuracy, macro-F1                                           
                  macro 0.703, recomputed 0.703; macro 68.3, recomputed 68.3; macro 0.665, recomputed 0.665
-[     PASS     ] qwen2.5-1.5b text_tfidf: AUC interval contains the estimate                            
+[     PASS     ] qwen2.5-1.5b text_tfidf: AUC interval contains the estimate                                
                  [0.674, 0.734] vs 0.703
-[     PASS     ] qwen2.5-1.5b signals_noverifier: AUC, accuracy, macro-F1                               
+[     PASS     ] qwen2.5-1.5b signals_noverifier: AUC, accuracy, macro-F1                                   
                  macro 0.740, recomputed 0.74; macro 68.0, recomputed 68.0; macro 0.661, recomputed 0.661
-[     PASS     ] qwen2.5-1.5b signals_noverifier: AUC interval contains the estimate                    
+[     PASS     ] qwen2.5-1.5b signals_noverifier: AUC interval contains the estimate                        
                  [0.711, 0.767] vs 0.740
-[     PASS     ] qwen2.5-1.5b signals_noverifier: McNemar p vs TF-IDF                                   
+[     PASS     ] qwen2.5-1.5b signals_noverifier: McNemar p vs TF-IDF                                       
                  macro = 0.766, recomputed = 0.766
-[     PASS     ] qwen2.5-1.5b signals: AUC, accuracy, macro-F1                                          
+[     PASS     ] qwen2.5-1.5b signals: AUC, accuracy, macro-F1                                              
                  macro 0.750, recomputed 0.75; macro 69.3, recomputed 69.3; macro 0.678, recomputed 0.678
-[     PASS     ] qwen2.5-1.5b signals: AUC interval contains the estimate                               
+[     PASS     ] qwen2.5-1.5b signals: AUC interval contains the estimate                                   
                  [0.722, 0.776] vs 0.750
-[     PASS     ] qwen2.5-1.5b signals: McNemar p vs TF-IDF                                              
+[     PASS     ] qwen2.5-1.5b signals: McNemar p vs TF-IDF                                                  
                  macro = 0.193, recomputed = 0.193
-[     PASS     ] qwen2.5-1.5b signals_gbm: AUC, accuracy, macro-F1                                      
+[     PASS     ] qwen2.5-1.5b signals_gbm: AUC, accuracy, macro-F1                                          
                  macro 0.752, recomputed 0.752; macro 68.9, recomputed 68.9; macro 0.675, recomputed 0.675
-[     PASS     ] qwen2.5-1.5b signals_gbm: AUC interval contains the estimate                           
+[     PASS     ] qwen2.5-1.5b signals_gbm: AUC interval contains the estimate                               
                  [0.724, 0.779] vs 0.752
-[     PASS     ] qwen2.5-1.5b signals_gbm: McNemar p vs TF-IDF                                          
+[     PASS     ] qwen2.5-1.5b signals_gbm: McNemar p vs TF-IDF                                              
                  macro = 0.643, recomputed = 0.643
-[     PASS     ] qwen2.5-1.5b concat_text_signals: AUC, accuracy, macro-F1                              
+[     PASS     ] qwen2.5-1.5b concat_text_signals: AUC, accuracy, macro-F1                                  
                  macro 0.741, recomputed 0.741; macro 69.9, recomputed 69.9; macro 0.673, recomputed 0.673
-[     PASS     ] qwen2.5-1.5b concat_text_signals: AUC interval contains the estimate                   
+[     PASS     ] qwen2.5-1.5b concat_text_signals: AUC interval contains the estimate                       
                  [0.715, 0.769] vs 0.741
-[     PASS     ] qwen2.5-1.5b concat_text_signals: McNemar p vs TF-IDF                                  
+[     PASS     ] qwen2.5-1.5b concat_text_signals: McNemar p vs TF-IDF                                      
                  macro = 0.210, recomputed = 0.210
-[     PASS     ] qwen2.5-1.5b: majority-class rate                                                      
+[     PASS     ] qwen2.5-1.5b: majority-class rate                                                          
                  macro 66.7, recomputed 66.7
-[     PASS     ] smollm2-1.7b text_tfidf: AUC, accuracy, macro-F1                                       
+[     PASS     ] smollm2-1.7b text_tfidf: AUC, accuracy, macro-F1                                           
                  macro 0.606, recomputed 0.606; macro 58.9, recomputed 58.9; macro 0.588, recomputed 0.588
-[     PASS     ] smollm2-1.7b text_tfidf: AUC interval contains the estimate                            
+[     PASS     ] smollm2-1.7b text_tfidf: AUC interval contains the estimate                                
                  [0.58, 0.632] vs 0.606
-[     PASS     ] smollm2-1.7b signals_noverifier: AUC, accuracy, macro-F1                               
+[     PASS     ] smollm2-1.7b signals_noverifier: AUC, accuracy, macro-F1                                   
                  macro 0.632, recomputed 0.632; macro 60.6, recomputed 60.6; macro 0.605, recomputed 0.605
-[     PASS     ] smollm2-1.7b signals_noverifier: AUC interval contains the estimate                    
+[     PASS     ] smollm2-1.7b signals_noverifier: AUC interval contains the estimate                        
                  [0.606, 0.659] vs 0.632
-[     PASS     ] smollm2-1.7b signals_noverifier: McNemar p vs TF-IDF                                   
+[     PASS     ] smollm2-1.7b signals_noverifier: McNemar p vs TF-IDF                                       
                  macro = 0.181, recomputed = 0.181
-[     PASS     ] smollm2-1.7b signals: AUC, accuracy, macro-F1                                          
+[     PASS     ] smollm2-1.7b signals: AUC, accuracy, macro-F1                                              
                  macro 0.708, recomputed 0.708; macro 67.3, recomputed 67.3; macro 0.671, recomputed 0.671
-[     PASS     ] smollm2-1.7b signals: AUC interval contains the estimate                               
+[     PASS     ] smollm2-1.7b signals: AUC interval contains the estimate                                   
                  [0.686, 0.733] vs 0.708
-[     PASS     ] smollm2-1.7b signals: McNemar p vs TF-IDF                                              
+[     PASS     ] smollm2-1.7b signals: McNemar p vs TF-IDF                                                  
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] smollm2-1.7b signals_gbm: AUC, accuracy, macro-F1                                      
+[     PASS     ] smollm2-1.7b signals_gbm: AUC, accuracy, macro-F1                                          
                  macro 0.696, recomputed 0.696; macro 66.5, recomputed 66.5; macro 0.662, recomputed 0.662
-[     PASS     ] smollm2-1.7b signals_gbm: AUC interval contains the estimate                           
+[     PASS     ] smollm2-1.7b signals_gbm: AUC interval contains the estimate                               
                  [0.672, 0.721] vs 0.696
-[     PASS     ] smollm2-1.7b signals_gbm: McNemar p vs TF-IDF                                          
+[     PASS     ] smollm2-1.7b signals_gbm: McNemar p vs TF-IDF                                              
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] smollm2-1.7b concat_text_signals: AUC, accuracy, macro-F1                              
+[     PASS     ] smollm2-1.7b concat_text_signals: AUC, accuracy, macro-F1                                  
                  macro 0.710, recomputed 0.71; macro 67.0, recomputed 67.0; macro 0.668, recomputed 0.668
-[     PASS     ] smollm2-1.7b concat_text_signals: AUC interval contains the estimate                   
+[     PASS     ] smollm2-1.7b concat_text_signals: AUC interval contains the estimate                       
                  [0.686, 0.734] vs 0.710
-[     PASS     ] smollm2-1.7b concat_text_signals: McNemar p vs TF-IDF                                  
+[     PASS     ] smollm2-1.7b concat_text_signals: McNemar p vs TF-IDF                                      
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] smollm2-1.7b: majority-class rate                                                      
+[     PASS     ] smollm2-1.7b: majority-class rate                                                          
                  macro 52.9, recomputed 52.9
-[     PASS     ] qwen2.5-3b text_tfidf: AUC, accuracy, macro-F1                                         
+[     PASS     ] qwen2.5-3b text_tfidf: AUC, accuracy, macro-F1                                             
                  macro 0.744, recomputed 0.744; macro 71.5, recomputed 71.5; macro 0.645, recomputed 0.645
-[     PASS     ] qwen2.5-3b text_tfidf: AUC interval contains the estimate                              
+[     PASS     ] qwen2.5-3b text_tfidf: AUC interval contains the estimate                                  
                  [0.722, 0.765] vs 0.744
-[     PASS     ] qwen2.5-3b signals_noverifier: AUC, accuracy, macro-F1                                 
+[     PASS     ] qwen2.5-3b signals_noverifier: AUC, accuracy, macro-F1                                     
                  macro 0.771, recomputed 0.771; macro 67.3, recomputed 67.3; macro 0.648, recomputed 0.648
-[     PASS     ] qwen2.5-3b signals_noverifier: AUC interval contains the estimate                      
+[     PASS     ] qwen2.5-3b signals_noverifier: AUC interval contains the estimate                          
                  [0.751, 0.793] vs 0.771
-[     PASS     ] qwen2.5-3b signals_noverifier: McNemar p vs TF-IDF                                     
+[     PASS     ] qwen2.5-3b signals_noverifier: McNemar p vs TF-IDF                                         
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] qwen2.5-3b signals: AUC, accuracy, macro-F1                                            
+[     PASS     ] qwen2.5-3b signals: AUC, accuracy, macro-F1                                                
                  macro 0.787, recomputed 0.787; macro 67.9, recomputed 67.9; macro 0.655, recomputed 0.655
-[     PASS     ] qwen2.5-3b signals: AUC interval contains the estimate                                 
+[     PASS     ] qwen2.5-3b signals: AUC interval contains the estimate                                     
                  [0.767, 0.807] vs 0.787
-[     PASS     ] qwen2.5-3b signals: McNemar p vs TF-IDF                                                
+[     PASS     ] qwen2.5-3b signals: McNemar p vs TF-IDF                                                    
                  macro = 0.002, recomputed = 0.002
-[     PASS     ] qwen2.5-3b signals_gbm: AUC, accuracy, macro-F1                                        
+[     PASS     ] qwen2.5-3b signals_gbm: AUC, accuracy, macro-F1                                            
                  macro 0.794, recomputed 0.794; macro 68.2, recomputed 68.2; macro 0.660, recomputed 0.66
-[     PASS     ] qwen2.5-3b signals_gbm: AUC interval contains the estimate                             
+[     PASS     ] qwen2.5-3b signals_gbm: AUC interval contains the estimate                                 
                  [0.773, 0.814] vs 0.794
-[     PASS     ] qwen2.5-3b signals_gbm: McNemar p vs TF-IDF                                            
+[     PASS     ] qwen2.5-3b signals_gbm: McNemar p vs TF-IDF                                                
                  macro = 0.008, recomputed = 0.008
-[     PASS     ] qwen2.5-3b concat_text_signals: AUC, accuracy, macro-F1                                
+[     PASS     ] qwen2.5-3b concat_text_signals: AUC, accuracy, macro-F1                                    
                  macro 0.793, recomputed 0.793; macro 73.6, recomputed 73.6; macro 0.673, recomputed 0.673
-[     PASS     ] qwen2.5-3b concat_text_signals: AUC interval contains the estimate                     
+[     PASS     ] qwen2.5-3b concat_text_signals: AUC interval contains the estimate                         
                  [0.773, 0.812] vs 0.793
-[     PASS     ] qwen2.5-3b concat_text_signals: McNemar p vs TF-IDF                                    
+[     PASS     ] qwen2.5-3b concat_text_signals: McNemar p vs TF-IDF                                        
                  macro = 0.019, recomputed = 0.019
-[     PASS     ] qwen2.5-3b: majority-class rate                                                        
+[     PASS     ] qwen2.5-3b: majority-class rate                                                            
                  macro 74.0, recomputed 74.0
-[     PASS     ] pooled text_tfidf: AUC, accuracy, macro-F1                                             
+[     PASS     ] pooled text_tfidf: AUC, accuracy, macro-F1                                                 
                  macro 0.676, recomputed 0.676; macro 64.3, recomputed 64.3; macro 0.638, recomputed 0.638
-[     PASS     ] pooled text_tfidf: AUC interval contains the estimate                                  
+[     PASS     ] pooled text_tfidf: AUC interval contains the estimate                                      
                  [0.664, 0.687] vs 0.676
-[     PASS     ] pooled signals_noverifier: AUC, accuracy, macro-F1                                     
+[     PASS     ] pooled signals_noverifier: AUC, accuracy, macro-F1                                         
                  macro 0.685, recomputed 0.685; macro 63.5, recomputed 63.5; macro 0.631, recomputed 0.631
-[     PASS     ] pooled signals_noverifier: AUC interval contains the estimate                          
+[     PASS     ] pooled signals_noverifier: AUC interval contains the estimate                              
                  [0.673, 0.697] vs 0.685
-[     PASS     ] pooled signals_noverifier: McNemar p vs TF-IDF                                         
+[     PASS     ] pooled signals_noverifier: McNemar p vs TF-IDF                                             
                  macro = 0.136, recomputed = 0.136
-[     PASS     ] pooled signals: AUC, accuracy, macro-F1                                                
+[     PASS     ] pooled signals: AUC, accuracy, macro-F1                                                    
                  macro 0.749, recomputed 0.749; macro 68.1, recomputed 68.1; macro 0.680, recomputed 0.68
-[     PASS     ] pooled signals: AUC interval contains the estimate                                     
+[     PASS     ] pooled signals: AUC interval contains the estimate                                         
                  [0.736, 0.761] vs 0.749
-[     PASS     ] pooled signals: McNemar p vs TF-IDF                                                    
+[     PASS     ] pooled signals: McNemar p vs TF-IDF                                                        
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] pooled signals_gbm: AUC, accuracy, macro-F1                                            
+[     PASS     ] pooled signals_gbm: AUC, accuracy, macro-F1                                                
                  macro 0.744, recomputed 0.744; macro 67.4, recomputed 67.4; macro 0.674, recomputed 0.674
-[     PASS     ] pooled signals_gbm: AUC interval contains the estimate                                 
+[     PASS     ] pooled signals_gbm: AUC interval contains the estimate                                     
                  [0.733, 0.756] vs 0.744
-[     PASS     ] pooled signals_gbm: McNemar p vs TF-IDF                                                
+[     PASS     ] pooled signals_gbm: McNemar p vs TF-IDF                                                    
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] pooled concat_text_signals: AUC, accuracy, macro-F1                                    
+[     PASS     ] pooled concat_text_signals: AUC, accuracy, macro-F1                                        
                  macro 0.763, recomputed 0.763; macro 69.8, recomputed 69.8; macro 0.694, recomputed 0.694
-[     PASS     ] pooled concat_text_signals: AUC interval contains the estimate                         
+[     PASS     ] pooled concat_text_signals: AUC interval contains the estimate                             
                  [0.751, 0.775] vs 0.763
-[     PASS     ] pooled concat_text_signals: McNemar p vs TF-IDF                                        
+[     PASS     ] pooled concat_text_signals: McNemar p vs TF-IDF                                            
                  macro < 0.001, recomputed < 0.001
-[     PASS     ] pooled: majority-class rate                                                            
+[     PASS     ] pooled: majority-class rate                                                                
                  macro 57.3, recomputed 57.3
-[     PASS     ] prose: the predictor named as best per generator has the highest AUC                   
+[     PASS     ] prose: the predictor named as best per generator has the highest AUC                       
                  {'qwen2.5-0.5b': 'concat_text_signals', 'qwen2.5-1.5b': 'signals_gbm', 'smollm2-1.7b': 'concat_text_signals', 'qwen2.5-3b': 'signals_gbm'}
-[     PASS     ] prose: best-AUC range runs from SmolLM2 (min) to Qwen2.5-3B (max)                      
+[     PASS     ] prose: best-AUC range runs from SmolLM2 (min) to Qwen2.5-3B (max)                          
                  {'qwen2.5-0.5b': 0.736, 'qwen2.5-1.5b': 0.752, 'smollm2-1.7b': 0.71, 'qwen2.5-3b': 0.794}
-[     PASS     ] prose: text-only AUC range runs from SmolLM2 (min) to Qwen2.5-3B (max)                 
+[     PASS     ] prose: text-only AUC range runs from SmolLM2 (min) to Qwen2.5-3B (max)                     
                  {'qwen2.5-0.5b': 0.611, 'qwen2.5-1.5b': 0.703, 'smollm2-1.7b': 0.606, 'qwen2.5-3b': 0.744}
-[     PASS     ] prose: significantly above text for three of four generators (not Qwen2.5-1.5B)        
+[     PASS     ] prose: significantly above text for three of four generators (not Qwen2.5-1.5B)            
                  concat p: {'qwen2.5-0.5b': '< 0.001', 'qwen2.5-1.5b': '= 0.210', 'smollm2-1.7b': '< 0.001', 'qwen2.5-3b': '= 0.019'}; Qwen2.5-1.5B: ['= 0.766', '= 0.193', '= 0.643', '= 0.210']
-[     PASS     ] prose: no predictor significantly above the majority class (qwen2.5-1.5b)              
+[     PASS     ] prose: no predictor significantly above the majority class (qwen2.5-1.5b)                  
                  significant: []
-[     PASS     ] prose: no predictor significantly above the majority class (qwen2.5-3b)                
+[     PASS     ] prose: no predictor significantly above the majority class (qwen2.5-3b)                    
                  significant: []
-[     PASS     ] qwen2.5-0.5b gsm8k text_tfidf: AUC by source                                           
+[     PASS     ] qwen2.5-0.5b gsm8k text_tfidf: AUC by source                                               
                  macro 0.646, recomputed 0.646
-[     PASS     ] qwen2.5-0.5b gsm8k signals_noverifier: AUC by source                                   
+[     PASS     ] qwen2.5-0.5b gsm8k signals_noverifier: AUC by source                                       
                  macro 0.619, recomputed 0.619
-[     PASS     ] qwen2.5-0.5b gsm8k signals: AUC by source                                              
+[     PASS     ] qwen2.5-0.5b gsm8k signals: AUC by source                                                  
                  macro 0.810, recomputed 0.81
-[     PASS     ] qwen2.5-0.5b strategyqa text_tfidf: AUC by source                                      
+[     PASS     ] qwen2.5-0.5b strategyqa text_tfidf: AUC by source                                          
                  macro 0.467, recomputed 0.467
-[     PASS     ] qwen2.5-0.5b strategyqa signals_noverifier: AUC by source                              
+[     PASS     ] qwen2.5-0.5b strategyqa signals_noverifier: AUC by source                                  
                  macro 0.535, recomputed 0.535
-[     PASS     ] qwen2.5-0.5b strategyqa signals: AUC by source                                         
+[     PASS     ] qwen2.5-0.5b strategyqa signals: AUC by source                                             
                  macro 0.523, recomputed 0.523
-[     PASS     ] qwen2.5-0.5b logiqa text_tfidf: AUC by source                                          
+[     PASS     ] qwen2.5-0.5b logiqa text_tfidf: AUC by source                                              
                  macro 0.579, recomputed 0.579
-[     PASS     ] qwen2.5-0.5b logiqa signals_noverifier: AUC by source                                  
+[     PASS     ] qwen2.5-0.5b logiqa signals_noverifier: AUC by source                                      
                  macro 0.499, recomputed 0.499
-[     PASS     ] qwen2.5-0.5b logiqa signals: AUC by source                                             
+[     PASS     ] qwen2.5-0.5b logiqa signals: AUC by source                                                 
                  macro 0.512, recomputed 0.512
-[     PASS     ] qwen2.5-1.5b gsm8k text_tfidf: AUC by source                                           
+[     PASS     ] qwen2.5-1.5b gsm8k text_tfidf: AUC by source                                               
                  macro 0.580, recomputed 0.58
-[     PASS     ] qwen2.5-1.5b gsm8k signals_noverifier: AUC by source                                   
+[     PASS     ] qwen2.5-1.5b gsm8k signals_noverifier: AUC by source                                       
                  macro 0.719, recomputed 0.719
-[     PASS     ] qwen2.5-1.5b gsm8k signals: AUC by source                                              
+[     PASS     ] qwen2.5-1.5b gsm8k signals: AUC by source                                                  
                  macro 0.758, recomputed 0.758
-[     PASS     ] qwen2.5-1.5b strategyqa text_tfidf: AUC by source                                      
+[     PASS     ] qwen2.5-1.5b strategyqa text_tfidf: AUC by source                                          
                  macro 0.514, recomputed 0.514
-[     PASS     ] qwen2.5-1.5b strategyqa signals_noverifier: AUC by source                              
+[     PASS     ] qwen2.5-1.5b strategyqa signals_noverifier: AUC by source                                  
                  macro 0.474, recomputed 0.474
-[     PASS     ] qwen2.5-1.5b strategyqa signals: AUC by source                                         
+[     PASS     ] qwen2.5-1.5b strategyqa signals: AUC by source                                             
                  macro 0.474, recomputed 0.474
-[     PASS     ] qwen2.5-1.5b logiqa text_tfidf: AUC by source                                          
+[     PASS     ] qwen2.5-1.5b logiqa text_tfidf: AUC by source                                              
                  macro 0.527, recomputed 0.527
-[     PASS     ] qwen2.5-1.5b logiqa signals_noverifier: AUC by source                                  
+[     PASS     ] qwen2.5-1.5b logiqa signals_noverifier: AUC by source                                      
                  macro 0.589, recomputed 0.589
-[     PASS     ] qwen2.5-1.5b logiqa signals: AUC by source                                             
+[     PASS     ] qwen2.5-1.5b logiqa signals: AUC by source                                                 
                  macro 0.576, recomputed 0.576
-[     PASS     ] smollm2-1.7b gsm8k text_tfidf: AUC by source                                           
+[     PASS     ] smollm2-1.7b gsm8k text_tfidf: AUC by source                                               
                  macro 0.588, recomputed 0.588
-[     PASS     ] smollm2-1.7b gsm8k signals_noverifier: AUC by source                                   
+[     PASS     ] smollm2-1.7b gsm8k signals_noverifier: AUC by source                                       
                  macro 0.598, recomputed 0.598
-[     PASS     ] smollm2-1.7b gsm8k signals: AUC by source                                              
+[     PASS     ] smollm2-1.7b gsm8k signals: AUC by source                                                  
                  macro 0.760, recomputed 0.76
-[     PASS     ] smollm2-1.7b strategyqa text_tfidf: AUC by source                                      
+[     PASS     ] smollm2-1.7b strategyqa text_tfidf: AUC by source                                          
                  macro 0.523, recomputed 0.523
-[     PASS     ] smollm2-1.7b strategyqa signals_noverifier: AUC by source                              
+[     PASS     ] smollm2-1.7b strategyqa signals_noverifier: AUC by source                                  
                  macro 0.520, recomputed 0.52
-[     PASS     ] smollm2-1.7b strategyqa signals: AUC by source                                         
+[     PASS     ] smollm2-1.7b strategyqa signals: AUC by source                                             
                  macro 0.520, recomputed 0.52
-[     PASS     ] smollm2-1.7b logiqa text_tfidf: AUC by source                                          
+[     PASS     ] smollm2-1.7b logiqa text_tfidf: AUC by source                                              
                  macro 0.503, recomputed 0.503
-[     PASS     ] smollm2-1.7b logiqa signals_noverifier: AUC by source                                  
+[     PASS     ] smollm2-1.7b logiqa signals_noverifier: AUC by source                                      
                  macro 0.525, recomputed 0.525
-[     PASS     ] smollm2-1.7b logiqa signals: AUC by source                                             
+[     PASS     ] smollm2-1.7b logiqa signals: AUC by source                                                 
                  macro 0.534, recomputed 0.534
-[     PASS     ] qwen2.5-3b gsm8k text_tfidf: AUC by source                                             
+[     PASS     ] qwen2.5-3b gsm8k text_tfidf: AUC by source                                                 
                  macro 0.673, recomputed 0.673
-[     PASS     ] qwen2.5-3b gsm8k signals_noverifier: AUC by source                                     
+[     PASS     ] qwen2.5-3b gsm8k signals_noverifier: AUC by source                                         
                  macro 0.777, recomputed 0.777
-[     PASS     ] qwen2.5-3b gsm8k signals: AUC by source                                                
+[     PASS     ] qwen2.5-3b gsm8k signals: AUC by source                                                    
                  macro 0.895, recomputed 0.895
-[     PASS     ] qwen2.5-3b strategyqa text_tfidf: AUC by source                                        
+[     PASS     ] qwen2.5-3b strategyqa text_tfidf: AUC by source                                            
                  macro 0.537, recomputed 0.537
-[     PASS     ] qwen2.5-3b strategyqa signals_noverifier: AUC by source                                
+[     PASS     ] qwen2.5-3b strategyqa signals_noverifier: AUC by source                                    
                  macro 0.596, recomputed 0.596
-[     PASS     ] qwen2.5-3b strategyqa signals: AUC by source                                           
+[     PASS     ] qwen2.5-3b strategyqa signals: AUC by source                                               
                  macro 0.600, recomputed 0.6
-[     PASS     ] qwen2.5-3b logiqa text_tfidf: AUC by source                                            
+[     PASS     ] qwen2.5-3b logiqa text_tfidf: AUC by source                                                
                  macro 0.550, recomputed 0.55
-[     PASS     ] qwen2.5-3b logiqa signals_noverifier: AUC by source                                    
+[     PASS     ] qwen2.5-3b logiqa signals_noverifier: AUC by source                                        
                  macro 0.592, recomputed 0.592
-[     PASS     ] qwen2.5-3b logiqa signals: AUC by source                                               
+[     PASS     ] qwen2.5-3b logiqa signals: AUC by source                                                   
                  macro 0.590, recomputed 0.59
-[     PASS     ] prose: StrategyQA and LogiQA AUC between 0.47 and 0.60 for every feature set           
+[     PASS     ] prose: StrategyQA and LogiQA AUC between 0.47 and 0.60 for every feature set               
                  min 0.47, max 0.6
-[     PASS     ] qwen2.5-0.5b: SCFP v1 text AUC                                                         
+[     PASS     ] qwen2.5-0.5b: SCFP v1 text AUC                                                             
                  macro 0.511, recomputed 0.511; n 244
-[     PASS     ] qwen2.5-1.5b: SCFP v1 text AUC                                                         
+[     PASS     ] qwen2.5-1.5b: SCFP v1 text AUC                                                             
                  macro 0.777, recomputed 0.777; n 177
-[     PASS     ] smollm2-1.7b: SCFP v1 text AUC                                                         
+[     PASS     ] smollm2-1.7b: SCFP v1 text AUC                                                             
                  macro 0.572, recomputed 0.572; n 295
-[     PASS     ] qwen2.5-0.5b: natural-set outcome statistics                                           
+[     PASS     ] qwen2.5-0.5b: natural-set outcome statistics                                               
                  macro 2,000, recomputed 2000; macro 1,718, recomputed 1718; macro 32.3, recomputed 32.3; macro 43.4, recomputed 43.4; macro 32.7, recomputed 32.7; macro 34.2, recomputed 34.2; macro 56.6, recomputed 56.6
-[     PASS     ] prose: self-correction raised final accuracy (qwen2.5-0.5b)                            
+[     PASS     ] prose: self-correction raised final accuracy (qwen2.5-0.5b)                                
                  0.323 -> 0.434
-[     PASS     ] qwen2.5-1.5b: natural-set outcome statistics                                           
+[     PASS     ] qwen2.5-1.5b: natural-set outcome statistics                                               
                  macro 2,000, recomputed 2000; macro 1,236, recomputed 1236; macro 70.2, recomputed 70.2; macro 66.7, recomputed 66.7; macro 26.1, recomputed 26.1; macro 16.0, recomputed 16.0; macro 33.3, recomputed 33.3
-[     PASS     ] prose: self-correction lowered final accuracy (qwen2.5-1.5b)                           
+[     PASS     ] prose: self-correction lowered final accuracy (qwen2.5-1.5b)                               
                  0.702 -> 0.667
-[     PASS     ] smollm2-1.7b: natural-set outcome statistics                                           
+[     PASS     ] smollm2-1.7b: natural-set outcome statistics                                               
                  macro 2,000, recomputed 2000; macro 1,950, recomputed 1950; macro 41.8, recomputed 41.8; macro 47.1, recomputed 47.1; macro 22.5, recomputed 22.5; macro 18.6, recomputed 18.6; macro 52.9, recomputed 52.9
-[     PASS     ] prose: self-correction raised final accuracy (smollm2-1.7b)                            
+[     PASS     ] prose: self-correction raised final accuracy (smollm2-1.7b)                                
                  0.418 -> 0.471
-[     PASS     ] qwen2.5-3b: natural-set outcome statistics                                             
+[     PASS     ] qwen2.5-3b: natural-set outcome statistics                                                 
                  macro 2,000, recomputed 2000; macro 1,920, recomputed 1920; macro 75.9, recomputed 75.9; macro 74.0, recomputed 74.0; macro 18.6, recomputed 18.6; macro 8.4, recomputed 8.4; macro 26.0, recomputed 26.0
-[     PASS     ] prose: self-correction lowered final accuracy (qwen2.5-3b)                             
+[     PASS     ] prose: self-correction lowered final accuracy (qwen2.5-3b)                                 
                  0.759 -> 0.740
-[     PASS     ] total natural-set traces                                                               
+[     PASS     ] total natural-set traces                                                                   
                  macro 6,824, recomputed 6824
-[     PASS     ] pooled n equals the sum of generators                                                  
+[     PASS     ] pooled n equals the sum of generators                                                      
                  6824 vs 6824
-[     PASS     ] sub-task r0_wrong: macros match results.json                                           
+[     PASS     ] sub-task r0_wrong: macros match results.json                                               
                  {'qwen2.5-0.5b': 0.773, 'qwen2.5-1.5b': 0.776, 'smollm2-1.7b': 0.766, 'qwen2.5-3b': 0.757}
-[     PASS     ] sub-task changed: macros match results.json                                            
+[     PASS     ] sub-task changed: macros match results.json                                                
                  {'qwen2.5-0.5b': 0.902, 'qwen2.5-1.5b': 0.816, 'smollm2-1.7b': 0.904, 'qwen2.5-3b': 0.954}
-[     PASS     ] sub-task repair: macros match results.json                                             
+[     PASS     ] sub-task repair: macros match results.json                                                 
                  {'qwen2.5-0.5b': 0.852, 'qwen2.5-1.5b': 0.749, 'smollm2-1.7b': 0.828, 'qwen2.5-3b': 0.931}
-[     PASS     ] sub-task harm: macros match results.json                                               
+[     PASS     ] sub-task harm: macros match results.json                                                   
                  {'qwen2.5-0.5b': 0.812, 'qwen2.5-1.5b': 0.811, 'smollm2-1.7b': 0.827, 'qwen2.5-3b': 0.963}
-[     PASS     ] prose: sub-task Changed range runs from QB (min) to QC (max)                           
+[     PASS     ] prose: sub-task Changed range runs from QB (min) to QC (max)                               
                  {'QA': 0.902, 'QB': 0.816, 'SM': 0.904, 'QC': 0.954}
-[     PASS     ] prose: sub-task Repair range runs from QB (min) to QC (max)                            
+[     PASS     ] prose: sub-task Repair range runs from QB (min) to QC (max)                                
                  {'QA': 0.852, 'QB': 0.749, 'SM': 0.828, 'QC': 0.931}
-[     PASS     ] prose: sub-task Harm range runs from QB (min) to QC (max)                              
+[     PASS     ] prose: sub-task Harm range runs from QB (min) to QC (max)                                  
                  {'QA': 0.812, 'QB': 0.811, 'SM': 0.827, 'QC': 0.963}
-[     PASS     ] prose: sub-task Rzero range runs from QC (min) to QB (max)                             
+[     PASS     ] prose: sub-task Rzero range runs from QC (min) to QB (max)                                 
                  {'QA': 0.773, 'QB': 0.776, 'SM': 0.766, 'QC': 0.757}
-[     PASS     ] every v7 macro in the manuscript is generated                                          
+[     PASS     ] every v7 macro in the manuscript is generated                                              
                  29 used, missing []
-[     PASS     ] every \input table exists                                                              
-                 27 inputs, absent []
-[     PASS     ] prose: signals without the verifier add at most 0.04 AUC to text                       
+[     PASS     ] every \input table exists                                                                  
+                 28 inputs, absent []
+[     PASS     ] prose: signals without the verifier add at most 0.04 AUC to text                           
                  {'QA': 0.005, 'QB': 0.037, 'SM': 0.026, 'QC': 0.027}
-[     PASS     ] prose: for Qwen2.5-1.5B, signals without the verifier give most of the gain over text  
+[     PASS     ] prose: for Qwen2.5-1.5B, signals without the verifier give most of the gain over text      
                  no-verifier gain 0.037, verifier adds 0.012
-[     PASS     ] prose: pooled, most of the gain over text comes with the verifier                      
+[     PASS     ] prose: pooled, most of the gain over text comes with the verifier                          
                  no-verifier 0.009, verifier 0.078
-[     PASS     ] prose: no hidden-state probe exceeds the signals without the verifier                  
+[     PASS     ] prose: no hidden-state probe exceeds the signals without the verifier                      
                  {'QA': (0.593, 0.56, 0.616), 'QB': (0.72, 0.718, 0.74), 'SM': (0.624, 0.594, 0.632), 'QC': (0.747, 0.759, 0.771)}
 
 === F  revision (recomputed from raw logs)
-[     PASS     ] M4: R0-only accuracy                                                                   
+[     PASS     ] M4: R0-only accuracy                                                                       
                  73.3 vs 73.3
-[     PASS     ] M4: R0-only relative cost                                                              
+[     PASS     ] M4: R0-only relative cost                                                                  
                  0.17 vs 0.17
-[     PASS     ] M4: R0-only latency                                                                    
+[     PASS     ] M4: R0-only latency                                                                        
                  19.2 vs 19.2
-[     PASS     ] M4: McNemar R0-only vs intrinsic                                                       
+[     PASS     ] M4: McNemar R0-only vs intrinsic                                                           
                  0.523 vs 0.523
-[     PASS     ] M4: McNemar R0-only vs extrinsic                                                       
+[     PASS     ] M4: McNemar R0-only vs extrinsic                                                           
                  0.013 vs 0.013
-[     PASS     ] M4: DeBERTa AURC                                                                       
+[     PASS     ] M4: DeBERTa AURC                                                                           
                  0.236 vs 0.236
-[     PASS     ] M4: random AURC equals the intrinsic error rate                                        
+[     PASS     ] M4: random AURC equals the intrinsic error rate                                            
                  
-[     PASS     ] M5: within-source AUC qwen2.5-0.5b text_tfidf                                          
+[     PASS     ] M5: within-source AUC qwen2.5-0.5b text_tfidf                                              
                  0.575 vs 0.575
-[     PASS     ] M5: within-source AUC qwen2.5-0.5b signals_noverifier                                  
+[     PASS     ] M5: within-source AUC qwen2.5-0.5b signals_noverifier                                      
                  0.563 vs 0.563
-[     PASS     ] M5: within-source AUC qwen2.5-0.5b signals                                             
+[     PASS     ] M5: within-source AUC qwen2.5-0.5b signals                                                 
                  0.648 vs 0.648
-[     PASS     ] M5: within-source AUC qwen2.5-0.5b signals_gbm                                         
+[     PASS     ] M5: within-source AUC qwen2.5-0.5b signals_gbm                                             
                  0.664 vs 0.664
-[     PASS     ] M5: within-source AUC qwen2.5-0.5b concat_text_signals                                 
+[     PASS     ] M5: within-source AUC qwen2.5-0.5b concat_text_signals                                     
                  0.656 vs 0.656
-[     PASS     ] M5: within-source AUC qwen2.5-1.5b text_tfidf                                          
+[     PASS     ] M5: within-source AUC qwen2.5-1.5b text_tfidf                                              
                  0.555 vs 0.555
-[     PASS     ] M5: within-source AUC qwen2.5-1.5b signals_noverifier                                  
+[     PASS     ] M5: within-source AUC qwen2.5-1.5b signals_noverifier                                      
                  0.647 vs 0.647
-[     PASS     ] M5: within-source AUC qwen2.5-1.5b signals                                             
+[     PASS     ] M5: within-source AUC qwen2.5-1.5b signals                                                 
                  0.665 vs 0.665
-[     PASS     ] M5: within-source AUC qwen2.5-1.5b signals_gbm                                         
+[     PASS     ] M5: within-source AUC qwen2.5-1.5b signals_gbm                                             
                  0.667 vs 0.667
-[     PASS     ] M5: within-source AUC qwen2.5-1.5b concat_text_signals                                 
+[     PASS     ] M5: within-source AUC qwen2.5-1.5b concat_text_signals                                     
                  0.652 vs 0.652
-[     PASS     ] M5: within-source AUC smollm2-1.7b text_tfidf                                          
+[     PASS     ] M5: within-source AUC smollm2-1.7b text_tfidf                                              
                  0.544 vs 0.544
-[     PASS     ] M5: within-source AUC smollm2-1.7b signals_noverifier                                  
+[     PASS     ] M5: within-source AUC smollm2-1.7b signals_noverifier                                      
                  0.554 vs 0.554
-[     PASS     ] M5: within-source AUC smollm2-1.7b signals                                             
+[     PASS     ] M5: within-source AUC smollm2-1.7b signals                                                 
                  0.624 vs 0.624
-[     PASS     ] M5: within-source AUC smollm2-1.7b signals_gbm                                         
+[     PASS     ] M5: within-source AUC smollm2-1.7b signals_gbm                                             
                  0.612 vs 0.612
-[     PASS     ] M5: within-source AUC smollm2-1.7b concat_text_signals                                 
+[     PASS     ] M5: within-source AUC smollm2-1.7b concat_text_signals                                     
                  0.634 vs 0.634
-[     PASS     ] M5: within-source AUC qwen2.5-3b text_tfidf                                            
+[     PASS     ] M5: within-source AUC qwen2.5-3b text_tfidf                                                
                  0.600 vs 0.600
-[     PASS     ] M5: within-source AUC qwen2.5-3b signals_noverifier                                    
+[     PASS     ] M5: within-source AUC qwen2.5-3b signals_noverifier                                        
                  0.674 vs 0.674
-[     PASS     ] M5: within-source AUC qwen2.5-3b signals                                               
+[     PASS     ] M5: within-source AUC qwen2.5-3b signals                                                   
                  0.727 vs 0.727
-[     PASS     ] M5: within-source AUC qwen2.5-3b signals_gbm                                           
+[     PASS     ] M5: within-source AUC qwen2.5-3b signals_gbm                                               
                  0.730 vs 0.730
-[     PASS     ] M5: within-source AUC qwen2.5-3b concat_text_signals                                   
+[     PASS     ] M5: within-source AUC qwen2.5-3b concat_text_signals                                       
                  0.734 vs 0.734
-[     PASS     ] M5: pooled within-source AUC text_tfidf                                                
+[     PASS     ] M5: pooled within-source AUC text_tfidf                                                    
                  0.570 vs 0.570
-[     PASS     ] M5: pooled within-source AUC signals_noverifier                                        
+[     PASS     ] M5: pooled within-source AUC signals_noverifier                                            
                  0.607 vs 0.607
-[     PASS     ] M5: pooled within-source AUC signals                                                   
+[     PASS     ] M5: pooled within-source AUC signals                                                       
                  0.666 vs 0.666
-[     PASS     ] M5: pooled within-source AUC signals_gbm                                               
+[     PASS     ] M5: pooled within-source AUC signals_gbm                                                   
                  0.668 vs 0.668
-[     PASS     ] M5: pooled within-source AUC concat_text_signals                                       
+[     PASS     ] M5: pooled within-source AUC concat_text_signals                                           
                  0.671 vs 0.671
-[     PASS     ] M5: SCFP v1.0 within-source text AUC (filter model)                                    
+[     PASS     ] M5: SCFP v1.0 within-source text AUC (filter model)                                        
                  0.455
-[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (qwen2.5-0.5b)              
+[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (qwen2.5-0.5b)                  
                  signals_gbm, CI low 0.057
-[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (qwen2.5-1.5b)              
+[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (qwen2.5-1.5b)                  
                  signals_gbm, CI low 0.062
-[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (smollm2-1.7b)              
+[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (smollm2-1.7b)                  
                  concat_text_signals, CI low 0.065
-[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (qwen2.5-3b)                
+[     PASS     ] M5: best within-source predictor beats text, CI excludes 0 (qwen2.5-3b)                    
                  concat_text_signals, CI low 0.101
-[     PASS     ] M5: sub-task r0_wrong within-source AUC (qwen2.5-0.5b)                                 
+[     PASS     ] M5: sub-task r0_wrong within-source AUC (qwen2.5-0.5b)                                     
                  0.716
-[     PASS     ] M5: sub-task r0_wrong within-source AUC (qwen2.5-1.5b)                                 
+[     PASS     ] M5: sub-task r0_wrong within-source AUC (qwen2.5-1.5b)                                     
                  0.706
-[     PASS     ] M5: sub-task r0_wrong within-source AUC (smollm2-1.7b)                                 
+[     PASS     ] M5: sub-task r0_wrong within-source AUC (smollm2-1.7b)                                     
                  0.660
-[     PASS     ] M5: sub-task r0_wrong within-source AUC (qwen2.5-3b)                                   
+[     PASS     ] M5: sub-task r0_wrong within-source AUC (qwen2.5-3b)                                       
                  0.684
-[     PASS     ] M5: behaviour > R0 correctness holds for the stated number of generators               
+[     PASS     ] M5: behaviour > R0 correctness holds for the stated number of generators                   
                  3
-[     PASS     ] M7: every encoder/ablation/TF-IDF accuracy difference is below the accuracy MDE        
+[     PASS     ] M7: every encoder/ablation/TF-IDF accuracy difference is below the accuracy MDE            
                  max diff 0.093
-[     PASS     ] M7: every encoder/ablation/TF-IDF AUC difference is below the paired-AUC MDE           
+[     PASS     ] M7: every encoder/ablation/TF-IDF AUC difference is below the paired-AUC MDE               
                  max diff 0.108
-[     PASS     ] M7: mean p exceeds the failure rate for the Qwen2.5-1.5B and Qwen2.5-3B best predictors
+[     PASS     ] M7: mean p exceeds the failure rate for the Qwen2.5-1.5B and Qwen2.5-3B best predictors    
                  
-[     PASS     ] M7: R0-only vs extrinsic not significant after Holm                                    
+[     PASS     ] M7: R0-only vs extrinsic not significant after Holm                                        
                  
-[     PASS     ] M6: qwen2.5-0.5b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit  
+[     PASS     ] M6: qwen2.5-0.5b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit      
                  2295 calls, n=765
-[     PASS     ] M6: qwen2.5-0.5b pot - sc1 macro                                                       
+[     PASS     ] M6: qwen2.5-0.5b pot - sc1 macro                                                           
                  +0.160 vs +0.160
-[     PASS     ] M6: qwen2.5-0.5b sc1_pot - sc1 macro                                                   
+[     PASS     ] M6: qwen2.5-0.5b sc1_pot - sc1 macro                                                       
                  +0.161 vs +0.161
-[     PASS     ] M6: qwen2.5-0.5b sc3_pot - sc3 macro                                                   
+[     PASS     ] M6: qwen2.5-0.5b sc3_pot - sc3 macro                                                       
                  +0.160 vs +0.160
-[     PASS     ] M6: qwen2.5-1.5b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit  
+[     PASS     ] M6: qwen2.5-1.5b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit      
                  2091 calls, n=697
-[     PASS     ] M6: qwen2.5-1.5b pot - sc1 macro                                                       
+[     PASS     ] M6: qwen2.5-1.5b pot - sc1 macro                                                           
                  -0.036 vs -0.036
-[     PASS     ] M6: qwen2.5-1.5b sc1_pot - sc1 macro                                                   
+[     PASS     ] M6: qwen2.5-1.5b sc1_pot - sc1 macro                                                       
                  +0.011 vs +0.011
-[     PASS     ] M6: qwen2.5-1.5b sc3_pot - sc3 macro                                                   
+[     PASS     ] M6: qwen2.5-1.5b sc3_pot - sc3 macro                                                       
                  +0.003 vs +0.003
-[     PASS     ] M6: smollm2-1.7b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit  
+[     PASS     ] M6: smollm2-1.7b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit      
                  2445 calls, n=815
-[     PASS     ] M6: smollm2-1.7b pot - sc1 macro                                                       
+[     PASS     ] M6: smollm2-1.7b pot - sc1 macro                                                           
                  +0.066 vs +0.066
-[     PASS     ] M6: smollm2-1.7b sc1_pot - sc1 macro                                                   
+[     PASS     ] M6: smollm2-1.7b sc1_pot - sc1 macro                                                       
                  +0.112 vs +0.112
-[     PASS     ] M6: smollm2-1.7b sc3_pot - sc3 macro                                                   
+[     PASS     ] M6: smollm2-1.7b sc3_pot - sc3 macro                                                       
                  +0.061 vs +0.061
-[     PASS     ] M6: qwen2.5-3b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit    
+[     PASS     ] M6: qwen2.5-3b has 3 logged samples per GSM8K trace at T=0.7 with the pinned commit        
                  2523 calls, n=841
-[     PASS     ] M6: qwen2.5-3b pot - sc1 macro                                                         
+[     PASS     ] M6: qwen2.5-3b pot - sc1 macro                                                             
                  +0.036 vs +0.036
-[     PASS     ] M6: qwen2.5-3b sc1_pot - sc1 macro                                                     
+[     PASS     ] M6: qwen2.5-3b sc1_pot - sc1 macro                                                         
                  +0.065 vs +0.065
-[     PASS     ] M6: qwen2.5-3b sc3_pot - sc3 macro                                                     
+[     PASS     ] M6: qwen2.5-3b sc3_pot - sc3 macro                                                         
                  +0.030 vs +0.030
-[     PASS     ] M6: decision-rule count for sc1_pot - sc1                                              
+[     PASS     ] M6: decision-rule count for sc1_pot - sc1                                                  
                  three vs 3
-[     PASS     ] M6: decision-rule count for pot - sc1                                                  
+[     PASS     ] M6: decision-rule count for pot - sc1                                                      
                  two vs 2
-[     PASS     ] M6: decision-rule count for sc3_pot - sc3                                              
+[     PASS     ] M6: decision-rule count for sc3_pot - sc3                                                  
                  two vs 2
-[     PASS     ] M6: PoT is significantly worse than SC1 for no generator                               
+[     PASS     ] M6: PoT is significantly worse than SC1 for no generator                                   
                  
-[     PASS     ] M6: PoT adds nothing measurable beyond SC1 for Qwen2.5-1.5B (CI includes 0)            
+[     PASS     ] M6: PoT adds nothing measurable beyond SC1 for Qwen2.5-1.5B (CI includes 0)                
                  
-[     PASS     ] M7 seeds: deberta-scfp 5-seed mean/sd of accuracy and AUC                              
+[     PASS     ] M7 seeds: deberta-scfp 5-seed mean/sd of accuracy and AUC                                  
                  acc 0.552±0.027 auc 0.578±0.032
-[     PASS     ] M7 seeds: deberta-plain 5-seed mean/sd of accuracy and AUC                             
+[     PASS     ] M7 seeds: deberta-plain 5-seed mean/sd of accuracy and AUC                                 
                  acc 0.569±0.024 auc 0.581±0.028
-[     PASS     ] M7 seeds: roberta-base 5-seed mean/sd of accuracy and AUC                              
+[     PASS     ] M7 seeds: roberta-base 5-seed mean/sd of accuracy and AUC                                  
                  acc 0.628±0.034 auc 0.623±0.035
-[     PASS     ] M7 seeds: bert-base 5-seed mean/sd of accuracy and AUC                                 
+[     PASS     ] M7 seeds: bert-base 5-seed mean/sd of accuracy and AUC                                     
                  acc 0.583±0.031 auc 0.592±0.039
-[     PASS     ] M7 seeds: abl-no-segments 5-seed mean/sd of accuracy and AUC                           
+[     PASS     ] M7 seeds: abl-no-segments 5-seed mean/sd of accuracy and AUC                               
                  acc 0.591±0.042 auc 0.612±0.025
-[     PASS     ] M7 seeds: abl-no-attention 5-seed mean/sd of accuracy and AUC                          
+[     PASS     ] M7 seeds: abl-no-attention 5-seed mean/sd of accuracy and AUC                              
                  acc 0.591±0.015 auc 0.591±0.018
-[     PASS     ] M7 seeds: abl-inputs-P-R0 5-seed mean/sd of accuracy and AUC                           
+[     PASS     ] M7 seeds: abl-inputs-P-R0 5-seed mean/sd of accuracy and AUC                               
                  acc 0.591±0.030 auc 0.573±0.031
-[     PASS     ] M7 seeds: abl-inputs-P-F 5-seed mean/sd of accuracy and AUC                            
+[     PASS     ] M7 seeds: abl-inputs-P-F 5-seed mean/sd of accuracy and AUC                                
                  acc 0.559±0.054 auc 0.566±0.061
-[     PASS     ] M7 seeds: abl-inputs-R0-F 5-seed mean/sd of accuracy and AUC                           
+[     PASS     ] M7 seeds: abl-inputs-R0-F 5-seed mean/sd of accuracy and AUC                               
                  acc 0.565±0.021 auc 0.586±0.033
-[     PASS     ] M7 seeds: abl-deberta-xsmall 5-seed mean/sd of accuracy and AUC                        
+[     PASS     ] M7 seeds: abl-deberta-xsmall 5-seed mean/sd of accuracy and AUC                            
                  acc 0.561±0.033 auc 0.593±0.029
-[     PASS     ] M7 seeds: our model's accuracy is below TF-IDF for all five seeds                      
+[     PASS     ] M7 seeds: our model's accuracy is below TF-IDF for all five seeds                          
                  
-[     PASS     ] M7 seeds: our model's AUC above TF-IDF for the stated number of seeds                  
+[     PASS     ] M7 seeds: our model's AUC above TF-IDF for the stated number of seeds                      
                  
-[     PASS     ] M7 seeds: no-segments AUC above full for 5/5; other ablations for 2 or 3 of 5          
+[     PASS     ] M7 seeds: no-segments AUC above full for 5/5; other ablations for 2 or 3 of 5              
                  {'abl-no-segments': 5, 'abl-no-attention': 3, 'abl-inputs-P-R0': 2, 'abl-inputs-P-F': 2, 'abl-inputs-R0-F': 3, 'abl-deberta-xsmall': 2}
-[     PASS     ] M7 seeds: every ablation's Holm-adjusted p vs full is 1.000                            
+[     PASS     ] M7 seeds: every ablation's Holm-adjusted p vs full is 1.000                                
                  
-[     PASS     ] M7 seeds: accuracy sd range                                                            
+[     PASS     ] M7 seeds: accuracy sd range                                                                
                  
-[     PASS     ] M9: qwen2.5-0.5b signals predictions equal the paper's saved ones                      
+[     PASS     ] M9: qwen2.5-0.5b signals predictions equal the paper's saved ones                          
                  
-[     PASS     ] M9: qwen2.5-0.5b stacked and signals within-source AUC                                 
+[     PASS     ] M9: qwen2.5-0.5b stacked and signals within-source AUC                                     
                  0.651/0.648 vs 0.651/0.648
-[     PASS     ] M9: qwen2.5-0.5b layers chosen per fold are all valid                                  
+[     PASS     ] M9: qwen2.5-0.5b layers chosen per fold are all valid                                      
                  
-[     PASS     ] M9: qwen2.5-1.5b signals predictions equal the paper's saved ones                      
+[     PASS     ] M9: qwen2.5-1.5b signals predictions equal the paper's saved ones                          
                  
-[     PASS     ] M9: qwen2.5-1.5b stacked and signals within-source AUC                                 
+[     PASS     ] M9: qwen2.5-1.5b stacked and signals within-source AUC                                     
                  0.680/0.665 vs 0.680/0.665
-[     PASS     ] M9: qwen2.5-1.5b layers chosen per fold are all valid                                  
+[     PASS     ] M9: qwen2.5-1.5b layers chosen per fold are all valid                                      
                  
-[     PASS     ] M9: smollm2-1.7b signals predictions equal the paper's saved ones                      
+[     PASS     ] M9: smollm2-1.7b signals predictions equal the paper's saved ones                          
                  
-[     PASS     ] M9: smollm2-1.7b stacked and signals within-source AUC                                 
+[     PASS     ] M9: smollm2-1.7b stacked and signals within-source AUC                                     
                  0.651/0.624 vs 0.651/0.624
-[     PASS     ] M9: smollm2-1.7b layers chosen per fold are all valid                                  
+[     PASS     ] M9: smollm2-1.7b layers chosen per fold are all valid                                      
                  
-[     PASS     ] M9: qwen2.5-3b signals predictions equal the paper's saved ones                        
+[     PASS     ] M9: qwen2.5-3b signals predictions equal the paper's saved ones                            
                  
-[     PASS     ] M9: qwen2.5-3b stacked and signals within-source AUC                                   
+[     PASS     ] M9: qwen2.5-3b stacked and signals within-source AUC                                       
                  0.737/0.727 vs 0.737/0.727
-[     PASS     ] M9: qwen2.5-3b layers chosen per fold are all valid                                    
+[     PASS     ] M9: qwen2.5-3b layers chosen per fold are all valid                                        
                  
-[     PASS     ] M9: decision-rule count                                                                
+[     PASS     ] M9: decision-rule count                                                                    
                  2
-[     PASS     ] M9: probe alone below the signals for every generator                                  
+[     PASS     ] M9: probe alone below the signals for every generator                                      
                  
-[     PASS     ] M9: best initial-wrong layer AUC above best final-wrong layer AUC for every generator  
+[     PASS     ] M9: best initial-wrong layer AUC above best final-wrong layer AUC for every generator      
                  
-[     PASS     ] M3: qwen2.5-0.5b Delta-label macro within-source AUC                                   
+[     PASS     ] M3: qwen2.5-0.5b Delta-label macro within-source AUC                                       
                  0.738 vs 0.738
-[     PASS     ] M3: qwen2.5-0.5b gate minus direct                                                     
+[     PASS     ] M3: qwen2.5-0.5b gate minus direct                                                         
                  -0.000 vs -0.000
-[     PASS     ] M3: qwen2.5-0.5b Delta-label macro AUC above the final-outcome AUC                     
+[     PASS     ] M3: qwen2.5-0.5b Delta-label macro AUC above the final-outcome AUC                         
                  
-[     PASS     ] M3: qwen2.5-0.5b P(True) within-source AUC from the raw scores                         
+[     PASS     ] M3: qwen2.5-0.5b P(True) within-source AUC from the raw scores                             
                  0.506 vs 0.506
-[     PASS     ] M3: qwen2.5-1.5b Delta-label macro within-source AUC                                   
+[     PASS     ] M3: qwen2.5-1.5b Delta-label macro within-source AUC                                       
                  0.717 vs 0.717
-[     PASS     ] M3: qwen2.5-1.5b gate minus direct                                                     
+[     PASS     ] M3: qwen2.5-1.5b gate minus direct                                                         
                  -0.002 vs -0.002
-[     PASS     ] M3: qwen2.5-1.5b Delta-label macro AUC above the final-outcome AUC                     
+[     PASS     ] M3: qwen2.5-1.5b Delta-label macro AUC above the final-outcome AUC                         
                  
-[     PASS     ] M3: qwen2.5-1.5b P(True) within-source AUC from the raw scores                         
+[     PASS     ] M3: qwen2.5-1.5b P(True) within-source AUC from the raw scores                             
                  0.628 vs 0.628
-[     PASS     ] M3: smollm2-1.7b Delta-label macro within-source AUC                                   
+[     PASS     ] M3: smollm2-1.7b Delta-label macro within-source AUC                                       
                  0.759 vs 0.759
-[     PASS     ] M3: smollm2-1.7b gate minus direct                                                     
+[     PASS     ] M3: smollm2-1.7b gate minus direct                                                         
                  -0.043 vs -0.043
-[     PASS     ] M3: smollm2-1.7b Delta-label macro AUC above the final-outcome AUC                     
+[     PASS     ] M3: smollm2-1.7b Delta-label macro AUC above the final-outcome AUC                         
                  
-[     PASS     ] M3: smollm2-1.7b P(True) within-source AUC from the raw scores                         
+[     PASS     ] M3: smollm2-1.7b P(True) within-source AUC from the raw scores                             
                  0.473 vs 0.473
-[     PASS     ] M3: qwen2.5-3b Delta-label macro within-source AUC                                     
+[     PASS     ] M3: qwen2.5-3b Delta-label macro within-source AUC                                         
                  0.931 vs 0.931
-[     PASS     ] M3: qwen2.5-3b gate minus direct                                                       
+[     PASS     ] M3: qwen2.5-3b gate minus direct                                                           
                  -0.016 vs -0.016
-[     PASS     ] M3: qwen2.5-3b Delta-label macro AUC above the final-outcome AUC                       
+[     PASS     ] M3: qwen2.5-3b Delta-label macro AUC above the final-outcome AUC                           
                  
-[     PASS     ] M3: qwen2.5-3b P(True) within-source AUC from the raw scores                           
+[     PASS     ] M3: qwen2.5-3b P(True) within-source AUC from the raw scores                               
                  0.604 vs 0.604
-[     PASS     ] M3: SmolLM2 unparsable verbalized confidences                                          
+[     PASS     ] M3: SmolLM2 unparsable verbalized confidences                                              
                  800
-[     PASS     ] every revision macro used in the manuscript is generated                               
+[     PASS     ] M8: SCFP test split with exclusions has 108 + excluded test traces                         
+                 135
+[     PASS     ] M8: TF-IDF not significantly above majority under either exclusion rule                    
+                 
+[     PASS     ] M8: signals beat text within source for every generator with exclusions counted as failures
+                 
+[     PASS     ] M8: qwen2.5-0.5b excluded natural traces                                                   
+                 282
+[     PASS     ] M8: qwen2.5-1.5b excluded natural traces                                                   
+                 764
+[     PASS     ] M8: smollm2-1.7b excluded natural traces                                                   
+                 50
+[     PASS     ] M8: qwen2.5-3b excluded natural traces                                                     
+                 80
+[     PASS     ] every revision macro used in the manuscript is generated                                   
                  missing []
 
-Summary: {'PASS': 384}
+Summary: {'PASS': 392}
