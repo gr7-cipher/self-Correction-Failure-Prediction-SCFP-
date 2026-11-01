@@ -814,7 +814,11 @@
                  
 [     PASS     ] M3: pooled reward model above the signals for a wrong initial answer                        
                  
+[     PASS     ] M1: SCFP v1.0 outcome counts and exclusion numbers in the prose                             
+                 
+[     PASS     ] M1: SCFP test-split size and failure rate                                                   
+                 
 [     PASS     ] every revision macro used in the manuscript is generated                                    
                  missing []
 
-Summary: {'PASS': 405}
+Summary: {'PASS': 407}

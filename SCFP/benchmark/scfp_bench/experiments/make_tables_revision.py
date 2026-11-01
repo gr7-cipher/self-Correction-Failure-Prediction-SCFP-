@@ -283,6 +283,12 @@ def m6(res_dir, out, M):
     M["scRuleScPot"], M["scRulePotSc"], M["scRuleScThPot"] = (words[rc["sc1_pot - sc1"]], words[rc["pot - sc1"]],
                                                               words[rc["sc3_pot - sc3"]])
     M["scNTraces"] = f"{sum(R[g]['n'] for g, _, _ in GEN6):,}"
+    # by-source AUC off GSM8K (where no program check exists), from the released paper_v7 results
+    pv = os.path.join(res_dir, "..", "..", "SCFP", "benchmark", "scfp_runs", "paper_v7", "results.json")
+    bs = json.load(open(pv))["by_source"]
+    off = [bs[f"natural|{g}|{src}|{k}"]["auc"] for g, _, _ in GEN6 for src in ("strategyqa", "logiqa")
+           for k in ("text_tfidf", "signals_noverifier", "signals")]
+    M["srcOffMin"], M["srcOffMax"] = f"{min(off):.2f}", f"{max(off):.2f}"
 
 
 def m7(res_dir, out, M):
@@ -665,13 +671,27 @@ def m8_gpu(res_dir, out, M):
     M["prOrigBf"], M["prOrigFp"] = str(P["bf16_answer_differs_from_original"]), str(P["fp16_answer_differs_from_original"])
 
 
+def m1(res_dir, out, M):
+    p = os.path.join(res_dir, "m1", "prose_numbers.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    M.update({"psKept": str(R["n_kept"]), "psExcl": str(R["n_excluded"]), "psGen": str(R["n_generated"]),
+              "psExclPct": pct(R["excluded_share"]), "psRzeroWrong": str(R["r0_wrong"]), "psRepaired": str(R["repaired"]),
+              "psRepairPct": pct(R["repaired"] / R["r0_wrong"]), "psRzeroRight": str(R["r0_right"]), "psBroken": str(R["broken"]),
+              "psHarmPct": pct(R["broken"] / R["r0_right"]), "psFailPct": pct(R["failure_share"]),
+              "psTestN": str(R["test_n"]), "psTestFailPct": pct(R["test_failure_share"]),
+              "psTestMajPct": pct(max(R["test_failure_share"], 1 - R["test_failure_share"])),
+              "psUntruncPct": pct(R["share_untruncated"]), "psMedianTok": f"{R['median_tokens']:.0f}"})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)

@@ -864,9 +864,22 @@ def check_revision(rev_tables, routing_dir, manuscript):
                 and B_[g]["rf_wrong"]["reward"]["diff_vs_text"] > 0] == ["smollm2-1.7b", "pooled"], "")
     record(s, "M3: pooled reward model above the signals for a wrong initial answer",
            B_["pooled"]["r0_wrong"]["reward"]["diff_vs_signals_ci95"][0] > 0, "")
+    # M1: prose numbers about SCFP v1.0, recomputed from the released labelled traces
+    lab1 = [json.loads(l) for l in open(os.path.join(bench, "laptop_v1", "labeled.jsonl"))]
+    r0w = [r for r in lab1 if not r["r0_correct"]]
+    r0r = [r for r in lab1 if r["r0_correct"]]
+    ok = (N["psRzeroWrong"] == str(len(r0w)) and N["psRepaired"] == str(sum(r["rf_correct"] for r in r0w))
+          and N["psRzeroRight"] == str(len(r0r)) and N["psBroken"] == str(sum(not r["rf_correct"] for r in r0r))
+          and N["psFailPct"] == f"{100 * np.mean([not r['rf_correct'] for r in lab1]):.1f}"
+          and N["psExcl"] == str(len(v1ex)) and N["psGen"] == str(len(v1ex) + len(lab1)))
+    record(s, "M1: SCFP v1.0 outcome counts and exclusion numbers in the prose", ok, "")
+    te1 = [json.loads(l) for l in open(os.path.join(bench, "laptop_v1", "splits", "test.jsonl"))]
+    record(s, "M1: SCFP test-split size and failure rate", N["psTestN"] == str(len(te1)) and
+           N["psTestFailPct"] == f"{100 * np.mean([r['label'] for r in te1]):.1f}", "")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
-    record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|ps|src|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    gen = set(N) | set(json.load(open(os.path.join(rev_tables, "numbers_v7.json"))))
+    record(s, "every revision macro used in the manuscript is generated", used <= gen, f"missing {sorted(used - gen)}")
 
 
 def main():
