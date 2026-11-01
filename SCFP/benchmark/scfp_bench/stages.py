@@ -15,6 +15,9 @@ from .problems import load_sources, problem_from_dict
 FAILURE_MODES = ["Justification Hallucination", "Confidence Miscalibration",
                  "Bias Amplification", "Over-correction", "Reasoning Myopia"]
 UNCLEAR = "Unclear / none of these"
+# Annotation scheme v1.1 (revision): adds Failed Detection / Endorsement. FAILURE_MODES stays the v1.0 list,
+# because the trained encoders' failure-mode head was built from it.
+FAILURE_MODES_V11 = FAILURE_MODES + ["Failed Detection / Endorsement"]
 
 
 # ---------------------------------------------------------------- helpers
@@ -419,7 +422,7 @@ def stage_agree(cfg, export_path):
     by_trace = defaultdict(list)
     for a in anns:
         by_trace[a["trace_id"]].append(a["mode"])
-    cats = FAILURE_MODES + [UNCLEAR]
+    cats = FAILURE_MODES_V11 + [UNCLEAR]  # v1.0 exports simply have no Failed Detection labels
     k = cfg["annotation"]["agreement_raters"]
     agree_items = [v for t, v in by_trace.items() if assign.get(t, {}).get("agreement_set") and len(v) == k]
     kappa = fleiss_kappa([[v.count(c) for c in cats] for v in agree_items]) if agree_items else None
