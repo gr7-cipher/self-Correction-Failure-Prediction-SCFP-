@@ -610,13 +610,58 @@ def m8(res_dir, out, M):
     M["exSigTextMax"] = f"{max(N[g]['signals_minus_text_with_exclusions'] for g, _, _ in GEN6):+.3f}"
 
 
+def m8_gpu(res_dir, out, M):
+    p = os.path.join(res_dir, "m8", "m8_gpu.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    ci = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
+    L = []
+
+    def row(lab, o, kept, mo):
+        st = mo["signals_minus_text"]
+        return (f"{lab} & {kept:,} & {pct(o['r0_acc'])} & {pct(o['failure_rate'])} & {pct(o['repair'])} & {pct(o['harm'])} & "
+                f"{f3(mo['text_tfidf']['within_auc'])} & {f3(mo['signals_noverifier']['within_auc'])} & {f3(mo['signals']['within_auc'])} & "
+                f"{st['diff']:+.3f} {ci(st['ci95'])} \\\\")
+    q = R["q7b"]
+    L.append(row("Qwen2.5-7B (NF4)", q["outcomes"], q["kept"], q["models"]))
+    L.append("\\midrule")
+    names = {"qwen2.5-3b": ("QC", "Qwen2.5-3B"), "smollm2-1.7b": ("SM", "SmolLM2-1.7B")}
+    for g, (m, name) in names.items():
+        v = R["prompt_alt"][g]
+        L.append(row(f"{name}, original template", v["outcomes_original"], v["kept_original"], v["models_original"]))
+        L.append(row(f"{name}, alternative template", v["outcomes_alt"], v["kept_alt"], v["models_alt"]))
+        M[f"pa{m}FailO"], M[f"pa{m}FailA"] = pct(v["failure_original"]), pct(v["failure_alt"])
+        M[f"pa{m}FailDiff"] = f"{100 * v['failure_diff']:+.1f}"
+        M[f"pa{m}FailDiffLo"], M[f"pa{m}FailDiffHi"] = f"{100 * v['failure_diff_ci95'][0]:.1f}", f"{100 * v['failure_diff_ci95'][1]:.1f}"
+        M[f"pa{m}SigTextO"], M[f"pa{m}SigTextA"] = (f"{v['models_original']['signals_minus_text']['diff']:+.3f}",
+                                                  f"{v['models_alt']['signals_minus_text']['diff']:+.3f}")
+    write(out, "tab_m8_gpu.tex",
+          "\\begin{tabular}{@{}lccccccccc@{}}\n\\toprule\n & & \\multicolumn{4}{c}{Outcomes (\\%)} & \\multicolumn{4}{c}{Within-source AUC (final wrong)} \\\\\n"
+          "\\cmidrule(lr){3-6}\\cmidrule(lr){7-10}\nGenerator & Kept & $R_0$ acc. & Failure & Repair & Harm & Text & Signals, no ver. & "
+          "Signals + ver. & Signals $-$ text [95\\% CI] \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    o, mo = q["outcomes"], q["models"]
+    M["qsKept"], M["qsGen"] = str(q["kept"]), str(q["generated"])
+    M["qsRzeroAcc"], M["qsFail"] = pct(o["r0_acc"]), pct(o["failure_rate"])
+    M["qsRepair"], M["qsHarm"] = pct(o["repair"]), pct(o["harm"])
+    M["qsText"], M["qsSigNoVer"], M["qsSig"] = f3(mo["text_tfidf"]["within_auc"]), f3(mo["signals_noverifier"]["within_auc"]), f3(mo["signals"]["within_auc"])
+    st = mo["signals_minus_text"]
+    M["qsSigText"], M["qsSigTextLo"], M["qsSigTextHi"] = f"{st['diff']:+.3f}", f3(st["ci95"][0]), f3(st["ci95"][1])
+    M["qsGsmFail"] = pct(q["outcomes_by_source"]["gsm8k"]["failure_rate"])
+    M["qsLogiqaFail"] = pct(q["outcomes_by_source"]["logiqa"]["failure_rate"])
+    P = R["precision"]
+    M["prN"], M["prDiff"], M["prDiffPct"] = str(P["n"]), str(P["answers_differ_fp16_vs_bf16"]), pct(P["answers_differ_fp16_vs_bf16"] / P["n"])
+    M["prTextDiff"] = str(P["texts_differ_fp16_vs_bf16"])
+    M["prOrigBf"], M["prOrigFp"] = str(P["bf16_answer_differs_from_original"]), str(P["fp16_answer_differs_from_original"])
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)

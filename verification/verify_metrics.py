@@ -823,8 +823,28 @@ def check_revision(rev_tables, routing_dir, manuscript):
         run = "signals_mac_q05_big" if g == "qwen2.5-0.5b" else "signals_kaggle"
         ne = sum(1 for l in open(os.path.join(bench, run, "natural", "excluded.jsonl")) if json.loads(l)["source_model"] == g)
         record(s, f"M8: {g} excluded natural traces", ex8["natural"][g]["excluded"] == ne, f"{ne}")
+    # M8 job C: outcomes recomputed from the raw labelled traces and call logs
+    g8 = os.path.join(rev, "m8", "gpu")
+    q7 = [json.loads(l) for l in open(os.path.join(g8, "q7b", "traces_all.jsonl"))]
+    k7 = [r for r in q7 if r["kept"]]
+    record(s, "M8: Qwen2.5-7B kept traces and failure rate", N["qsKept"] == str(len(k7)) and
+           N["qsFail"] == f"{100 * np.mean([not r['rf_correct'] for r in k7]):.1f}", f"{len(k7)}")
+    c7 = [json.loads(l) for l in open(os.path.join(g8, "q7b", "calls.jsonl"))]
+    record(s, "M8: every Qwen2.5-7B call is ok and from one pinned commit", all(c["ok"] for c in c7) and
+           len({c["model_version"] for c in c7}) == 1, str({c["model_version"] for c in c7}))
+    sub8 = json.load(open(os.path.join(rev, "m8", "subset.json")))
+    record(s, "M8: Qwen2.5-7B ran on exactly the 600 subset problems",
+           {r["problem_id"] for r in q7} == {p for v in sub8["problems"].values() for p in v}, "")
+    for gg, mm in (("qwen2.5-3b", "QC"), ("smollm2-1.7b", "SM")):
+        alt = [json.loads(l) for l in open(os.path.join(g8, f"alt_{gg}", "traces_all.jsonl"))]
+        record(s, f"M8: {gg} alternative-template failure rate", len(alt) == 600 and
+               N[f"pa{mm}FailA"] == f"{100 * np.mean([not r['rf_correct'] for r in alt]):.1f}", "")
+    pc = {dt: [json.loads(l) for l in open(os.path.join(g8, "precision", f"calls_{dt}.jsonl"))] for dt in ("float16", "bfloat16")}
+    tb = {c["messages"][0]["content"]: c["text"] for c in pc["bfloat16"]}
+    ntd = sum(c["text"] != tb[c["messages"][0]["content"]] for c in pc["float16"])
+    record(s, "M8: float16 vs bfloat16 texts that differ", N["prTextDiff"] == str(ntd) and N["prN"] == str(len(pc["float16"])), f"{ntd}")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
 
 
