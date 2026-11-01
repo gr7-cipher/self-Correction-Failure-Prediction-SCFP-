@@ -563,6 +563,16 @@ def m3(res_dir, out, M):
             M[f"cb{mk}Above"] = words[sum(r[g] == "above" for g, _, _ in GEN6)]
             M[f"cbPool{mk}Rule"] = r["pooled"]
     M["cbVerbalUnparsedSM"] = f"{G['verbal_unparsed']['smollm2-1.7b']:,}"
+    for g, m, _ in GEN3:
+        for k, mk in (("reward", "Reward"), ("judge", "Judge")):
+            if k in G["scores"]:
+                v = G["by"][g]["rf_wrong"][k]
+                M[f"cb{m}{mk}Diff"] = f"{v['diff_vs_signals']:+.3f}"
+                M[f"cb{m}{mk}DiffLo"], M[f"cb{m}{mk}DiffHi"] = f3(v["diff_vs_signals_ci95"][0]), f3(v["diff_vs_signals_ci95"][1])
+                M[f"cb{m}{mk}TextHolm"] = pval(v["p_vs_text_holm"])
+    M["dlPoolSigRzero"] = f3(G["by"]["pooled"]["r0_wrong"]["signals"]["within_auc"])
+    if "judge" in G["scores"]:
+        M["cbJudgeTextHolmMax"] = pval(max(G["by"][g]["rf_wrong"]["judge"]["p_vs_text_holm"] for g, _, _ in GEN3))
     M["cbAbMassMin"] = f"{100 * min(G['ptrue_ab_mass'].values()):.1f}"
 
 

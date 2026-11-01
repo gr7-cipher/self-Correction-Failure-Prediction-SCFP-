@@ -843,6 +843,27 @@ def check_revision(rev_tables, routing_dir, manuscript):
     tb = {c["messages"][0]["content"]: c["text"] for c in pc["bfloat16"]}
     ntd = sum(c["text"] != tb[c["messages"][0]["content"]] for c in pc["float16"])
     record(s, "M8: float16 vs bfloat16 texts that differ", N["prTextDiff"] == str(ntd) and N["prN"] == str(len(pc["float16"])), f"{ntd}")
+    # M3 job B: raw scores recomputed; the claims about the reward model and the judge
+    m3g = json.load(open(os.path.join(rev, "m3", "m3_gpu.json")))
+    rmv = [json.loads(l) for l in open(os.path.join(rev, "gpuB", "reward_model.jsonl"))]
+    jdv = [json.loads(l) for l in open(os.path.join(rev, "gpuB", "judge.jsonl"))]
+    record(s, "M3: reward model and judge scored all 6,824 traces, one commit each",
+           len(rmv) == len(jdv) == 6824 and len({r["model_version"] for r in rmv}) == 1 and len({r["model_version"] for r in jdv}) == 1, "")
+    rm_ = {(r["generator"], r["trace_id"]): -r["reward"] for r in rmv}
+    a_rm = wauc([{"source": r["source"], "y": r["y_rf"], "p": rm_[("smollm2-1.7b", r["trace_id"])]} for r in m3p["smollm2-1.7b"]])
+    record(s, "M3: SmolLM2 reward-model within-source AUC from the raw rewards", f"{a_rm:.3f}" == N["cbSMRewardRf"], f"{a_rm:.3f}")
+    B_ = m3g["by"]
+    record(s, "M3: reward model above the signals for SmolLM2 only",
+           [g for g in codes if B_[g]["rf_wrong"]["reward"]["diff_vs_signals_ci95"][0] > 0] == ["smollm2-1.7b"], "")
+    record(s, "M3: judge n.s. vs signals for three generators and pooled, below for Qwen2.5-3B only",
+           [g for g in list(codes) + ["pooled"] if B_[g]["rf_wrong"]["judge"]["diff_vs_signals_ci95"][1] < 0] == ["qwen2.5-3b"]
+           and not any(B_[g]["rf_wrong"]["judge"]["diff_vs_signals_ci95"][0] > 0 for g in list(codes) + ["pooled"]), "")
+    record(s, "M3: judge beats text (Holm) for all but Qwen2.5-3B; reward model only for SmolLM2 and pooled",
+           [g for g in list(codes) + ["pooled"] if B_[g]["rf_wrong"]["judge"]["p_vs_text_holm"] >= 0.05] == ["qwen2.5-3b"]
+           and [g for g in list(codes) + ["pooled"] if B_[g]["rf_wrong"]["reward"]["p_vs_text_holm"] < 0.05
+                and B_[g]["rf_wrong"]["reward"]["diff_vs_text"] > 0] == ["smollm2-1.7b", "pooled"], "")
+    record(s, "M3: pooled reward model above the signals for a wrong initial answer",
+           B_["pooled"]["r0_wrong"]["reward"]["diff_vs_signals_ci95"][0] > 0, "")
     tex = open(manuscript).read()
     used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")

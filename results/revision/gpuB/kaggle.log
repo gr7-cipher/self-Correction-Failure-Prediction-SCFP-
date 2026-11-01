@@ -1,0 +1,64 @@
+[{"stream_name":"stdout","time":21.370359573,"data":"Sun Nov  1 07:18:51 2026       \n"}
+,{"stream_name":"stdout","time":21.370434499,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":21.370440012,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":21.370442657,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":21.370446183,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":21.370464132,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":21.37046854,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":21.370472628,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":21.419710927,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":21.419744604999998,"data":"| N/A   55C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":21.419748645,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":21.419751464,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":21.419754078,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":21.41975665,"data":"| N/A   54C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":21.419759073,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":21.419761513,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":21.420262152,"data":"\n"}
+,{"stream_name":"stdout","time":21.420270618,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":21.420274351,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":21.420282281,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":21.420284876,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":21.420287421,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":21.421929974,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":21.421955645,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":32.72654569,"data":"6824 traces\n"}
+,{"stream_name":"stdout","time":58.77217781,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":167.884026031,"data":"  rm 0/6824 1s\n"}
+,{"stream_name":"stdout","time":344.999680491,"data":"  rm 500/6824 178s\n"}
+,{"stream_name":"stdout","time":535.286154539,"data":"  rm 1000/6824 369s\n"}
+,{"stream_name":"stdout","time":726.882526386,"data":"  rm 1500/6824 560s\n"}
+,{"stream_name":"stdout","time":950.689114337,"data":"  rm 2000/6824 784s\n"}
+,{"stream_name":"stdout","time":1208.111030768,"data":"  rm 2500/6824 1041s\n"}
+,{"stream_name":"stdout","time":1463.646205339,"data":"  rm 3000/6824 1297s\n"}
+,{"stream_name":"stdout","time":1638.127749401,"data":"  rm 3500/6824 1471s\n"}
+,{"stream_name":"stdout","time":1811.286397653,"data":"  rm 4000/6824 1645s\n"}
+,{"stream_name":"stdout","time":1981.576828676,"data":"  rm 4500/6824 1815s\n"}
+,{"stream_name":"stdout","time":2172.117412979,"data":"  rm 5000/6824 2005s\n"}
+,{"stream_name":"stdout","time":2430.128807081,"data":"  rm 5500/6824 2263s\n"}
+,{"stream_name":"stdout","time":2687.584330577,"data":"  rm 6000/6824 2521s\n"}
+,{"stream_name":"stdout","time":2949.376477258,"data":"  rm 6500/6824 2783s\n"}
+,{"stream_name":"stdout","time":3241.725113491,"data":"  judge 0/6824 1s\n"}
+,{"stream_name":"stdout","time":3591.725562575,"data":"  judge 500/6824 351s\n"}
+,{"stream_name":"stdout","time":3950.970963293,"data":"  judge 1000/6824 710s\n"}
+,{"stream_name":"stdout","time":4308.082319842,"data":"  judge 1500/6824 1067s\n"}
+,{"stream_name":"stdout","time":4708.533275384,"data":"  judge 2000/6824 1467s\n"}
+,{"stream_name":"stdout","time":5154.295284188,"data":"  judge 2500/6824 1913s\n"}
+,{"stream_name":"stdout","time":5585.118306461,"data":"  judge 3000/6824 2344s\n"}
+,{"stream_name":"stdout","time":5883.147149447,"data":"  judge 3500/6824 2642s\n"}
+,{"stream_name":"stdout","time":6175.042890065,"data":"  judge 4000/6824 2934s\n"}
+,{"stream_name":"stdout","time":6464.81397278,"data":"  judge 4500/6824 3224s\n"}
+,{"stream_name":"stdout","time":6787.106668698,"data":"  judge 5000/6824 3546s\n"}
+,{"stream_name":"stdout","time":7208.851222171,"data":"  judge 5500/6824 3968s\n"}
+,{"stream_name":"stdout","time":7629.282520719,"data":"  judge 6000/6824 4388s\n"}
+,{"stream_name":"stdout","time":8055.952537394,"data":"  judge 6500/6824 4815s\n"}
+,{"stream_name":"stdout","time":8335.882590923,"data":"ALL DONE\n"}
+,{"stream_name":"stdout","time":8340.617731662,"data":"exit: 0\n"}
+,{"stream_name":"stdout","time":8340.642005772,"data":"FILES: ['judge.jsonl', 'reward_model.jsonl']\n"}
+,{"stream_name":"stderr","time":8343.10388114,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":8343.103929247,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":8343.422994977,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":8343.423034582,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":8344.367629231,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":8345.376875764,"data":"[NbConvertApp] Writing 280973 bytes to __results__.html\n"}
+]
