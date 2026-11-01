@@ -303,3 +303,33 @@ With the registered P(True) prompt, Qwen2.5-0.5B put only 0.5% of its next-token
 The assistant turn therefore starts with the prefix "The answer is (". The registered score is unchanged: P("A") normalized over {A, B}. With the prefix, A/B carry 99.7% of the mass on the smoke trace.
 
 The A/B mass is recorded for every trace (`ab_mass`), and the judge's Yes/No mass likewise (`yes_no_mass`).
+
+---
+
+## M2: the taxonomy contribution (registered 2026-10-31, before any M2 edit)
+
+**Check.** No completed human annotations exist (searched the repo and the user's Downloads, Desktop and Documents for Label Studio exports; the task files have no annotations). So the "labels not complete" path applies.
+
+**Author decisions (2026-10-31).**
+- Table 1 stays constructed, relabeled as hypothetical. Candidate real traces go to a separate file for authors to label; nothing in the paper assigns modes to real traces.
+- The multi-label variant stays as future work.
+
+**Candidate selection** (objective; no failure mode is assigned by me):
+- From the failed SCFP v1.0 traces (all splits), group by observable pattern:
+  - **P1** right→wrong, critique reports an error;
+  - **P2** wrong→wrong, answer unchanged, critique endorses R0 (matches the correctness word list and not the error list);
+  - **P3** wrong→wrong, answer changed;
+  - **P4** wrong→wrong, answer unchanged, critique reports an error;
+  - **P5** critique contains hedging words (e.g. "not sure", "might", "possibly", "unclear").
+- For each pattern, 3 traces, sampled with seed 42. They are written to `audit/taxonomy_candidates.md` with an empty "author-assigned mode" field.
+
+**Text changes.**
+- The taxonomy becomes a proposed annotation scheme, not a numbered contribution.
+- The multi-class task is not claimed.
+- Sentences claiming the taxonomy "brings out" or "isolates" failure modes are softened or deleted, and all blue highlighting is removed.
+- §3.3:
+  - (a) Over-correction is stated as outcome-anchored, and the "process-oriented" framing is restricted to how labels are assigned (from the critique and revision text).
+  - (b) Add "Failed detection / Endorsement".
+  - (c) Restrict Bias Amplification to problems that involve people or social attributes.
+  - (d) Replace "mutually exclusive" with the earliest-error rule and the planned agreement measurement.
+- The annotation guide and label config get a v1.1 copy with the new category. The distributed v1.0 packages are not changed.
