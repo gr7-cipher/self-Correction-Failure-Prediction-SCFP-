@@ -448,13 +448,131 @@ def m7_seeds(res_dir, out, M):
     M["sdNAblAboveFullAll"] = str(sum(R["ablation_minus_full"][k]["auc"]["seeds_above_full"] == 5 for k, _, _ in ABL7))
 
 
+def m9(res_dir, out, M):
+    p = os.path.join(res_dir, "m9", "m9.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    L = []
+    for g, m, name in GEN6:
+        v = R[g]
+        c, d = v["best_layer_ci95"], v["stacked_minus_signals_ci95"]
+        dd = f"{v['stacked_minus_signals']:+.3f} [{f3(d[0])}, {f3(d[1])}]"
+        L.append(f"{name} & {v['layers']} & {f3(v['last_token_pca64_within_auc'])} & {f3(v['last_layer_answer_auc'])} & "
+                 f"{v['best_layer_post_hoc'] + 1} & {f3(v['best_layer_auc'])} [{f3(c[0])}, {f3(c[1])}] & "
+                 f"{f3(max(v['per_layer_within_auc']['r0_wrong']))} & {f3(v['signals_within_auc'])} & {f3(v['stacked_within_auc'])} & "
+                 + (f"\\textbf{{{dd}}}" if d[0] > 0 else dd) + " \\\\")
+        M[f"hp{m}Last"], M[f"hp{m}Best"] = f3(v["last_token_pca64_within_auc"]), f3(v["best_layer_auc"])
+        M[f"hp{m}BestLo"], M[f"hp{m}BestHi"] = f3(c[0]), f3(c[1])
+        M[f"hp{m}BestLayer"], M[f"hp{m}Layers"] = str(v["best_layer_post_hoc"] + 1), str(v["layers"])
+        M[f"hp{m}RzeroBest"] = f3(max(v["per_layer_within_auc"]["r0_wrong"]))
+        M[f"hp{m}Sig"], M[f"hp{m}Stk"] = f3(v["signals_within_auc"]), f3(v["stacked_within_auc"])
+        M[f"hp{m}Diff"], M[f"hp{m}DiffLo"], M[f"hp{m}DiffHi"] = f"{v['stacked_minus_signals']:+.3f}", f3(d[0]), f3(d[1])
+    write(out, "tab_hidden_layers.tex",
+          "\\begin{tabular}{@{}lccccccccc@{}}\n\\toprule\n & & \\multicolumn{5}{c}{Probe alone (within-source AUC)} & "
+          "\\multicolumn{3}{c}{Signals + verifier (LR)} \\\\\n\\cmidrule(lr){3-7}\\cmidrule(lr){8-10}\n"
+          "Generator & Layers & Last token, PCA-64 & Answer tokens, last layer & Best layer$^\\ast$ & AUC at best layer [95\\% CI] & "
+          "Best, initial wrong$^\\ast$ & Alone & + probe & $\\Delta$ [95\\% CI] \\\\\n\\midrule\n"
+          + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    words = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
+    M["hpRule"] = words[R["_rule_count"]]
+    M["hpBestMin"] = f3(min(R[g]["best_layer_auc"] for g, _, _ in GEN6))
+    M["hpBestMax"] = f3(max(R[g]["best_layer_auc"] for g, _, _ in GEN6))
+    M["hpLastMin"] = f3(min(R[g]["last_token_pca64_within_auc"] for g, _, _ in GEN6))
+    M["hpLastMax"] = f3(max(R[g]["last_token_pca64_within_auc"] for g, _, _ in GEN6))
+    M["hpDiffMin"] = f"{min(R[g]['stacked_minus_signals'] for g, _, _ in GEN6):+.3f}"
+    M["hpDiffMax"] = f"{max(R[g]['stacked_minus_signals'] for g, _, _ in GEN6):+.3f}"
+    shutil.copy(os.path.join(res_dir, "m9", "fig_layers.pdf"), os.path.join(out, "rev_fig_layers.pdf"))
+
+
+GEN3 = GEN6 + [("pooled", "Pool", "Pooled")]
+M3_SCORES = [("ptrue", "PTrue", "P(True), generator"), ("verbal", "Verbal", "Verbalized confidence, generator"),
+             ("reward", "Reward", "Reward model (Skywork 8B)"), ("judge", "Judge", "LLM judge (Qwen2.5-7B)")]
+
+
+def m3(res_dir, out, M):
+    p = os.path.join(res_dir, "m3", "m3_cpu.json")
+    if not os.path.exists(p):
+        return
+    C = json.load(open(p))
+    ci = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
+    L = []
+    for g, m, name in GEN6:
+        v = C[g]
+        d, gt = v["delta"], v["gate"]
+        dd = f"{gt['diff']:+.3f} {ci(gt['diff_ci95'])}"
+        L.append(f"{name} & {pct(v['class_rates']['helped'])} / {pct(v['class_rates']['neutral'])} / {pct(v['class_rates']['harmed'])} & "
+                 f"{f3(d['macro_within_auc'])} {ci(d['macro_within_auc_ci95'])} & {f3(d['per_class_within_auc']['helped'])} & "
+                 f"{f3(d['per_class_within_auc']['harmed'])} & {f3(d['macro_f1'])} & {f3(gt['direct_within_auc'])} & {f3(gt['within_auc'])} & {dd} \\\\")
+        M[f"dl{m}Macro"], M[f"dl{m}Helped"], M[f"dl{m}Harmed"] = f3(d["macro_within_auc"]), f3(d["per_class_within_auc"]["helped"]), f3(d["per_class_within_auc"]["harmed"])
+        M[f"dl{m}GateDiff"], M[f"dl{m}GateDiffLo"], M[f"dl{m}GateDiffHi"] = f"{gt['diff']:+.3f}", f3(gt["diff_ci95"][0]), f3(gt["diff_ci95"][1])
+        M[f"dl{m}LpRf"], M[f"dl{m}LpRzero"] = f3(v["answer_logprob"]["rf_wrong_within_auc"]), f3(v["answer_logprob"]["r0_wrong_within_auc"])
+    P = C["pooled"]
+    gt = P["gate"]
+    L.append("\\midrule")
+    L.append(f"Pooled & -- & {f3(P['delta']['macro_within_auc'])} & -- & -- & -- & {f3(gt['direct_within_auc'])} & {f3(gt['within_auc'])} & "
+             f"{gt['diff']:+.3f} {ci(gt['diff_ci95'])} \\\\")
+    write(out, "tab_m3_delta.tex",
+          "\\begin{tabular}{@{}lcccccccc@{}}\n\\toprule\n & & \\multicolumn{4}{c}{$\\Delta$-label (helped / neutral / harmed)} & "
+          "\\multicolumn{3}{c}{Final wrong: two-stage gate vs direct} \\\\\n\\cmidrule(lr){3-6}\\cmidrule(lr){7-9}\n"
+          "Generator & Class rates (\\%) & Macro AUC [95\\% CI] & Helped & Harmed & Macro-F1 & Direct & Gate & Gate $-$ direct [95\\% CI] \\\\\n"
+          "\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    vals = [C[g]["delta"]["macro_within_auc"] for g, _, _ in GEN6]
+    M["dlMacroMin"], M["dlMacroMax"] = f3(min(vals)), f3(max(vals))
+    nr = [C[g]["class_rates"]["neutral"] for g, _, _ in GEN6]
+    M["dlNeutralMin"], M["dlNeutralMax"] = pct(min(nr)), pct(max(nr))
+    M["dlPoolGateDiff"], M["dlPoolGateDiffLo"], M["dlPoolGateDiffHi"] = f"{gt['diff']:+.3f}", f3(gt["diff_ci95"][0]), f3(gt["diff_ci95"][1])
+    lp_rf = [C[g]["answer_logprob"]["rf_wrong_within_auc"] for g, _, _ in GEN6]
+    lp_r0 = [C[g]["answer_logprob"]["r0_wrong_within_auc"] for g, _, _ in GEN6]
+    M["dlLpRfMin"], M["dlLpRfMax"], M["dlLpRzeroMin"], M["dlLpRzeroMax"] = f3(min(lp_rf)), f3(max(lp_rf)), f3(min(lp_r0)), f3(max(lp_r0))
+    pg = os.path.join(res_dir, "m3", "m3_gpu.json")
+    if not os.path.exists(pg):
+        return
+    G = json.load(open(pg))
+    rows = []
+    for tgt, title in (("rf_wrong", "Final answer wrong"), ("r0_wrong", "Initial answer wrong")):
+        rows.append(f"\\multicolumn{{{1 + len(GEN3)}}}{{l}}{{\\textit{{{title}}}}} \\\\")
+        ref = [("text", "Text (TF-IDF)"), ("signals", "Signals + verifier (LR)")] if tgt == "rf_wrong" else [("signals", "Signals + verifier (LR)")]
+        for k, mk, lab in [(k, mk, lab) for k, mk, lab in M3_SCORES if k in G["scores"]] + [(k, None, lab) for k, lab in ref]:
+            cells = []
+            for g, m, _ in GEN3:
+                v = G["by"][g][tgt][k]
+                c = f"{f3(v['within_auc'])}"
+                if mk and v["diff_vs_signals_ci95"][1] < 0:
+                    c += "$^-$"
+                elif mk and v["diff_vs_signals_ci95"][0] > 0:
+                    c = f"\\textbf{{{c}}}"
+                cells.append(c)
+                if mk:
+                    M[f"cb{m}{mk}{'Rf' if tgt == 'rf_wrong' else 'Rzero'}"] = f3(v["within_auc"])
+            rows.append(f"{lab} & " + " & ".join(cells) + " \\\\")
+        if tgt == "rf_wrong":
+            lp = [f3(C[g]["answer_logprob"]["rf_wrong_within_auc"]) if g != "pooled" else f3(C["pooled"]["answer_logprob"]["rf_wrong_within_auc"]) for g, _, _ in GEN3]
+        else:
+            lp = [f3(C[g]["answer_logprob"]["r0_wrong_within_auc"]) if g != "pooled" else f3(C["pooled"]["answer_logprob"]["r0_wrong_within_auc"]) for g, _, _ in GEN3]
+        rows.insert(len(rows) - len(ref), "Answer-span log-prob of $R_0$ & " + " & ".join(lp) + " \\\\")
+        rows.append("\\midrule")
+    rows.pop()
+    write(out, "tab_m3_baselines.tex", "\\begin{tabular}{@{}l" + "c" * len(GEN3) + "@{}}\n\\toprule\nScore & "
+          + " & ".join(n for _, _, n in GEN3) + " \\\\\n\\midrule\n" + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
+    words = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
+    for k, mk, _ in M3_SCORES:
+        if k in G["rule"]:
+            r = G["rule"][k]
+            M[f"cb{mk}Below"] = words[sum(r[g] == "below" for g, _, _ in GEN6)]
+            M[f"cb{mk}Above"] = words[sum(r[g] == "above" for g, _, _ in GEN6)]
+            M[f"cbPool{mk}Rule"] = r["pooled"]
+    M["cbVerbalUnparsedSM"] = f"{G['verbal_unparsed']['smollm2-1.7b']:,}"
+    M["cbAbMassMin"] = f"{100 * min(G['ptrue_ab_mass'].values()):.1f}"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="../../results/revision")
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)

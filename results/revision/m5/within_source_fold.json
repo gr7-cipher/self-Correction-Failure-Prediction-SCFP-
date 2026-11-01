@@ -2,10 +2,10 @@
  "qwen2.5-0.5b": {
   "identity": 0.5,
   "text_tfidf": 0.5884037875030237,
-  "signals_noverifier": 0.5659289106700719,
-  "signals": 0.6599922292778462,
-  "signals_gbm": 0.6643482638678673,
-  "concat_text_signals": 0.6607925655688631
+  "signals_noverifier": 0.5655495188821267,
+  "signals": 0.6540686623799083,
+  "signals_gbm": 0.67005851241314,
+  "concat_text_signals": 0.6625278114778785
  },
  "qwen2.5-1.5b": {
   "identity": 0.5,
@@ -34,9 +34,9 @@
  "pooled": {
   "identity": 0.4688222668463049,
   "text_tfidf": 0.5822908125534318,
-  "signals_noverifier": 0.6130889699911849,
-  "signals": 0.6734666279966368,
-  "signals_gbm": 0.6747266931759577,
-  "concat_text_signals": 0.6795830391164595
+  "signals_noverifier": 0.612993454883962,
+  "signals": 0.6719753196832347,
+  "signals_gbm": 0.6761642967809954,
+  "concat_text_signals": 0.6800199020226273
  }
 }

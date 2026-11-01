@@ -763,8 +763,53 @@ def check_revision(rev_tables, routing_dir, manuscript):
            all(N[f"sd{sdcode[k]}PFullHolm"] == "1.000" for k in above), "")
     sds = [per[k][:, 0].std(ddof=1) for k in sdcode]
     record(s, "M7 seeds: accuracy sd range", f"{min(sds):.3f}" == N["sdAccSdMin"] and f"{max(sds):.3f}" == N["sdAccSdMax"], "")
+    # M9: stacked vs signals within-source AUC recomputed from the saved predictions; signals match the paper's
+    m9 = json.load(open(os.path.join(rev, "m9", "m9.json")))
+    m9p = defaultdict(list)
+    for l in open(os.path.join(rev, "m9", "m9_predictions.jsonl")):
+        r = json.loads(l)
+        m9p[r["generator"]].append(r)
+    for g, m in codes.items():
+        rr = m9p[g]
+        a_s = wauc([{"source": r["source"], "y": r["y"], "p": r["signals"]} for r in rr])
+        a_k = wauc([{"source": r["source"], "y": r["y"], "p": r["stacked"]} for r in rr])
+        saved = {r["trace_id"]: r["p"] for r in preds[("natural", g, "signals")]}
+        same = max(abs(saved[r["trace_id"]] - r["signals"]) for r in rr) < 1e-9
+        record(s, f"M9: {g} signals predictions equal the paper's saved ones", same, "")
+        record(s, f"M9: {g} stacked and signals within-source AUC", f"{a_k:.3f}" == N[f"hp{m}Stk"] and f"{a_s:.3f}" == N[f"hp{m}Sig"],
+               f"{a_k:.3f}/{a_s:.3f} vs {N[f'hp{m}Stk']}/{N[f'hp{m}Sig']}")
+        record(s, f"M9: {g} layers chosen per fold are all valid", all(0 <= x < m9[g]["layers"] for x in m9[g]["layers_chosen_per_fold"]), "")
+    n9 = sum(m9[g]["stacked_minus_signals_ci95"][0] > 0 for g in codes)
+    record(s, "M9: decision-rule count", words[n9] == N["hpRule"], f"{n9}")
+    record(s, "M9: probe alone below the signals for every generator",
+           all(m9[g]["best_layer_auc"] < m9[g]["signals_within_auc"] for g in codes), "")
+    record(s, "M9: best initial-wrong layer AUC above best final-wrong layer AUC for every generator",
+           all(max(m9[g]["per_layer_within_auc"]["r0_wrong"]) > m9[g]["best_layer_auc"] for g in codes), "")
+    # M3: Delta-label, gate and baselines recomputed with sklearn from the saved predictions and raw GPU outputs
+    m3p = defaultdict(list)
+    for l in open(os.path.join(rev, "m3", "m3_cpu_predictions.jsonl")):
+        r = json.loads(l)
+        m3p[r["generator"]].append(r)
+    cls = ["helped", "neutral", "harmed"]
+    for g, m in codes.items():
+        rr = m3p[g]
+        mac = np.mean([wauc([{"source": r["source"], "y": int(r["y_delta"] == c), "p": r["p_delta"][j]} for r in rr])
+                       for j, c in enumerate(cls)])
+        record(s, f"M3: {g} Delta-label macro within-source AUC", f"{mac:.3f}" == N[f"dl{m}Macro"], f"{mac:.3f} vs {N[f'dl{m}Macro']}")
+        dg = wauc([{"source": r["source"], "y": r["y_rf"], "p": r["p_gate"]} for r in rr]) - \
+            wauc([{"source": r["source"], "y": r["y_rf"], "p": r["p_direct"]} for r in rr])
+        record(s, f"M3: {g} gate minus direct", f"{dg:+.3f}" == N[f"dl{m}GateDiff"] or (abs(dg) < 5e-4 and N[f"dl{m}GateDiff"] in ("-0.000", "+0.000")),
+               f"{dg:+.3f} vs {N[f'dl{m}GateDiff']}")
+        direct = wauc([{"source": r["source"], "y": r["y_rf"], "p": r["p_direct"]} for r in rr])
+        record(s, f"M3: {g} Delta-label macro AUC above the final-outcome AUC", mac > direct, "")
+        pt = {json.loads(l)["trace_id"]: json.loads(l)["p_true"] for l in open(os.path.join(rev, "gpuA", f"ptrue_{g}.jsonl"))}
+        a_pt = wauc([{"source": r["source"], "y": r["y_rf"], "p": 1 - pt[r["trace_id"]]} for r in rr])
+        record(s, f"M3: {g} P(True) within-source AUC from the raw scores", f"{a_pt:.3f}" == N[f"cb{m}PTrueRf"], f"{a_pt:.3f} vs {N[f'cb{m}PTrueRf']}")
+    calls = [json.loads(l) for l in open(os.path.join(rev, "gpuA", "calls_verbal_smollm2-1.7b.jsonl"))]
+    bad = sum(1 for c in calls if not re.search(r"\d+", c["text"]) or int(re.search(r"\d+", c["text"]).group()) > 100)
+    record(s, "M3: SmolLM2 unparsable verbalized confidences", f"{bad:,}" == N["cbVerbalUnparsedSM"], f"{bad}")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     record(s, "every revision macro used in the manuscript is generated", used <= set(N), f"missing {sorted(used - set(N))}")
 
 

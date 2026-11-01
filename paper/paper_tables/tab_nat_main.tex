@@ -5,10 +5,10 @@ Predictor & AUC [95\% CI] & Accuracy & Macro-F1 & $p$ vs TF-IDF \\
 \midrule
 \multicolumn{5}{l}{\textit{Qwen2.5-0.5B}: $n = 1,718$, majority class 56.6\%} \\
 \quad TF-IDF + LR (text) & 0.611 [0.585, 0.637] & 59.7\% & 0.589 & -- \\
-\quad Generator signals, no verifier & 0.615 [0.589, 0.641] & 58.4\% & 0.583 & 0.357 \\
-\quad Generator signals + verifier & 0.729 [0.706, 0.751] & 68.6\% & 0.680 & $<$0.001 \\
-\quad Gradient boosting on signals + verifier & 0.726 [0.702, 0.748] & 66.6\% & 0.660 & $<$0.001 \\
-\quad Text and signals + verifier (one linear model) & \textbf{0.732} [0.709, 0.754] & 68.4\% & 0.678 & $<$0.001 \\
+\quad Generator signals, no verifier & 0.616 [0.590, 0.641] & 59.3\% & 0.591 & 0.752 \\
+\quad Generator signals + verifier & 0.732 [0.709, 0.754] & 68.5\% & 0.678 & $<$0.001 \\
+\quad Gradient boosting on signals + verifier & 0.728 [0.705, 0.751] & 66.5\% & 0.659 & $<$0.001 \\
+\quad Text and signals + verifier (one linear model) & \textbf{0.736} [0.712, 0.757] & 68.7\% & 0.680 & $<$0.001 \\
 \midrule
 \multicolumn{5}{l}{\textit{Qwen2.5-1.5B}: $n = 1,236$, majority class 66.7\%} \\
 \quad TF-IDF + LR (text) & 0.703 [0.674, 0.734] & 68.3\% & 0.665 & -- \\
@@ -33,9 +33,9 @@ Predictor & AUC [95\% CI] & Accuracy & Macro-F1 & $p$ vs TF-IDF \\
 \midrule
 \multicolumn{5}{l}{\textit{Pooled (four generators)}: $n = 6,824$, majority class 57.3\%} \\
 \quad TF-IDF + LR (text) & 0.676 [0.664, 0.687] & 64.3\% & 0.638 & -- \\
-\quad Generator signals, no verifier & 0.685 [0.673, 0.697] & 63.3\% & 0.628 & 0.066 \\
-\quad Generator signals + verifier & 0.748 [0.736, 0.760] & 68.2\% & 0.681 & $<$0.001 \\
-\quad Gradient boosting on signals + verifier & 0.744 [0.732, 0.755] & 67.5\% & 0.674 & $<$0.001 \\
-\quad Text and signals + verifier (one linear model) & \textbf{0.761} [0.750, 0.773] & 69.8\% & 0.694 & $<$0.001 \\
+\quad Generator signals, no verifier & 0.685 [0.673, 0.697] & 63.5\% & 0.631 & 0.136 \\
+\quad Generator signals + verifier & 0.749 [0.736, 0.761] & 68.1\% & 0.680 & $<$0.001 \\
+\quad Gradient boosting on signals + verifier & 0.744 [0.733, 0.756] & 67.4\% & 0.674 & $<$0.001 \\
+\quad Text and signals + verifier (one linear model) & \textbf{0.763} [0.751, 0.775] & 69.8\% & 0.694 & $<$0.001 \\
 \bottomrule
 \end{tabular}

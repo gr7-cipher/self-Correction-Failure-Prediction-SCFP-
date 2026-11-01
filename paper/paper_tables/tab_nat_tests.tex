@@ -6,10 +6,10 @@
 Generator & Predictor & $p$ & Holm & Accuracy (\%) & $p$ & Holm \\
 \midrule
 Qwen2.5-0.5B & Source only & $<$0.001 & 0.005 & 58.7 vs 59.7 & 0.481 & 1.000 \\
-Qwen2.5-0.5B & Signals, no verifier & 0.556 & 1.000 & 58.4 vs 59.7 & 0.365 & 1.000 \\
-Qwen2.5-0.5B & Signals + verifier (LR) & $<$0.001 & 0.005 & 68.6 vs 59.7 & $<$0.001 & 0.002 \\
-Qwen2.5-0.5B & Signals + verifier (GBM) & $<$0.001 & 0.005 & 66.6 vs 59.7 & $<$0.001 & 0.002 \\
-Qwen2.5-0.5B & Text + signals + verifier & $<$0.001 & 0.005 & 68.4 vs 59.7 & $<$0.001 & 0.002 \\
+Qwen2.5-0.5B & Signals, no verifier & 0.498 & 0.996 & 59.3 vs 59.7 & 0.761 & 1.000 \\
+Qwen2.5-0.5B & Signals + verifier (LR) & $<$0.001 & 0.005 & 68.5 vs 59.7 & $<$0.001 & 0.002 \\
+Qwen2.5-0.5B & Signals + verifier (GBM) & $<$0.001 & 0.005 & 66.5 vs 59.7 & $<$0.001 & 0.002 \\
+Qwen2.5-0.5B & Text + signals + verifier & $<$0.001 & 0.005 & 68.7 vs 59.7 & $<$0.001 & 0.002 \\
 \midrule
 Qwen2.5-1.5B & Source only & $<$0.001 & 0.005 & 67.6 vs 68.3 & 0.010 & 0.108 \\
 Qwen2.5-1.5B & Signals, no verifier & $<$0.001 & 0.005 & 68.0 vs 68.3 & 0.770 & 1.000 \\
@@ -18,7 +18,7 @@ Qwen2.5-1.5B & Signals + verifier (GBM) & $<$0.001 & 0.005 & 68.9 vs 68.3 & 0.64
 Qwen2.5-1.5B & Text + signals + verifier & $<$0.001 & 0.005 & 69.9 vs 68.3 & 0.218 & 1.000 \\
 \midrule
 SmolLM2-1.7B & Source only & $<$0.001 & 0.005 & 58.0 vs 58.9 & 0.467 & 1.000 \\
-SmolLM2-1.7B & Signals, no verifier & 0.544 & 1.000 & 60.6 vs 58.9 & 0.183 & 1.000 \\
+SmolLM2-1.7B & Signals, no verifier & 0.544 & 0.996 & 60.6 vs 58.9 & 0.183 & 1.000 \\
 SmolLM2-1.7B & Signals + verifier (LR) & $<$0.001 & 0.005 & 67.3 vs 58.9 & $<$0.001 & 0.002 \\
 SmolLM2-1.7B & Signals + verifier (GBM) & $<$0.001 & 0.005 & 66.5 vs 58.9 & $<$0.001 & 0.002 \\
 SmolLM2-1.7B & Text + signals + verifier & $<$0.001 & 0.005 & 67.0 vs 58.9 & $<$0.001 & 0.002 \\
@@ -30,9 +30,9 @@ Qwen2.5-3B & Signals + verifier (GBM) & $<$0.001 & 0.005 & 68.2 vs 71.5 & 0.009 
 Qwen2.5-3B & Text + signals + verifier & $<$0.001 & 0.005 & 73.6 vs 71.5 & 0.019 & 0.189 \\
 \midrule
 Pooled & Source only & $<$0.001 & 0.005 & 61.7 vs 64.3 & $<$0.001 & 0.003 \\
-Pooled & Signals, no verifier & $<$0.001 & 0.005 & 63.3 vs 64.3 & 0.067 & 0.601 \\
-Pooled & Signals + verifier (LR) & $<$0.001 & 0.005 & 68.2 vs 64.3 & $<$0.001 & 0.002 \\
-Pooled & Signals + verifier (GBM) & $<$0.001 & 0.005 & 67.5 vs 64.3 & $<$0.001 & 0.002 \\
+Pooled & Signals, no verifier & $<$0.001 & 0.005 & 63.5 vs 64.3 & 0.137 & 1.000 \\
+Pooled & Signals + verifier (LR) & $<$0.001 & 0.005 & 68.1 vs 64.3 & $<$0.001 & 0.002 \\
+Pooled & Signals + verifier (GBM) & $<$0.001 & 0.005 & 67.4 vs 64.3 & $<$0.001 & 0.002 \\
 Pooled & Text + signals + verifier & $<$0.001 & 0.005 & 69.8 vs 64.3 & $<$0.001 & 0.002 \\
 \bottomrule
 \end{tabular}

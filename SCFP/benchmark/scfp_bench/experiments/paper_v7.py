@@ -40,6 +40,7 @@ PREDICTORS = {  # name -> (Base kind, use verifier features)
     "concat_text_signals": ("concat", True),
 }
 SOURCES = ["gsm8k", "strategyqa", "logiqa"]
+SC_FEATURES = ["sc_agree", "sc_distinct", "sc_entropy", "sc_majority_is_r0"]
 
 
 def oof(kind, data, y, folds):
@@ -67,6 +68,10 @@ def generator_rows(cfg, set_name, model):
     vp = D(cfg, "features", f"{set_name}_verifier.jsonl")
     ver = {v["trace_id"]: v for v in read_jsonl(vp)} if os.path.exists(vp) else {}
     tr = {r["trace_id"]: r for r in load_set(cfg, set_name)}
+    if not cfg["signals"].get("samples"):
+        # revision: a run configured without self-consistency must not use the sc_* features that reused calls
+        # from an earlier run left on part of its traces (Qwen2.5-0.5B; REVISION_PLAN.md, post-hoc finding)
+        feats = [{**r, **{k: np.nan for k in SC_FEATURES}} for r in feats]
     rows = []
     for r in feats:
         t = tr[r["trace_id"]]

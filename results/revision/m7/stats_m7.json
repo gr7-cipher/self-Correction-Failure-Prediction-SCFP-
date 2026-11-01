@@ -458,17 +458,17 @@
     "accuracy_perm_p_holm": 1.0
    },
    "signals_noverifier": {
-    "within_auc_diff_p": 0.5563443655634437,
-    "accuracy_perm_p": 0.36496350364963503,
-    "accuracy": 0.5844004656577415,
+    "within_auc_diff_p": 0.49795020497950204,
+    "accuracy_perm_p": 0.761023897610239,
+    "accuracy": 0.5925494761350407,
     "accuracy_text": 0.5972060535506403,
-    "within_auc_diff_p_holm": 1.0,
+    "within_auc_diff_p_holm": 0.9959004099590041,
     "accuracy_perm_p_holm": 1.0
    },
    "signals": {
     "within_auc_diff_p": 0.00019998000199980003,
     "accuracy_perm_p": 9.999000099990002e-05,
-    "accuracy": 0.6862630966239813,
+    "accuracy": 0.6845168800931315,
     "accuracy_text": 0.5972060535506403,
     "within_auc_diff_p_holm": 0.004999500049995001,
     "accuracy_perm_p_holm": 0.0024997500249975004
@@ -476,7 +476,7 @@
    "signals_gbm": {
     "within_auc_diff_p": 0.00019998000199980003,
     "accuracy_perm_p": 9.999000099990002e-05,
-    "accuracy": 0.6664726426076834,
+    "accuracy": 0.6653084982537835,
     "accuracy_text": 0.5972060535506403,
     "within_auc_diff_p_holm": 0.004999500049995001,
     "accuracy_perm_p_holm": 0.0024997500249975004
@@ -484,7 +484,7 @@
    "concat_text_signals": {
     "within_auc_diff_p": 0.00019998000199980003,
     "accuracy_perm_p": 9.999000099990002e-05,
-    "accuracy": 0.6839348079161816,
+    "accuracy": 0.6868451688009313,
     "accuracy_text": 0.5972060535506403,
     "within_auc_diff_p_holm": 0.004999500049995001,
     "accuracy_perm_p_holm": 0.0024997500249975004
@@ -546,7 +546,7 @@
     "accuracy_perm_p": 0.18268173182681732,
     "accuracy": 0.6056410256410256,
     "accuracy_text": 0.5892307692307692,
-    "within_auc_diff_p_holm": 1.0,
+    "within_auc_diff_p_holm": 0.9959004099590041,
     "accuracy_perm_p_holm": 1.0
    },
    "signals": {
@@ -626,17 +626,17 @@
     "accuracy_perm_p_holm": 0.0029997000299970007
    },
    "signals_noverifier": {
-    "within_auc_diff_p": 0.0005999400059994001,
-    "accuracy_perm_p": 0.06679332066793321,
-    "accuracy": 0.6327667057444314,
+    "within_auc_diff_p": 0.00039996000399960006,
+    "accuracy_perm_p": 0.1367863213678632,
+    "accuracy": 0.6348182883939039,
     "accuracy_text": 0.643464243845252,
     "within_auc_diff_p_holm": 0.004999500049995001,
-    "accuracy_perm_p_holm": 0.6011398860113989
+    "accuracy_perm_p_holm": 1.0
    },
    "signals": {
     "within_auc_diff_p": 0.00019998000199980003,
     "accuracy_perm_p": 9.999000099990002e-05,
-    "accuracy": 0.6817116060961314,
+    "accuracy": 0.681271981242673,
     "accuracy_text": 0.643464243845252,
     "within_auc_diff_p_holm": 0.004999500049995001,
     "accuracy_perm_p_holm": 0.0024997500249975004
@@ -644,7 +644,7 @@
    "signals_gbm": {
     "within_auc_diff_p": 0.00019998000199980003,
     "accuracy_perm_p": 9.999000099990002e-05,
-    "accuracy": 0.6746776084407972,
+    "accuracy": 0.6743845252051582,
     "accuracy_text": 0.643464243845252,
     "within_auc_diff_p_holm": 0.004999500049995001,
     "accuracy_perm_p_holm": 0.0024997500249975004
@@ -652,7 +652,7 @@
    "concat_text_signals": {
     "within_auc_diff_p": 0.00019998000199980003,
     "accuracy_perm_p": 9.999000099990002e-05,
-    "accuracy": 0.6975381008206331,
+    "accuracy": 0.6982708089097304,
     "accuracy_text": 0.643464243845252,
     "within_auc_diff_p_holm": 0.004999500049995001,
     "accuracy_perm_p_holm": 0.0024997500249975004
@@ -698,9 +698,9 @@
  ],
  "calibration": {
   "natural|qwen2.5-0.5b|signals_gbm": {
-   "ece": 0.055406269639161225,
-   "brier": 0.20880086305098874,
-   "mean_p": 0.5183647862150669,
+   "ece": 0.05040255542104328,
+   "brier": 0.2080394411256111,
+   "mean_p": 0.5189450597319192,
    "failure_rate": 0.5663562281722934,
    "n": 1718
   },
@@ -726,9 +726,9 @@
    "n": 1920
   },
   "natural|pooled|concat_text_signals": {
-   "ece": 0.03704080375628995,
-   "brier": 0.19577347397983197,
-   "mean_p": 0.43955799365731013,
+   "ece": 0.03590207483586817,
+   "brier": 0.19516884425825515,
+   "mean_p": 0.43972994887397915,
    "failure_rate": 0.42702227432590856,
    "n": 6824
   },
