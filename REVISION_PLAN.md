@@ -218,6 +218,12 @@ The confidence intervals still use 1,000 resamples, as registered.
 - That probe's out-of-fold probability is added as a feature to the best M5 predictor (signals + verifier, LR) for each generator.
 - Report the within-source AUC change with a cluster-bootstrap CI.
 
+**Implementation details** (2026-11-01, after job A finished and before any probe was fit).
+- The inner CV that picks C is grouped by problem (3 folds) and scores by ROC AUC; the plan did not name a score.
+- Inside each outer training fold, the stacking layer is the one with the highest within-source AUC of the inner 3-fold out-of-fold probe probabilities. The training rows get those inner out-of-fold probabilities as the feature, so the signals model never sees a probe score fit on its own row.
+- The paper's probe is recomputed from the new extraction (last R0 token, last layer, PCA-64, as in `improve.Base`), because the original arrays were not kept.
+- One trace per problem per generator, so the bootstrap over traces is the bootstrap over problems.
+
 **Decision rule.** §8.4 will say that hidden states add to the signals only if the stacked model's within-source AUC exceeds that of the signals model, with the CI excluding 0. Otherwise it says they do not.
 
 ---
