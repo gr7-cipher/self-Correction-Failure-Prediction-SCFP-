@@ -339,3 +339,18 @@ The A/B mass is recorded for every trace (`ab_mass`), and the judge's Yes/No mas
   - (c) Restrict Bias Amplification to problems that involve people or social attributes.
   - (d) Replace "mutually exclusive" with the earliest-error rule and the planned agreement measurement.
 - The annotation guide and label config get a v1.1 copy with the new category. The distributed v1.0 packages are not changed.
+
+## Post-hoc finding: undisclosed self-consistency features for Qwen2.5-0.5B (registered 2026-11-01, before measuring its effect)
+
+**Observation** (found while writing the M8 exclusion analysis):
+- In `signals_mac_q05_big/features/natural.jsonl`, 471 of the 1,718 Qwen2.5-0.5B traces have the self-consistency features `sc_agree`, `sc_distinct`, `sc_entropy` and `sc_majority_is_r0`, computed from 5 extra samples.
+- They come from calls reused from the earlier `signals_mac_q05` run, although the big run's config sets `samples: 0`.
+- `scalar_matrix` includes these columns, so the paper's Qwen2.5-0.5B "signals" predictors (with and without the verifier, LR and GBM, and the concatenated model) used them. They are missing (imputed) for the other 1,247 traces and for the other three generators.
+- §8.2's list of signals does not mention them.
+
+**Check:** recompute every Qwen2.5-0.5B natural-set predictor (signals without the verifier, signals, signals GBM, text + signals) with the `sc_*` columns removed. Same folds, models and metrics as M5 (within-source AUC, cluster bootstrap over problems, 1,000 resamples, seed 0). Report the paired difference (original − without SC) for each.
+
+**Decision rule:**
+- The paper's description of the signals must match what the models used. The revised paper therefore uses the version **without** `sc_*` for Qwen2.5-0.5B, so that all four generators have the same feature set, the one §8.2 describes.
+- The change and its size are reported in the response to reviewers and in the log.
+- If any Qwen2.5-0.5B claim changes direction (a predictor's CI against text flips between excluding and including 0), the text is rewritten accordingly.
