@@ -435,3 +435,10 @@ On 100 natural-set GSM8K traces of Qwen2.5-1.5B (seed 0), on one Kaggle T4 at ba
 On the 200 precision-check problems (Qwen2.5-1.5B), an R0-correctness label counts as stable if it is identical across float16, bfloat16 and the original trace.
 
 Report the out-of-fold signals AUC for "R0 wrong" on the stable and unstable kept traces, with CIs. Only R0 was regenerated, so only the R0 label can be checked.
+
+### E1 addition (registered 2026-11-02, before any E1 output was available)
+- The SCFP v1.0 DeBERTa predictor (`deberta-scfp.pt`, unchanged) also scores the new hold-out traces of every generator, on the Apple M1. It routes with the same rule and calibration as the natural-set routers, so all routers are compared on the same problems. It is a comparison row; the H3 decision rule above refers to the natural-set routers.
+- Implementation:
+  - Hold-out features are computed exactly as the training features: `cmd_verify` definitions for the program check (R0 and F answers without `\boxed{}`), and M6 definitions for the samples.
+  - Path costs, latencies and agreement rules come from `m4_routing.paths`.
+  - A router additionally pays for its features on every problem: the program for (a), three samples for (b), and for every router the teacher-forced pass latency (DeBERTa: its measured M1 latency).
