@@ -1,0 +1,218 @@
+{
+ "qwen2.5-0.5b": {
+  "n": 1718,
+  "share_neutral": 0.6682188591385332,
+  "share_neutral_unchanged": 0.4831199068684517,
+  "share_unchanged_among_neutral": 0.7229965156794426,
+  "delta_macro": {
+   "with_cue": 0.7379004965823398,
+   "with_cue_ci95": [
+    0.7150022226838717,
+    0.7606015733186278
+   ],
+   "without_cue": 0.6591853803774598,
+   "without_cue_ci95": [
+    0.6339862658469909,
+    0.6849337027588275
+   ],
+   "diff_ci95": [
+    0.0611186147559572,
+    0.0968418574069678
+   ]
+  },
+  "helped_vs_harmed": {
+   "n": 570,
+   "n_harmed": 190,
+   "n_helped": 380,
+   "by_source": {
+    "gsm8k": {
+     "n": 253,
+     "harmed": 38,
+     "helped": 215
+    },
+    "logiqa": {
+     "n": 83,
+     "harmed": 49,
+     "helped": 34
+    },
+    "strategyqa": {
+     "n": 234,
+     "harmed": 103,
+     "helped": 131
+    }
+   },
+   "within_auc": 0.7029969587255359,
+   "within_auc_ci95": [
+    0.6586164295766915,
+    0.7457093441151386
+   ],
+   "within_auc_without_cue": 0.7135146275100414,
+   "within_auc_without_cue_ci95": [
+    0.6700603268081217,
+    0.7563197717868295
+   ]
+  }
+ },
+ "qwen2.5-1.5b": {
+  "n": 1236,
+  "share_neutral": 0.8098705501618123,
+  "share_neutral_unchanged": 0.7629449838187702,
+  "share_unchanged_among_neutral": 0.942057942057942,
+  "delta_macro": {
+   "with_cue": 0.7167385062844582,
+   "with_cue_ci95": [
+    0.6812129805315946,
+    0.7517374291348496
+   ],
+   "without_cue": 0.6427958697915256,
+   "without_cue_ci95": [
+    0.6052540137489537,
+    0.6788588428161988
+   ],
+   "diff_ci95": [
+    0.04698030142464991,
+    0.10169797472576131
+   ]
+  },
+  "helped_vs_harmed": {
+   "n": 235,
+   "n_harmed": 139,
+   "n_helped": 96,
+   "by_source": {
+    "gsm8k": {
+     "n": 88,
+     "harmed": 53,
+     "helped": 35
+    },
+    "logiqa": {
+     "n": 65,
+     "harmed": 41,
+     "helped": 24
+    },
+    "strategyqa": {
+     "n": 82,
+     "harmed": 45,
+     "helped": 37
+    }
+   },
+   "within_auc": 0.6805975384630739,
+   "within_auc_ci95": [
+    0.6095929558777918,
+    0.7498585737472219
+   ],
+   "within_auc_without_cue": 0.6942600476845711,
+   "within_auc_without_cue_ci95": [
+    0.6223264629754295,
+    0.7639180121215168
+   ]
+  }
+ },
+ "smollm2-1.7b": {
+  "n": 1950,
+  "share_neutral": 0.7912820512820513,
+  "share_neutral_unchanged": 0.6728205128205128,
+  "share_unchanged_among_neutral": 0.8502916396629941,
+  "delta_macro": {
+   "with_cue": 0.7590005924643505,
+   "with_cue_ci95": [
+    0.7311555607215703,
+    0.7868537843247454
+   ],
+   "without_cue": 0.6843123574116836,
+   "without_cue_ci95": [
+    0.654079581994151,
+    0.7140883295338524
+   ],
+   "diff_ci95": [
+    0.05392418745828205,
+    0.09551956333761788
+   ]
+  },
+  "helped_vs_harmed": {
+   "n": 407,
+   "n_harmed": 152,
+   "n_helped": 255,
+   "by_source": {
+    "gsm8k": {
+     "n": 182,
+     "harmed": 22,
+     "helped": 160
+    },
+    "logiqa": {
+     "n": 118,
+     "harmed": 69,
+     "helped": 49
+    },
+    "strategyqa": {
+     "n": 107,
+     "harmed": 61,
+     "helped": 46
+    }
+   },
+   "within_auc": 0.6669522095414316,
+   "within_auc_ci95": [
+    0.5976848103208889,
+    0.7328319535694535
+   ],
+   "within_auc_without_cue": 0.6430413150864919,
+   "within_auc_without_cue_ci95": [
+    0.5882032536602657,
+    0.6963829340144019
+   ]
+  }
+ },
+ "qwen2.5-3b": {
+  "n": 1920,
+  "share_neutral": 0.8911458333333333,
+  "share_neutral_unchanged": 0.8786458333333333,
+  "share_unchanged_among_neutral": 0.9859731151373465,
+  "delta_macro": {
+   "with_cue": 0.9306328929275894,
+   "with_cue_ci95": [
+    0.9125452730451318,
+    0.9462587070143741
+   ],
+   "without_cue": 0.7107652117321385,
+   "without_cue_ci95": [
+    0.6771323638298985,
+    0.7417797390629841
+   ],
+   "diff_ci95": [
+    0.18740324878176864,
+    0.25400402037474007
+   ]
+  },
+  "helped_vs_harmed": {
+   "n": 209,
+   "n_harmed": 123,
+   "n_helped": 86,
+   "by_source": {
+    "gsm8k": {
+     "n": 29,
+     "harmed": 17,
+     "helped": 12
+    },
+    "logiqa": {
+     "n": 65,
+     "harmed": 39,
+     "helped": 26
+    },
+    "strategyqa": {
+     "n": 115,
+     "harmed": 67,
+     "helped": 48
+    }
+   },
+   "within_auc": 0.49563687009969537,
+   "within_auc_ci95": [
+    0.4135695507371689,
+    0.5769084512323686
+   ],
+   "within_auc_without_cue": 0.48465197045149444,
+   "within_auc_without_cue_ci95": [
+    0.40302682687456187,
+    0.5639850315019728
+   ]
+  }
+ }
+}
