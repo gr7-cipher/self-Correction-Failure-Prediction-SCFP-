@@ -2,13 +2,14 @@
 #   make tables   all tables from released runs and results/revision/
 #   make pdf      paper/main.pdf (tectonic)
 #   make diff     paper/diff.pdf against the submitted version (needs latexdiff)
+#   make diff2    paper/main_diff.pdf against the round-2 version (paper/round2/, frozen from revision-major 030457b)
 
 PY      := $(CURDIR)/.venv/bin/python
 BENCH   := SCFP/benchmark
 TABLES  := $(CURDIR)/paper/paper_tables
 RESULTS := $(CURDIR)/results/revision
 
-.PHONY: tables pdf diff
+.PHONY: tables pdf diff diff2
 
 tables:
 	cd $(BENCH) && PYTHONPATH=. $(PY) -m scfp_bench.experiments.make_tables --config configs/laptop_local.yaml --out $(TABLES)
@@ -21,3 +22,6 @@ pdf:
 diff:
 	# tables are marked as whole blocks (markup inside tabular rows breaks \\hline/\\midrule)
 	cd paper && rm -f main.bbl submitted_v7.bbl && latexdiff --flatten -t CFONT --config="PICTUREENV=(?:picture|DIFnomarkup|tabular|tikzpicture)[\w\d*@]*" submitted_v7.tex main.tex > diff.tex && python3 ../scripts/revision/diff_fix_labels.py diff.tex && tectonic -X compile diff.tex
+
+diff2:
+	cd paper && rm -f main.bbl && latexdiff --flatten -t CFONT --config="PICTUREENV=(?:picture|DIFnomarkup|tabular|tikzpicture|sidewaystable)[\w\d*@]*" round2/main.tex main.tex > main_diff.tex && python3 ../scripts/revision/diff_fix_labels.py main_diff.tex && tectonic -X compile main_diff.tex

@@ -877,9 +877,102 @@ def check_revision(rev_tables, routing_dir, manuscript):
     record(s, "M1: SCFP test-split size and failure rate", N["psTestN"] == str(len(te1)) and
            N["psTestFailPct"] == f"{100 * np.mean([r['label'] for r in te1]):.1f}", "")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|ps|src|pw|nt|cal)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|ps|src|pw|nt|cal|ao|at|aTwo|eo|et)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     gen = set(N) | set(json.load(open(os.path.join(rev_tables, "numbers_v7.json"))))
     record(s, "every revision macro used in the manuscript is generated", used <= gen, f"missing {sorted(used - gen)}")
+
+
+# Part G -- round 2: claims checked against the result files and, where possible, recomputed from raw logs
+def check_round2(rev_tables, manuscript, results):
+    s = "G  round 2"
+    from sklearn.metrics import roc_auc_score
+    N = json.load(open(os.path.join(rev_tables, "numbers_rev.json")))
+    tex = open(manuscript).read()
+    # E3: Qwen2.5-3B SC3 + PoT vs SC3, rerun with 10,000 resamples, reported with its interval
+    m6 = json.load(open(os.path.join(results, "m6", "pot_vs_sc.json")))
+    c = m6["qwen2.5-3b"]["compare"]["sc3_pot - sc3"]
+    record(s, "E3: Qwen2.5-3B SC3 difference reported with an interval that includes zero",
+           c["ci95"][0] <= 0 <= c["ci95"][1] and N["scQCScThPotScThLo"] == f"{c['ci95'][0]:.3f}", f"{c['ci95']}")
+    record(s, "E3: the sentence about dropping the result is gone", "changed sign between two runs" not in tex, "")
+    # A1: Delta-label leakage check
+    A = json.load(open(os.path.join(results, "a1", "a1_delta.json")))
+    gens = ["qwen2.5-0.5b", "qwen2.5-1.5b", "smollm2-1.7b", "qwen2.5-3b"]
+    record(s, "A1: macro AUC lower without the answer-change cue for every generator (interval of the difference > 0)",
+           all(A[g]["delta_macro"]["diff_ci95"][0] > 0 for g in gens), "")
+    hh = A["qwen2.5-3b"]["helped_vs_harmed"]["within_auc_ci95"]
+    record(s, "A1: helped vs harmed at chance for Qwen2.5-3B (interval includes 0.5), above chance for the others",
+           hh[0] <= 0.5 <= hh[1] and all(A[g]["helped_vs_harmed"]["within_auc_ci95"][0] > 0.5 for g in gens[:3]), f"{hh}")
+    record(s, "A1: 'easier to predict than the final outcome' no longer claimed",
+           "is easier to predict than the final outcome" not in tex and "easier to predict than the final outcome" not in tex.split("\\begin{abstract}")[1].split("\\end{abstract}")[0], "")
+    # A3: label stability recomputed from the raw precision call logs
+    bench = os.path.join(os.path.dirname(results), "..", "SCFP", "benchmark")
+    sys.path.insert(0, os.path.abspath(bench))
+    from scfp_bench import prompts as P_
+    from scfp_bench.answers import extract as X_, is_correct as C_
+    at = {"gsm8k": "number", "strategyqa": "bool", "logiqa": "choice"}
+    pdir = os.path.join(results, "m8", "gpu", "precision")
+    calls = {dt: {c_["messages"][0]["content"]: c_["text"] for c_ in map(json.loads, open(os.path.join(pdir, f"calls_{dt}.jsonl"))) if c_.get("ok")}
+             for dt in ("float16", "bfloat16")}
+    orig = {}
+    for f in ("traces.jsonl", "excluded.jsonl"):
+        for l in open(os.path.join(bench, "scfp_runs", "signals_kaggle", "natural", f)):
+            r = json.loads(l)
+            if r["source_model"] == "qwen2.5-1.5b":
+                orig[P_.initial_messages(r["prompt"], at[r["source"]])[0]["content"]] = r
+    unst = 0
+    for msg, t16 in calls["float16"].items():
+        r = orig[msg]
+        a = at[r["source"]]
+        cs = {bool(C_(X_(t, a, accept_boxed=True).value, r["gold"], a)) for t in (t16, calls["bfloat16"][msg], r["initial_response"])}
+        unst += len(cs) > 1
+    record(s, "A3: unstable R0 labels recomputed from the raw call logs", str(unst) == N["atLabUnst"], f"{unst} vs {N['atLabUnst']}")
+    # T7: the appendix accuracy table uses the problem-level permutation p of the main test table
+    T7 = json.load(open(os.path.join(results, "t7", "nat_main_perm.json")))
+    st = json.load(open(os.path.join(results, "m7", "stats_m7.json")))["natural"]
+    record(s, "T7: D.23 p-values equal the permutation p-values of Table D.24",
+           all(T7[g][k]["perm_p_vs_text"] == st[g][k]["accuracy_perm_p"] for g in gens + ["pooled"]
+               for k in ("signals_noverifier", "signals", "signals_gbm", "concat_text_signals")), "")
+    record(s, "T7: no McNemar test left in the manuscript text", "McNemar" not in tex.replace("mcnemar1947note", ""), "")
+    # E1: routing (when the GPU outputs exist)
+    e1 = os.path.join(results, "e1", "e1_routing.json")
+    if os.path.exists(e1):
+        E = json.load(open(e1))
+        for g, m in (("qwen2.5-0.5b", "QA"), ("smollm2-1.7b", "SM"), ("qwen2.5-1.5b", "QB")):
+            if g not in E:
+                continue
+            rows = [json.loads(l) for l in open(os.path.join(results, "e1", "gpu", g, "routing_traces.jsonl"))]
+            record(s, f"E1 {g}: 1,000 hold-out traces", len(rows) == 1000, f"{len(rows)}")
+            acc = E[g]["policies"]["No correction (R0 only)"]["accuracy"]
+            record(s, f"E1 {g}: R0-only accuracy macro", N[f"eo{m}RzeroAcc"] == f"{100 * acc:.1f}", "")
+            sn, pol = E[g]["sensitivity"], E[g]["policies"]
+            best_nat = max(sn["wins"][n] for n in ("Router: signals + PoT", "Router: signals + SC3"))
+            sig = any(pol[n]["perm_p_vs_r0_holm"] < 0.05 and pol[n]["diff_vs_r0"] > 0 and
+                      pol[n]["relative_cost"] < pol["Always Intrinsic"]["relative_cost"] for n in ("Router: signals + PoT", "Router: signals + SC3"))
+            want = "supported" if best_nat > sn["n_settings"] / 2 else "partly supported" if best_nat >= 1 or sig else "not supported"
+            record(s, f"E1 {g}: H3 verdict follows the registered rule", E[g]["h3"] == want, f"{E[g]['h3']}")
+    # E2: SC3 AUC recomputed with sklearn from the raw sample calls (when they exist)
+    e2 = os.path.join(results, "e2", "e2_sc.json")
+    if os.path.exists(e2):
+        E2 = json.load(open(e2))
+        for g in gens:
+            run = "signals_mac_q05_big" if g == "qwen2.5-0.5b" else "signals_kaggle"
+            S = {}
+            for l in open(os.path.join(results, "e2", "gen", f"calls_{g}.jsonl")):
+                c_ = json.loads(l)
+                if c_.get("stage") == "sample" and c_.get("ok"):
+                    S[(c_["messages"][0]["content"], c_["sample"])] = c_["text"]
+            tr = [json.loads(l) for l in open(os.path.join(bench, "scfp_runs", run, "natural", "traces.jsonl"))]
+            for src in ("strategyqa", "logiqa"):
+                rows = [r for r in tr if r["source_model"] == g and r["source"] == src]
+                y0, sc = [], []
+                for r in rows:
+                    msg = P_.initial_messages(r["prompt"], at[src])[0]["content"]
+                    vals = [X_(S[(msg, k)], at[src], accept_boxed=True).value for k in (1, 2, 3)]
+                    sc.append(1 - np.mean([v is not None and v == r["r0_answer"] for v in vals]))
+                    y0.append(int(not r["r0_correct"]))
+                a_ = roc_auc_score(y0, sc)
+                want = E2[g][src]["single"]["sc3_agree_frac"]["r0_wrong"]
+                record(s, f"E2 {g} {src}: SC3 AUC for R0 wrong (sklearn, raw calls)", abs(a_ - want) < 1e-9, f"{a_:.4f} vs {want:.4f}")
 
 
 def main():
@@ -895,6 +988,7 @@ def main():
     ap.add_argument("--manuscript", default=None, help="v7: the .tex file whose macros are checked")
     ap.add_argument("--rev-tables", default=None, help="revision: paper_tables with numbers_rev.json (Part F)")
     ap.add_argument("--routing-dir", default=None, help="revision: laptop_v1/routing")
+    ap.add_argument("--round2", default=None, help="round 2: results/revision (Part G)")
     args = ap.parse_args()
 
     if args.audit_v2 or not args.run_dir:
@@ -913,6 +1007,8 @@ def main():
         check_v7(args.v7_dir, args.tables, args.v7_runs, args.manuscript)
     if args.rev_tables:
         check_revision(args.rev_tables, args.routing_dir, args.manuscript)
+    if args.round2:
+        check_round2(args.rev_tables, args.manuscript, args.round2)
 
     width = max(len(c) for _, c, _, _ in RESULTS)
     section = None
