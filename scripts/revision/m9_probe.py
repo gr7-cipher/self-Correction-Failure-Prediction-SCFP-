@@ -108,7 +108,11 @@ def main():
     ap.add_argument("--hidden", default="results/revision/gpuA")
     ap.add_argument("--out", default="results/revision/m9")
     ap.add_argument("--models", nargs="+", default=list(CONFIGS), help="rerun these generators, keep the others")
+    ap.add_argument("--plot-only", action="store_true", help="redraw the figure from m9.json")
     a = ap.parse_args()
+    if a.plot_only:
+        plot(json.load(open(os.path.join(a.out, "m9.json"))), os.path.join(a.out, "fig_layers.pdf"))
+        return
     hid_dir, out = os.path.abspath(a.hidden), os.path.abspath(a.out)
     os.makedirs(out, exist_ok=True)
     os.chdir(BENCH)
@@ -192,8 +196,9 @@ def plot(res, path):
         ax[j].set_title(title, fontsize=10)
         ax[j].set_xlabel("Relative layer depth")
     ax[0].set_ylabel("Within-source AUC")
-    ax[1].legend(fontsize=8, frameon=False)
-    fig.tight_layout()
+    h, lab = ax[0].get_legend_handles_labels()  # legend below the panels, off the curves
+    fig.legend(h, lab, loc="lower center", ncol=4, fontsize=8, frameon=False)
+    fig.tight_layout(rect=(0, 0.1, 1, 1))
     fig.savefig(path)
 
 

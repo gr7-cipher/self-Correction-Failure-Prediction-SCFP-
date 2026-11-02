@@ -57,7 +57,8 @@ def confusion_figure(rd, out, name):
     for i in range(2):
         for j in range(2):
             ax.text(j, i, f"{cm[i, j]}\n({cm[i, j] / cm[i].sum():.0%})", ha="center", va="center",
-                    color="white" if cm[i, j] > cm.max() / 2 else "black")
+                    # text colour from the cell's position on the colour scale (imshow spans min..max), not from max/2
+                    color="white" if (cm[i, j] - cm.min()) / max(1, cm.max() - cm.min()) > 0.5 else "black")
     ax.set_xticks([0, 1], ["success", "failure"]); ax.set_yticks([0, 1], ["success", "failure"])
     ax.set_xlabel("Predicted"); ax.set_ylabel("True"); plt.tight_layout()
     plt.savefig(os.path.join(out, "fig_confusion.pdf")); plt.close()
@@ -115,11 +116,14 @@ def main():
     ap.add_argument("--config", required=True)
     ap.add_argument("--predictor", default="deberta-scfp")
     ap.add_argument("--out", default="../../../paper_tables")
+    ap.add_argument("--figures-only", action="store_true", help="redraw the ROC and confusion figures only")
     args = ap.parse_args()
     rd = yaml.safe_load(open(args.config))["run_dir"]
     os.makedirs(args.out, exist_ok=True)
     roc_figure(rd, args.out)
     cm = confusion_figure(rd, args.out, args.predictor)
+    if args.figures_only:
+        return
     attention, latency = model_analyses(rd, args.predictor)
     dump_json(rd, "analysis.json", {"confusion": cm, "attention": attention, "latency": latency})
     print(json.dumps({"confusion": cm, "attention": attention, "latency": latency}, indent=2))

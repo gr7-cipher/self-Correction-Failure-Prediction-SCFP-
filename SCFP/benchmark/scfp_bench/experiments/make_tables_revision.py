@@ -25,6 +25,11 @@ def ci_pct(ci):
     return f"[{pct(ci[0])}, {pct(ci[1])}]"
 
 
+def stack(a, b):
+    """Two lines in one cell (value over interval), so wide tables fit at footnotesize."""
+    return f"\\makecell{{{a}\\\\{{{b}}}}}"
+
+
 def pval(p):
     return "$<$0.001" if p < 0.001 else f"{p:.3f}"
 
@@ -39,8 +44,8 @@ def m4(res_dir, out, M):
              "Confidence-based", "Dynamic (our predictor)", "Agreement tool + human", "Random (uniform, expected)",
              "Always Human (oracle)"]
     label = {"No correction (R0 only)": "No correction (return $R_0$)",
-             "Agreement tool": "Agreement tool ($R_0$ if PoT agrees, else PoT)",
-             "Agreement tool + human": "Agreement tool, disagreements to human$^\\dagger$",
+             "Agreement tool": "Agreement tool",
+             "Agreement tool + human": "Agreement tool + human$^\\dagger$",
              "Confidence-based": "Confidence-based router", "Dynamic (our predictor)": "Dynamic router (DeBERTa)",
              "Always Human (oracle)": "Always Human (oracle)$^\\dagger$",
              "Random (uniform, expected)": "Random (uniform, expected)$^\\dagger$"}
@@ -49,16 +54,16 @@ def m4(res_dir, out, M):
     lines = []
     for n in order:
         v = P[n]
-        acc = pct(v["accuracy"]) + (f" {ci_pct(v['accuracy_ci95'])}" if v["accuracy_ci95"] else "")
+        acc = stack(pct(v["accuracy"]), ci_pct(v["accuracy_ci95"])) if v["accuracy_ci95"] else pct(v["accuracy"])
         d = v["paired_vs_r0_only"]
-        dd = "--" if d is None else f"{100 * d['diff']:+.1f} {ci_pct(d['ci95'])}"
-        hp = f" & {pval(holm7[n]['p'])} ({pval(holm7[n]['p_holm'])})" if n in holm7 else (" & --" if holm7 else "")
+        dd = "--" if d is None else stack(f"{100 * d['diff']:+.1f}", ci_pct(d["ci95"]))
+        hp = f" & {stack(pval(holm7[n]['p']), '(' + pval(holm7[n]['p_holm']) + ')')}" if n in holm7 else (" & --" if holm7 else "")
         lines.append(f"{label.get(n, n)} & {acc} & {dd}{hp} & {v['relative_cost']:.2f}$\\times$ & "
                      f"{v['latency_s']:.1f} & {pct(v['share_human'])}\\% \\\\")
     write(out, "tab_routing_rev.tex",
-          "\\begin{tabular}{@{}lc" + ("cc" if holm7 else "c") + "ccc@{}}\n\\toprule\nStrategy & Accuracy (\\%) [95\\% CI] & "
-          "$\\Delta$ vs no correction (pp) [95\\% CI] & " + ("$p$ (Holm) & " if holm7 else "")
-          + "Cost & Latency (s) & To human \\\\\n\\midrule\n"
+          "\\begin{tabular}{@{}p{2.6cm}c" + ("cc" if holm7 else "c") + "ccc@{}}\n\\toprule\nStrategy & \\makecell{Accuracy (\\%)\\\\{[95\\% CI]}} & "
+          "\\makecell{$\\Delta$ vs no corr.\\\\(pp) [95\\% CI]} & " + ("\\makecell{$p$\\\\(Holm)} & " if holm7 else "")
+          + "Cost & \\makecell{Latency\\\\(s)} & \\makecell{To\\\\human} \\\\\n\\midrule\n"
           + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
 
     # secondary table: Overall Score at the paper's setting, and which policy wins across settings
@@ -74,9 +79,9 @@ def m4(res_dir, out, M):
     per = S["n_settings"] // len(cols)
     write(out, "tab_routing_sensitivity.tex",
           "\\begin{tabular}{@{}lc" + "c" * len(cols) + "c@{}}\n\\toprule\n & Overall Score & "
-          f"\\multicolumn{{{len(cols)}}}{{c}}{{Settings won (of {per} weight vectors), by assumed human cost/latency}} & Total \\\\\n"
+          f"\\multicolumn{{{len(cols)}}}{{c}}{{Settings won (of {per} weight vectors), by human cost/latency}} & Total \\\\\n"
           f"\\cmidrule(lr){{3-{2 + len(cols)}}}\nStrategy & (paper weights) & "
-          + " & ".join(c.replace("x/", "$\\times$/") for c in cols) + f" & (of {S['n_settings']}) \\\\\n\\midrule\n"
+          + " & ".join(stack(c.split("/")[0].replace("x", "$\\times$"), c.split("/")[1]) for c in cols) + f" & (of {S['n_settings']}) \\\\\n\\midrule\n"
           + "\n".join(rows) + "\n\\bottomrule\n\\end{tabular}\n")
     del names
 
@@ -243,29 +248,29 @@ def m6(res_dir, out, M):
         return
     R = json.load(open(p))
     head = " & ".join(name for _, _, name in GEN6)
-    sub = (" & " + " & ".join(f"{R[g]['n']:,} traces, {100 * R[g]['failure_rate']:.1f}\\% fail" for g, _, _ in GEN6))
-    single = [("pot_agree_r0", "PoT agrees with $R_0$"), ("sc1_agree", "1 sample agrees with $R_0$ (SC1)"),
-              ("sc3_agree_frac", "Share of 3 samples agreeing (SC3)")]
+    sub = (" & " + " & ".join(stack(f"{R[g]['n']:,} traces", f"{100 * R[g]['failure_rate']:.1f}\\% fail") for g, _, _ in GEN6))
+    single = [("pot_agree_r0", "PoT agrees with $R_0$"), ("sc1_agree", "\\makecell[l]{1 sample agrees\\\\with $R_0$ (SC1)}"),
+              ("sc3_agree_frac", "\\makecell[l]{Share of 3 samples\\\\agreeing (SC3)}")]
     models = [("base", "Signals, no verifier"), ("pot", "+ PoT"), ("sc1", "+ SC1"), ("sc1_pot", "+ SC1 + PoT"),
               ("sc3", "+ SC3"), ("sc3_pot", "+ SC3 + PoT")]
-    comps = [("pot - sc1", "(+PoT) $-$ (+SC1), cost-matched"), ("sc1_pot - sc1", "(+SC1+PoT) $-$ (+SC1)"),
-             ("sc3_pot - sc3", "(+SC3+PoT) $-$ (+SC3)")]
-    L = [f"\\multicolumn{{{1 + len(GEN6)}}}{{l}}{{\\textit{{Single feature: AUC for final wrong (initial wrong)}}}} \\\\"]
+    comps = [("pot - sc1", "\\makecell[l]{(+PoT) $-$ (+SC1),\\\\cost-matched}"), ("sc1_pot - sc1", "\\makecell[l]{(+SC1+PoT)\\\\$-$ (+SC1)}"),
+             ("sc3_pot - sc3", "\\makecell[l]{(+SC3+PoT)\\\\$-$ (+SC3)}")]
+    L = [f"\\multicolumn{{{1 + len(GEN6)}}}{{@{{}}l}}{{\\textit{{Single feature: AUC, final wrong (initial wrong)}}}} \\\\"]
     for k, lab in single:
         L.append(lab + " & " + " & ".join(f"{f3(R[g]['single'][k]['rf_wrong']['auc'])} ({f3(R[g]['single'][k]['r0_wrong']['auc'])})"
                                          for g, _, _ in GEN6) + " \\\\")
     L.append("\\midrule")
-    L.append(f"\\multicolumn{{{1 + len(GEN6)}}}{{l}}{{\\textit{{Logistic regression on the signals: AUC for final wrong}}}} \\\\")
+    L.append(f"\\multicolumn{{{1 + len(GEN6)}}}{{@{{}}l}}{{\\textit{{Logistic regression on the signals: AUC, final wrong}}}} \\\\")
     for k, lab in models:
         L.append(lab + " & " + " & ".join(f3(R[g]["models"][k]["auc"]) for g, _, _ in GEN6) + " \\\\")
     L.append("\\midrule")
-    L.append(f"\\multicolumn{{{1 + len(GEN6)}}}{{l}}{{\\textit{{Paired AUC difference [95\\% CI over problems]}}}} \\\\")
+    L.append(f"\\multicolumn{{{1 + len(GEN6)}}}{{@{{}}l}}{{\\textit{{Paired AUC difference [95\\% CI over problems]}}}} \\\\")
     for k, lab in comps:
         cells = []
         for g, _, _ in GEN6:
             c = R[g]["compare"][k]
-            t = f"{c['diff']:+.3f} [{f3(c['ci95'][0])}, {f3(c['ci95'][1])}]"
-            cells.append(f"\\textbf{{{t}}}" if c["ci95"][0] > 0 else t)
+            a_, b_ = f"{c['diff']:+.3f}", f"[{f3(c['ci95'][0])}, {f3(c['ci95'][1])}]"
+            cells.append(stack(f"\\textbf{{{a_}}}", f"\\textbf{{{b_}}}") if c["ci95"][0] > 0 else stack(a_, b_))
         L.append(lab + " & " + " & ".join(cells) + " \\\\")
     write(out, "tab_pot_vs_sc.tex", "\\begin{tabular}{@{}l" + "c" * len(GEN6) + "@{}}\n\\toprule\n & " + head
           + " \\\\\n" + sub + " \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
@@ -339,6 +344,7 @@ def m7(res_dir, out, M):
     M["rtExtPHolm"] = pval(rt["Always Extrinsic"]["p_holm"]); M["rtExtPPerm"] = pval(rt["Always Extrinsic"]["p"])
     M["rtDynPHolm"] = pval(rt["Dynamic (our predictor)"]["p_holm"])
     M["rtIntPHolm"] = pval(rt["Always Intrinsic"]["p_holm"])
+    M["rtIntPPerm"] = pval(rt["Always Intrinsic"]["p"])
     # natural-set tests (appendix)
     N = R["natural"]
     gl = {"qwen2.5-0.5b": "Qwen2.5-0.5B", "qwen2.5-1.5b": "Qwen2.5-1.5B", "smollm2-1.7b": "SmolLM2-1.7B",
@@ -402,13 +408,14 @@ def m7_seeds(res_dir, out, M):
     lines = []
     for k, mk, lab in ENC7:
         v, g = S["predictors"][k], R["models"][k]["summary"]
-        lines.append(f"{lab} & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['macro_f1']:.3f} & {v['auc']:.3f} {ci(v['auc_ci95'])} & "
-                     f"{pval(tv[k]['p'])} ({pval(tv[k]['p_holm'])}) & {pval(tm[k]['p'])} ({pval(tm[k]['p_holm'])}) & "
+        acc, auc_ = stack(f"{v['accuracy']:.3f}", ci(v["accuracy_ci95"])), stack(f"{v['auc']:.3f}", ci(v["auc_ci95"]))
+        lines.append(f"{lab} & {acc} & {v['macro_f1']:.3f} & {auc_} & "
+                     f"{stack(pval(tv[k]['p']), '(' + pval(tv[k]['p_holm']) + ')')} & {stack(pval(tm[k]['p']), '(' + pval(tm[k]['p_holm']) + ')')} & "
                      f"{ms(g['accuracy'])} & {ms(g['auc'])} \\\\")
     write(out, "tab_encoder_results_rev.tex",
-          "\\begin{tabular}{@{}lccccccc@{}}\n\\toprule\n & \\multicolumn{5}{c}{Seed 42 (submitted run)} & \\multicolumn{2}{c}{Five seeds} \\\\\n"
-          "\\cmidrule(lr){2-6}\\cmidrule(lr){7-8}\nPredictor & Accuracy [95\\% CI] & Macro-F1 & AUC [95\\% CI] & $p$ vs TF-IDF (Holm) & "
-          "$p$ vs majority (Holm) & Accuracy & AUC \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
+          "\\begin{tabular}{@{}p{3.3cm}ccccccc@{}}\n\\toprule\n & \\multicolumn{5}{c}{Seed 42 (Apple M1)} & \\multicolumn{2}{c}{Five seeds (mean $\\pm$ sd)} \\\\\n"
+          "\\cmidrule(lr){2-6}\\cmidrule(lr){7-8}\nPredictor & \\makecell{Accuracy\\\\{[95\\% CI]}} & Macro-F1 & \\makecell{AUC\\\\{[95\\% CI]}} & "
+          "\\makecell{$p$ vs TF-IDF\\\\(Holm)} & \\makecell{$p$ vs majority\\\\(Holm)} & Accuracy & AUC \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
     full = R["models"]["deberta-scfp"]["summary"]
     v = S["predictors"]["deberta-scfp"]
     lines = [f"Full model & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['auc']:.3f} {ci(v['auc_ci95'])} & -- & "
@@ -418,7 +425,7 @@ def m7_seeds(res_dir, out, M):
         lines.append(f"{lab} & {v['accuracy']:.3f} {ci(v['accuracy_ci95'])} & {v['auc']:.3f} {ci(v['auc_ci95'])} & "
                      f"{pval(tf[k]['p'])} ({pval(tf[k]['p_holm'])}) & {ms(g['accuracy'])} & {ms(g['auc'])} & {d['auc']['seeds_above_full']} of 5 \\\\")
     write(out, "tab_ablations_rev.tex",
-          "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n & \\multicolumn{3}{c}{Seed 42 (submitted run)} & \\multicolumn{3}{c}{Five seeds} \\\\\n"
+          "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n & \\multicolumn{3}{c}{Seed 42 (Apple M1)} & \\multicolumn{3}{c}{Five seeds} \\\\\n"
           "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}\nVariant & Accuracy [95\\% CI] & AUC [95\\% CI] & $p$ vs full (Holm) & Accuracy & AUC & "
           "AUC above full \\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
     seeds = list(R["models"]["deberta-scfp"]["per_seed"])
@@ -464,22 +471,39 @@ def m9(res_dir, out, M):
         v = R[g]
         c, d = v["best_layer_ci95"], v["stacked_minus_signals_ci95"]
         dd = f"{v['stacked_minus_signals']:+.3f} [{f3(d[0])}, {f3(d[1])}]"
+        dci = f"[{f3(d[0])}, {f3(d[1])}]"
+        dd = stack(f"\\textbf{{{v['stacked_minus_signals']:+.3f}}}", f"\\textbf{{{dci}}}") if d[0] > 0 else stack(f"{v['stacked_minus_signals']:+.3f}", dci)
         L.append(f"{name} & {v['layers']} & {f3(v['last_token_pca64_within_auc'])} & {f3(v['last_layer_answer_auc'])} & "
-                 f"{v['best_layer_post_hoc'] + 1} & {f3(v['best_layer_auc'])} [{f3(c[0])}, {f3(c[1])}] & "
+                 f"{v['best_layer_post_hoc'] + 1} & {stack(f3(v['best_layer_auc']), f'[{f3(c[0])}, {f3(c[1])}]')} & "
                  f"{f3(max(v['per_layer_within_auc']['r0_wrong']))} & {f3(v['signals_within_auc'])} & {f3(v['stacked_within_auc'])} & "
-                 + (f"\\textbf{{{dd}}}" if d[0] > 0 else dd) + " \\\\")
+                 + dd + " \\\\")
         M[f"hp{m}Last"], M[f"hp{m}Best"] = f3(v["last_token_pca64_within_auc"]), f3(v["best_layer_auc"])
         M[f"hp{m}BestLo"], M[f"hp{m}BestHi"] = f3(c[0]), f3(c[1])
         M[f"hp{m}BestLayer"], M[f"hp{m}Layers"] = str(v["best_layer_post_hoc"] + 1), str(v["layers"])
         M[f"hp{m}RzeroBest"] = f3(max(v["per_layer_within_auc"]["r0_wrong"]))
         M[f"hp{m}Sig"], M[f"hp{m}Stk"] = f3(v["signals_within_auc"]), f3(v["stacked_within_auc"])
         M[f"hp{m}Diff"], M[f"hp{m}DiffLo"], M[f"hp{m}DiffHi"] = f"{v['stacked_minus_signals']:+.3f}", f3(d[0]), f3(d[1])
-    write(out, "tab_hidden_layers.tex",
-          "\\begin{tabular}{@{}lccccccccc@{}}\n\\toprule\n & & \\multicolumn{5}{c}{Probe alone (within-source AUC)} & "
-          "\\multicolumn{3}{c}{Signals + verifier (LR)} \\\\\n\\cmidrule(lr){3-7}\\cmidrule(lr){8-10}\n"
-          "Generator & Layers & Last token, PCA-64 & Answer tokens, last layer & Best layer$^\\ast$ & AUC at best layer [95\\% CI] & "
-          "Best, initial wrong$^\\ast$ & Alone & + probe & $\\Delta$ [95\\% CI] \\\\\n\\midrule\n"
-          + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    T = []
+    def row(lab, f):
+        T.append(lab + " & " + " & ".join(f(R[g]) for g, _, _ in GEN6) + " \\\\")
+    row("Layers", lambda v: str(v["layers"]))
+    T.append("\\midrule\n\\multicolumn{5}{@{}l}{\\textit{Probe alone, final answer wrong}} \\\\")
+    row("Last token, PCA-64", lambda v: f3(v["last_token_pca64_within_auc"]))
+    row("Answer tokens, last layer", lambda v: f3(v["last_layer_answer_auc"]))
+    row("Best layer$^\\ast$", lambda v: str(v["best_layer_post_hoc"] + 1))
+    row("\\makecell[l]{AUC at best layer$^\\ast$\\\\{[95\\% CI]}}", lambda v: stack(f3(v["best_layer_auc"]), f"[{f3(v['best_layer_ci95'][0])}, {f3(v['best_layer_ci95'][1])}]"))
+    row("\\makecell[l]{Best layer, initial\\\\answer wrong$^\\ast$}", lambda v: f3(max(v["per_layer_within_auc"]["r0_wrong"])))
+    T.append("\\midrule\n\\multicolumn{5}{@{}l}{\\textit{Signals + verifier (LR), final answer wrong}} \\\\")
+    row("Alone", lambda v: f3(v["signals_within_auc"]))
+    row("\\makecell[l]{+ probe (layer\\\\chosen in fold)}", lambda v: f3(v["stacked_within_auc"]))
+    def dcell(v):
+        d = v["stacked_minus_signals_ci95"]
+        a_, b_ = f"{v['stacked_minus_signals']:+.3f}", f"[{f3(d[0])}, {f3(d[1])}]"
+        return stack(f"\\textbf{{{a_}}}", f"\\textbf{{{b_}}}") if d[0] > 0 else stack(a_, b_)
+    row("$\\Delta$ [95\\% CI]", dcell)
+    write(out, "tab_hidden_layers.tex", "\\begin{tabular}{@{}l" + "c" * len(GEN6) + "@{}}\n\\toprule\n & "
+          + " & ".join(n for _, _, n in GEN6) + " \\\\\n\\midrule\n" + "\n".join(T) + "\n\\bottomrule\n\\end{tabular}\n")
+    del L
     words = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
     M["hpRule"] = words[R["_rule_count"]]
     M["hpBestMin"] = f3(min(R[g]["best_layer_auc"] for g, _, _ in GEN6))
@@ -507,21 +531,16 @@ def m3(res_dir, out, M):
         v = C[g]
         d, gt = v["delta"], v["gate"]
         dd = f"{gt['diff']:+.3f} {ci(gt['diff_ci95'])}"
-        L.append(f"{name} & {pct(v['class_rates']['helped'])} / {pct(v['class_rates']['neutral'])} / {pct(v['class_rates']['harmed'])} & "
-                 f"{f3(d['macro_within_auc'])} {ci(d['macro_within_auc_ci95'])} & {f3(d['per_class_within_auc']['helped'])} & "
-                 f"{f3(d['per_class_within_auc']['harmed'])} & {f3(d['macro_f1'])} & {f3(gt['direct_within_auc'])} & {f3(gt['within_auc'])} & {dd} \\\\")
+        L.append(f"{name} & {f3(gt['direct_within_auc'])} & {f3(gt['within_auc'])} & {dd} \\\\")
         M[f"dl{m}Macro"], M[f"dl{m}Helped"], M[f"dl{m}Harmed"] = f3(d["macro_within_auc"]), f3(d["per_class_within_auc"]["helped"]), f3(d["per_class_within_auc"]["harmed"])
         M[f"dl{m}GateDiff"], M[f"dl{m}GateDiffLo"], M[f"dl{m}GateDiffHi"] = f"{gt['diff']:+.3f}", f3(gt["diff_ci95"][0]), f3(gt["diff_ci95"][1])
         M[f"dl{m}LpRf"], M[f"dl{m}LpRzero"] = f3(v["answer_logprob"]["rf_wrong_within_auc"]), f3(v["answer_logprob"]["r0_wrong_within_auc"])
     P = C["pooled"]
     gt = P["gate"]
     L.append("\\midrule")
-    L.append(f"Pooled & -- & {f3(P['delta']['macro_within_auc'])} & -- & -- & -- & {f3(gt['direct_within_auc'])} & {f3(gt['within_auc'])} & "
-             f"{gt['diff']:+.3f} {ci(gt['diff_ci95'])} \\\\")
-    write(out, "tab_m3_delta.tex",
-          "\\begin{tabular}{@{}lcccccccc@{}}\n\\toprule\n & & \\multicolumn{4}{c}{$\\Delta$-label (helped / neutral / harmed)} & "
-          "\\multicolumn{3}{c}{Final wrong: two-stage gate vs direct} \\\\\n\\cmidrule(lr){3-6}\\cmidrule(lr){7-9}\n"
-          "Generator & Class rates (\\%) & Macro AUC [95\\% CI] & Helped & Harmed & Macro-F1 & Direct & Gate & Gate $-$ direct [95\\% CI] \\\\\n"
+    L.append(f"Pooled & {f3(gt['direct_within_auc'])} & {f3(gt['within_auc'])} & {gt['diff']:+.3f} {ci(gt['diff_ci95'])} \\\\")
+    write(out, "tab_m3_gate.tex",
+          "\\begin{tabular}{@{}lccc@{}}\n\\toprule\nGenerator & Direct & Two-stage gate & Gate $-$ direct [95\\% CI] \\\\\n"
           "\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
     vals = [C[g]["delta"]["macro_within_auc"] for g, _, _ in GEN6]
     M["dlMacroMin"], M["dlMacroMax"] = f3(min(vals)), f3(max(vals))
@@ -551,6 +570,8 @@ def m3(res_dir, out, M):
                 cells.append(c)
                 if mk:
                     M[f"cb{m}{mk}{'Rf' if tgt == 'rf_wrong' else 'Rzero'}"] = f3(v["within_auc"])
+                elif k == "signals":
+                    M[f"cb{m}Sig{'Rf' if tgt == 'rf_wrong' else 'Rzero'}"] = f3(v["within_auc"])
             rows.append(f"{lab} & " + " & ".join(cells) + " \\\\")
         if tgt == "rf_wrong":
             lp = [f3(C[g]["answer_logprob"]["rf_wrong_within_auc"]) if g != "pooled" else f3(C["pooled"]["answer_logprob"]["rf_wrong_within_auc"]) for g, _, _ in GEN3]
@@ -582,6 +603,89 @@ def m3(res_dir, out, M):
     M["cbAbMassMin"] = f"{100 * min(G['ptrue_ab_mass'].values()):.1f}"
 
 
+def r2_a1(res_dir, out, M):
+    """Round 2, A1: Delta-label leakage check."""
+    p = os.path.join(res_dir, "a1", "a1_delta.json")
+    if not os.path.exists(p):
+        return
+    A = json.load(open(p))
+    ci = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
+    L, hh, wc, nc = [], [], [], []
+    for g, m, name in GEN6:
+        v = A[g]
+        h, d = v["helped_vs_harmed"], v["delta_macro"]
+        L.append(f"{name} & {pct(v['share_neutral'])} & {pct(v['share_unchanged_among_neutral'])} & {h['n']:,} ({h['n_harmed']:,}) & "
+                 f"{f3(h['within_auc'])} {ci(h['within_auc_ci95'])} & {f3(d['with_cue'])} {ci(d['with_cue_ci95'])} & "
+                 f"{f3(d['without_cue'])} {ci(d['without_cue_ci95'])} \\\\")
+        M[f"aoHH{m}"], M[f"aoHH{m}Lo"], M[f"aoHH{m}Hi"] = f3(h["within_auc"]), f3(h["within_auc_ci95"][0]), f3(h["within_auc_ci95"][1])
+        M[f"aoHH{m}N"], M[f"aoHH{m}Harmed"] = f"{h['n']:,}", f"{h['n_harmed']:,}"
+        M[f"aoNoCue{m}"], M[f"aoWithCue{m}"] = f3(d["without_cue"]), f3(d["with_cue"])
+        M[f"aoUnchNeutral{m}"] = pct(v["share_unchanged_among_neutral"])
+        hh.append(h["within_auc"]); wc.append(d["with_cue"]); nc.append(d["without_cue"])
+    hh3 = [A[g]["helped_vs_harmed"]["within_auc"] for g, _, _ in GEN6 if g != "qwen2.5-3b"]
+    M["aoHHMin"], M["aoHHMax"] = f3(min(hh3)), f3(max(hh3))
+    M["aoNoCueMin"], M["aoNoCueMax"] = f3(min(nc)), f3(max(nc))
+    un = [A[g]["share_unchanged_among_neutral"] for g, _, _ in GEN6]
+    M["aoUnchNeutralMin"], M["aoUnchNeutralMax"] = pct(min(un)), pct(max(un))
+    del L
+    ci2 = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
+    T = [" & " + " & ".join(n for _, _, n in GEN6) + " \\\\", "\\midrule"]
+    def row(lab, f):
+        T.append(lab + " & " + " & ".join(f(A[g]) for g, _, _ in GEN6) + " \\\\")
+    row("Neutral traces (\\%)", lambda v: pct(v["share_neutral"]))
+    row("\\makecell[l]{\\quad of which answer\\\\\\quad unchanged (\\%)}", lambda v: pct(v["share_unchanged_among_neutral"]))
+    T.append("\\midrule\n\\multicolumn{5}{@{}l}{\\textit{Helped vs harmed, answer changed}} \\\\")
+    row("$n$ (harmed)", lambda v: f"{v['helped_vs_harmed']['n']:,} ({v['helped_vs_harmed']['n_harmed']:,})")
+    row("AUC [95\\% CI]", lambda v: stack(f3(v["helped_vs_harmed"]["within_auc"]), ci2(v["helped_vs_harmed"]["within_auc_ci95"])))
+    T.append("\\midrule\n\\multicolumn{5}{@{}l}{\\textit{$\\Delta$-label, macro AUC over three classes}} \\\\")
+    row("\\makecell[l]{All signals\\\\{[95\\% CI]}}", lambda v: stack(f3(v["delta_macro"]["with_cue"]), ci2(v["delta_macro"]["with_cue_ci95"])))
+    row("\\makecell[l]{Without the cue\\\\{[95\\% CI]}}", lambda v: stack(f3(v["delta_macro"]["without_cue"]), ci2(v["delta_macro"]["without_cue_ci95"])))
+    write(out, "tab_delta_rev.tex", "\\begin{tabular}{@{}l" + "c" * len(GEN6) + "@{}}\n\\toprule\n" + "\n".join(T)
+          + "\n\\bottomrule\n\\end{tabular}\n")
+
+def r2_a3(res_dir, out, M):
+    """Round 2, A3: numerical stability of the R0 labels (Qwen2.5-1.5B, precision check of job C)."""
+    p = os.path.join(res_dir, "a3", "a3_precision.json")
+    if not os.path.exists(p):
+        return
+    A = json.load(open(p))
+    pr = json.load(open(os.path.join(res_dir, "m8", "m8_gpu.json")))["precision"]
+    M["atOrigBfPct"] = pct(pr["bf16_answer_differs_from_original"] / pr["n"])
+    M["atLabUnst"], M["atLabUnstPct"] = str(A["label_unstable"]), pct(A["label_unstable"] / A["n_problems"])
+    M["atKeptN"], M["atUnstN"] = str(A["kept_with_predictions"]), str(A["kept_label_unstable"])
+    for tgt, mk in (("r0_wrong", "Rzero"), ("rf_wrong", "Rf")):
+        for sub, sk in (("stable", "St"), ("unstable", "Unst"), ("all", "All")):
+            v = A[f"{tgt}_{sub}"]
+            M[f"at{mk}{sk}"] = f3(v["within_auc"])
+            M[f"at{mk}{sk}Lo"], M[f"at{mk}{sk}Hi"] = f3(v["ci95"][0]), f3(v["ci95"][1])
+            M[f"at{mk}{sk}Pos"] = str(v["n_pos"])
+
+def r2_t7(res_dir, out, M):
+    """Round 2, T7: appendix accuracy table of the natural set with the problem-level permutation test."""
+    p = os.path.join(res_dir, "t7", "nat_main_perm.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    names = [("text_tfidf", "TF-IDF + LR (text)"), ("signals_noverifier", "Signals, no verifier"),
+             ("signals", "Signals + verifier"), ("signals_gbm", "Gradient boosting, signals + verifier"),
+             ("concat_text_signals", "Text and signals + verifier")]
+    gl = [(g, n) for g, _, n in GEN5]
+    L = []
+    for g, gname in gl:
+        v = R[g]
+        L.append(f"\\multicolumn{{5}}{{@{{}}l}}{{\\textit{{{gname}}}: $n = {v['n']:,}$, majority class {pct(v['majority'])}\\%}} \\\\")
+        best = max((k for k, _ in names), key=lambda k: v[k]["auc"])
+        for k, lab in names:
+            r = v[k]
+            a_ = f"\\textbf{{{f3(r['auc'])}}}" if k == best else f3(r["auc"])
+            pt = "--" if k == "text_tfidf" else pval(r["perm_p_vs_text"])
+            L.append(f"\\quad {lab} & {a_} [{f3(r['auc_ci95'][0])}, {f3(r['auc_ci95'][1])}] & {pct(r['accuracy'])} & {f3(r['macro_f1'])} & {pt} \\\\")
+        L.append("\\midrule")
+    L.pop()
+    write(out, "tab_nat_main_perm.tex", "\\begin{tabular}{@{}p{4.6cm}cccc@{}}\n\\toprule\nPredictor & AUC [95\\% CI] & \\makecell{Accuracy\\\\(\\%)} & Macro-F1 & \\makecell{$p$ vs\\\\text} \\\\\n\\midrule\n"
+          + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+
+
 def m8(res_dir, out, M):
     p = os.path.join(res_dir, "m8", "exclusion_sensitivity.json")
     if not os.path.exists(p):
@@ -590,30 +694,31 @@ def m8(res_dir, out, M):
     ci = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
     S = R["scfp"]
     L = []
-    for k, lab in (("original", "Excluded (submitted)"), ("with_exclusions", "Counted as failures"),
+    for k, lab in (("original", "Excluded (main analysis)"), ("with_exclusions", "Counted as failures"),
                    ("with_exclusions_on_original_test", "Counted as failures, original test traces")):
         v = S[k]
-        L.append(f"{lab} & {v['n']} & {pct(v['failure_rate'])} & {pct(v['majority_accuracy'])} & {f3(v['accuracy'])} {ci(v['accuracy_ci95'])} & "
-                 f"{f3(v['macro_f1'])} & {f3(v['auc'])} {ci(v['auc_ci95'])} \\\\")
-    A = "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n\\multicolumn{7}{l}{\\textit{SCFP v1.0 test split, TF-IDF + logistic regression}} \\\\\n" \
-        "Traces without a final answer & $n$ & Failure rate (\\%) & Majority (\\%) & Accuracy [95\\% CI] & Macro-F1 & AUC [95\\% CI] \\\\\n\\midrule\n" \
+        L.append(f"{lab} & {v['n']} & {pct(v['failure_rate'])} & {pct(v['majority_accuracy'])} & {stack(f3(v['accuracy']), ci(v['accuracy_ci95']))} & "
+                 f"{f3(v['macro_f1'])} & {stack(f3(v['auc']), ci(v['auc_ci95']))} \\\\")
+    A = "\\begin{tabular}{@{}p{3.1cm}cccccc@{}}\n\\toprule\n" \
+        "\\makecell[l]{Traces without\\\\a final answer} & $n$ & \\makecell{Failure\\\\rate (\\%)} & \\makecell{Majority\\\\(\\%)} & \\makecell{Accuracy\\\\{[95\\% CI]}} & Macro-F1 & \\makecell{AUC\\\\{[95\\% CI]}} \\\\\n\\midrule\n" \
         + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n"
     N = R["natural"]
     L = []
     for g, m, name in GEN6:
         v = N[g]
-        cells = [f"{v['excluded']:,} / {v['kept'] + v['excluded']:,}", f"{pct(v['failure_rate_excluding'])} $\\to$ {pct(v['failure_rate_with'])}"]
+        cells = [f"{v['excluded']:,} / {v['kept'] + v['excluded']:,}", stack(pct(v['failure_rate_excluding']), f"$\\to$ {pct(v['failure_rate_with'])}")]
         for k in ("text_tfidf", "signals_noverifier", "signals"):
-            cells.append(f"{f3(v[k]['within_auc_original'])} $\\to$ {f3(v[k]['within_auc_with_exclusions'])}")
+            cells.append(stack(f3(v[k]['within_auc_original']), f"$\\to$ {f3(v[k]['within_auc_with_exclusions'])}"))
         d = v["signals_minus_text_with_exclusions_ci95"]
-        cells.append(f"{v['signals_minus_text_with_exclusions']:+.3f} {ci(d)}")
+        cells.append(stack(f"{v['signals_minus_text_with_exclusions']:+.3f}", ci(d)))
         L.append(f"{name} & " + " & ".join(cells) + " \\\\")
         M[f"ex{m}SigText"], M[f"ex{m}SigTextLo"], M[f"ex{m}SigTextHi"] = f"{v['signals_minus_text_with_exclusions']:+.3f}", f3(d[0]), f3(d[1])
         M[f"ex{m}FailWith"], M[f"ex{m}FailWithout"] = pct(v["failure_rate_with"]), pct(v["failure_rate_excluding"])
-    Bt = "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n\\multicolumn{7}{l}{\\textit{Natural set, within-source AUC (excluded $\\to$ counted as failures)}} \\\\\n" \
-         "Generator & Excluded / all & Failure rate (\\%) & Text & Signals, no verifier & Signals + verifier & Signals $-$ text [95\\% CI] \\\\\n\\midrule\n" \
+    Bt = "\\begin{tabular}{@{}lcccccc@{}}\n\\toprule\n" \
+         "Generator & \\makecell{Excluded\\\\/ all} & \\makecell{Failure\\\\rate (\\%)} & Text & \\makecell{Signals,\\\\no verifier} & \\makecell{Signals\\\\+ verifier} & \\makecell{Signals $-$ text\\\\{[95\\% CI]}} \\\\\n\\midrule\n" \
          + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n"
-    write(out, "tab_exclusion_sens.tex", A + "\n\\vspace{6pt}\n\n" + Bt)
+    write(out, "tab_exclusion_sens_scfp.tex", A)
+    write(out, "tab_exclusion_sens_nat.tex", Bt)
     for k, mk in (("original", "Orig"), ("with_exclusions", "With")):
         v = S[k]
         M[f"exScfp{mk}Acc"], M[f"exScfp{mk}AUC"], M[f"exScfp{mk}Maj"] = f3(v["accuracy"]), f3(v["auc"]), pct(v["majority_accuracy"])
@@ -691,7 +796,7 @@ def main():
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)
