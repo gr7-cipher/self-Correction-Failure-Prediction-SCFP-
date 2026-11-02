@@ -1,0 +1,13 @@
+{
+ "device": "Tesla T4",
+ "n": 100,
+ "batch_size": 1,
+ "versions": {
+  "generator": "Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "reward_model": "Skywork/Skywork-Reward-Llama-3.1-8B-v0.2@d4117fbfd81b72f41b96341238baa1e3e90a4ce1",
+  "judge": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28"
+ },
+ "generator_dtype": "torch.float16",
+ "external_quant": "nf4",
+ "elapsed_s": 3505.2353117465973
+}
