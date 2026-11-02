@@ -685,6 +685,165 @@ def r2_t7(res_dir, out, M):
     write(out, "tab_nat_main_perm.tex", "\\begin{tabular}{@{}p{4.6cm}cccc@{}}\n\\toprule\nPredictor & AUC [95\\% CI] & \\makecell{Accuracy\\\\(\\%)} & Macro-F1 & \\makecell{$p$ vs\\\\text} \\\\\n\\midrule\n"
           + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
 
+E1GEN = [("qwen2.5-0.5b", "QA", "Qwen2.5-0.5B"), ("smollm2-1.7b", "SM", "SmolLM2-1.7B"), ("qwen2.5-1.5b", "QB", "Qwen2.5-1.5B")]
+E1POL = [("No correction (R0 only)", "Rzero", "No correction"), ("Always Intrinsic", "Int", "Always intrinsic"),
+         ("Always Extrinsic", "Ext", "Always tool"), ("Agreement tool", "Agr", "Agreement tool"),
+         ("Router: signals + PoT", "Pot", "Router: signals + PoT"), ("Router: signals + SC3", "Sc", "Router: signals + SC3"),
+         ("Router: SCFP v1.0 DeBERTa", "Deb", "Router: SCFP v1.0 DeBERTa"), ("Confidence-based", "Conf", "Router: critique confidence"),
+         ("Agreement tool + human", "AgrHum", "Agreement tool + human$^\\dagger$"), ("Always Human (oracle)", "Hum", "Always human$^\\dagger$"),
+         ("Random (uniform, expected)", "Rand", "Random (expected)$^\\dagger$")]
+WORDS = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
+
+
+def r2_e1(res_dir, out, M):
+    """Round 2, E1: routing on the hold-out with the natural-set predictors."""
+    p = os.path.join(res_dir, "e1", "e1_routing.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    gens = [x for x in E1GEN if x[0] in R]
+    M["eoTune"], M["eoEval"] = f"{R[gens[0][0]]['n_tune']:,}", f"{R[gens[0][0]]['n_eval']:,}"
+    L = []
+    for k, mk, lab in E1POL:
+        cells = []
+        for g, m, _ in gens:
+            v = R[g]["policies"][k]
+            acc = pct(v["accuracy"]) + (f" {ci_pct(v['accuracy_ci95'])}" if v["accuracy_ci95"] else "")
+            if "perm_p_vs_r0_holm" in v:
+                d = f"{100 * v['diff_vs_r0']:+.1f} ({pval(v['perm_p_vs_r0_holm'])})"
+                if v["perm_p_vs_r0_holm"] < 0.05:
+                    d = f"\\textbf{{{d}}}"
+            else:
+                d = "--"
+            cells.append(stack(acc, f"{v['relative_cost']:.2f}$\\times$, {d}"))
+            M[f"eo{m}{mk}Acc"], M[f"eo{m}{mk}Cost"] = pct(v["accuracy"]), f"{v['relative_cost']:.2f}"
+            M[f"eo{m}{mk}Lat"] = f"{v['latency_s']:.1f}"
+            if v["accuracy_ci95"]:
+                M[f"eo{m}{mk}AccLo"], M[f"eo{m}{mk}AccHi"] = pct(v["accuracy_ci95"][0]), pct(v["accuracy_ci95"][1])
+            M[f"eo{m}{mk}Diff"] = f"{100 * v['diff_vs_r0']:+.1f}"
+            if "perm_p_vs_r0_holm" in v:
+                M[f"eo{m}{mk}P"], M[f"eo{m}{mk}PHolm"] = pval(v["perm_p_vs_r0"]), pval(v["perm_p_vs_r0_holm"])
+            if v.get("share"):
+                M[f"eo{m}{mk}ShareInt"], M[f"eo{m}{mk}ShareExt"], M[f"eo{m}{mk}ShareHum"] = (pct(v["share"][x]) for x in ("int", "ext", "hum"))
+            M[f"eo{m}{mk}Score"] = f"{v['overall_score']:.3f}"
+        L.append(f"\\makecell[l]{{{lab}}} & " + " & ".join(cells) + " \\\\")
+        if k == "Agreement tool" or k == "Confidence-based":
+            L.append("\\midrule")
+    write(out, "tab_e1_routing.tex", "\\begin{tabular}{@{}l" + "c" * len(gens) + "@{}}\n\\toprule\nPolicy & "
+          + " & ".join(n for _, _, n in gens) + " \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    # sensitivity: Overall Score at the paper's weights and settings won of 594
+    L = []
+    for k, mk, lab in E1POL:
+        cells = []
+        for g, m, _ in gens:
+            v, sn = R[g]["policies"][k], R[g]["sensitivity"]
+            cells += [f"{v['overall_score']:.3f}", str(sn["wins"][k])]
+            M[f"eo{m}{mk}Wins"] = str(sn["wins"][k])
+        L.append(f"{lab} & " + " & ".join(cells) + " \\\\")
+    n_set = R[gens[0][0]]["sensitivity"]["n_settings"]
+    M["eoSensN"] = str(n_set)
+    write(out, "tab_e1_sensitivity.tex", "\\begin{tabular}{@{}l" + "cc" * len(gens) + "@{}}\n\\toprule\n & "
+          + " & ".join(f"\\multicolumn{{2}}{{c}}{{{n}}}" for _, _, n in gens) + " \\\\\n"
+          + "".join(f"\\cmidrule(lr){{{2 + 2 * i}-{3 + 2 * i}}}" for i in range(len(gens))) + "\nPolicy & "
+          + " & ".join(["Score", "Wins"] * len(gens)) + " \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+    for g, m, _ in gens:
+        r = R[g]
+        sn = r["sensitivity"]
+        for k, mk in (("Router: signals + PoT", "Pot"), ("Router: signals + SC3", "Sc"), ("Router: SCFP v1.0 DeBERTa", "Deb"),
+                      ("Confidence-based", "Conf")):
+            M[f"eo{m}{mk}BeatsFixed"] = str(sn["router_beats_best_fixed"][k])
+        M[f"eo{m}NatBest"] = str(sn["natural_router_best"])
+        for name, mk in (("Signals + PoT", "Pot"), ("Signals + SC3", "Sc"), ("SCFP v1.0 DeBERTa", "Deb"), ("Critique confidence", "Conf")):
+            v = r["risk_coverage"][name]
+            M[f"eo{m}Aurc{mk}"] = f3(v["aurc"])
+            M[f"eo{m}Aurc{mk}Lo"], M[f"eo{m}Aurc{mk}Hi"] = f3(v["aurc_ci95"][0]), f3(v["aurc_ci95"][1])
+            M[f"eo{m}Aurc{mk}DiffLo"], M[f"eo{m}Aurc{mk}DiffHi"] = f3(v["diff_vs_random_ci95"][0]), f3(v["diff_vs_random_ci95"][1])
+        M[f"eo{m}AurcRandom"], M[f"eo{m}AurcOracle"] = f3(r["risk_coverage"]["Random (expected)"]["aurc"]), f3(r["risk_coverage"]["Oracle"]["aurc"])
+        for k, mk in (("p_pot", "Pot"), ("p_sc3", "Sc"), ("p_deb", "Deb")):
+            c = r["calibration"][k]
+            M[f"eo{m}Ece{mk}Raw"], M[f"eo{m}Ece{mk}Cal"] = f3(c["ece_raw_eval"]), f3(c["ece_cal_eval"])
+            M[f"eo{m}Auc{mk}"] = f3(c["auc_raw_eval"])
+        M[f"eo{m}Hthree"] = r["h3"]
+        M[f"eo{m}NTrain"] = f"{r['n_natural_train']:,}"
+        M[f"eo{m}ProgAnswered"] = str(r["agreement"]["program_answered"])
+    if "qwen2.5-1.5b" in R and R["qwen2.5-1.5b"]["reproduction"]:
+        rp = R["qwen2.5-1.5b"]["reproduction"]
+        M["eoReproAcc"], M["eoReproN"] = pct(rp["r0_accuracy_new"]), str(rp["n"])
+    for f in ("fig_e1_pareto.pdf", "fig_e1_risk_coverage.pdf"):
+        shutil.copy(os.path.join(res_dir, "e1", f), os.path.join(out, "rev_" + f))
+
+
+def r2_e2(res_dir, out, M):
+    """Round 2, E2: self-consistency on StrategyQA and LogiQA."""
+    p = os.path.join(res_dir, "e2", "e2_sc.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    gens = [x for x in GEN6 if x[0] in R]
+    srcn = {"strategyqa": ("SQ", "StrategyQA"), "logiqa": ("LQ", "LogiQA")}
+    L = []
+    ci = lambda c: f"[{f3(c[0])}, {f3(c[1])}]"
+    for src, (sk, sname) in srcn.items():
+        L.append(f"\\multicolumn{{5}}{{@{{}}l}}{{\\textit{{{sname}}}}} \\\\")
+        def row(lab, f):
+            L.append(lab + " & " + " & ".join(f(R[g][src]) for g, _, _ in gens) + " \\\\")
+        row("Traces ($R_0$ wrong, \\%)", lambda v: f"{v['n']:,} ({pct(v['r0_wrong_rate'])})")
+        row("\\makecell[l]{SC3, initial wrong\\\\{[95\\% CI]}}", lambda v: stack(f3(v["single"]["sc3_agree_frac"]["r0_wrong"]), ci(v["single"]["sc3_agree_frac"]["r0_wrong_ci95"])))
+        row("\\makecell[l]{SC3, final wrong\\\\{[95\\% CI]}}", lambda v: stack(f3(v["single"]["sc3_agree_frac"]["rf_wrong"]), ci(v["single"]["sc3_agree_frac"]["rf_wrong_ci95"])))
+        row("Signals, final wrong", lambda v: f3(v["models"]["rf_wrong"]["signals"]))
+        row("Signals + SC3, final wrong", lambda v: f3(v["models"]["rf_wrong"]["signals_sc3"]))
+        def dc(v):
+            m_ = v["models"]["rf_wrong"]
+            a_, b_ = f"{m_['diff']:+.3f}", ci(m_["diff_ci95"])
+            return stack(f"\\textbf{{{a_}}}", f"\\textbf{{{b_}}}") if m_["diff_ci95"][0] > 0 else stack(a_, b_)
+        row("\\makecell[l]{Difference\\\\{[95\\% CI]}}", dc)
+        L.append("\\midrule")
+        for g, m, _ in gens:
+            v = R[g][src]
+            s3 = v["single"]["sc3_agree_frac"]
+            M[f"et{m}{sk}ScRzero"], M[f"et{m}{sk}ScRf"] = f3(s3["r0_wrong"]), f3(s3["rf_wrong"])
+            M[f"et{m}{sk}ScRzeroLo"], M[f"et{m}{sk}ScRzeroHi"] = f3(s3["r0_wrong_ci95"][0]), f3(s3["r0_wrong_ci95"][1])
+            mm = v["models"]["rf_wrong"]
+            M[f"et{m}{sk}Sig"], M[f"et{m}{sk}SigSc"], M[f"et{m}{sk}Diff"] = f3(mm["signals"]), f3(mm["signals_sc3"]), f"{mm['diff']:+.3f}"
+            M[f"et{m}{sk}DiffLo"], M[f"et{m}{sk}DiffHi"] = f3(mm["diff_ci95"][0]), f3(mm["diff_ci95"][1])
+        vals = [R[g][src]["single"]["sc3_agree_frac"]["r0_wrong"] for g, _, _ in gens]
+        M[f"et{sk}ScRzeroMin"], M[f"et{sk}ScRzeroMax"] = f3(min(vals)), f3(max(vals))
+        vals = [R[g][src]["single"]["sc3_agree_frac"]["rf_wrong"] for g, _, _ in gens]
+        M[f"et{sk}ScRfMin"], M[f"et{sk}ScRfMax"] = f3(min(vals)), f3(max(vals))
+        M[f"et{sk}DiffPos"] = WORDS[sum(R[g][src]["models"]["rf_wrong"]["diff_ci95"][0] > 0 for g, _, _ in gens)]
+        M[f"et{sk}Verdict"] = R["_rule"][src]["verdict"]
+    L.pop()
+    allr0 = [R[g][s]["single"]["sc3_agree_frac"]["r0_wrong"] for g, _, _ in gens for s in srcn]
+    M["etScRzeroMin"], M["etScRzeroMax"] = f3(min(allr0)), f3(max(allr0))
+    allrf = [R[g][s]["single"]["sc3_agree_frac"]["rf_wrong"] for g, _, _ in gens for s in srcn]
+    M["etScRfMin"], M["etScRfMax"] = f3(min(allrf)), f3(max(allrf))
+    M["etScope"] = R["_scope"]
+    write(out, "tab_e2_sc.tex", "\\begin{tabular}{@{}l" + "c" * len(gens) + "@{}}\n\\toprule\n & "
+          + " & ".join(n for _, _, n in gens) + " \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+
+
+def r2_a2(res_dir, out, M):
+    """Round 2, A2: cost per item of each verifier (timing run)."""
+    p = os.path.join(res_dir, "a2", "verifier_cost.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    names = [("signals", "Sig", "Generator signals (teacher-forced pass)"), ("pot", "Pot", "Program check (generation)"),
+             ("sc3", "Sc", "Three samples (SC3)"), ("rm", "Rm", "Reward model, 8B"), ("judge", "Judge", "LLM judge, 7B")]
+    L = []
+    for k, mk, lab in names:
+        v = R[k]
+        L.append(f"{lab} & {v['gpu_s_mean']:.2f} & {v['gpu_s_median']:.2f} & {v['tokens_mean']:,.0f} \\\\")
+        M[f"aTwo{mk}S"], M[f"aTwo{mk}Tok"] = f"{v['gpu_s_mean']:.2f}", f"{v['tokens_mean']:,.0f}"
+    M["aTwoPotExec"] = f"{R['pot']['exec_cpu_s_mean']:.3f}"
+    M["aTwoN"] = str(R["n"])
+    M["aTwoGenDtype"] = R["meta"]["generator_dtype"].replace("torch.", "")
+    M["aTwoDevice"] = R["meta"]["device"]
+    write(out, "tab_verifier_cost.tex", "\\begin{tabular}{@{}lccc@{}}\n\\toprule\nVerifier & \\makecell{GPU s / item\\\\(mean)} & "
+          "\\makecell{GPU s / item\\\\(median)} & \\makecell{Tokens\\\\/ item} \\\\\n\\midrule\n" + "\n".join(L)
+          + f"\n\\midrule\nProgram execution (CPU) & \\multicolumn{{3}}{{l}}{{{R['pot']['exec_cpu_s_mean']:.3f} s / item}} \\\\"
+          + "\n\\bottomrule\n\\end{tabular}\n")
+
 
 def m8(res_dir, out, M):
     p = os.path.join(res_dir, "m8", "exclusion_sensitivity.json")
@@ -796,7 +955,7 @@ def main():
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7, r2_e1, r2_e2, r2_a2):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)
