@@ -361,3 +361,77 @@ The A/B mass is recorded for every trace (`ab_mass`), and the judge's Yes/No mas
 - Folds come from `grouped_folds` on the combined rows, with the same function and seed. Adding problems changes the fold assignment, so the "with exclusions" models are refit from scratch rather than reusing the original folds.
 - SCFP v1.0: excluded traces join the split of their problem (train 128, val 29, test 27). The TF-IDF baseline is refit with the same code path (C chosen on validation macro-F1) and evaluated on the enlarged test split (135 traces), and also on the 108 original test traces.
 - Labels: excluded traces get label 1 (failure).
+
+---
+
+# Round 2 (registered 2026-11-02, before any round-2 experiment was run)
+
+Protocol is unchanged: problem-level cluster bootstrap, problem-level permutation tests (sign-flip of paired
+per-problem differences), Holm correction within each table family. Every new or re-run interval and test uses
+10,000 resamples/permutations, seed 0.
+
+## E1: routing with the natural-set predictor
+- **Problems.** All 1,000 GSM8K problems of the routing hold-out (disjoint from the 2,000 natural-set problems; checked).
+  - Tuning/calibration split: the original 50 tuning problems plus 250 drawn uniformly (seed 0) from the 800 hold-out problems the original study did not use.
+  - Evaluation split: the original 150 evaluation problems plus the remaining 550, so n = 700.
+- **Generators.**
+  - Qwen2.5-0.5B and SmolLM2-1.7B, where revision helps on average in the natural set.
+  - Qwen2.5-1.5B as the comparison row.
+  - Pinned commits as in Appendix B. One private Kaggle T4 job per generator, each with a timeout under 6 h.
+- **Per problem:**
+  - Greedy R0, F and Rf (natural-set prompts, at most 512 new tokens) and a program (PROGRAM_PROMPT, run in the sandbox).
+  - Three self-consistency samples (T = 0.7, same prompt as R0).
+  - Teacher-forced signal features of R0 and F. All calls are logged.
+- **Predictors** (label = final answer wrong):
+  - (a) generator signals + PoT verifier;
+  - (b) generator signals + SC3 (`sc3_agree_frac`, `sc3_majority_is_r0`).
+  - Each is the paper's LR "scalar" model, fitted once on all kept natural-set GSM8K traces of that generator. SC3 features on the natural set come from the M6 samples.
+  - Probabilities are recalibrated with isotonic regression fitted on the tuning split. Only the tuning split is used to calibrate and choose thresholds.
+- **Routers.**
+  - Same three-way rule as the original study (p < τ_low → intrinsic, < τ_high → extrinsic, else human), the same τ grid, Overall Score weights and human assumptions, with thresholds chosen on the tuning split.
+  - A router pays R0 + F and the cost of its features (program for (a), three samples for (b)), plus the teacher-forced pass latency, plus whatever the chosen path adds.
+  - The confidence-based router (critique log-prob) and every fixed policy of the original table are recomputed on the new traces.
+- **Outputs** (per generator): accuracy with bootstrap CI, relative cost, latency, Pareto plot, risk–coverage/AURC (calibrated predictors vs random, intrinsic answer wrong), and the 594-setting Overall-Score sweep.
+  - Paired permutation p-value vs No correction for every non-random policy, with Holm over all generators × policies.
+- **Decision rule for H3, per generator:**
+  - *Supported* if a natural-set router has the best Overall Score in more than half of the 594 settings.
+  - *Partly supported* if a natural-set router wins at least one setting, or is significantly more accurate (Holm) than No correction at lower cost than Always Intrinsic.
+  - *Not supported* otherwise.
+  - The text states the outcome per generator.
+- **Reproduction check.** On the original 150 evaluation problems, the new Qwen2.5-1.5B R0 accuracy must fall inside the CI of the published R0-only accuracy. If not, stop and report.
+
+## E2: self-consistency on StrategyQA and LogiQA
+- **Data and sampling.** k = 3 samples for every kept natural-set StrategyQA and LogiQA trace of the four generators. Settings are the same as M6: the R0 prompt with the source's answer type, T = 0.7, at most 512 new tokens, logged calls, and private Kaggle T4.
+- **Features.** Same as M6: `sc1_agree`, `sc3_agree_frac`, `sc3_majority_is_r0`. An unparsable sample counts as disagreeing.
+- **Report.**
+  - Per generator and source: AUC of 1 − agreement for "R0 wrong" and "final wrong", with cluster-bootstrap CIs.
+  - The stacked LR model (signals + SC3) against signals, out-of-fold with the paper's grouped folds within each source, as a paired difference with CI.
+- **Decision rule for the scope statement:**
+  - *Strong:* SC3 R0-wrong AUC ≥ 0.80 with CI lower bound ≥ 0.70 for at least 3 of 4 generators on a source.
+  - *Weak:* point estimate < 0.70 for at least 3 of 4 generators.
+  - *Mixed:* anything else.
+  - If both non-numeric sources are strong, the claim becomes "holds where agreement-based verification applies". Otherwise it is restricted to numeric problems, with the measured AUCs.
+  - Any title change is left to the authors.
+
+## E3: Qwen2.5-3B SC3
+Rerun `m6_analysis.py` with 10,000 resamples for every comparison and report each one, whatever its sign. The rule counts in the text follow the rerun.
+
+## A1: Δ-label leakage check
+Δ-label macro AUC (same folds and models as M3):
+- (i) with the cue `f_proposes_other_answer` removed;
+- (ii) helped vs harmed only, on traces whose final answer differs from R0's.
+
+The text leads with (ii).
+
+## A2: verifier cost
+On 100 natural-set GSM8K traces of Qwen2.5-1.5B (seed 0), on one Kaggle T4 at batch size 1, measure GPU seconds (with CUDA synchronize) and tokens per item for:
+- signals (teacher-forced pass);
+- PoT (program generation, plus sandbox execution on CPU, reported separately);
+- SC3 (three samples);
+- the reward model (NF4);
+- the judge (NF4).
+
+## A3: numerical stability of labels
+On the 200 precision-check problems (Qwen2.5-1.5B), an R0-correctness label counts as stable if it is identical across float16, bfloat16 and the original trace.
+
+Report the out-of-fold signals AUC for "R0 wrong" on the stable and unstable kept traces, with CIs. Only R0 was regenerated, so only the R0 label can be checked.
