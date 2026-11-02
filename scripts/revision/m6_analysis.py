@@ -26,7 +26,7 @@ from scfp_bench.experiments.signals import VERIFIER, grouped_folds  # noqa: E402
 
 CONFIGS = {"qwen2.5-0.5b": "signals_mac_big.yaml", "qwen2.5-1.5b": "signals_kaggle.yaml",
            "smollm2-1.7b": "signals_kaggle.yaml", "qwen2.5-3b": "signals_kaggle.yaml"}
-B, SEED = 1000, 0
+B, SEED = 10000, 0  # round 2: 10,000 resamples (was 1,000)
 SETS = {"base": [], "pot": ["pot_ran", "pot_agree_r0", "pot_agree_f"], "sc1": ["sc1_agree"],
         "sc1_pot": ["sc1_agree", "pot_ran", "pot_agree_r0", "pot_agree_f"],
         "sc3": ["sc3_agree_frac", "sc3_majority_is_r0"],
