@@ -6,13 +6,14 @@ import pytest
 import json
 import tempfile
 import os
+import torch
 from transformers import DebertaV2Tokenizer
 
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from scfp.data.dataset import CorrectionTrace, FailureMode, SCFPDataset
+from scfp.data.dataset import CorrectionTrace, FailureMode, PartialTrace, SCFPDataset
 
 
 class TestCorrectionTrace:
@@ -38,13 +39,10 @@ class TestCorrectionTrace:
     
     def test_to_input_text(self):
         """Test input text generation."""
-        trace = CorrectionTrace(
+        trace = PartialTrace(
             prompt="What is 2+2?",
             initial_response="5",
-            critique="That's wrong, 2+2=4",
-            final_response="4",
-            failure_mode=FailureMode.SUCCESS,
-            is_success=True
+            critique="That's wrong, 2+2=4"
         )
         
         input_text = trace.to_input_text()
@@ -141,8 +139,8 @@ class TestSCFPDataset:
         assert len(item["input_ids"]) <= 512
         assert len(item["attention_mask"]) <= 512
         assert len(item["input_ids"]) == len(item["attention_mask"])
-        assert isinstance(item["binary_label"], int)
-        assert isinstance(item["multiclass_label"], int)
+        assert torch.is_tensor(item["binary_label"]) and item["binary_label"].dim() == 0
+        assert torch.is_tensor(item["multiclass_label"]) and item["multiclass_label"].dim() == 0
     
     def test_dataset_from_json(self, sample_traces, tokenizer):
         """Test loading dataset from JSON."""
@@ -199,7 +197,7 @@ class TestFailureMode:
         ]
         
         for mode in expected_modes:
-            assert hasattr(FailureMode, mode.upper())
+            assert mode in {m.value for m in FailureMode}
     
     def test_mode_values(self):
         """Test failure mode values."""

@@ -74,21 +74,11 @@ The trained DeBERTa weights, the residual-stream arrays and the Kaggle dataset p
 ## Tests
 
 ```bash
-.venv/bin/python -m pytest SCFP/benchmark/tests
+.venv/bin/python -m pytest SCFP/benchmark/tests SCFP/tests
 ```
 
-All 26 benchmark tests pass. In `SCFP/tests`, 21 of 24 pass. The other three, all in `test_dataset.py`, are out of date against `SCFP/src/scfp/data/dataset.py` (one, for example, calls a `to_input_text` method that no longer exists). That code is not part of the pipeline that produces the paper's numbers.
-
-## Citation
-
-The paper has not been published yet, so please cite this repository for now:
-
-> S. Almobydeen, G. Rjoub, J. Bentahar, A. Irjoob, W. Pedrycz. *Predicting Self-Correction Failure on Numeric Problems Reduces to Verifying the First Answer: Evidence from Generator Signals on Unfiltered Problems.* Manuscript. https://github.com/gr7-cipher/self-Correction-Failure-Prediction-SCFP-
+Both suites pass.
 
 ## License
 
 The project is dual-licensed: see [LICENSE](LICENSE) (Apache 2.0) and [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md).
-
-## Contact
-
-Please open a GitHub issue for questions or problems.
