@@ -1,0 +1,98 @@
+{
+ "r0": {
+  "n": 100,
+  "rater1": {
+   "answer_differs": [
+    "A061"
+   ],
+   "label_differs": [],
+   "label_error_ci95": [
+    0.0,
+    0.03699480747600191
+   ],
+   "ambiguous": [
+    "A023",
+    "A034",
+    "A044",
+    "A061",
+    "A076"
+   ]
+  },
+  "rater2": {
+   "answer_differs": [],
+   "label_differs": [],
+   "label_error_ci95": [
+    0.0,
+    0.03699480747600191
+   ],
+   "ambiguous": [
+    "A023",
+    "A044",
+    "A061",
+    "A076"
+   ]
+  },
+  "raters_answer_differ": [
+   "A061"
+  ],
+  "raters_correct_kappa": 1.0,
+  "both_raters_disagree_with_pipeline": [],
+  "both_label_error_ci95": [
+   0.0,
+   0.03699480747600191
+  ]
+ },
+ "rf": {
+  "n": 100,
+  "rater1": {
+   "answer_differs": [
+    "A001"
+   ],
+   "label_differs": [],
+   "label_error_ci95": [
+    0.0,
+    0.03699480747600191
+   ],
+   "ambiguous": [
+    "A005",
+    "A007",
+    "A008",
+    "A015",
+    "A019",
+    "A037",
+    "A042",
+    "A047",
+    "A097",
+    "A100"
+   ]
+  },
+  "rater2": {
+   "answer_differs": [
+    "A001"
+   ],
+   "label_differs": [],
+   "label_error_ci95": [
+    0.0,
+    0.03699480747600191
+   ],
+   "ambiguous": [
+    "A002",
+    "A005",
+    "A019",
+    "A023",
+    "A042",
+    "A047",
+    "A097",
+    "A100"
+   ]
+  },
+  "raters_answer_differ": [],
+  "raters_correct_kappa": 1.0,
+  "both_raters_disagree_with_pipeline": [],
+  "both_label_error_ci95": [
+   0.0,
+   0.03699480747600191
+  ]
+ },
+ "final_label_both_disagree": []
+}

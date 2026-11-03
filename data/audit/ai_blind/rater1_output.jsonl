@@ -1,0 +1,100 @@
+{"id": "T3298", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T3929", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 states Yes as final, but its text says there is no direct link and the effect is inconclusive."}
+{"id": "T4290", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T9967", "r1_answer": "217", "r1_ambiguous": false, "r2_answer": "220", "r2_ambiguous": false, "note": ""}
+{"id": "T8315", "r1_answer": "338", "r1_ambiguous": false, "r2_answer": "338", "r2_ambiguous": false, "note": ""}
+{"id": "T3284", "r1_answer": "28", "r1_ambiguous": false, "r2_answer": "-2", "r2_ambiguous": true, "note": "R2 gives Final answer -2 under the Original Answer, then starts a Revised Answer that cuts off before giving any result, so the revised answer is unknown."}
+{"id": "T2330", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T3457", "r1_answer": "1", "r1_ambiguous": false, "r2_answer": "2", "r2_ambiguous": false, "note": ""}
+{"id": "T6110", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T6530", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T7144", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T2106", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 opens with Final answer: Yes, but the revised answer below it says No, a person who knows only English cannot read Kanji."}
+{"id": "T1976", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T9987", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T6740", "r1_answer": "12", "r1_ambiguous": false, "r2_answer": "16", "r2_ambiguous": false, "note": ""}
+{"id": "T8586", "r1_answer": "no", "r1_ambiguous": true, "r2_answer": "no", "r2_ambiguous": false, "note": "R1 states no and says domination is highly unlikely, yet the same paragraph says the ROKN would have an overwhelming advantage, which reads as yes."}
+{"id": "T1941", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T4154", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T5565", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T6366", "r1_answer": "30", "r1_ambiguous": false, "r2_answer": "30", "r2_ambiguous": false, "note": ""}
+{"id": "T2484", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 states Final answer: Yes, but its explanation says flying fish do not have good eyesight."}
+{"id": "T5589", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "C", "r2_ambiguous": false, "note": ""}
+{"id": "T3523", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T5096", "r1_answer": "50", "r1_ambiguous": false, "r2_answer": "50", "r2_ambiguous": false, "note": ""}
+{"id": "T8636", "r1_answer": "15", "r1_ambiguous": false, "r2_answer": "15", "r2_ambiguous": false, "note": ""}
+{"id": "T4349", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T7962", "r1_answer": "36", "r1_ambiguous": false, "r2_answer": "20", "r2_ambiguous": false, "note": ""}
+{"id": "T2838", "r1_answer": "36", "r1_ambiguous": false, "r2_answer": "28", "r2_ambiguous": false, "note": ""}
+{"id": "T9591", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T6229", "r1_answer": "2400", "r1_ambiguous": false, "r2_answer": "2240", "r2_ambiguous": false, "note": ""}
+{"id": "T5003", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "C", "r2_ambiguous": false, "note": ""}
+{"id": "T2566", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T5597", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T3884", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T1198", "r1_answer": "11", "r1_ambiguous": false, "r2_answer": "242", "r2_ambiguous": false, "note": ""}
+{"id": "T1231", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T7479", "r1_answer": "20", "r1_ambiguous": false, "r2_answer": "10", "r2_ambiguous": false, "note": ""}
+{"id": "T8517", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "C", "r2_ambiguous": false, "note": ""}
+{"id": "T1728", "r1_answer": "840", "r1_ambiguous": false, "r2_answer": "14", "r2_ambiguous": false, "note": ""}
+{"id": "T6512", "r1_answer": "yes", "r1_ambiguous": true, "r2_answer": "yes", "r2_ambiguous": false, "note": "R1 opens with Final answer: yes, but its explanation concludes that neither film was a better investment, which reads as no."}
+{"id": "T4907", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T5476", "r1_answer": "3", "r1_ambiguous": false, "r2_answer": "3", "r2_ambiguous": false, "note": ""}
+{"id": "T8721", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T4207", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T9771", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "none", "r2_ambiguous": false, "note": ""}
+{"id": "T6166", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T6478", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T1303", "r1_answer": "67", "r1_ambiguous": false, "r2_answer": "70", "r2_ambiguous": false, "note": ""}
+{"id": "T3191", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T5721", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 opens with Final answer: Yes, but its revised text answers Not necessarily and says it is generally not advisable."}
+{"id": "T6661", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T6969", "r1_answer": "5", "r1_ambiguous": false, "r2_answer": "5.05", "r2_ambiguous": false, "note": ""}
+{"id": "T7606", "r1_answer": "9", "r1_ambiguous": true, "r2_answer": "9", "r2_ambiguous": false, "note": "R1 opens with Final answer: Each person paid $6, but its working ends with Therefore, each person paid $9."}
+{"id": "T7566", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T1890", "r1_answer": "30", "r1_ambiguous": false, "r2_answer": "30", "r2_ambiguous": false, "note": ""}
+{"id": "T4611", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T9459", "r1_answer": "2934", "r1_ambiguous": false, "r2_answer": "2934", "r2_ambiguous": false, "note": ""}
+{"id": "T2086", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T4541", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T3426", "r1_answer": "yes", "r1_ambiguous": true, "r2_answer": "no", "r2_ambiguous": false, "note": "R1 states Final answer: yes, but its explanation says a honey badger is unlikely to fit inside an oven."}
+{"id": "T2973", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T3389", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "C", "r2_ambiguous": false, "note": ""}
+{"id": "T6611", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T2989", "r1_answer": "12500", "r1_ambiguous": false, "r2_answer": "-10000", "r2_ambiguous": true, "note": "R2 states Final answer: -10,000, but its text says the new car costs $10,000 less, so a reader could take 10000."}
+{"id": "T7060", "r1_answer": "87", "r1_ambiguous": false, "r2_answer": "190", "r2_ambiguous": false, "note": ""}
+{"id": "T1389", "r1_answer": "16", "r1_ambiguous": false, "r2_answer": "16", "r2_ambiguous": false, "note": ""}
+{"id": "T8329", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T4316", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T9407", "r1_answer": "yes", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T4423", "r1_answer": "54", "r1_ambiguous": false, "r2_answer": "31", "r2_ambiguous": false, "note": ""}
+{"id": "T3089", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T8510", "r1_answer": "30", "r1_ambiguous": false, "r2_answer": "30", "r2_ambiguous": false, "note": ""}
+{"id": "T9943", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T6215", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 states Final answer: yes, but its text says walking across Amazonas does not pose a significant risk to life and is not inherently dangerous."}
+{"id": "T5918", "r1_answer": "490", "r1_ambiguous": true, "r2_answer": "490", "r2_ambiguous": false, "note": "R1 opens with Final answer: 360, but its working ends with a total of 490 animals."}
+{"id": "T5933", "r1_answer": "1", "r1_ambiguous": false, "r2_answer": "13", "r2_ambiguous": false, "note": ""}
+{"id": "T5187", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": true, "note": "R2 states Final answer: D, but the text directly above it names C. Freezing as the option."}
+{"id": "T4943", "r1_answer": "61", "r1_ambiguous": false, "r2_answer": "61", "r2_ambiguous": false, "note": ""}
+{"id": "T8129", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": false, "note": ""}
+{"id": "T4335", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T8453", "r1_answer": "80", "r1_ambiguous": false, "r2_answer": "90", "r2_ambiguous": false, "note": ""}
+{"id": "T5864", "r1_answer": "5", "r1_ambiguous": false, "r2_answer": "5", "r2_ambiguous": false, "note": ""}
+{"id": "T1663", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T5031", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T1812", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T6613", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T8188", "r1_answer": "96", "r1_ambiguous": false, "r2_answer": "1", "r2_ambiguous": false, "note": ""}
+{"id": "T8184", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T1845", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 states Final answer: yes, but its text says the term is not named after the Greek poet Homer."}
+{"id": "T5407", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "B", "r2_ambiguous": false, "note": ""}
+{"id": "T1551", "r1_answer": "A", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T8621", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
+{"id": "T1954", "r1_answer": "C", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T1216", "r1_answer": "D", "r1_ambiguous": false, "r2_answer": "D", "r2_ambiguous": false, "note": ""}
+{"id": "T7747", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "yes", "r2_ambiguous": true, "note": "R2 states Final answer: Yes, but its text says a significant deficiency is unlikely and only a mild one is possible."}
+{"id": "T8406", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "C", "r2_ambiguous": false, "note": ""}
+{"id": "T5491", "r1_answer": "B", "r1_ambiguous": false, "r2_answer": "A", "r2_ambiguous": false, "note": ""}
+{"id": "T3350", "r1_answer": "480", "r1_ambiguous": false, "r2_answer": "480", "r2_ambiguous": false, "note": ""}
+{"id": "T8985", "r1_answer": "14", "r1_ambiguous": false, "r2_answer": "7", "r2_ambiguous": false, "note": ""}
+{"id": "T2008", "r1_answer": "no", "r1_ambiguous": false, "r2_answer": "no", "r2_ambiguous": false, "note": ""}
