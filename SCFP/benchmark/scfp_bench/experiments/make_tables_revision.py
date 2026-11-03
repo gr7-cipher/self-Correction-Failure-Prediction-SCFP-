@@ -985,8 +985,7 @@ def main():
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7, r2_e4, r2_e2, r2_a2):
-    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7, r2_e1, r2_e2, r2_a2):
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7, r2_e4, r2_e1, r2_e2, r2_a2):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))
     json.dump(M, open(os.path.join(a.out, "numbers_rev.json"), "w"), indent=1, sort_keys=True)
