@@ -1,6 +1,6 @@
 # Reproducing the paper
 
-This file covers the current manuscript (`paper/main.tex`, branch `revision-round2`). Sections of `README.md` below its top note describe an earlier version of the framework.
+This file covers the current manuscript (`paper/main.tex`, branch `revision-round2`).
 
 ## What is where
 
