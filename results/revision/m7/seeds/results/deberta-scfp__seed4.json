@@ -1,0 +1,103 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "scfp",
+    "model": "microsoft/deberta-v3-small",
+    "name": "deberta-scfp__seed4",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 768,
+    "patience": 5,
+    "seed": 4,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 503.8,
+  "best_val_macro_f1": 0.6177425171294627,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.3416149068322981
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.3416149068322981
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.5020424836601307
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.6177425171294627
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5615199615199615
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.6036324786324787
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.6025
+    },
+    {
+      "stage": "binary",
+      "epoch": 8,
+      "val_binary_macro_f1": 0.5223908045977012
+    },
+    {
+      "stage": "binary",
+      "epoch": 9,
+      "val_binary_macro_f1": 0.524066091954023
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.5555555555555556,
+    "macro_f1": 0.5531034482758621,
+    "weighted_f1": 0.5506513409961685,
+    "auc": 0.6024137931034482,
+    "ci95": {
+      "accuracy": [
+        0.46296296296296297,
+        0.6388888888888888
+      ],
+      "macro_f1": [
+        0.4613003095975232,
+        0.638857926776987
+      ],
+      "auc": [
+        0.4962918316423722,
+        0.7125809401354459
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+# SCFP v1 benchmark build. Fill in the model ids you have access to, export the
+# matching API keys as environment variables, then run:
+#   python -m scfp_bench all-auto --config configs/scfp_v1.yaml
+#
+# Cost note: calls = filter (candidates x filter models x samples)
+#                  + generate (selected problems x generator models x 3).
+# With the numbers below: 6,500 x 2 x 3 = 39,000 filter calls and
+# 3,000 x 4 x 3 = 36,000 generation calls. Run configs/pilot.yaml first.
+
+run_dir: scfp_runs/v1
+seed: 42
+concurrency: 8
+
+sources:
+  gsm8k: [train, test]
+  strategyqa: [train, test]
+  logiqa: [train, validation, test]
+
+# Reserved before anything else runs; never filtered, generated, or trained on.
+routing_holdout: {source: gsm8k, origin_split: test, n: 1000}
+
+models:
+  # Proprietary generators. Replace REPLACE_ME with the exact dated model ids you use.
+  - {name: openai-model, provider: openai, model: REPLACE_ME, api_key_env: OPENAI_API_KEY}
+  - {name: anthropic-model, provider: anthropic, model: REPLACE_ME, api_key_env: ANTHROPIC_API_KEY}
+  # Open-weight generators through any OpenAI-compatible endpoint (Together, OpenRouter,
+  # a vLLM server, ...). These also make the cross-model (open-weight) experiment possible.
+  - {name: llama-model, provider: openai_compatible, model: REPLACE_ME,
+     base_url: "https://api.together.xyz/v1", api_key_env: TOGETHER_API_KEY}
+  - {name: qwen-model, provider: openai_compatible, model: REPLACE_ME,
+     base_url: "https://api.together.xyz/v1", api_key_env: TOGETHER_API_KEY}
+
+filter:
+  models: [openai-model, llama-model]   # the paper calls these the "baseline" models
+  samples_per_problem: 3
+  temperature: 0.7
+  band: [0.2, 0.8]                      # keep problems with accuracy in [0.2, 0.8]
+  candidates_per_source: {gsm8k: 3000, strategyqa: 2000, logiqa: 1500}
+  target_per_source: {gsm8k: 1200, strategyqa: 1050, logiqa: 750}   # 40 / 35 / 25 %
+
+generate:
+  models: [openai-model, anthropic-model, llama-model, qwen-model]
+  temperature: 0.0
+
+label:
+  # final_incorrect: a correction fails when the final answer is wrong.
+  # degraded_only:   a correction fails only when a correct answer becomes wrong.
+  failure_definition: final_incorrect
+
+split:
+  ratios: [0.70, 0.15, 0.15]            # by problem, stratified by source
+
+annotation:
+  annotators: [ann1, ann2, ann3, ann4, ann5]
+  raters_per_trace: 2                   # main pass
+  agreement_fraction: 0.20              # share of failed traces labeled by every agreement rater
+  agreement_raters: 3                   # raters per agreement item (Fleiss' kappa)

@@ -1,0 +1,564 @@
+[{"stream_name":"stdout","time":12.321019321,"data":"Sun Nov  1 00:37:03 2026       \n"}
+,{"stream_name":"stdout","time":12.321062539,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":12.321068218,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":12.321072778,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":12.321076747,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":12.321080655,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":12.32108425,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":12.32108826,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":12.376005711,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":12.376028629,"data":"| N/A   52C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":12.376034648,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":12.376040081,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":12.376045609,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":12.3760512,"data":"| N/A   53C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":12.376056626,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":12.376062166,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":12.376821735,"data":"\n"}
+,{"stream_name":"stdout","time":12.376836836,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":12.376841473,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":12.376846548,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":12.376851771,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":12.376856973,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":12.378328054,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":12.378343598,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":16.875539934,"data":"=== deberta-scfp__seed2  2026-11-01 00:37:08\n"}
+,{"stream_name":"stdout","time":52.143903023,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":60.498806412,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":60.49884516,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":60.498851069,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":60.498856173,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498861298,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498866375,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498871417,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.49887642,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498881432,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498886472,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498891488,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498896472,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498901285,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498905812,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":60.498910294,"data":"embeddings.token_type_embeddings.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":60.49891508,"data":"\n"}
+,{"stream_name":"stdout","time":60.498919726,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":60.498924987,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":60.498930512,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":62.706489781,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":100.557834763,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":100.55789574,"data":"  binary epoch 1: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":154.655614743,"data":"  binary epoch 2: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":207.284907976,"data":"  binary epoch 3: val macro-F1 0.6313\n"}
+,{"stream_name":"stdout","time":261.991719028,"data":"  binary epoch 4: val macro-F1 0.6023\n"}
+,{"stream_name":"stdout","time":314.508837055,"data":"  binary epoch 5: val macro-F1 0.6351\n"}
+,{"stream_name":"stdout","time":369.019748914,"data":"  binary epoch 6: val macro-F1 0.6057\n"}
+,{"stream_name":"stdout","time":422.810642636,"data":"  binary epoch 7: val macro-F1 0.5809\n"}
+,{"stream_name":"stdout","time":477.202125118,"data":"  binary epoch 8: val macro-F1 0.6525\n"}
+,{"stream_name":"stdout","time":531.932305241,"data":"  binary epoch 9: val macro-F1 0.5891\n"}
+,{"stream_name":"stdout","time":585.561065725,"data":"  binary epoch 10: val macro-F1 0.6313\n"}
+,{"stream_name":"stdout","time":591.554334775,"data":"{\n"}
+,{"stream_name":"stdout","time":591.554392181,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":591.554400671,"data":"  \"accuracy\": 0.5185185185185185,\n"}
+,{"stream_name":"stdout","time":591.554406165,"data":"  \"macro_f1\": 0.5014204545454546,\n"}
+,{"stream_name":"stdout","time":591.554422354,"data":"  \"weighted_f1\": 0.5082596801346801,\n"}
+,{"stream_name":"stdout","time":591.554426995,"data":"  \"auc\": 0.5351724137931034,\n"}
+,{"stream_name":"stdout","time":591.554431593,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":591.55443556,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":591.554439565,"data":"      0.4166666666666667,\n"}
+,{"stream_name":"stdout","time":591.554443119,"data":"      0.6111111111111112\n"}
+,{"stream_name":"stdout","time":591.554446493,"data":"    ],\n"}
+,{"stream_name":"stdout","time":591.554449887,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":591.554453408,"data":"      0.403206812211251,\n"}
+,{"stream_name":"stdout","time":591.554458593,"data":"      0.5891799642894485\n"}
+,{"stream_name":"stdout","time":591.554466251,"data":"    ],\n"}
+,{"stream_name":"stdout","time":591.554468613,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":591.554471071,"data":"      0.4253671859690379,\n"}
+,{"stream_name":"stdout","time":591.554473342,"data":"      0.6375004286694101\n"}
+,{"stream_name":"stdout","time":591.554475765,"data":"    ]\n"}
+,{"stream_name":"stdout","time":591.554478109,"data":"  }\n"}
+,{"stream_name":"stdout","time":591.554480366,"data":"}\n"}
+,{"stream_name":"stdout","time":596.003314998,"data":"=== deberta-plain__seed2  2026-11-01 00:46:47\n"}
+,{"stream_name":"stdout","time":603.741153353,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":605.972303993,"data":"[transformers] \u001b[1mDebertaV2ForSequenceClassification LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":605.97234462,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":605.972362646,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":605.972366851,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972370631,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972392157,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972396039,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972399325,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972402668,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.97240588,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972409175,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.97241239,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972417603,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.97242493,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":605.972427276,"data":"classifier.bias                         | MISSING    | \n"}
+,{"stream_name":"stdout","time":605.972429448,"data":"pooler.dense.bias                       | MISSING    | \n"}
+,{"stream_name":"stdout","time":605.972431608,"data":"classifier.weight                       | MISSING    | \n"}
+,{"stream_name":"stdout","time":605.972433755,"data":"pooler.dense.weight                     | MISSING    | \n"}
+,{"stream_name":"stdout","time":605.97246168,"data":"\n"}
+,{"stream_name":"stdout","time":605.972466288,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":605.972470016,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":605.972474118,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":606.853002068,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":645.167257666,"data":"  binary epoch 1: val macro-F1 0.5775\n"}
+,{"stream_name":"stdout","time":696.058155788,"data":"  binary epoch 2: val macro-F1 0.6224\n"}
+,{"stream_name":"stdout","time":747.489797738,"data":"  binary epoch 3: val macro-F1 0.6351\n"}
+,{"stream_name":"stdout","time":799.165793881,"data":"  binary epoch 4: val macro-F1 0.5283\n"}
+,{"stream_name":"stdout","time":848.942212129,"data":"  binary epoch 5: val macro-F1 0.5018\n"}
+,{"stream_name":"stdout","time":900.099710411,"data":"  binary epoch 6: val macro-F1 0.6038\n"}
+,{"stream_name":"stdout","time":950.989742646,"data":"  binary epoch 7: val macro-F1 0.5258\n"}
+,{"stream_name":"stdout","time":1002.383385619,"data":"  binary epoch 8: val macro-F1 0.6129\n"}
+,{"stream_name":"stdout","time":1008.053933862,"data":"{\n"}
+,{"stream_name":"stdout","time":1008.05397922,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":1008.053986505,"data":"  \"accuracy\": 0.5648148148148148,\n"}
+,{"stream_name":"stdout","time":1008.053991964,"data":"  \"macro_f1\": 0.5509156861010351,\n"}
+,{"stream_name":"stdout","time":1008.053996831,"data":"  \"weighted_f1\": 0.5567679508226265,\n"}
+,{"stream_name":"stdout","time":1008.054001142,"data":"  \"auc\": 0.5465517241379311,\n"}
+,{"stream_name":"stdout","time":1008.054005857,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":1008.054009846,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":1008.054013992,"data":"      0.4722222222222222,\n"}
+,{"stream_name":"stdout","time":1008.054018479,"data":"      0.6574074074074074\n"}
+,{"stream_name":"stdout","time":1008.054022321,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1008.05402646,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":1008.054031016,"data":"      0.45534532264161565,\n"}
+,{"stream_name":"stdout","time":1008.054035553,"data":"      0.6440008185644819\n"}
+,{"stream_name":"stdout","time":1008.054039413,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1008.054043321,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":1008.054047241,"data":"      0.435662327877835,\n"}
+,{"stream_name":"stdout","time":1008.054051082,"data":"      0.6508723411450807\n"}
+,{"stream_name":"stdout","time":1008.054055241,"data":"    ]\n"}
+,{"stream_name":"stdout","time":1008.054059238,"data":"  }\n"}
+,{"stream_name":"stdout","time":1008.054063489,"data":"}\n"}
+,{"stream_name":"stdout","time":1009.397357319,"data":"=== roberta-base__seed2  2026-11-01 00:53:40\n"}
+,{"stream_name":"stdout","time":1017.095841357,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":1018.464459458,"data":"max-len 768 exceeds FacebookAI/roberta-base's limit 512; using 512\n"}
+,{"stream_name":"stdout","time":1018.543506242,"data":"[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (544 \u003e 512). Running this sequence through the model will result in indexing errors\n"}
+,{"stream_name":"stdout","time":1021.665507223,"data":"[transformers] \u001b[1mRobertaForSequenceClassification LOAD REPORT\u001b[0m from: FacebookAI/roberta-base\n"}
+,{"stream_name":"stdout","time":1021.665541987,"data":"Key                        | Status     | \n"}
+,{"stream_name":"stdout","time":1021.665547561,"data":"---------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":1021.665551142,"data":"lm_head.dense.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1021.665555413,"data":"lm_head.layer_norm.weight  | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1021.665558829,"data":"lm_head.layer_norm.bias    | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1021.665562108,"data":"lm_head.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1021.665565306,"data":"lm_head.dense.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1021.665568598,"data":"classifier.out_proj.bias   | MISSING    | \n"}
+,{"stream_name":"stdout","time":1021.665571753,"data":"classifier.out_proj.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":1021.665575048,"data":"classifier.dense.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":1021.665578281,"data":"classifier.dense.bias      | MISSING    | \n"}
+,{"stream_name":"stdout","time":1021.665583206,"data":"\n"}
+,{"stream_name":"stdout","time":1021.665589697,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":1021.665592376,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":1021.665594876,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1022.279817519,"data":"froze word embeddings: 38.6M parameters\n"}
+,{"stream_name":"stdout","time":1071.473102225,"data":"  binary epoch 1: val macro-F1 0.6320\n"}
+,{"stream_name":"stdout","time":1071.978726022,"data":"[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.\n"}
+,{"stream_name":"stdout","time":1131.784492217,"data":"  binary epoch 2: val macro-F1 0.6471\n"}
+,{"stream_name":"stdout","time":1192.816259105,"data":"  binary epoch 3: val macro-F1 0.6332\n"}
+,{"stream_name":"stdout","time":1254.07111016,"data":"  binary epoch 4: val macro-F1 0.6395\n"}
+,{"stream_name":"stdout","time":1313.955529553,"data":"  binary epoch 5: val macro-F1 0.5809\n"}
+,{"stream_name":"stdout","time":1374.497623148,"data":"  binary epoch 6: val macro-F1 0.6002\n"}
+,{"stream_name":"stdout","time":1434.845529031,"data":"  binary epoch 7: val macro-F1 0.5848\n"}
+,{"stream_name":"stdout","time":1440.646058455,"data":"{\n"}
+,{"stream_name":"stdout","time":1440.646102471,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":1440.647937796,"data":"  \"accuracy\": 0.6111111111111112,\n"}
+,{"stream_name":"stdout","time":1440.647950301,"data":"  \"macro_f1\": 0.6023842917251052,\n"}
+,{"stream_name":"stdout","time":1440.647956002,"data":"  \"weighted_f1\": 0.6067477014181081,\n"}
+,{"stream_name":"stdout","time":1440.647960691,"data":"  \"auc\": 0.5841379310344827,\n"}
+,{"stream_name":"stdout","time":1440.647964931,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":1440.647969487,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":1440.647974453,"data":"      0.5185185185185185,\n"}
+,{"stream_name":"stdout","time":1440.647979004,"data":"      0.6944444444444444\n"}
+,{"stream_name":"stdout","time":1440.647983763,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1440.647995869,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":1440.647999712,"data":"      0.5081928900838418,\n"}
+,{"stream_name":"stdout","time":1440.648003311,"data":"      0.6866813186813187\n"}
+,{"stream_name":"stdout","time":1440.648006924,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1440.648010385,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":1440.648014338,"data":"      0.46281556802244045,\n"}
+,{"stream_name":"stdout","time":1440.648017891,"data":"      0.6866136285022483\n"}
+,{"stream_name":"stdout","time":1440.648021024,"data":"    ]\n"}
+,{"stream_name":"stdout","time":1440.648024682,"data":"  }\n"}
+,{"stream_name":"stdout","time":1440.648028301,"data":"}\n"}
+,{"stream_name":"stdout","time":1441.97966094,"data":"=== bert-base__seed2  2026-11-01 01:00:53\n"}
+,{"stream_name":"stdout","time":1449.626027876,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":1450.855174846,"data":"max-len 768 exceeds google-bert/bert-base-uncased's limit 512; using 512\n"}
+,{"stream_name":"stdout","time":1451.147288849,"data":"[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (531 \u003e 512). Running this sequence through the model will result in indexing errors\n"}
+,{"stream_name":"stdout","time":1453.957730098,"data":"[transformers] \u001b[1mBertForSequenceClassification LOAD REPORT\u001b[0m from: google-bert/bert-base-uncased\n"}
+,{"stream_name":"stdout","time":1453.957797603,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stdout","time":1453.957803442,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":1453.957807032,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.957810429,"data":"cls.seq_relationship.bias                  | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.957814533,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.957817975,"data":"cls.seq_relationship.weight                | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.957821262,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.95782458,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.957827848,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1453.957831158,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stdout","time":1453.957834634,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stdout","time":1453.957860922,"data":"\n"}
+,{"stream_name":"stdout","time":1453.95786334,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":1453.957865602,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":1453.957868157,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1454.565887377,"data":"froze word embeddings: 23.4M parameters\n"}
+,{"stream_name":"stdout","time":1500.930777126,"data":"  binary epoch 1: val macro-F1 0.6369\n"}
+,{"stream_name":"stdout","time":1501.379838748,"data":"[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.\n"}
+,{"stream_name":"stdout","time":1559.886535704,"data":"  binary epoch 2: val macro-F1 0.6414\n"}
+,{"stream_name":"stdout","time":1619.409812882,"data":"  binary epoch 3: val macro-F1 0.5299\n"}
+,{"stream_name":"stdout","time":1679.273435179,"data":"  binary epoch 4: val macro-F1 0.5457\n"}
+,{"stream_name":"stdout","time":1737.964676886,"data":"  binary epoch 5: val macro-F1 0.6123\n"}
+,{"stream_name":"stdout","time":1797.192945398,"data":"  binary epoch 6: val macro-F1 0.6030\n"}
+,{"stream_name":"stdout","time":1856.227634647,"data":"  binary epoch 7: val macro-F1 0.5023\n"}
+,{"stream_name":"stdout","time":1862.095182673,"data":"{\n"}
+,{"stream_name":"stdout","time":1862.095217815,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":1862.095225075,"data":"  \"accuracy\": 0.5555555555555556,\n"}
+,{"stream_name":"stdout","time":1862.095229617,"data":"  \"macro_f1\": 0.551712210307852,\n"}
+,{"stream_name":"stdout","time":1862.095234215,"data":"  \"weighted_f1\": 0.5547868865060148,\n"}
+,{"stream_name":"stdout","time":1862.095240174,"data":"  \"auc\": 0.6186206896551724,\n"}
+,{"stream_name":"stdout","time":1862.095260258,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":1862.095265119,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":1862.095269365,"data":"      0.4722222222222222,\n"}
+,{"stream_name":"stdout","time":1862.095274448,"data":"      0.6481481481481481\n"}
+,{"stream_name":"stdout","time":1862.09527867,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1862.095282646,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":1862.095286717,"data":"      0.46277873070325903,\n"}
+,{"stream_name":"stdout","time":1862.095290762,"data":"      0.6451330347451663\n"}
+,{"stream_name":"stdout","time":1862.095294733,"data":"    ],\n"}
+,{"stream_name":"stdout","time":1862.095300703,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":1862.095308539,"data":"      0.5117097651860176,\n"}
+,{"stream_name":"stdout","time":1862.095311365,"data":"      0.7220593128358421\n"}
+,{"stream_name":"stdout","time":1862.095314118,"data":"    ]\n"}
+,{"stream_name":"stdout","time":1862.095316803,"data":"  }\n"}
+,{"stream_name":"stdout","time":1862.095319459,"data":"}\n"}
+,{"stream_name":"stdout","time":1863.412766742,"data":"=== abl-no-segments__seed2  2026-11-01 01:07:54\n"}
+,{"stream_name":"stdout","time":1871.137932837,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":1873.510777514,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":1873.510822166,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":1873.510829253,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":1873.510834589,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510839471,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510843663,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510847984,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.51085202,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.51085612,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510860329,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510878391,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510881007,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510883238,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510885805,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":1873.510897509,"data":"embeddings.token_type_embeddings.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":1873.510901147,"data":"\n"}
+,{"stream_name":"stdout","time":1873.51090488,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":1873.51090855,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":1873.510912507,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1874.411193032,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":1915.363204771,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":1915.363253456,"data":"  binary epoch 1: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":1968.951209097,"data":"  binary epoch 2: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":2022.239799311,"data":"  binary epoch 3: val macro-F1 0.5914\n"}
+,{"stream_name":"stdout","time":2076.576023878,"data":"  binary epoch 4: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":2129.635620192,"data":"  binary epoch 5: val macro-F1 0.5564\n"}
+,{"stream_name":"stdout","time":2183.686176928,"data":"  binary epoch 6: val macro-F1 0.6123\n"}
+,{"stream_name":"stdout","time":2238.003280022,"data":"  binary epoch 7: val macro-F1 0.6224\n"}
+,{"stream_name":"stdout","time":2292.848705429,"data":"  binary epoch 8: val macro-F1 0.6593\n"}
+,{"stream_name":"stdout","time":2347.424415832,"data":"  binary epoch 9: val macro-F1 0.6283\n"}
+,{"stream_name":"stdout","time":2400.640392391,"data":"  binary epoch 10: val macro-F1 0.5920\n"}
+,{"stream_name":"stdout","time":2406.466833027,"data":"{\n"}
+,{"stream_name":"stdout","time":2406.466891107,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":2406.466898557,"data":"  \"accuracy\": 0.5555555555555556,\n"}
+,{"stream_name":"stdout","time":2406.466903049,"data":"  \"macro_f1\": 0.5554030874785592,\n"}
+,{"stream_name":"stdout","time":2406.46690727,"data":"  \"weighted_f1\": 0.5547932151705737,\n"}
+,{"stream_name":"stdout","time":2406.466911521,"data":"  \"auc\": 0.6020689655172413,\n"}
+,{"stream_name":"stdout","time":2406.466915722,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":2406.466921667,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":2406.466941358,"data":"      0.4537037037037037,\n"}
+,{"stream_name":"stdout","time":2406.46694637,"data":"      0.6391203703703701\n"}
+,{"stream_name":"stdout","time":2406.466950552,"data":"    ],\n"}
+,{"stream_name":"stdout","time":2406.466954857,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":2406.466959997,"data":"      0.45365686358569834,\n"}
+,{"stream_name":"stdout","time":2406.466965299,"data":"      0.6389398444952498\n"}
+,{"stream_name":"stdout","time":2406.466970365,"data":"    ],\n"}
+,{"stream_name":"stdout","time":2406.466975372,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":2406.466979617,"data":"      0.4887343817229248,\n"}
+,{"stream_name":"stdout","time":2406.466995707,"data":"      0.7101853483271839\n"}
+,{"stream_name":"stdout","time":2406.466999498,"data":"    ]\n"}
+,{"stream_name":"stdout","time":2406.467003203,"data":"  }\n"}
+,{"stream_name":"stdout","time":2406.467006762,"data":"}\n"}
+,{"stream_name":"stdout","time":2407.8210631,"data":"=== abl-no-attention__seed2  2026-11-01 01:16:59\n"}
+,{"stream_name":"stdout","time":2415.534089413,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":2417.930385842,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":2417.930428278,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":2417.930432049,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":2417.930434541,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930436904,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930439463,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930441843,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930444122,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930446366,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930448585,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930450802,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930453149,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930455364,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930457579,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2417.930459799,"data":"embeddings.token_type_embeddings.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":2417.930462136,"data":"\n"}
+,{"stream_name":"stdout","time":2417.930464353,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":2417.930466591,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":2417.93046911,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":2418.810478634,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":2457.116502901,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":2457.116566862,"data":"  binary epoch 1: val macro-F1 0.3248\n"}
+,{"stream_name":"stdout","time":2508.254838492,"data":"  binary epoch 2: val macro-F1 0.6305\n"}
+,{"stream_name":"stdout","time":2559.506228063,"data":"  binary epoch 3: val macro-F1 0.6199\n"}
+,{"stream_name":"stdout","time":2610.385499141,"data":"  binary epoch 4: val macro-F1 0.5967\n"}
+,{"stream_name":"stdout","time":2660.448386534,"data":"  binary epoch 5: val macro-F1 0.6057\n"}
+,{"stream_name":"stdout","time":2711.63029852,"data":"  binary epoch 6: val macro-F1 0.6221\n"}
+,{"stream_name":"stdout","time":2762.656995132,"data":"  binary epoch 7: val macro-F1 0.6025\n"}
+,{"stream_name":"stdout","time":2768.305186696,"data":"{\n"}
+,{"stream_name":"stdout","time":2768.305226805,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":2768.305233628,"data":"  \"accuracy\": 0.5740740740740741,\n"}
+,{"stream_name":"stdout","time":2768.305238943,"data":"  \"macro_f1\": 0.5739279588336192,\n"}
+,{"stream_name":"stdout","time":2768.305243929,"data":"  \"weighted_f1\": 0.5745124197954387,\n"}
+,{"stream_name":"stdout","time":2768.305248362,"data":"  \"auc\": 0.5606896551724139,\n"}
+,{"stream_name":"stdout","time":2768.305252476,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":2768.305256528,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":2768.305260643,"data":"      0.48148148148148145,\n"}
+,{"stream_name":"stdout","time":2768.305264729,"data":"      0.6666666666666666\n"}
+,{"stream_name":"stdout","time":2768.305270528,"data":"    ],\n"}
+,{"stream_name":"stdout","time":2768.305278166,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":2768.305281041,"data":"      0.4807692307692308,\n"}
+,{"stream_name":"stdout","time":2768.305283708,"data":"      0.6656346749226006\n"}
+,{"stream_name":"stdout","time":2768.305286379,"data":"    ],\n"}
+,{"stream_name":"stdout","time":2768.305289009,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":2768.30529271,"data":"      0.4444253663003663,\n"}
+,{"stream_name":"stdout","time":2768.305309091,"data":"      0.6624171004706884\n"}
+,{"stream_name":"stdout","time":2768.30531387,"data":"    ]\n"}
+,{"stream_name":"stdout","time":2768.305318473,"data":"  }\n"}
+,{"stream_name":"stdout","time":2768.305323336,"data":"}\n"}
+,{"stream_name":"stdout","time":2769.650861963,"data":"=== abl-inputs-P-R0__seed2  2026-11-01 01:23:01\n"}
+,{"stream_name":"stdout","time":2777.325975622,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":2779.289873714,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":2779.289923994,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":2779.289931784,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":2779.289936533,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289941532,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289946214,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289950483,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289954783,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289958919,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289963528,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289967665,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289975481,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289978669,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289981368,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":2779.289994639,"data":"embeddings.token_type_embeddings.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":2779.290007883,"data":"\n"}
+,{"stream_name":"stdout","time":2779.290011826,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":2779.290015529,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":2779.290019543,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":2780.191191069,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":2799.583854704,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":2799.583906109,"data":"  binary epoch 1: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":2826.629853238,"data":"  binary epoch 2: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":2851.579869606,"data":"  binary epoch 3: val macro-F1 0.5943\n"}
+,{"stream_name":"stdout","time":2877.197150856,"data":"  binary epoch 4: val macro-F1 0.6138\n"}
+,{"stream_name":"stdout","time":2902.992160141,"data":"  binary epoch 5: val macro-F1 0.6438\n"}
+,{"stream_name":"stdout","time":2929.138333001,"data":"  binary epoch 6: val macro-F1 0.6281\n"}
+,{"stream_name":"stdout","time":2954.249219441,"data":"  binary epoch 7: val macro-F1 0.6494\n"}
+,{"stream_name":"stdout","time":2980.324452925,"data":"  binary epoch 8: val macro-F1 0.6394\n"}
+,{"stream_name":"stdout","time":3005.811792959,"data":"  binary epoch 9: val macro-F1 0.6205\n"}
+,{"stream_name":"stdout","time":3030.847418558,"data":"  binary epoch 10: val macro-F1 0.6294\n"}
+,{"stream_name":"stdout","time":3035.230082888,"data":"{\n"}
+,{"stream_name":"stdout","time":3035.230126054,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":3035.230133438,"data":"  \"accuracy\": 0.6018518518518519,\n"}
+,{"stream_name":"stdout","time":3035.23013812,"data":"  \"macro_f1\": 0.6009966491966663,\n"}
+,{"stream_name":"stdout","time":3035.230143171,"data":"  \"weighted_f1\": 0.6023649734449632,\n"}
+,{"stream_name":"stdout","time":3035.230148102,"data":"  \"auc\": 0.5956896551724138,\n"}
+,{"stream_name":"stdout","time":3035.230153189,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":3035.230157252,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":3035.230161115,"data":"      0.5092592592592593,\n"}
+,{"stream_name":"stdout","time":3035.230164972,"data":"      0.6944444444444444\n"}
+,{"stream_name":"stdout","time":3035.230168719,"data":"    ],\n"}
+,{"stream_name":"stdout","time":3035.230172958,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":3035.230177453,"data":"      0.5020443671161374,\n"}
+,{"stream_name":"stdout","time":3035.230181747,"data":"      0.6931969758804645\n"}
+,{"stream_name":"stdout","time":3035.230185457,"data":"    ],\n"}
+,{"stream_name":"stdout","time":3035.23018927,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":3035.230193069,"data":"      0.48367187500000003,\n"}
+,{"stream_name":"stdout","time":3035.230196993,"data":"      0.70823164285616\n"}
+,{"stream_name":"stdout","time":3035.230201874,"data":"    ]\n"}
+,{"stream_name":"stdout","time":3035.230205945,"data":"  }\n"}
+,{"stream_name":"stdout","time":3035.230210173,"data":"}\n"}
+,{"stream_name":"stdout","time":3036.591967791,"data":"=== abl-inputs-P-F__seed2  2026-11-01 01:27:27\n"}
+,{"stream_name":"stdout","time":3044.245938091,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":3046.401138682,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":3046.40119918,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":3046.401205517,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":3046.401209918,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401214606,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401219186,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.40122324,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401227918,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401232174,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401235995,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401239844,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401243683,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401247612,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401251426,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3046.401259499,"data":"embeddings.token_type_embeddings.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":3046.401267815,"data":"\n"}
+,{"stream_name":"stdout","time":3046.401270548,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":3046.401273192,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":3046.401276429,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":3047.291675775,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":3078.830383308,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":3078.830422572,"data":"  binary epoch 1: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":3121.789583852,"data":"  binary epoch 2: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":3162.957425954,"data":"  binary epoch 3: val macro-F1 0.5985\n"}
+,{"stream_name":"stdout","time":3205.914919255,"data":"  binary epoch 4: val macro-F1 0.5891\n"}
+,{"stream_name":"stdout","time":3246.93116667,"data":"  binary epoch 5: val macro-F1 0.6320\n"}
+,{"stream_name":"stdout","time":3289.261733524,"data":"  binary epoch 6: val macro-F1 0.4301\n"}
+,{"stream_name":"stdout","time":3330.671491554,"data":"  binary epoch 7: val macro-F1 0.5881\n"}
+,{"stream_name":"stdout","time":3372.533980922,"data":"  binary epoch 8: val macro-F1 0.6114\n"}
+,{"stream_name":"stdout","time":3414.231284802,"data":"  binary epoch 9: val macro-F1 0.6305\n"}
+,{"stream_name":"stdout","time":3455.844811963,"data":"  binary epoch 10: val macro-F1 0.6603\n"}
+,{"stream_name":"stdout","time":3461.693509615,"data":"{\n"}
+,{"stream_name":"stdout","time":3461.693560281,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":3461.693687547,"data":"  \"accuracy\": 0.46296296296296297,\n"}
+,{"stream_name":"stdout","time":3461.69371582,"data":"  \"macro_f1\": 0.45625000000000004,\n"}
+,{"stream_name":"stdout","time":3461.693720109,"data":"  \"weighted_f1\": 0.4607253086419753,\n"}
+,{"stream_name":"stdout","time":3461.693724804,"data":"  \"auc\": 0.45724137931034486,\n"}
+,{"stream_name":"stdout","time":3461.693738565,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":3461.693742298,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":3461.693746377,"data":"      0.37037037037037035,\n"}
+,{"stream_name":"stdout","time":3461.693750086,"data":"      0.5555555555555556\n"}
+,{"stream_name":"stdout","time":3461.693754237,"data":"    ],\n"}
+,{"stream_name":"stdout","time":3461.693757974,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":3461.693761591,"data":"      0.36250000000000004,\n"}
+,{"stream_name":"stdout","time":3461.693765365,"data":"      0.5459901601681874\n"}
+,{"stream_name":"stdout","time":3461.693769765,"data":"    ],\n"}
+,{"stream_name":"stdout","time":3461.693773294,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":3461.693776762,"data":"      0.34728962443806194,\n"}
+,{"stream_name":"stdout","time":3461.693780132,"data":"      0.5657074880227125\n"}
+,{"stream_name":"stdout","time":3461.693783885,"data":"    ]\n"}
+,{"stream_name":"stdout","time":3461.693787465,"data":"  }\n"}
+,{"stream_name":"stdout","time":3461.693790889,"data":"}\n"}
+,{"stream_name":"stdout","time":3463.042584682,"data":"=== abl-inputs-R0-F__seed2  2026-11-01 01:34:34\n"}
+,{"stream_name":"stdout","time":3470.628266455,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":3472.833555996,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-small\n"}
+,{"stream_name":"stdout","time":3472.833592725,"data":"Key                                     | Status     | \n"}
+,{"stream_name":"stdout","time":3472.833598238,"data":"----------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":3472.833602566,"data":"lm_predictions.lm_head.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833606526,"data":"lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833609812,"data":"mask_predictions.LayerNorm.weight       | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833613172,"data":"mask_predictions.dense.weight           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833616311,"data":"lm_predictions.lm_head.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833619537,"data":"lm_predictions.lm_head.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833622726,"data":"lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833625904,"data":"mask_predictions.classifier.weight      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833629116,"data":"mask_predictions.dense.bias             | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833632129,"data":"mask_predictions.classifier.bias        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.83363538,"data":"mask_predictions.LayerNorm.bias         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3472.833638667,"data":"embeddings.token_type_embeddings.weight | MISSING    | \n"}
+,{"stream_name":"stdout","time":3472.833641872,"data":"\n"}
+,{"stream_name":"stdout","time":3472.833644935,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":3472.833667999,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":3472.833672013,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":3473.719455033,"data":"froze word embeddings: 98.4M parameters\n"}
+,{"stream_name":"stdout","time":3506.115576879,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":3506.115625167,"data":"  binary epoch 1: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":3549.438936166,"data":"  binary epoch 2: val macro-F1 0.3416\n"}
+,{"stream_name":"stdout","time":3591.118705438,"data":"  binary epoch 3: val macro-F1 0.6002\n"}
+,{"stream_name":"stdout","time":3634.388786423,"data":"  binary epoch 4: val macro-F1 0.6115\n"}
+,{"stream_name":"stdout","time":3676.614504782,"data":"  binary epoch 5: val macro-F1 0.5940\n"}
+,{"stream_name":"stdout","time":3718.762821541,"data":"  binary epoch 6: val macro-F1 0.5778\n"}
+,{"stream_name":"stdout","time":3761.233281998,"data":"  binary epoch 7: val macro-F1 0.6484\n"}
+,{"stream_name":"stdout","time":3804.380573396,"data":"  binary epoch 8: val macro-F1 0.5696\n"}
+,{"stream_name":"stdout","time":3846.542511357,"data":"  binary epoch 9: val macro-F1 0.6502\n"}
+,{"stream_name":"stdout","time":3889.503000486,"data":"  binary epoch 10: val macro-F1 0.5859\n"}
+,{"stream_name":"stdout","time":3894.82182545,"data":"{\n"}
+,{"stream_name":"stdout","time":3894.821885088,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":3894.822040554,"data":"  \"accuracy\": 0.5370370370370371,\n"}
+,{"stream_name":"stdout","time":3894.822058485,"data":"  \"macro_f1\": 0.53125,\n"}
+,{"stream_name":"stdout","time":3894.822063743,"data":"  \"weighted_f1\": 0.527391975308642,\n"}
+,{"stream_name":"stdout","time":3894.822068775,"data":"  \"auc\": 0.5493103448275862,\n"}
+,{"stream_name":"stdout","time":3894.822073683,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":3894.82207867,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":3894.822083079,"data":"      0.4444444444444444,\n"}
+,{"stream_name":"stdout","time":3894.822087574,"data":"      0.6296296296296297\n"}
+,{"stream_name":"stdout","time":3894.822092325,"data":"    ],\n"}
+,{"stream_name":"stdout","time":3894.822096907,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":3894.822101523,"data":"      0.4362232003560115,\n"}
+,{"stream_name":"stdout","time":3894.82210647,"data":"      0.6247067963111468\n"}
+,{"stream_name":"stdout","time":3894.822110926,"data":"    ],\n"}
+,{"stream_name":"stdout","time":3894.822115522,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":3894.822120517,"data":"      0.424642411986162,\n"}
+,{"stream_name":"stdout","time":3894.822125174,"data":"      0.6560506042088167\n"}
+,{"stream_name":"stdout","time":3894.822129896,"data":"    ]\n"}
+,{"stream_name":"stdout","time":3894.822134299,"data":"  }\n"}
+,{"stream_name":"stdout","time":3894.822138908,"data":"}\n"}
+,{"stream_name":"stdout","time":3896.182462044,"data":"=== abl-deberta-xsmall__seed2  2026-11-01 01:41:47\n"}
+,{"stream_name":"stdout","time":3903.859691474,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":3908.757944712,"data":"[transformers] \u001b[1mDebertaV2Model LOAD REPORT\u001b[0m from: microsoft/deberta-v3-xsmall\n"}
+,{"stream_name":"stdout","time":3908.757990845,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stdout","time":3908.757996056,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stdout","time":3908.757999904,"data":"deberta.embeddings.word_embeddings._weight | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758003564,"data":"mask_predictions.LayerNorm.weight          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758007006,"data":"lm_predictions.lm_head.LayerNorm.weight    | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758010513,"data":"lm_predictions.lm_head.LayerNorm.bias      | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758014195,"data":"mask_predictions.dense.weight              | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758017612,"data":"mask_predictions.classifier.weight         | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758021243,"data":"mask_predictions.dense.bias                | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.75802478,"data":"lm_predictions.lm_head.bias                | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758028326,"data":"mask_predictions.classifier.bias           | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758031851,"data":"mask_predictions.LayerNorm.bias            | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758035296,"data":"lm_predictions.lm_head.dense.bias          | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758045051,"data":"lm_predictions.lm_head.dense.weight        | UNEXPECTED | \n"}
+,{"stream_name":"stdout","time":3908.758048688,"data":"embeddings.token_type_embeddings.weight    | MISSING    | \n"}
+,{"stream_name":"stdout","time":3908.758052197,"data":"\n"}
+,{"stream_name":"stdout","time":3908.758058451,"data":"Notes:\n"}
+,{"stream_name":"stdout","time":3908.758062158,"data":"- UNEXPECTED:\tcan be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stdout","time":3908.758066301,"data":"- MISSING:\tthose params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":3909.462593423,"data":"froze word embeddings: 49.2M parameters\n"}
+,{"stream_name":"stdout","time":3940.252610746,"data":"failure-mode labels missing (annotation not finished): training the binary stage only\n"}
+,{"stream_name":"stdout","time":3940.25265314,"data":"  binary epoch 1: val macro-F1 0.3248\n"}
+,{"stream_name":"stdout","time":3983.203529687,"data":"  binary epoch 2: val macro-F1 0.3338\n"}
+,{"stream_name":"stdout","time":4026.00588125,"data":"  binary epoch 3: val macro-F1 0.5413\n"}
+,{"stream_name":"stdout","time":4068.822275985,"data":"  binary epoch 4: val macro-F1 0.5967\n"}
+,{"stream_name":"stdout","time":4111.020620374,"data":"  binary epoch 5: val macro-F1 0.6104\n"}
+,{"stream_name":"stdout","time":4153.801150464,"data":"  binary epoch 6: val macro-F1 0.6332\n"}
+,{"stream_name":"stdout","time":4196.715006487,"data":"  binary epoch 7: val macro-F1 0.3248\n"}
+,{"stream_name":"stdout","time":4239.214839068,"data":"  binary epoch 8: val macro-F1 0.5899\n"}
+,{"stream_name":"stdout","time":4281.849410667,"data":"  binary epoch 9: val macro-F1 0.5859\n"}
+,{"stream_name":"stdout","time":4324.043204161,"data":"  binary epoch 10: val macro-F1 0.5562\n"}
+,{"stream_name":"stdout","time":4329.19522757,"data":"{\n"}
+,{"stream_name":"stdout","time":4329.195267118,"data":"  \"n\": 108,\n"}
+,{"stream_name":"stdout","time":4329.195272863,"data":"  \"accuracy\": 0.5833333333333334,\n"}
+,{"stream_name":"stdout","time":4329.195278037,"data":"  \"macro_f1\": 0.5700256569052464,\n"}
+,{"stream_name":"stdout","time":4329.195299248,"data":"  \"weighted_f1\": 0.5756288890854935,\n"}
+,{"stream_name":"stdout","time":4329.195303183,"data":"  \"auc\": 0.6379310344827586,\n"}
+,{"stream_name":"stdout","time":4329.195307226,"data":"  \"ci95\": {\n"}
+,{"stream_name":"stdout","time":4329.195310775,"data":"    \"accuracy\": [\n"}
+,{"stream_name":"stdout","time":4329.195314705,"data":"      0.49074074074074076,\n"}
+,{"stream_name":"stdout","time":4329.195318548,"data":"      0.6666666666666666\n"}
+,{"stream_name":"stdout","time":4329.195322104,"data":"    ],\n"}
+,{"stream_name":"stdout","time":4329.195325677,"data":"    \"macro_f1\": [\n"}
+,{"stream_name":"stdout","time":4329.1953292,"data":"      0.47105751001342755,\n"}
+,{"stream_name":"stdout","time":4329.195333161,"data":"      0.6559916364307238\n"}
+,{"stream_name":"stdout","time":4329.195336984,"data":"    ],\n"}
+,{"stream_name":"stdout","time":4329.195340993,"data":"    \"auc\": [\n"}
+,{"stream_name":"stdout","time":4329.195345048,"data":"      0.5320604786105108,\n"}
+,{"stream_name":"stdout","time":4329.195348762,"data":"      0.7369650382082656\n"}
+,{"stream_name":"stdout","time":4329.195352491,"data":"    ]\n"}
+,{"stream_name":"stdout","time":4329.19535627,"data":"  }\n"}
+,{"stream_name":"stdout","time":4329.195359948,"data":"}\n"}
+,{"stream_name":"stdout","time":4330.539247122,"data":"=== seed 2 done 2026-11-01 01:49:01\n"}
+,{"stream_name":"stdout","time":4330.543140988,"data":"exit: 0\n"}
+,{"stream_name":"stdout","time":4330.546760013,"data":"RESULTS: 10/10 COMPLETE\n"}
+,{"stream_name":"stderr","time":4332.583912483,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4332.583964244,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4332.856812442,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4332.856844875,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":4333.629998188,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":4334.622567742,"data":"[NbConvertApp] Writing 283741 bytes to __results__.html\n"}
+]

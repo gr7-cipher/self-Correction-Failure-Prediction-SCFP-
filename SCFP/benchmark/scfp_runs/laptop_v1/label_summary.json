@@ -1,0 +1,23 @@
+{
+  "traces_generated": 900,
+  "traces_kept": 716,
+  "excluded_no_final_answer_line": 184,
+  "excluded_by_model_and_source": {
+    "qwen2.5-0.5b / gsm8k": 38,
+    "qwen2.5-0.5b / logiqa": 18,
+    "qwen2.5-1.5b / gsm8k": 24,
+    "qwen2.5-1.5b / logiqa": 25,
+    "qwen2.5-1.5b / strategyqa": 74,
+    "smollm2-1.7b / gsm8k": 4,
+    "smollm2-1.7b / strategyqa": 1
+  },
+  "require_final_line": true,
+  "outcome_cells": {
+    "right->wrong": 80,
+    "wrong->right": 120,
+    "wrong->wrong": 257,
+    "right->right": 259
+  },
+  "failure_rate": 0.47067039106145253,
+  "problems_kept": 300
+}

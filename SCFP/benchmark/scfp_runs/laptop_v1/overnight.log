@@ -1,0 +1,1529 @@
+=== overnight start 2026-10-25 03:07:18
+=== deberta-scfp  2026-10-25 03:07:18
+W1025 03:07:26.142000 22678 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 14971.27it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3416
+  binary epoch 2: val macro-F1 0.3416
+  binary epoch 3: val macro-F1 0.5077
+  binary epoch 4: val macro-F1 0.5943
+  binary epoch 5: val macro-F1 0.5709
+  binary epoch 6: val macro-F1 0.4951
+  binary epoch 7: val macro-F1 0.6410
+  binary epoch 8: val macro-F1 0.5836
+  binary epoch 9: val macro-F1 0.6404
+  binary epoch 10: val macro-F1 0.5775
+{
+  "n": 108,
+  "accuracy": 0.5370370370370371,
+  "macro_f1": 0.5356037151702786,
+  "weighted_f1": 0.5336926193479341,
+  "auc": 0.5855172413793103,
+  "ci95": {
+    "accuracy": [
+      0.4444444444444444,
+      0.6296296296296297
+    ],
+    "macro_f1": [
+      0.4375,
+      0.6214104137447404
+    ],
+    "auc": [
+      0.47451631773399017,
+      0.6819323320413437
+    ]
+  }
+}
+=== deberta-plain  2026-10-25 04:18:25
+W1025 04:18:32.441000 27594 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 22059.35it/s]
+[transformers] [1mDebertaV2ForSequenceClassification LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+classifier.bias                         | MISSING    | 
+classifier.weight                       | MISSING    | 
+pooler.dense.weight                     | MISSING    | 
+pooler.dense.bias                       | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+  binary epoch 1: val macro-F1 0.5659
+  binary epoch 2: val macro-F1 0.6205
+  binary epoch 3: val macro-F1 0.6543
+  binary epoch 4: val macro-F1 0.6104
+  binary epoch 5: val macro-F1 0.5470
+  binary epoch 6: val macro-F1 0.5646
+  binary epoch 7: val macro-F1 0.6318
+  binary epoch 8: val macro-F1 0.5974
+{
+  "n": 108,
+  "accuracy": 0.5555555555555556,
+  "macro_f1": 0.55,
+  "weighted_f1": 0.5537037037037037,
+  "auc": 0.5682758620689656,
+  "ci95": {
+    "accuracy": [
+      0.46296296296296297,
+      0.6481481481481481
+    ],
+    "macro_f1": [
+      0.45091164095371666,
+      0.6389398444952498
+    ],
+    "auc": [
+      0.4555269623969815,
+      0.6772427865285464
+    ]
+  }
+}
+=== roberta-base  2026-10-25 04:57:21
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (544 > 512). Running this sequence through the model will result in indexing errors
+W1025 04:57:30.843000 30379 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 7960.52it/s]
+[transformers] [1mRobertaForSequenceClassification LOAD REPORT[0m from: FacebookAI/roberta-base
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+classifier.dense.bias      | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 38.6M parameters
+  binary epoch 1: val macro-F1 0.6369
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+  binary epoch 2: val macro-F1 0.6978
+  binary epoch 3: val macro-F1 0.5564
+  binary epoch 4: val macro-F1 0.5974
+  binary epoch 5: val macro-F1 0.6543
+  binary epoch 6: val macro-F1 0.5967
+  binary epoch 7: val macro-F1 0.5836
+{
+  "n": 108,
+  "accuracy": 0.5185185185185185,
+  "macro_f1": 0.5014204545454546,
+  "weighted_f1": 0.494581228956229,
+  "auc": 0.57,
+  "ci95": {
+    "accuracy": [
+      0.42592592592592593,
+      0.6111111111111112
+    ],
+    "macro_f1": [
+      0.4105446969768884,
+      0.5939858497542045
+    ],
+    "auc": [
+      0.4588608439674507,
+      0.6748299345705592
+    ]
+  }
+}
+=== bert-base  2026-10-25 06:04:59
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (531 > 512). Running this sequence through the model will result in indexing errors
+W1025 06:05:06.181000 35811 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 12418.78it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.seq_relationship.bias                  | UNEXPECTED | 
+classifier.weight                          | MISSING    | 
+classifier.bias                            | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 23.4M parameters
+Traceback (most recent call last):
+  File "/Users/gaith/miniforge3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/gaith/miniforge3/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/experiments/train_encoder.py", line 273, in <module>
+    main()
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/experiments/train_encoder.py", line 221, in main
+    lb, lm = forward(model, args.arch, ids, seg, mask, use_seg)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/experiments/train_encoder.py", line 114, in forward
+    return model(input_ids=ids, attention_mask=mask).logits, None
+  File "/Users/gaith/miniforge3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/gaith/miniforge3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/.venv/lib/python3.10/site-packages/transformers/utils/generic.py", line 943, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/.venv/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 1094, in forward
+    outputs = self.bert(
+  File "/Users/gaith/miniforge3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/gaith/miniforge3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/.venv/lib/python3.10/site-packages/transformers/utils/generic.py", line 1081, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/.venv/lib/python3.10/site-packages/transformers/utils/output_capturing.py", line 287, in wrapper
+    outputs = func(self, *args, **kwargs)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/.venv/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 653, in forward
+    embedding_output = self.embeddings(
+  File "/Users/gaith/miniforge3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/gaith/miniforge3/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/.venv/lib/python3.10/site-packages/transformers/models/bert/modeling_bert.py", line 94, in forward
+    token_type_ids = buffered_token_type_ids.expand(batch_size, seq_length)
+RuntimeError: The expanded size of the tensor (768) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 768].  Tensor sizes: [1, 512]
+!!! bert-base failed
+=== abl-no-segments  2026-10-25 06:06:11
+W1025 06:06:17.414000 35834 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 27748.02it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3416
+  binary epoch 2: val macro-F1 0.3416
+  binary epoch 3: val macro-F1 0.5662
+  binary epoch 4: val macro-F1 0.6193
+  binary epoch 5: val macro-F1 0.6494
+  binary epoch 6: val macro-F1 0.5986
+  binary epoch 7: val macro-F1 0.5505
+  binary epoch 8: val macro-F1 0.5305
+  binary epoch 9: val macro-F1 0.5604
+  binary epoch 10: val macro-F1 0.5662
+{
+  "n": 108,
+  "accuracy": 0.6111111111111112,
+  "macro_f1": 0.6109777015437392,
+  "weighted_f1": 0.6115113398132266,
+  "auc": 0.6420689655172414,
+  "ci95": {
+    "accuracy": [
+      0.5185185185185185,
+      0.7037037037037037
+    ],
+    "macro_f1": [
+      0.5183533447684391,
+      0.7000285368384641
+    ],
+    "auc": [
+      0.5435070519435845,
+      0.748554941591859
+    ]
+  }
+}
+=== abl-no-attention  2026-10-25 07:03:38
+W1025 07:03:45.567000 40074 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 19824.79it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+froze word embeddings: 98.4M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3248
+  binary epoch 2: val macro-F1 0.3901
+  binary epoch 3: val macro-F1 0.6404
+  binary epoch 4: val macro-F1 0.6221
+  binary epoch 5: val macro-F1 0.5795
+  binary epoch 6: val macro-F1 0.5943
+  binary epoch 7: val macro-F1 0.6104
+  binary epoch 8: val macro-F1 0.5508
+{
+  "n": 108,
+  "accuracy": 0.5833333333333334,
+  "macro_f1": 0.583011583011583,
+  "weighted_f1": 0.5838695838695839,
+  "auc": 0.5996551724137931,
+  "ci95": {
+    "accuracy": [
+      0.49074074074074076,
+      0.6668981481481479
+    ],
+    "macro_f1": [
+      0.48851258926690444,
+      0.6662173793187944
+    ],
+    "auc": [
+      0.49340741763701834,
+      0.7037774824993518
+    ]
+  }
+}
+=== abl-inputs-P-R0  2026-10-25 07:41:54
+W1025 07:42:02.269000 42425 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 26061.10it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3416
+  binary epoch 2: val macro-F1 0.3416
+  binary epoch 3: val macro-F1 0.5237
+  binary epoch 4: val macro-F1 0.5864
+  binary epoch 5: val macro-F1 0.5726
+  binary epoch 6: val macro-F1 0.5940
+  binary epoch 7: val macro-F1 0.6221
+  binary epoch 8: val macro-F1 0.6283
+  binary epoch 9: val macro-F1 0.6115
+  binary epoch 10: val macro-F1 0.6030
+{
+  "n": 108,
+  "accuracy": 0.5740740740740741,
+  "macro_f1": 0.5687500000000001,
+  "weighted_f1": 0.5722993827160494,
+  "auc": 0.5337931034482759,
+  "ci95": {
+    "accuracy": [
+      0.4722222222222222,
+      0.6574074074074074
+    ],
+    "macro_f1": [
+      0.46304710914085917,
+      0.6548340981934732
+    ],
+    "auc": [
+      0.4154452134211952,
+      0.63917096190703
+    ]
+  }
+}
+=== abl-inputs-P-F  2026-10-25 08:00:44
+W1025 08:00:52.005000 43811 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 28257.53it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3416
+  binary epoch 2: val macro-F1 0.3416
+  binary epoch 3: val macro-F1 0.5741
+  binary epoch 4: val macro-F1 0.5745
+  binary epoch 5: val macro-F1 0.5500
+  binary epoch 6: val macro-F1 0.5625
+  binary epoch 7: val macro-F1 0.5704
+  binary epoch 8: val macro-F1 0.5662
+  binary epoch 9: val macro-F1 0.5413
+{
+  "n": 108,
+  "accuracy": 0.5925925925925926,
+  "macro_f1": 0.5913312693498451,
+  "weighted_f1": 0.5930130336735083,
+  "auc": 0.6058620689655172,
+  "ci95": {
+    "accuracy": [
+      0.5,
+      0.6851851851851852
+    ],
+    "macro_f1": [
+      0.4914544820369724,
+      0.6781206171107994
+    ],
+    "auc": [
+      0.49753797697925234,
+      0.71018657635468
+    ]
+  }
+}
+=== abl-inputs-R0-F  2026-10-25 08:37:52
+W1025 08:37:58.526000 46431 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 25118.54it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3416
+  binary epoch 2: val macro-F1 0.3416
+  binary epoch 3: val macro-F1 0.5023
+  binary epoch 4: val macro-F1 0.5488
+  binary epoch 5: val macro-F1 0.5662
+  binary epoch 6: val macro-F1 0.6404
+  binary epoch 7: val macro-F1 0.6305
+  binary epoch 8: val macro-F1 0.6395
+  binary epoch 9: val macro-F1 0.6525
+  binary epoch 10: val macro-F1 0.6395
+{
+  "n": 108,
+  "accuracy": 0.5740740740740741,
+  "macro_f1": 0.5687500000000001,
+  "weighted_f1": 0.5652006172839507,
+  "auc": 0.606551724137931,
+  "ci95": {
+    "accuracy": [
+      0.48148148148148145,
+      0.6666666666666666
+    ],
+    "macro_f1": [
+      0.47498689507210473,
+      0.6571487365416886
+    ],
+    "auc": [
+      0.48962167590777333,
+      0.7135035524820008
+    ]
+  }
+}
+=== abl-deberta-xsmall  2026-10-25 09:11:06
+W1025 09:21:15.064000 48716 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 21189.84it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-xsmall
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+mask_predictions.dense.weight              | UNEXPECTED | 
+deberta.embeddings.word_embeddings._weight | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight    | UNEXPECTED | 
+mask_predictions.LayerNorm.bias            | UNEXPECTED | 
+mask_predictions.LayerNorm.weight          | UNEXPECTED | 
+mask_predictions.classifier.weight         | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias      | UNEXPECTED | 
+mask_predictions.dense.bias                | UNEXPECTED | 
+lm_predictions.lm_head.bias                | UNEXPECTED | 
+mask_predictions.classifier.bias           | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias          | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight        | UNEXPECTED | 
+embeddings.token_type_embeddings.weight    | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 49.2M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3505
+  binary epoch 2: val macro-F1 0.5754
+  binary epoch 3: val macro-F1 0.5709
+  binary epoch 4: val macro-F1 0.5795
+  binary epoch 5: val macro-F1 0.6246
+  binary epoch 6: val macro-F1 0.5076
+  binary epoch 7: val macro-F1 0.6138
+  binary epoch 8: val macro-F1 0.4230
+  binary epoch 9: val macro-F1 0.6199
+  binary epoch 10: val macro-F1 0.6281
+{
+  "n": 108,
+  "accuracy": 0.5833333333333334,
+  "macro_f1": 0.5772074815137016,
+  "weighted_f1": 0.5809772364796288,
+  "auc": 0.5786206896551724,
+  "ci95": {
+    "accuracy": [
+      0.49074074074074076,
+      0.6759259259259259
+    ],
+    "macro_f1": [
+      0.4769862194720952,
+      0.6632064724276348
+    ],
+    "auc": [
+      0.4656327856395436,
+      0.6822117384965684
+    ]
+  }
+}
+=== xmodel-qwen-to-all  2026-10-25 11:13:36
+W1025 11:13:43.411000 55626 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 19511.06it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 98.4M parameters
+failure-mode labels missing (annotation not finished): training the binary stage only
+  binary epoch 1: val macro-F1 0.3711
+  binary epoch 2: val macro-F1 0.3711
+  binary epoch 3: val macro-F1 0.3711
+  binary epoch 4: val macro-F1 0.3711
+  binary epoch 5: val macro-F1 0.6065
+  binary epoch 6: val macro-F1 0.2907
+  binary epoch 7: val macro-F1 0.3711
+  binary epoch 8: val macro-F1 0.3711
+  binary epoch 9: val macro-F1 0.5737
+  binary epoch 10: val macro-F1 0.6143
+{
+  "n": 108,
+  "accuracy": 0.6018518518518519,
+  "macro_f1": 0.5661029617864151,
+  "weighted_f1": 0.5753284818033019,
+  "auc": 0.6362068965517241,
+  "ci95": {
+    "accuracy": [
+      0.5092592592592593,
+      0.7037037037037037
+    ],
+    "macro_f1": [
+      0.46913810759929353,
+      0.6666752312435766
+    ],
+    "auc": [
+      0.5311711667421111,
+      0.7375101843910805
+    ]
+  }
+}
+=== routing  2026-10-25 11:47:17
+  loading Qwen/Qwen2.5-1.5B-Instruct on mps (torch.float16)
+W1025 11:47:24.798000 57729 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   1%|          | 4/338 [00:00<00:08, 39.28it/s]Loading weights:   3%|▎         | 9/338 [00:00<00:11, 29.12it/s]Loading weights:  10%|█         | 35/338 [00:00<00:02, 109.41it/s]Loading weights:  17%|█▋        | 59/338 [00:00<00:01, 142.75it/s]Loading weights:  25%|██▍       | 83/338 [00:00<00:01, 171.90it/s]Loading weights:  32%|███▏      | 107/338 [00:00<00:01, 185.17it/s]Loading weights:  42%|████▏     | 143/338 [00:00<00:00, 215.79it/s]Loading weights:  53%|█████▎    | 179/338 [00:00<00:00, 236.95it/s]Loading weights:  63%|██████▎   | 213/338 [00:01<00:00, 242.62it/s]Loading weights:  71%|███████   | 239/338 [00:01<00:00, 235.35it/s]Loading weights:  78%|███████▊  | 263/338 [00:01<00:00, 216.88it/s]Loading weights:  85%|████████▍ | 286/338 [00:01<00:00, 216.35it/s]Loading weights:  91%|█████████ | 308/338 [00:01<00:00, 201.47it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 200.91it/s]
+  routing generate: 1/200
+  routing generate: 2/200
+  routing generate: 3/200
+  routing generate: 4/200
+  routing generate: 5/200
+  routing generate: 6/200
+  routing generate: 7/200
+  routing generate: 8/200
+  routing generate: 9/200
+  routing generate: 10/200
+  routing generate: 11/200
+  routing generate: 12/200
+  routing generate: 13/200
+  routing generate: 14/200
+python(59814) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 15/200
+python(59916) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 16/200
+python(59939) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 17/200
+python(60112) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 18/200
+python(60136) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 19/200
+python(60291) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 20/200
+python(60323) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 21/200
+python(60465) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 22/200
+python(60477) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 23/200
+python(60605) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 24/200
+python(60708) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 25/200
+python(60922) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 26/200
+python(60935) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 27/200
+python(60993) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 28/200
+python(61130) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 29/200
+python(61140) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 30/200
+python(61354) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 31/200
+python(61429) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 32/200
+python(61570) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 33/200
+python(61723) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 34/200
+python(61770) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 35/200
+python(61921) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 36/200
+python(61930) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 37/200
+python(61936) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 38/200
+python(62131) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 39/200
+python(62209) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 40/200
+python(62323) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 41/200
+python(62380) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 42/200
+python(62386) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 43/200
+python(62555) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 44/200
+python(62569) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 45/200
+python(62576) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 46/200
+python(62660) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 47/200
+python(62709) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 48/200
+python(62804) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 49/200
+python(62811) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 50/200
+python(62841) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 51/200
+python(62911) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 52/200
+python(62948) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 53/200
+python(63070) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 54/200
+python(63210) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 55/200
+python(63256) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 56/200
+python(63426) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 57/200
+python(63436) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 58/200
+python(63470) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 59/200
+python(63610) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 60/200
+python(63615) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 61/200
+python(63722) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 62/200
+python(63731) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 63/200
+python(63890) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 64/200
+python(63901) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 65/200
+python(63980) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 66/200
+python(64179) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 67/200
+python(64349) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 68/200
+python(64463) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 69/200
+python(64485) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 70/200
+python(64499) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 71/200
+python(64733) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 72/200
+python(64852) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 73/200
+python(64907) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 74/200
+python(64955) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 75/200
+python(65031) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 76/200
+python(65129) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 77/200
+python(65255) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 78/200
+python(65317) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 79/200
+python(65424) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 80/200
+python(65441) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 81/200
+python(65459) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 82/200
+python(65617) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 83/200
+python(65671) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 84/200
+python(65802) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 85/200
+python(65822) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 86/200
+python(65923) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 87/200
+python(65954) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 88/200
+python(66075) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 89/200
+python(66109) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 90/200
+python(66115) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 91/200
+python(66305) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 92/200
+python(66423) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 93/200
+python(66432) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 94/200
+python(66517) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 95/200
+python(66585) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 96/200
+python(66797) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 97/200
+python(66978) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 98/200
+python(67007) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 99/200
+python(67020) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 100/200
+python(67185) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 101/200
+python(67441) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 102/200
+python(67647) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 103/200
+python(67826) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 104/200
+python(67838) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 105/200
+python(68019) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 106/200
+python(68064) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 107/200
+python(68219) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 108/200
+python(68274) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 109/200
+python(68436) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 110/200
+python(68477) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 111/200
+python(68604) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 112/200
+python(68622) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 113/200
+python(68825) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 114/200
+python(68931) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 115/200
+python(69111) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 116/200
+python(69135) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 117/200
+python(69250) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 118/200
+python(69265) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 119/200
+python(69442) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 120/200
+python(69479) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 121/200
+python(69628) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 122/200
+python(69638) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 123/200
+python(69769) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 124/200
+python(69820) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 125/200
+python(70041) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 126/200
+python(70099) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 127/200
+python(70330) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 128/200
+python(70352) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 129/200
+python(70508) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 130/200
+python(70543) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 131/200
+python(70763) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 132/200
+python(70822) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 133/200
+python(70917) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 134/200
+python(71009) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 135/200
+python(71100) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 136/200
+python(71307) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 137/200
+python(71417) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 138/200
+python(71493) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 139/200
+python(71665) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 140/200
+python(71830) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 141/200
+python(71875) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 142/200
+python(71990) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 143/200
+python(72181) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 144/200
+python(72347) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 145/200
+python(72503) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 146/200
+python(72853) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 147/200
+python(73079) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 148/200
+python(73133) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 149/200
+python(73296) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 150/200
+python(73475) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 151/200
+python(73586) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 152/200
+python(73756) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 153/200
+python(73842) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 154/200
+python(74021) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 155/200
+python(74114) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 156/200
+python(74268) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 157/200
+python(74318) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 158/200
+python(74435) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 159/200
+python(74517) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 160/200
+python(74605) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 161/200
+python(74624) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 162/200
+python(74782) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 163/200
+python(74905) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 164/200
+python(75068) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 165/200
+python(75213) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 166/200
+python(75381) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 167/200
+python(75406) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 168/200
+python(75577) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 169/200
+python(75639) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 170/200
+python(75754) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 171/200
+python(75766) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 172/200
+python(75927) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 173/200
+python(76002) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 174/200
+python(76198) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 175/200
+python(76326) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 176/200
+python(76466) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 177/200
+python(76608) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 178/200
+python(76688) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 179/200
+python(76868) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 180/200
+python(76886) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 181/200
+python(77021) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 182/200
+python(77069) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 183/200
+python(77086) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 184/200
+python(77263) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 185/200
+python(77268) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 186/200
+python(77286) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 187/200
+python(77462) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 188/200
+python(77487) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 189/200
+python(77598) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 190/200
+python(77748) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 191/200
+python(77775) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 192/200
+python(77873) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 193/200
+python(77898) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 194/200
+python(78017) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 195/200
+python(78079) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 196/200
+python(78270) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 197/200
+python(78289) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 198/200
+python(78299) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 199/200
+python(78456) MallocStackLogging: can't turn off malloc stack logging because it was not enabled.
+  routing generate: 200/200
+  loading Qwen/Qwen2.5-1.5B-Instruct on mps (torch.float16)
+W1025 16:51:24.730000 78472 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   1%|          | 2/338 [00:00<00:17, 19.67it/s]Loading weights:   3%|▎         | 11/338 [00:00<00:08, 37.48it/s]Loading weights:  10%|█         | 34/338 [00:00<00:03, 94.40it/s]Loading weights:  18%|█▊        | 60/338 [00:00<00:01, 141.30it/s]Loading weights:  25%|██▍       | 84/338 [00:00<00:01, 162.34it/s]Loading weights:  31%|███▏      | 106/338 [00:00<00:01, 154.12it/s]Loading weights:  38%|███▊      | 130/338 [00:00<00:01, 170.03it/s]Loading weights:  46%|████▌     | 154/338 [00:01<00:00, 187.33it/s]Loading weights:  51%|█████▏    | 174/338 [00:01<00:00, 187.09it/s]Loading weights:  58%|█████▊    | 197/338 [00:01<00:00, 197.89it/s]Loading weights:  67%|██████▋   | 227/338 [00:01<00:00, 224.05it/s]Loading weights:  74%|███████▍  | 250/338 [00:01<00:00, 201.85it/s]Loading weights:  81%|████████▏ | 275/338 [00:01<00:00, 200.29it/s]Loading weights:  88%|████████▊ | 299/338 [00:01<00:00, 201.39it/s]Loading weights:  96%|█████████▌| 325/338 [00:01<00:00, 211.34it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 181.83it/s]
+  qwen2.5-1.5b: 25/200
+  qwen2.5-1.5b: 50/200
+  qwen2.5-1.5b: 75/200
+  qwen2.5-1.5b: 100/200
+  qwen2.5-1.5b: 125/200
+  qwen2.5-1.5b: 150/200
+  qwen2.5-1.5b: 175/200
+  qwen2.5-1.5b: 200/200
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 40269.11it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.dense.weight           | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+scored 200 problems; predictor latency 176 ms on mps
+  Always Intrinsic             acc=0.707 lat=80.1s cost=1.00x human=0% score=0.769
+  Always Extrinsic             acc=0.613 lat=59.0s cost=0.64x human=0% score=0.798
+  Always Human (oracle)        acc=1.000 lat=93.8s cost=15.51x human=100% score=0.400
+  Random (uniform, expected)   acc=0.773 lat=77.6s cost=5.72x human=33% score=0.667
+  Confidence-based             acc=0.647 lat=66.5s cost=1.21x human=3% score=0.777
+  Dynamic (our predictor)      acc=0.613 lat=59.6s cost=0.84x human=1% score=0.791
+W1025 16:57:21.650000 78959 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 29590.47it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+{
+  "confusion": {
+    "matrix": [
+      [
+        26,
+        32
+      ],
+      [
+        18,
+        32
+      ]
+    ],
+    "n": 108,
+    "accuracy": 0.5370370370370371
+  },
+  "attention": {
+    "n_correct": 58,
+    "n_incorrect": 50,
+    "critique_share_correct_mean": 0.6046100502897953,
+    "critique_share_correct_sd": 0.17106353473639394,
+    "critique_share_incorrect_mean": 0.5978625945746898,
+    "critique_share_incorrect_sd": 0.16900774871578325,
+    "welch_t": 0.20571872152143694,
+    "welch_df": 104.02174327654063,
+    "p_value": 0.8374126991237681,
+    "mean_shares_all": {
+      "prompt": 0.20129537516859947,
+      "R0": 0.1972184951796576,
+      "critique": 0.6014862281994687
+    }
+  },
+  "latency": {
+    "device": "mps",
+    "hardware": "Apple M1 (8 GB)",
+    "median_ms": 105.00502586364746,
+    "mean_ms": 109.60731506347656,
+    "p90_ms": 165.44365882873535,
+    "n": 105,
+    "batch_size": 1
+  }
+}
+wrote tables to ../../../paper_tables
+{
+  "filter": {
+    "candidates": 950,
+    "in_band": 321,
+    "target": 300,
+    "selected": 300
+  },
+  "traces": {
+    "generated": 900,
+    "kept": 716,
+    "excluded": 184
+  },
+  "splits": {
+    "train": {
+      "traces": 502,
+      "problems": 210,
+      "failure_rate": 0.4701195219123506
+    },
+    "val": {
+      "traces": 106,
+      "problems": 45,
+      "failure_rate": 0.4811320754716981
+    },
+    "test": {
+      "traces": 108,
+      "problems": 45,
+      "failure_rate": 0.46296296296296297
+    }
+  },
+  "outcomes": {
+    "right->wrong": 80,
+    "wrong->right": 120,
+    "right->right": 259,
+    "wrong->wrong": 257
+  },
+  "example_trace_ids": {
+    "right->right": "039987b809474fb2",
+    "wrong->right": "0125c171d52515a7",
+    "right->wrong": "024294074b114f43",
+    "wrong->wrong": "18aeba578c2b6d2a"
+  },
+  "binary_results": {
+    "Majority class": {
+      "accuracy": 0.5370370370370371,
+      "macro_f1": 0.3493975903614458,
+      "weighted_f1": 0.37527889335118253,
+      "auc": 0.5
+    },
+    "Random (train prior)": {
+      "accuracy": 0.4444444444444444,
+      "macro_f1": 0.44368131868131866,
+      "weighted_f1": 0.44520757020757024,
+      "auc": 0.4986206896551724
+    },
+    "Length heuristic": {
+      "accuracy": 0.5555555555555556,
+      "macro_f1": 0.4763636363636364,
+      "weighted_f1": 0.49144781144781147,
+      "auc": 0.5103448275862069
+    },
+    "Confidence heuristic (critique log-prob)": {
+      "accuracy": 0.5370370370370371,
+      "macro_f1": 0.5238095238095237,
+      "weighted_f1": 0.5179306290417401,
+      "auc": 0.5644827586206896
+    },
+    "TF-IDF + logistic regression": {
+      "accuracy": 0.6296296296296297,
+      "macro_f1": 0.6284829721362228,
+      "weighted_f1": 0.6300118487940986,
+      "auc": 0.6089655172413794
+    }
+  },
+  "test_n": 108,
+  "encoders": {
+    "deberta-scfp": {
+      "n": 108,
+      "accuracy": 0.5370370370370371,
+      "macro_f1": 0.5356037151702786,
+      "weighted_f1": 0.5336926193479341,
+      "auc": 0.5855172413793103,
+      "ci95": {
+        "accuracy": [
+          0.4444444444444444,
+          0.6296296296296297
+        ],
+        "macro_f1": [
+          0.4375,
+          0.6214104137447404
+        ],
+        "auc": [
+          0.47451631773399017,
+          0.6819323320413437
+        ]
+      }
+    },
+    "deberta-plain": {
+      "n": 108,
+      "accuracy": 0.5555555555555556,
+      "macro_f1": 0.55,
+      "weighted_f1": 0.5537037037037037,
+      "auc": 0.5682758620689656,
+      "ci95": {
+        "ac
+=== all done  2026-10-25 16:57:40
+=== deberta-scfp: done, skipping
+=== deberta-plain: done, skipping
+=== roberta-base  2026-10-25 17:02:12
+max-len 768 exceeds FacebookAI/roberta-base's limit 512; using 512
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (544 > 512). Running this sequence through the model will result in indexing errors
+W1025 17:02:18.822000 79348 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 6324.41it/s]
+[transformers] [1mRobertaForSequenceClassification LOAD REPORT[0m from: FacebookAI/roberta-base
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 38.6M parameters
+  binary epoch 1: val macro-F1 0.6320
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+  binary epoch 2: val macro-F1 0.6115
+  binary epoch 3: val macro-F1 0.5864
+  binary epoch 4: val macro-F1 0.4821
+  binary epoch 5: val macro-F1 0.5945
+  binary epoch 6: val macro-F1 0.5904
+{
+  "n": 108,
+  "accuracy": 0.6111111111111112,
+  "macro_f1": 0.60625,
+  "weighted_f1": 0.6094907407407407,
+  "auc": 0.6151724137931034,
+  "ci95": {
+    "accuracy": [
+      0.5185185185185185,
+      0.6944444444444444
+    ],
+    "macro_f1": [
+      0.5077007623623513,
+      0.6906587822230436
+    ],
+    "auc": [
+      0.4987792117195675,
+      0.7123715584317317
+    ]
+  }
+}
+=== bert-base  2026-10-25 17:24:30
+max-len 768 exceeds google-bert/bert-base-uncased's limit 512; using 512
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (531 > 512). Running this sequence through the model will result in indexing errors
+W1025 17:24:38.011000 80920 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7461.64it/s]
+[transformers] [1mBertForSequenceClassification LOAD REPORT[0m from: google-bert/bert-base-uncased
+Key                                        | Status     | 
+-------------------------------------------+------------+-
+cls.seq_relationship.bias                  | UNEXPECTED | 
+cls.seq_relationship.weight                | UNEXPECTED | 
+cls.predictions.bias                       | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.weight | UNEXPECTED | 
+cls.predictions.transform.dense.weight     | UNEXPECTED | 
+cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | 
+cls.predictions.transform.dense.bias       | UNEXPECTED | 
+classifier.weight                          | MISSING    | 
+classifier.bias                            | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+froze word embeddings: 23.4M parameters
+  binary epoch 1: val macro-F1 0.5836
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+  binary epoch 2: val macro-F1 0.6791
+  binary epoch 3: val macro-F1 0.5741
+  binary epoch 4: val macro-F1 0.5848
+  binary epoch 5: val macro-F1 0.6023
+  binary epoch 6: val macro-F1 0.5881
+  binary epoch 7: val macro-F1 0.6115
+{
+  "n": 108,
+  "accuracy": 0.6018518518518519,
+  "macro_f1": 0.6001721911321567,
+  "weighted_f1": 0.6020918033832369,
+  "auc": 0.583793103448276,
+  "ci95": {
+    "accuracy": [
+      0.5185185185185185,
+      0.6851851851851852
+    ],
+    "macro_f1": [
+      0.5124180533279872,
+      0.68125
+    ],
+    "auc": [
+      0.47770406910971963,
+      0.6840734501347707
+    ]
+  }
+}
+=== abl-no-segments: done, skipping
+=== abl-no-attention: done, skipping
+=== abl-inputs-P-R0: done, skipping
+=== abl-inputs-P-F: done, skipping
+=== abl-inputs-R0-F: done, skipping
+=== abl-deberta-xsmall: done, skipping
+=== xmodel-qwen-to-all: done, skipping
+=== routing  2026-10-25 17:48:51
+  loading Qwen/Qwen2.5-1.5B-Instruct on mps (torch.float16)
+W1025 17:49:01.770000 82634 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/338 [00:00<?, ?it/s]Loading weights:   3%|▎         | 11/338 [00:00<00:03, 106.57it/s]Loading weights:   7%|▋         | 22/338 [00:00<00:05, 62.67it/s] Loading weights:  15%|█▌        | 51/338 [00:00<00:02, 131.91it/s]Loading weights:  20%|██        | 68/338 [00:00<00:01, 143.40it/s]Loading weights:  29%|██▉       | 99/338 [00:00<00:01, 176.91it/s]Loading weights:  36%|███▌      | 120/338 [00:00<00:01, 183.96it/s]Loading weights:  46%|████▌     | 154/338 [00:00<00:00, 226.18it/s]Loading weights:  54%|█████▍    | 183/338 [00:00<00:00, 243.94it/s]Loading weights:  64%|██████▎   | 215/338 [00:01<00:00, 258.78it/s]Loading weights:  72%|███████▏  | 242/338 [00:01<00:00, 249.54it/s]Loading weights:  79%|███████▉  | 268/338 [00:01<00:00, 246.69it/s]Loading weights:  88%|████████▊ | 296/338 [00:01<00:00, 254.37it/s]Loading weights:  95%|█████████▌| 322/338 [00:01<00:00, 253.98it/s]Loading weights: 100%|██████████| 338/338 [00:01<00:00, 220.59it/s]
+  qwen2.5-1.5b: 25/200
+  qwen2.5-1.5b: 50/200
+  qwen2.5-1.5b: 75/200
+  qwen2.5-1.5b: 100/200
+  qwen2.5-1.5b: 125/200
+  qwen2.5-1.5b: 150/200
+  qwen2.5-1.5b: 175/200
+  qwen2.5-1.5b: 200/200
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 40455.70it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+scored 200 problems; predictor latency 180 ms on mps
+  Always Intrinsic             acc=0.707 lat=80.1s cost=1.00x human=0% score=0.769
+  Always Extrinsic             acc=0.613 lat=59.0s cost=0.64x human=0% score=0.798
+  Always Human (oracle)        acc=1.000 lat=93.8s cost=15.51x human=100% score=0.400
+  Random (uniform, expected)   acc=0.773 lat=77.6s cost=5.72x human=33% score=0.667
+  Confidence-based             acc=0.647 lat=66.4s cost=1.21x human=3% score=0.777
+  Dynamic (our predictor)      acc=0.613 lat=59.6s cost=0.84x human=1% score=0.791
+W1025 17:54:50.285000 83031 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]Loading weights: 100%|██████████| 102/102 [00:00<00:00, 26567.66it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-small
+Key                                     | Status     | 
+----------------------------------------+------------+-
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED | 
+mask_predictions.classifier.weight      | UNEXPECTED | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED | 
+lm_predictions.lm_head.bias             | UNEXPECTED | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED | 
+mask_predictions.dense.weight           | UNEXPECTED | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED | 
+mask_predictions.classifier.bias        | UNEXPECTED | 
+mask_predictions.dense.bias             | UNEXPECTED | 
+embeddings.token_type_embeddings.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+{
+  "confusion": {
+    "matrix": [
+      [
+        26,
+        32
+      ],
+      [
+        18,
+        32
+      ]
+    ],
+    "n": 108,
+    "accuracy": 0.5370370370370371
+  },
+  "attention": {
+    "n_correct": 58,
+    "n_incorrect": 50,
+    "critique_share_correct_mean": 0.6046100502897953,
+    "critique_share_correct_sd": 0.17106353473639394,
+    "critique_share_incorrect_mean": 0.5978625945746898,
+    "critique_share_incorrect_sd": 0.16900774871578325,
+    "welch_t": 0.20571872152143694,
+    "welch_df": 104.02174327654063,
+    "p_value": 0.8374126991237681,
+    "mean_shares_all": {
+      "prompt": 0.20129537516859947,
+      "R0": 0.1972184951796576,
+      "critique": 0.6014862281994687
+    }
+  },
+  "latency": {
+    "device": "mps",
+    "hardware": "Apple M1 (8 GB)",
+    "median_ms": 105.00097274780273,
+    "mean_ms": 109.65731484549386,
+    "p90_ms": 167.7069187164307,
+    "n": 105,
+    "batch_size": 1
+  }
+}
+wrote tables to ../../../paper_tables
+{
+  "filter": {
+    "candidates": 950,
+    "in_band": 321,
+    "target": 300,
+    "selected": 300
+  },
+  "traces": {
+    "generated": 900,
+    "kept": 716,
+    "excluded": 184
+  },
+  "splits": {
+    "train": {
+      "traces": 502,
+      "problems": 210,
+      "failure_rate": 0.4701195219123506
+    },
+    "val": {
+      "traces": 106,
+      "problems": 45,
+      "failure_rate": 0.4811320754716981
+    },
+    "test": {
+      "traces": 108,
+      "problems": 45,
+      "failure_rate": 0.46296296296296297
+    }
+  },
+  "outcomes": {
+    "right->wrong": 80,
+    "wrong->right": 120,
+    "right->right": 259,
+    "wrong->wrong": 257
+  },
+  "example_trace_ids": {
+    "right->right": "039987b809474fb2",
+    "wrong->right": "0125c171d52515a7",
+    "right->wrong": "024294074b114f43",
+    "wrong->wrong": "18aeba578c2b6d2a"
+  },
+  "binary_results": {
+    "Majority class": {
+      "accuracy": 0.5370370370370371,
+      "macro_f1": 0.3493975903614458,
+      "weighted_f1": 0.37527889335118253,
+      "auc": 0.5
+    },
+    "Random (train prior)": {
+      "accuracy": 0.4444444444444444,
+      "macro_f1": 0.44368131868131866,
+      "weighted_f1": 0.44520757020757024,
+      "auc": 0.4986206896551724
+    },
+    "Length heuristic": {
+      "accuracy": 0.5555555555555556,
+      "macro_f1": 0.4763636363636364,
+      "weighted_f1": 0.49144781144781147,
+      "auc": 0.5103448275862069
+    },
+    "Confidence heuristic (critique log-prob)": {
+      "accuracy": 0.5370370370370371,
+      "macro_f1": 0.5238095238095237,
+      "weighted_f1": 0.5179306290417401,
+      "auc": 0.5644827586206896
+    },
+    "TF-IDF + logistic regression": {
+      "accuracy": 0.6296296296296297,
+      "macro_f1": 0.6284829721362228,
+      "weighted_f1": 0.6300118487940986,
+      "auc": 0.6089655172413794
+    }
+  },
+  "test_n": 108,
+  "encoders": {
+    "deberta-scfp": {
+      "n": 108,
+      "accuracy": 0.5370370370370371,
+      "macro_f1": 0.5356037151702786,
+      "weighted_f1": 0.5336926193479341,
+      "auc": 0.5855172413793103,
+      "ci95": {
+        "accuracy": [
+          0.4444444444444444,
+          0.6296296296296297
+        ],
+        "macro_f1": [
+          0.4375,
+          0.6214104137447404
+        ],
+        "auc": [
+          0.47451631773399017,
+          0.6819323320413437
+        ]
+      }
+    },
+    "deberta-plain": {
+      "n": 108,
+      "accuracy": 0.5555555555555556,
+      "macro_f1": 0.55,
+      "weighted_f1": 0.5537037037037037,
+      "auc": 0.5682758620689656,
+      "ci95": {
+        "ac
+=== all done  2026-10-25 17:55:28

@@ -1,0 +1,18 @@
+{
+ "n_kept": 716,
+ "n_excluded": 184,
+ "n_generated": 900,
+ "excluded_share": 0.20444444444444446,
+ "r0_wrong": 377,
+ "repaired": 120,
+ "r0_right": 339,
+ "broken": 80,
+ "failure_share": 0.47067039106145253,
+ "test_n": 108,
+ "test_failure_share": 0.46296296296296297,
+ "n_traces_tokenized": 716,
+ "median_tokens": 320.0,
+ "share_untruncated": 0.9622905027932961,
+ "max_len": 768,
+ "tokenizer": "microsoft/deberta-v3-small"
+}

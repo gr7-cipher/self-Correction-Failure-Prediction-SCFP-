@@ -1,0 +1,62 @@
+# Free, no API keys: small open-weight models on this Mac (M1, 8 GB).
+# Measured here (unbatched, fp16 on MPS): Qwen2.5-0.5B ~5 s/call; Qwen2.5-1.5B
+# ~24 s/call (~10.5 tok/s). Batching on MPS was slower (18 s/call at batch 8),
+# so batch_size stays 1.
+#
+# First run (2026-10-18): 600 candidates gave 208 problems in the band
+# (gsm8k 82/240, strategyqa 68/210, logiqa 58/150) and 624 traces; 135 traces
+# had no "Final answer:" line in R0 or Rf.
+# Top-up (this config): 950 candidates, about 1,050 new filter calls (~1.7 h)
+# plus ~92 new problems x 3 models x 3 calls (~4 h). Earlier picks are kept.
+# It is resumable:
+# if it stops, run the same command again and logged calls are reused.
+# Disk: the three models need about 7.5 GB.
+#
+#   python -m scfp_bench all-auto --config configs/laptop_local.yaml
+
+run_dir: scfp_runs/laptop_v1
+seed: 42
+batch_size: 1
+
+sources:
+  gsm8k: [train, test]
+  strategyqa: [train]
+  logiqa: [validation]
+
+routing_holdout: {source: gsm8k, origin_split: test, n: 1000}
+
+models:
+  - {name: qwen2.5-0.5b, provider: local, model: Qwen/Qwen2.5-0.5B-Instruct, max_tokens: 512}
+  - {name: qwen2.5-1.5b, provider: local, model: Qwen/Qwen2.5-1.5B-Instruct, max_tokens: 512}
+  - {name: smollm2-1.7b, provider: local, model: HuggingFaceTB/SmolLM2-1.7B-Instruct, max_tokens: 512}
+
+filter:
+  # Difficulty is measured with the smallest generator (Qwen2.5-0.5B), not the
+  # 1.5B model: filtering with 1.5B would take ~12 h instead of ~2.5 h. The
+  # [0.2, 0.8] band is therefore relative to Qwen2.5-0.5B; state this in the paper.
+  # (Seven 1.5B filter calls from the first, stopped run remain in calls.jsonl;
+  # they are unused.)
+  models: [qwen2.5-0.5b]
+  samples_per_problem: 3
+  temperature: 0.7
+  band: [0.2, 0.8]
+  # Raised from 240/210/150 after the first run's in-band yield (34% / 32% / 39%).
+  candidates_per_source: {gsm8k: 380, strategyqa: 360, logiqa: 210}
+  target_per_source: {gsm8k: 120, strategyqa: 105, logiqa: 75}   # 40 / 35 / 25 %
+
+generate:
+  models: [qwen2.5-0.5b, qwen2.5-1.5b, smollm2-1.7b]
+  temperature: 0.0
+
+label:
+  failure_definition: final_incorrect
+  # Exclude (and count in label_summary.json / excluded.jsonl) traces whose R0 or
+  # Rf has no explicit "Final answer:" line, instead of scoring a fallback guess.
+  require_final_line: true
+split: {ratios: [0.70, 0.15, 0.15]}
+
+annotation:
+  annotators: [ann1, ann2, ann3]
+  raters_per_trace: 2
+  agreement_fraction: 0.20
+  agreement_raters: 3

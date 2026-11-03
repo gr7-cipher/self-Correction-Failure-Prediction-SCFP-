@@ -1,0 +1,444 @@
+# Revision plan (pre-registered)
+
+I append each entry before running the experiment it describes. I don't edit an entry after its run. A correction goes in a new, dated entry.
+
+---
+
+## M4: routing baselines without self-correction (registered 2026-10-31, before any M4 computation)
+
+**Data.** The existing routing log is `SCFP/benchmark/scfp_runs/laptop_v1/routing/traces.jsonl`, with Qwen2.5-1.5B as the base model. The first 50 problems are for tuning and the other 150 for evaluation. The split is unchanged and nothing is generated again.
+
+**New policies** (all computed from logged texts, tokens and latencies):
+
+1. **No correction (R0 only).** Return the answer of R0.
+   - Cost: R0 tokens, divided by the existing unit (the mean intrinsic tokens on eval, as in §7.2).
+   - Latency: the R0 call only.
+2. **Agreement tool.** Generate R0 and the PoT program, but no critique.
+   - If the program's answer equals R0's answer, return R0. Otherwise return the program's answer.
+   - If the program produced no answer (error or empty output), return R0. I'm adding this fallback because the rule is otherwise undefined.
+   - Cost: R0 + program tokens. Latency: R0 + program + execution.
+   - Note: whenever the program produces an answer, this policy returns the program's answer, so its accuracy differs from Always Extrinsic only on program failures. I'll report that, not hide it.
+3. **Agreement + human.** As in policy 2, but disagreements and program failures go to the human oracle. The oracle uses the same assumed cost and latency as the existing human path, added on top of the R0 + program cost and latency.
+
+**Metrics.**
+
+- Accuracy, with a 95% bootstrap CI over problems (1,000 resamples, seed 0). There is one trace per problem, so a problem-level bootstrap and a trace-level bootstrap are the same here.
+- Relative cost and mean latency.
+- For each new policy against each existing fixed policy: a paired accuracy difference with a 95% paired bootstrap CI, and an exact McNemar p.
+
+**Decision rule.**
+
+- I'll say a policy is "better" in accuracy than another only if the paired 95% CI of the difference excludes 0.
+- I'll say it "dominates" only if it is at least as accurate in point estimate and no more costly or slow, and its accuracy is not significantly lower.
+- §7 will name as best the policy with the best accuracy among those not dominated. The cost–accuracy trade-off is shown in the Pareto plot. No single score decides.
+
+**Pareto plot.** All fixed policies are plotted on cost (x) against accuracy (y).
+
+- For the Dynamic (DeBERTa p_fail) and Confidence routers, I sweep all (τ_low < τ_high) pairs on the existing grid (0.10–0.90, step 0.05) and plot every point on the eval set, along with each router's frontier.
+- The sweep is descriptive only. The reported operating point is still the one tuned on the 50 tuning problems.
+
+**Risk–coverage.**
+
+- Predictors:
+  - DeBERTa p_fail;
+  - the confidence score, i.e. the negated critique mean log-prob, as in the Confidence router;
+  - random ordering (expected curve);
+  - an oracle (wrong answers ordered last).
+- The risk is that the intrinsic answer R_f is wrong among the accepted problems. Problems are accepted in ascending order of risk score, and ties are broken by problem order.
+- AURC is the mean risk over coverages k/150, k = 1..150. I report it with a bootstrap CI over problems, plus the paired difference against random, whose AURC equals the overall error rate.
+- A predictor "helps selective prediction" only if its paired difference CI against random excludes 0.
+
+**Sensitivity of the Overall Score (secondary table).**
+
+- Weights (w_c, w_ℓ, w_a) range over the simplex in steps of 0.1 (66 points).
+- Human cost is 5×, 15× or 50×; human latency is 15 s, 45 s or 120 s. That makes 594 settings in total.
+- In every setting, the learned routers' thresholds are re-tuned on the 50 tuning problems with that setting, as the paper's procedure does. Then all policies are scored on the 150 eval problems.
+- I'll report, for each policy, the share of settings in which it has the best Overall Score. I'll also report the share of settings in which Dynamic beats the best fixed policy.
+- The human cost and latency are labeled as assumptions throughout.
+
+**Expected outcome (the reviewer's prediction, not mine).** R0 only is at least as accurate as Always Intrinsic (73.3% vs 70.7%) and cheaper. Whatever happens, the result is reported as is.
+
+---
+
+## M5: domain and base-rate confounding in natural-set AUCs (registered 2026-10-31, before any M5 computation)
+
+**Data:** the existing out-of-fold predictions (`scfp_runs/paper_v7/predictions.jsonl`), on the natural set with the rf_wrong target. Folds and models are unchanged. The only new fit is the identity baseline.
+
+**New baseline: identity only.**
+- Logistic regression on one-hot source, with the same grouped 5-fold CV, folds, class balancing and inner CV as the other models.
+- It is fit per generator. The pooled version is fit on all generators together, with source and generator one-hots.
+- By construction, its within-source AUC is 0.5. I report that as a sanity check.
+
+**Metrics for every predictor (rows of Table 14):**
+1. **Within-source AUC (headline).** AUC per source, averaged with weights equal to each source's number of traces. For the pooled rows, the strata are source × generator.
+2. **Stratified AUC.** The share of correctly ordered (failure, success) pairs, counting only pairs from the same stratum (ties count ½). This is AUC with the comparison restricted within strata, weighted by pairs instead of traces.
+3. **Pooled AUC**, as before, for reference only.
+4. **AUPRC** with failure as the positive class (average precision), reported next to the failure rate, which is the chance level.
+5. **Brier score** of the predicted probabilities as they are. The models are class-balanced, so the probabilities are not calibrated for the base rate. I'll say so; M7 adds calibration.
+
+**Intervals and tests.**
+- 95% cluster bootstrap over problems: 1,000 resamples, seed 0. Within one generator there is one trace per problem; pooled, all traces of a resampled problem go in together.
+- Comparison with text: the cluster-bootstrap distribution of the difference in within-source AUC.
+- A predictor "beats text" only if that 95% CI excludes 0.
+- The existing McNemar accuracy tests stay as they are until M7 replaces them.
+
+**Decision rule.**
+- The abstract, §8, §9 and §10 will quote within-source AUC ranges in place of 0.710–0.794 and 0.761.
+- If the identity baseline's pooled AUC is within 0.05 of a predictor's pooled AUC, I'll state that most of that predictor's pooled AUC is explained by dataset identity.
+
+**Expectation (not a target):** within-source AUC is lower than pooled AUC, more so for generators whose failure rate differs strongly by source.
+
+### M5 addendum (registered 2026-10-31, after the main M5 run and before these computations)
+
+The main M5 run showed that pooled AUC is strongly confounded by source. Two more tables are pooled across sources, so I'm extending the same treatment to them. Metrics, bootstrap and decision rules are as above.
+
+- **(a) Filter effect (Table 13).**
+  - Within-source AUC on SCFP v1.0 and on the natural set, per generator, for text and for signals with the verifier.
+  - SCFP v1.0 predictions come from the same saved file (`set == "v1"`). The intervals use the cluster bootstrap over problems.
+  - The §8.3 claim ("the filter removes the signal for the filter model") stands only if Qwen2.5-0.5B's within-source text AUC on SCFP v1.0 is below its natural-set within-source text AUC, with the cluster-bootstrap CI of the difference excluding 0 (natural minus v1, resampling each set's problems independently). Otherwise the claim is weakened in the text.
+- **(b) Sub-tasks (Table 16).**
+  - Out-of-fold predictions for r0_wrong, changed, repair and harm are recomputed with the paper_v7 code: GBM on signals with the verifier, same folds. The results.json aggregates are checked to match first.
+  - These predictions are now saved per trace.
+  - Within-source AUC is reported next to the pooled AUC.
+  - The §8.6 claim ("revision behaviour is predictable, R0 correctness is not") stands only if the within-source AUC for changed, repair and harm exceeds that for r0_wrong for every generator.
+
+### M5 post-hoc check (registered 2026-10-31, after seeing the identity baseline; labeled post hoc in the paper)
+
+**Observation.** The identity baseline's within-source AUC is 0.45–0.48, not the 0.5 expected by construction. A likely cause: each fold's model is fit on the other folds, so a fold with more failures has a lower predicted base rate. That anti-correlates the fold intercept with the labels and biases within-source AUC downward for every predictor.
+
+**Check.** Compute AUC within source × fold strata, i.e. within source × fold × generator for the pooled rows. This removes between-fold intercept differences.
+
+**Reporting.** This is a sensitivity analysis only. The headline stays the pre-registered within-source AUC. If the source × fold version changes which predictor beats text, I'll say so.
+
+---
+
+## Decision recorded 2026-10-31 (author)
+
+After M5, the authors chose to keep the filter finding as a contribution, restated as a general caution: difficulty-filtered problems carry less within-source signal for every generator tested, and metrics pooled over datasets can reward recognizing the dataset. It is no longer stated as specific to the filter model.
+
+## M6: isolating the PoT verifier (registered 2026-10-31, before any M6 generation)
+
+**Generation** (Kaggle T4; approved by the author: about 5.4 GPU-h, k = 1 and k = 3).
+- For each of the four generators, on its kept natural-set GSM8K traces (3,118 traces), draw 3 answers with the **same initial prompt** as R0.
+- Settings: temperature 0.7, at most 512 new tokens (as for R0), the pinned commits of Appendix B, and calls logged with the existing `CallLog` format. Seeds come from the call id, as in the pipeline.
+- Precision: all four run in float16. Qwen2.5-1.5B's R0 was generated in bfloat16, so this is noted as a limitation.
+- Sample 1 is the cost-matched baseline: one extra generation, like the PoT program. Samples 1–3 give k = 3.
+- An unparsable sample counts as disagreeing with R0.
+
+**Features:**
+- `pot_ran`, `pot_agree_r0` (existing);
+- `sc1_agree`: sample 1's answer equals R0's answer;
+- `sc3_agree_frac`: share of the 3 samples equal to R0;
+- `sc3_majority_is_r0`.
+
+**Analyses** (per generator, GSM8K traces only, target rf_wrong; also reported for r0_wrong):
+1. **Single binary or score features:** `pot_ran`, `pot_agree_r0`, `sc1_agree`, `sc3_agree_frac`.
+   - Metrics: AUC (failure score = 1 − agreement); accuracy of "predict failure iff disagreement"; AUPRC.
+2. **Models:** class-balanced logistic regression on the signals without the verifier, plus one of {nothing, PoT, SC1, SC1 + PoT, SC3, SC3 + PoT}.
+   - Same LR settings as the paper, with 5-fold CV grouped by problem (seed 42), on the GSM8K traces of each generator.
+3. **Paired comparisons:** cluster bootstrap over problems (1,000 resamples, seed 0) of the AUC difference for:
+   - (+PoT) − (+SC1), the cost-matched comparison;
+   - (+SC1+PoT) − (+SC1), what PoT adds beyond two-sample agreement;
+   - (+SC3+PoT) − (+SC3).
+
+**Decision rule.**
+- The paper will say that PoT adds information beyond two-sample agreement for a generator only if the CI of (+SC1+PoT) − (+SC1) excludes 0.
+- It will say that PoT is better than the cost-matched SC1 only if the CI of (+PoT) − (+SC1) excludes 0.
+- The number of generators for which each holds is reported. If it is 0, the paper says the verifier adds nothing beyond two-sample agreement.
+
+---
+
+## M7: statistical rigor (registered 2026-10-31, before any M7 computation or training)
+
+**1. Seeds** (author decision: Kaggle T4).
+- Each Table 8 encoder (deberta-scfp, deberta-plain, roberta-base, bert-base) and each Table 9 ablation (no-segments, no-attention, inputs P-R0, P-F, R0-F, deberta-xsmall) is retrained with seeds 1, 2, 3 and 4.
+- Everything else is the exact command line of `run_mac_overnight.sh`: same splits, budgets, batch 2 × 8 accumulation and frozen word embeddings.
+- Precision is float32 (`--no-amp`), as on the M1. The device is CUDA instead of MPS, and each result records its hardware.
+- Seed 42 is the existing M1 run.
+- Reported: mean ± sd over the 5 seeds of test accuracy, macro-F1 and AUC, with per-seed results in an appendix. Model selection is on validation macro-F1, as before; the test split is evaluated once per run.
+
+**2. Cluster-aware intervals and tests.**
+- All intervals become 95% bootstrap intervals over problems: 1,000 resamples, seed 0, all traces of a resampled problem kept together. That means 45 problems and 108 traces for the SCFP test split, and 2,000 problems pooled for the natural set.
+- Paired accuracy tests become a **problem-level paired permutation test**: per-problem summed differences in correctness, signs flipped at random, 10,000 permutations, seed 0, two-sided.
+- Natural-set AUC differences: the cluster-bootstrap p-value, two-sided, equal to 2 × min(share of differences ≤ 0, share ≥ 0).
+
+**3. Families and Holm–Bonferroni.**
+- One family per table:
+  - Table 7: each baseline vs TF-IDF.
+  - Table 8: each encoder vs TF-IDF, and each encoder vs majority (two families).
+  - Table 9: each ablation vs the full model.
+  - Table 11: each policy vs no correction.
+  - Table 14: each predictor vs text, within each generator row, with the five rows as one family of 25.
+- **Pre-specified** in the submitted paper: Table 7 vs TF-IDF and vs majority; Table 8 vs TF-IDF and vs majority; Table 14 vs TF-IDF.
+- **Added in revision:** Table 9 vs the full model, and Table 11 vs no correction.
+- Holm-adjusted p-values are reported next to the raw ones.
+
+**4. Power.**
+- For the SCFP test split (108 traces in 45 problems), the minimum detectable difference at 80% power and two-sided α = 0.05:
+  - for paired accuracy, using the observed discordance rate between the full model and TF-IDF, inflated by the design effect 1 + (m̄ − 1)·ICC, with the ICC of correctness within problems estimated from the test predictions;
+  - for AUC against 0.5 and for paired AUC, by Hanley–McNeil with the observed class sizes and inter-model correlation, inflated by the same design effect.
+- Both are checked by simulation (resampling problems under an injected difference). The assumptions are stated in the appendix.
+
+**5. Calibration.**
+- ECE (15 equal-width bins), Brier score and a reliability diagram for:
+  - the best natural-set predictor per generator and pooled (out-of-fold);
+  - the DeBERTa p_fail on the SCFP test split and on the routing evaluation set.
+- The confidence-router score is a rank, not a probability, so it gets no ECE; I'll say so.
+- The class-balanced models are not calibrated to the base rate by design, and this is reported as a finding, not fixed.
+
+**Decision rule.** A claimed difference survives only if its Holm-adjusted p < 0.05. Any claim that loses significance after clustering or Holm correction is rewritten.
+
+### M7 implementation note (2026-10-31, after the first run of m7_stats.py)
+
+I raised the bootstrap resamples behind the natural-set AUC-difference p-values from 1,000 to 10,000. The p-value definition is unchanged.
+
+With 1,000 resamples, the smallest attainable p is 2/1001. Holm over 25 comparisons then gives at least 0.05 for every test, so no comparison could ever reach significance. All 25 adjusted values came out at exactly 0.05. This is a resolution fix, made before looking at any adjusted value from the new run.
+
+The confidence intervals still use 1,000 resamples, as registered.
+
+---
+
+## M9: hidden-state probing at the answer tokens (registered 2026-10-31, before any M9 extraction)
+
+**Extraction** (Kaggle T4, about 0.5 GPU-h; within the author's approved budget for the revision).
+- For every kept natural-set trace (6,824), run each generator by teacher forcing on (P, R0) in the chat template, with the pinned commit and float16.
+- Store, at **every layer**, the residual-stream state averaged over the tokens of R0's answer span (the value on the last "Final answer:" line, or else the final `\boxed{}`). Also store the state at the last token of R0, for comparison with the existing probe.
+- Traces whose answer span cannot be located get no answer-token state; their number is reported.
+
+**Probe.**
+- Standardization, then L2-regularized logistic regression with no PCA, class-balanced. C is chosen from {1e-4, 1e-3, 1e-2, 1e-1, 1} by 3-fold inner CV.
+- 5-fold CV grouped by problem, using the paper's folds. Target: rf_wrong; r0_wrong is also reported.
+
+**Reporting.**
+- Within-source AUC per layer, per generator (figure), with the cluster-bootstrap CI at the best layer. The best layer is identified **after the fact** and labeled as such.
+- Comparison: the existing last-token PCA-64 probe (the paper's numbers, recomputed within source if the arrays are available; otherwise its pooled value, labeled as pooled).
+
+**Stacking.**
+- The layer is chosen **inside each outer training fold** by inner CV over layers, so the test fold never informs the choice.
+- That probe's out-of-fold probability is added as a feature to the best M5 predictor (signals + verifier, LR) for each generator.
+- Report the within-source AUC change with a cluster-bootstrap CI.
+
+**Implementation details** (2026-11-01, after job A finished and before any probe was fit).
+- The inner CV that picks C is grouped by problem (3 folds) and scores by ROC AUC; the plan did not name a score.
+- Inside each outer training fold, the stacking layer is the one with the highest within-source AUC of the inner 3-fold out-of-fold probe probabilities. The training rows get those inner out-of-fold probabilities as the feature, so the signals model never sees a probe score fit on its own row.
+- The paper's probe is recomputed from the new extraction (last R0 token, last layer, PCA-64, as in `improve.Base`), because the original arrays were not kept.
+- One trace per problem per generator, so the bootstrap over traces is the bootstrap over problems.
+
+**Decision rule.** §8.4 will say that hidden states add to the signals only if the stacked model's within-source AUC exceeds that of the signals model, with the CI excluding 0. Otherwise it says they do not.
+
+---
+
+## M3: separating initial-answer error from correction failure (registered 2026-10-31, before any M3 computation)
+
+**CPU part** (from the existing features; same folds; within-source AUC, cluster bootstrap as in M5).
+- **(a) Δ-label.** helped (R0 wrong → Rf right), neutral (correctness unchanged), harmed (R0 right → Rf wrong).
+  - Class-balanced multinomial logistic regression on the signals with the verifier.
+  - Reported: macro one-vs-rest within-source AUC, per-class AUC, and macro-F1.
+- **(b) Two-stage gate.**
+  - Stage 1 predicts P(R0 correct) from pre-revision signals (signals + verifier, LR, out-of-fold).
+  - Stage 2 predicts P(harm) and P(repair) from the same signals plus the stage-1 out-of-fold probability, trained on all traces. Labels: harm = R0 right and Rf wrong; repair = R0 wrong and Rf right.
+  - The gate's P(final wrong) = (1 − p̂₀)(1 − P̂(repair | R0 wrong)) + p̂₀ · P̂(harm | R0 right). The conditional models condition on the **predicted** p̂₀ as a feature, never on the true R0 correctness.
+  - Compared with the direct predictor by within-source AUC.
+- **(c) Answer-span mean log-prob of R0 alone** (existing feature `lp_answer_mean`): within-source AUC for rf_wrong and r0_wrong. Score = −log-prob.
+
+**GPU part** (Kaggle T4). All prompts see only P and R0, or P, R0 and F.
+1. **P(True)** from each generator. The prompt is: "Question: … Proposed answer: … Is the proposed answer correct? (A) True (B) False. Answer:". The score is the next-token probability of "A" normalized over {A, B}, and failure score = 1 − P(True).
+2. **Verbalized confidence** (0–100) from each generator: greedy decoding, at most 8 new tokens, parsed as the first integer. Unparsable answers are missing and imputed in models but excluded from the single-feature AUC (count reported).
+3. **Reward model:** `Skywork/Skywork-Reward-Llama-3.1-8B-v0.2` in 4-bit NF4 (bitsandbytes). It scores (P as user, R0 as assistant), and failure score = −reward. The exact commit is recorded.
+4. **LLM judge:** `Qwen/Qwen2.5-7B-Instruct` in 4-bit NF4. It sees (P, R0, F) and is asked whether the final answer after revision will be wrong. Score = P("Yes") normalized over {Yes, No}. The exact commit is recorded.
+
+**Reporting** (all items).
+- Within-source AUC, stratified AUC, AUPRC and Brier, with cluster-bootstrap CIs, per generator and pooled, for rf_wrong and r0_wrong.
+- Holm-adjusted tests against text, as in M7.
+- The scores are added to Table 14, or to a new table if that is too wide.
+
+**Decision rule.**
+- The paper will say a correctness-prediction baseline matches or beats the generator signals only on the CI of the within-source AUC difference.
+- §3.2 will be rewritten in any case, as the reviewer requested, to say that the rf_wrong label largely reduces to verifying R0 and that the Δ-label is what decides whether to self-correct.
+
+### M3 clarification (2026-10-31, written after the CPU run, before writing any paper text)
+
+The gate's conditional models need P(repair | R0 wrong) and P(harm | R0 right). The text above says "trained on all traces", which cannot give those conditional probabilities.
+
+As implemented:
+- The conditional models are fit on the **training-fold** traces of the respective R0 group. The true R0 correctness is used only to select training examples.
+- They are applied to every test trace, with the stage-1 out-of-fold p̂₀ as a feature.
+- At prediction time nothing uses the true R0 correctness, which is what makes the gate deployable.
+
+---
+
+## M8: external validity (registered 2026-10-31, before any M8 run)
+
+**Subset.**
+- 600 of the 2,000 natural-set problems (300 GSM8K, 150 StrategyQA, 150 LogiQA), sampled with seed 42, stratified by source.
+- Fixed by `scripts/revision/m8_subset.py` and saved to `results/revision/m8/subset.json` before any generation.
+
+**(1) Larger generator.**
+- `Qwen/Qwen2.5-7B-Instruct`, commit pinned and recorded. A T4 cannot hold it in float16, so it runs in 4-bit NF4 (bitsandbytes), stated as a precision difference.
+- Full pipeline on the subset: R0, F, Rf, the PoT program on GSM8K, labels, and teacher-forced features (log-probs, cues). Calls are logged.
+- Estimate: about 3 T4-hours. I'll ask the author before running the full 2,000.
+- **Report:** outcomes; within-source AUC (cluster bootstrap) of text, signals without the verifier, and signals with the verifier (LR), using 5-fold CV grouped by problem within the subset.
+
+**(2) Prompt sensitivity.**
+- Alternative critique: "Assume there may be an error in your previous answer. Solve the problem again independently, step by step, without relying on your previous solution. Then compare the two solutions and state clearly whether your previous answer was correct."
+- Alternative revision: "Based on your independent solution and the comparison, give your final answer to the question." followed by the same format line.
+- **Generators:** Qwen2.5-3B and SmolLM2-1.7B, on the same 600 problems. R0 is reused from the logged calls, and only F and Rf are new.
+- **Report:** failure rate, repair and harm under both templates, with a paired cluster-bootstrap CI on the failure-rate difference. Also the within-source AUC of text and of signals + verifier under each template, re-fit on the subset with identical CV.
+- Features for the new traces are recomputed in the same way, and pot_agree_f uses the new F.
+
+**(3) Exclusion sensitivity.**
+- Traces without an explicit final answer are counted as **failures** (label 1) instead of being excluded.
+- Recomputed: the SCFP outcome rates and the natural-set outcome rates; TF-IDF on the SCFP test split, retrained on the train split with exclusions included and the same selection; text, signals and signals + verifier within-source AUC on the natural set.
+- The excluded natural traces need teacher-forced features, which the GPU job computes. Their verifier uses the existing per-problem program output: pot_agree_r0 = 0 when R0 has no answer.
+- Both versions are reported side by side.
+
+**(4) Answer-extraction audit.**
+- 100 retained natural-set traces, stratified over generator × source (12 strata, 8–9 each, seed 42), written to `audit/extraction_audit.csv` with columns (trace_id, raw_text_tail, parsed_answer, gold, auto_label, human_label="").
+- A second, independent parser is written without looking at the pipeline parser's code paths. It takes the last number, yes/no, or option letter in the final 300 characters of the response.
+- Reported: its agreement with the pipeline parser on all retained traces, by generator × source, for R0 and Rf.
+- `human_label` stays empty for the author to fill.
+
+**(5) Precision check.**
+- Qwen2.5-1.5B greedy R0 on 200 problems from the subset (first 200 by problem id), regenerated in float16 and in bfloat16 on the T4 with the same batch size (16) and separate call logs.
+- Reported: the share of final answers that differ between the two precisions, and how many differ from the logged original.
+
+### M3 implementation note (2026-10-31, smoke test on 6 traces, before the real run)
+
+With the registered P(True) prompt, Qwen2.5-0.5B put only 0.5% of its next-token mass on "A"/"B". The rest went to the merged tokens "(A"/"(B".
+
+The assistant turn therefore starts with the prefix "The answer is (". The registered score is unchanged: P("A") normalized over {A, B}. With the prefix, A/B carry 99.7% of the mass on the smoke trace.
+
+The A/B mass is recorded for every trace (`ab_mass`), and the judge's Yes/No mass likewise (`yes_no_mass`).
+
+---
+
+## M2: the taxonomy contribution (registered 2026-10-31, before any M2 edit)
+
+**Check.** No completed human annotations exist (searched the repo and the user's Downloads, Desktop and Documents for Label Studio exports; the task files have no annotations). So the "labels not complete" path applies.
+
+**Author decisions (2026-10-31).**
+- Table 1 stays constructed, relabeled as hypothetical. Candidate real traces go to a separate file for authors to label; nothing in the paper assigns modes to real traces.
+- The multi-label variant stays as future work.
+
+**Candidate selection** (objective; no failure mode is assigned by me):
+- From the failed SCFP v1.0 traces (all splits), group by observable pattern:
+  - **P1** right→wrong, critique reports an error;
+  - **P2** wrong→wrong, answer unchanged, critique endorses R0 (matches the correctness word list and not the error list);
+  - **P3** wrong→wrong, answer changed;
+  - **P4** wrong→wrong, answer unchanged, critique reports an error;
+  - **P5** critique contains hedging words (e.g. "not sure", "might", "possibly", "unclear").
+- For each pattern, 3 traces, sampled with seed 42. They are written to `audit/taxonomy_candidates.md` with an empty "author-assigned mode" field.
+
+**Text changes.**
+- The taxonomy becomes a proposed annotation scheme, not a numbered contribution.
+- The multi-class task is not claimed.
+- Sentences claiming the taxonomy "brings out" or "isolates" failure modes are softened or deleted, and all blue highlighting is removed.
+- §3.3:
+  - (a) Over-correction is stated as outcome-anchored, and the "process-oriented" framing is restricted to how labels are assigned (from the critique and revision text).
+  - (b) Add "Failed detection / Endorsement".
+  - (c) Restrict Bias Amplification to problems that involve people or social attributes.
+  - (d) Replace "mutually exclusive" with the earliest-error rule and the planned agreement measurement.
+- The annotation guide and label config get a v1.1 copy with the new category. The distributed v1.0 packages are not changed.
+
+## Post-hoc finding: undisclosed self-consistency features for Qwen2.5-0.5B (registered 2026-11-01, before measuring its effect)
+
+**Observation** (found while writing the M8 exclusion analysis):
+- In `signals_mac_q05_big/features/natural.jsonl`, 471 of the 1,718 Qwen2.5-0.5B traces have the self-consistency features `sc_agree`, `sc_distinct`, `sc_entropy` and `sc_majority_is_r0`, computed from 5 extra samples.
+- They come from calls reused from the earlier `signals_mac_q05` run, although the big run's config sets `samples: 0`.
+- `scalar_matrix` includes these columns, so the paper's Qwen2.5-0.5B "signals" predictors (with and without the verifier, LR and GBM, and the concatenated model) used them. They are missing (imputed) for the other 1,247 traces and for the other three generators.
+- §8.2's list of signals does not mention them.
+
+**Check:** recompute every Qwen2.5-0.5B natural-set predictor (signals without the verifier, signals, signals GBM, text + signals) with the `sc_*` columns removed. Same folds, models and metrics as M5 (within-source AUC, cluster bootstrap over problems, 1,000 resamples, seed 0). Report the paired difference (original − without SC) for each.
+
+**Decision rule:**
+- The paper's description of the signals must match what the models used. The revised paper therefore uses the version **without** `sc_*` for Qwen2.5-0.5B, so that all four generators have the same feature set, the one §8.2 describes.
+- The change and its size are reported in the response to reviewers and in the log.
+- If any Qwen2.5-0.5B claim changes direction (a predictor's CI against text flips between excluding and including 0), the text is rewritten accordingly.
+
+### M8 implementation details for (3) exclusion sensitivity (2026-11-01, before computing it)
+- No program was ever generated for an excluded trace: the verifier ran only on kept traces, one program per trace. So for excluded GSM8K traces, `pot_ran` and `pot_agree_f` are missing (imputed with the training median, as for non-GSM8K traces). `pot_agree_r0` = 0 when R0 has no explicit final-answer line, as registered; otherwise it is missing too.
+- The `sc_*` features are blank for every generator, as for the kept traces after the post-hoc fix.
+- Folds come from `grouped_folds` on the combined rows, with the same function and seed. Adding problems changes the fold assignment, so the "with exclusions" models are refit from scratch rather than reusing the original folds.
+- SCFP v1.0: excluded traces join the split of their problem (train 128, val 29, test 27). The TF-IDF baseline is refit with the same code path (C chosen on validation macro-F1) and evaluated on the enlarged test split (135 traces), and also on the 108 original test traces.
+- Labels: excluded traces get label 1 (failure).
+
+---
+
+# Round 2 (registered 2026-11-02, before any round-2 experiment was run)
+
+Protocol is unchanged: problem-level cluster bootstrap, problem-level permutation tests (sign-flip of paired
+per-problem differences), Holm correction within each table family. Every new or re-run interval and test uses
+10,000 resamples/permutations, seed 0.
+
+## E1: routing with the natural-set predictor
+- **Problems.** All 1,000 GSM8K problems of the routing hold-out (disjoint from the 2,000 natural-set problems; checked).
+  - Tuning/calibration split: the original 50 tuning problems plus 250 drawn uniformly (seed 0) from the 800 hold-out problems the original study did not use.
+  - Evaluation split: the original 150 evaluation problems plus the remaining 550, so n = 700.
+- **Generators.**
+  - Qwen2.5-0.5B and SmolLM2-1.7B, where revision helps on average in the natural set.
+  - Qwen2.5-1.5B as the comparison row.
+  - Pinned commits as in Appendix B. One private Kaggle T4 job per generator, each with a timeout under 6 h.
+- **Per problem:**
+  - Greedy R0, F and Rf (natural-set prompts, at most 512 new tokens) and a program (PROGRAM_PROMPT, run in the sandbox).
+  - Three self-consistency samples (T = 0.7, same prompt as R0).
+  - Teacher-forced signal features of R0 and F. All calls are logged.
+- **Predictors** (label = final answer wrong):
+  - (a) generator signals + PoT verifier;
+  - (b) generator signals + SC3 (`sc3_agree_frac`, `sc3_majority_is_r0`).
+  - Each is the paper's LR "scalar" model, fitted once on all kept natural-set GSM8K traces of that generator. SC3 features on the natural set come from the M6 samples.
+  - Probabilities are recalibrated with isotonic regression fitted on the tuning split. Only the tuning split is used to calibrate and choose thresholds.
+- **Routers.**
+  - Same three-way rule as the original study (p < τ_low → intrinsic, < τ_high → extrinsic, else human), the same τ grid, Overall Score weights and human assumptions, with thresholds chosen on the tuning split.
+  - A router pays R0 + F and the cost of its features (program for (a), three samples for (b)), plus the teacher-forced pass latency, plus whatever the chosen path adds.
+  - The confidence-based router (critique log-prob) and every fixed policy of the original table are recomputed on the new traces.
+- **Outputs** (per generator): accuracy with bootstrap CI, relative cost, latency, Pareto plot, risk–coverage/AURC (calibrated predictors vs random, intrinsic answer wrong), and the 594-setting Overall-Score sweep.
+  - Paired permutation p-value vs No correction for every non-random policy, with Holm over all generators × policies.
+- **Decision rule for H3, per generator:**
+  - *Supported* if a natural-set router has the best Overall Score in more than half of the 594 settings.
+  - *Partly supported* if a natural-set router wins at least one setting, or is significantly more accurate (Holm) than No correction at lower cost than Always Intrinsic.
+  - *Not supported* otherwise.
+  - The text states the outcome per generator.
+- **Reproduction check.** On the original 150 evaluation problems, the new Qwen2.5-1.5B R0 accuracy must fall inside the CI of the published R0-only accuracy. If not, stop and report.
+
+## E2: self-consistency on StrategyQA and LogiQA
+- **Data and sampling.** k = 3 samples for every kept natural-set StrategyQA and LogiQA trace of the four generators. Settings are the same as M6: the R0 prompt with the source's answer type, T = 0.7, at most 512 new tokens, logged calls, and private Kaggle T4.
+- **Features.** Same as M6: `sc1_agree`, `sc3_agree_frac`, `sc3_majority_is_r0`. An unparsable sample counts as disagreeing.
+- **Report.**
+  - Per generator and source: AUC of 1 − agreement for "R0 wrong" and "final wrong", with cluster-bootstrap CIs.
+  - The stacked LR model (signals + SC3) against signals, out-of-fold with the paper's grouped folds within each source, as a paired difference with CI.
+- **Decision rule for the scope statement:**
+  - *Strong:* SC3 R0-wrong AUC ≥ 0.80 with CI lower bound ≥ 0.70 for at least 3 of 4 generators on a source.
+  - *Weak:* point estimate < 0.70 for at least 3 of 4 generators.
+  - *Mixed:* anything else.
+  - If both non-numeric sources are strong, the claim becomes "holds where agreement-based verification applies". Otherwise it is restricted to numeric problems, with the measured AUCs.
+  - Any title change is left to the authors.
+
+## E3: Qwen2.5-3B SC3
+Rerun `m6_analysis.py` with 10,000 resamples for every comparison and report each one, whatever its sign. The rule counts in the text follow the rerun.
+
+## A1: Δ-label leakage check
+Δ-label macro AUC (same folds and models as M3):
+- (i) with the cue `f_proposes_other_answer` removed;
+- (ii) helped vs harmed only, on traces whose final answer differs from R0's.
+
+The text leads with (ii).
+
+## A2: verifier cost
+On 100 natural-set GSM8K traces of Qwen2.5-1.5B (seed 0), on one Kaggle T4 at batch size 1, measure GPU seconds (with CUDA synchronize) and tokens per item for:
+- signals (teacher-forced pass);
+- PoT (program generation, plus sandbox execution on CPU, reported separately);
+- SC3 (three samples);
+- the reward model (NF4);
+- the judge (NF4).
+
+## A3: numerical stability of labels
+On the 200 precision-check problems (Qwen2.5-1.5B), an R0-correctness label counts as stable if it is identical across float16, bfloat16 and the original trace.
+
+Report the out-of-fold signals AUC for "R0 wrong" on the stable and unstable kept traces, with CIs. Only R0 was regenerated, so only the R0 label can be checked.
+
+### E1 addition (registered 2026-11-02, before any E1 output was available)
+- The SCFP v1.0 DeBERTa predictor (`deberta-scfp.pt`, unchanged) also scores the new hold-out traces of every generator, on the Apple M1. It routes with the same rule and calibration as the natural-set routers, so all routers are compared on the same problems. It is a comparison row; the H3 decision rule above refers to the natural-set routers.
+- Implementation:
+  - Hold-out features are computed exactly as the training features: `cmd_verify` definitions for the program check (R0 and F answers without `\boxed{}`), and M6 definitions for the samples.
+  - Path costs, latencies and agreement rules come from `m4_routing.paths`.
+  - A router additionally pays for its features on every problem: the program for (a), three samples for (b), and for every router the teacher-forced pass latency (DeBERTa: its measured M1 latency).

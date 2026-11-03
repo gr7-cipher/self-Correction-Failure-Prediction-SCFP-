@@ -1,0 +1,103 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "scfp",
+    "model": "microsoft/deberta-v3-small",
+    "name": "abl-no-segments__seed1",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 768,
+    "patience": 5,
+    "seed": 1,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": true,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 440.8,
+  "best_val_macro_f1": 0.5881449353935122,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.3416149068322981
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.3416149068322981
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.3629807692307692
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.5881449353935122
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5881449353935122
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.577536231884058
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.5020424836601307
+    },
+    {
+      "stage": "binary",
+      "epoch": 8,
+      "val_binary_macro_f1": 0.47420634920634924
+    },
+    {
+      "stage": "binary",
+      "epoch": 9,
+      "val_binary_macro_f1": 0.5562483299189454
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.6296296296296297,
+    "macro_f1": 0.6164772727272727,
+    "weighted_f1": 0.6217382154882154,
+    "auc": 0.6227586206896552,
+    "ci95": {
+      "accuracy": [
+        0.5370370370370371,
+        0.7222222222222222
+      ],
+      "macro_f1": [
+        0.5183193769810707,
+        0.7036537651028216
+      ],
+      "auc": [
+        0.5175837945224919,
+        0.7250592576028622
+      ]
+    }
+  }
+}

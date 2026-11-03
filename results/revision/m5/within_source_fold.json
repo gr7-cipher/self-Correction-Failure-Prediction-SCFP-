@@ -1,0 +1,42 @@
+{
+ "qwen2.5-0.5b": {
+  "identity": 0.5,
+  "text_tfidf": 0.5884037875030237,
+  "signals_noverifier": 0.5655495188821267,
+  "signals": 0.6540686623799083,
+  "signals_gbm": 0.67005851241314,
+  "concat_text_signals": 0.6625278114778785
+ },
+ "qwen2.5-1.5b": {
+  "identity": 0.5,
+  "text_tfidf": 0.560444665339644,
+  "signals_noverifier": 0.6472550800811876,
+  "signals": 0.6686681679136324,
+  "signals_gbm": 0.6773048161724503,
+  "concat_text_signals": 0.6702258084083824
+ },
+ "smollm2-1.7b": {
+  "identity": 0.5,
+  "text_tfidf": 0.5624912337191924,
+  "signals_noverifier": 0.5614000020784529,
+  "signals": 0.6339841087633323,
+  "signals_gbm": 0.6204421059673036,
+  "concat_text_signals": 0.6450473508138848
+ },
+ "qwen2.5-3b": {
+  "identity": 0.5,
+  "text_tfidf": 0.6109933780323956,
+  "signals_noverifier": 0.6857895727371515,
+  "signals": 0.7287118499583134,
+  "signals_gbm": 0.7374863424387232,
+  "concat_text_signals": 0.7374956239601963
+ },
+ "pooled": {
+  "identity": 0.4688222668463049,
+  "text_tfidf": 0.5822908125534318,
+  "signals_noverifier": 0.612993454883962,
+  "signals": 0.6719753196832347,
+  "signals_gbm": 0.6761642967809954,
+  "concat_text_signals": 0.6800199020226273
+ }
+}

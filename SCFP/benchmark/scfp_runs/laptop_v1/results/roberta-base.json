@@ -1,0 +1,88 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "FacebookAI/roberta-base",
+    "name": "roberta-base",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 512,
+    "patience": 5,
+    "seed": 42,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "mps",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": false,
+    "no_grad_checkpoint": false
+  },
+  "device": "mps",
+  "gpu": null,
+  "wall_clock_s": 1318.2,
+  "best_val_macro_f1": 0.6320427236315087,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.6320427236315087
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.611513363725753
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.5863709907680594
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.4821409184670503
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.594535519125683
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.590425030628593
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.6111111111111112,
+    "macro_f1": 0.60625,
+    "weighted_f1": 0.6094907407407407,
+    "auc": 0.6151724137931034,
+    "ci95": {
+      "accuracy": [
+        0.5185185185185185,
+        0.6944444444444444
+      ],
+      "macro_f1": [
+        0.5077007623623513,
+        0.6906587822230436
+      ],
+      "auc": [
+        0.4987792117195675,
+        0.7123715584317317
+      ]
+    }
+  }
+}

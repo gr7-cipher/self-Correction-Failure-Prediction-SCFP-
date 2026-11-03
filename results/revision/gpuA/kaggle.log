@@ -1,0 +1,87 @@
+[{"stream_name":"stdout","time":1.978172753,"data":"Sun Nov  1 03:21:00 2026       \n"}
+,{"stream_name":"stdout","time":1.978214441,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.978220779,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":1.978224983,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.978229304,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":1.978232898,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":1.9782367760000001,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":1.978240666,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":2.051827221,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":2.051847914,"data":"| N/A   45C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":2.051852317,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":2.051855862,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":2.051861042,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":2.051868649,"data":"| N/A   45C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":2.051871627,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":2.05187397,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":2.052517286,"data":"\n"}
+,{"stream_name":"stdout","time":2.052532172,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":2.05253631,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":2.052539714,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":2.052543177,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":2.052548489,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":2.054082816,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":2.054095481,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":60.913249348,"data":"  loading Qwen/Qwen2.5-0.5B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":61.171356262,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":74.586123862,"data":"  qwen2.5-0.5b hidden 0/1718 58s\n"}
+,{"stream_name":"stdout","time":82.451888641,"data":"  qwen2.5-0.5b hidden 200/1718 66s\n"}
+,{"stream_name":"stdout","time":90.299683052,"data":"  qwen2.5-0.5b hidden 400/1718 74s\n"}
+,{"stream_name":"stdout","time":98.29869622,"data":"  qwen2.5-0.5b hidden 600/1718 82s\n"}
+,{"stream_name":"stdout","time":106.244326609,"data":"  qwen2.5-0.5b hidden 800/1718 90s\n"}
+,{"stream_name":"stdout","time":114.256032951,"data":"  qwen2.5-0.5b hidden 1000/1718 98s\n"}
+,{"stream_name":"stdout","time":122.251260402,"data":"  qwen2.5-0.5b hidden 1200/1718 106s\n"}
+,{"stream_name":"stdout","time":130.085593379,"data":"  qwen2.5-0.5b hidden 1400/1718 114s\n"}
+,{"stream_name":"stdout","time":137.955056285,"data":"  qwen2.5-0.5b hidden 1600/1718 121s\n"}
+,{"stream_name":"stdout","time":209.717085619,"data":"  qwen2.5-0.5b p_true done 193s\n"}
+,{"stream_name":"stdout","time":262.863038365,"data":"  qwen2.5-0.5b verbal done 246s\n"}
+,{"stream_name":"stdout","time":291.735905247,"data":"  qwen2.5-0.5b excluded features: 282 275s\n"}
+,{"stream_name":"stdout","time":292.345476927,"data":"  loading Qwen/Qwen2.5-1.5B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":305.072969292,"data":"  qwen2.5-1.5b hidden 0/1236 289s\n"}
+,{"stream_name":"stdout","time":324.408843912,"data":"  qwen2.5-1.5b hidden 200/1236 308s\n"}
+,{"stream_name":"stdout","time":344.023100598,"data":"  qwen2.5-1.5b hidden 400/1236 328s\n"}
+,{"stream_name":"stdout","time":363.145025052,"data":"  qwen2.5-1.5b hidden 600/1236 347s\n"}
+,{"stream_name":"stdout","time":381.152171579,"data":"  qwen2.5-1.5b hidden 800/1236 365s\n"}
+,{"stream_name":"stdout","time":399.791449566,"data":"  qwen2.5-1.5b hidden 1000/1236 383s\n"}
+,{"stream_name":"stdout","time":419.547359056,"data":"  qwen2.5-1.5b hidden 1200/1236 403s\n"}
+,{"stream_name":"stdout","time":545.148921215,"data":"  qwen2.5-1.5b p_true done 529s\n"}
+,{"stream_name":"stdout","time":687.914749783,"data":"  qwen2.5-1.5b verbal done 671s\n"}
+,{"stream_name":"stdout","time":833.815710482,"data":"  qwen2.5-1.5b excluded features: 764 817s\n"}
+,{"stream_name":"stdout","time":834.495939712,"data":"  loading HuggingFaceTB/SmolLM2-1.7B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":851.815266596,"data":"  smollm2-1.7b hidden 0/1950 835s\n"}
+,{"stream_name":"stdout","time":862.708489285,"data":"  smollm2-1.7b hidden 200/1950 846s\n"}
+,{"stream_name":"stdout","time":874.51602737,"data":"  smollm2-1.7b hidden 400/1950 858s\n"}
+,{"stream_name":"stdout","time":886.458750479,"data":"  smollm2-1.7b hidden 600/1950 870s\n"}
+,{"stream_name":"stdout","time":898.107778718,"data":"  smollm2-1.7b hidden 800/1950 882s\n"}
+,{"stream_name":"stdout","time":909.252330947,"data":"  smollm2-1.7b hidden 1000/1950 893s\n"}
+,{"stream_name":"stdout","time":919.997131722,"data":"  smollm2-1.7b hidden 1200/1950 904s\n"}
+,{"stream_name":"stdout","time":931.156535366,"data":"  smollm2-1.7b hidden 1400/1950 915s\n"}
+,{"stream_name":"stdout","time":942.077541538,"data":"  smollm2-1.7b hidden 1600/1950 926s\n"}
+,{"stream_name":"stdout","time":952.879249069,"data":"  smollm2-1.7b hidden 1800/1950 936s\n"}
+,{"stream_name":"stdout","time":1077.084596353,"data":"  smollm2-1.7b p_true done 1061s\n"}
+,{"stream_name":"stdout","time":1276.464489305,"data":"  smollm2-1.7b verbal done 1260s\n"}
+,{"stream_name":"stdout","time":1284.226042553,"data":"  smollm2-1.7b excluded features: 50 1268s\n"}
+,{"stream_name":"stdout","time":1284.815715815,"data":"  loading Qwen/Qwen2.5-3B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":1321.64885637,"data":"  qwen2.5-3b hidden 0/1920 1305s\n"}
+,{"stream_name":"stdout","time":1360.290403114,"data":"  qwen2.5-3b hidden 200/1920 1344s\n"}
+,{"stream_name":"stdout","time":1398.266235031,"data":"  qwen2.5-3b hidden 400/1920 1382s\n"}
+,{"stream_name":"stdout","time":1431.595614407,"data":"  qwen2.5-3b hidden 600/1920 1415s\n"}
+,{"stream_name":"stdout","time":1468.875730941,"data":"  qwen2.5-3b hidden 800/1920 1452s\n"}
+,{"stream_name":"stdout","time":1504.024139599,"data":"  qwen2.5-3b hidden 1000/1920 1488s\n"}
+,{"stream_name":"stdout","time":1541.401538102,"data":"  qwen2.5-3b hidden 1200/1920 1525s\n"}
+,{"stream_name":"stdout","time":1578.513674647,"data":"  qwen2.5-3b hidden 1400/1920 1562s\n"}
+,{"stream_name":"stdout","time":1615.775734735,"data":"  qwen2.5-3b hidden 1600/1920 1599s\n"}
+,{"stream_name":"stdout","time":1653.324008265,"data":"  qwen2.5-3b hidden 1800/1920 1637s\n"}
+,{"stream_name":"stdout","time":2041.258103708,"data":"  qwen2.5-3b p_true done 2025s\n"}
+,{"stream_name":"stdout","time":2464.428781718,"data":"  qwen2.5-3b verbal done 2448s\n"}
+,{"stream_name":"stdout","time":2519.354412989,"data":"  qwen2.5-3b excluded features: 80 2503s\n"}
+,{"stream_name":"stdout","time":2519.896898985,"data":"ALL DONE\n"}
+,{"stream_name":"stdout","time":2527.065461222,"data":"exit: 0\n"}
+,{"stream_name":"stdout","time":2528.997400123,"data":"FILES: ['calls_verbal_qwen2.5-0.5b.jsonl', 'calls_verbal_qwen2.5-1.5b.jsonl', 'calls_verbal_qwen2.5-3b.jsonl', 'calls_verbal_smollm2-1.7b.jsonl', 'done_qwen2.5-0.5b.json', 'done_qwen2.5-1.5b.json', 'done_qwen2.5-3b.json', 'done_smollm2-1.7b.json', 'excluded_features_qwen2.5-0.5b.jsonl', 'excluded_features_qwen2.5-1.5b.jsonl', 'excluded_features_qwen2.5-3b.jsonl', 'excluded_features_smollm2-1.7b.jsonl', 'hidden_qwen2.5-0.5b.npz', 'hidden_qwen2.5-1.5b.npz', 'hidden_qwen2.5-3b.npz', 'hidden_smollm2-1.7b.npz', 'ptrue_qwen2.5-0.5b.jsonl', 'ptrue_qwen2.5-1.5b.jsonl', 'ptrue_qwen2.5-3b.jsonl', 'ptrue_smollm2-1.7b.jsonl']\n"}
+,{"stream_name":"stderr","time":2531.530542509,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2531.530570324,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2532.018402009,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2532.018430479,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2532.90999952,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2534.259651246,"data":"[NbConvertApp] Writing 280975 bytes to __results__.html\n"}
+]

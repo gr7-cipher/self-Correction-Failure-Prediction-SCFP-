@@ -1,0 +1,47 @@
+{
+ "n": 100,
+ "meta": {
+  "device": "Tesla T4",
+  "n": 100,
+  "batch_size": 1,
+  "versions": {
+   "generator": "Qwen/Qwen2.5-1.5B-Instruct@989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+   "reward_model": "Skywork/Skywork-Reward-Llama-3.1-8B-v0.2@d4117fbfd81b72f41b96341238baa1e3e90a4ce1",
+   "judge": "Qwen/Qwen2.5-7B-Instruct@a09a35458c702b33eeacc393d103063234e8bc28"
+  },
+  "generator_dtype": "torch.float16",
+  "external_quant": "nf4",
+  "elapsed_s": 3505.2353117465973
+ },
+ "signals": {
+  "gpu_s_mean": 0.21126885414123536,
+  "gpu_s_median": 0.2031310796737671,
+  "gpu_s_p90": 0.28156015872955326,
+  "tokens_mean": 673.79
+ },
+ "pot": {
+  "gpu_s_mean": 4.746204128265381,
+  "gpu_s_median": 4.4925349950790405,
+  "gpu_s_p90": 7.222296571731568,
+  "tokens_mean": 258.96,
+  "exec_cpu_s_mean": 0.011349999999999994
+ },
+ "sc3": {
+  "gpu_s_mean": 26.033430705070497,
+  "gpu_s_median": 25.42668604850769,
+  "gpu_s_p90": 38.24809141159058,
+  "tokens_mean": 991.89
+ },
+ "rm": {
+  "gpu_s_mean": 0.5178295469284058,
+  "gpu_s_median": 0.517176628112793,
+  "gpu_s_p90": 0.6378902673721314,
+  "tokens_mean": 324.88
+ },
+ "judge": {
+  "gpu_s_mean": 0.8741369652748108,
+  "gpu_s_median": 0.8786767721176147,
+  "gpu_s_p90": 1.0941694021224977,
+  "tokens_mean": 653.47
+ }
+}

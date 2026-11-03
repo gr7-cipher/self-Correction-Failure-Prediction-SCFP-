@@ -1,0 +1,13 @@
+{
+  "id": "gaith7/scfp-rev-seed4",
+  "title": "scfp-rev-seed4",
+  "code_file": "train_seed.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["gaith7/scfp-revision-train"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

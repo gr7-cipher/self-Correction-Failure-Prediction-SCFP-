@@ -1,0 +1,100 @@
+{"id":"T3766","r1_answer":"54","r1_ambiguous":false,"r2_answer":"31","r2_ambiguous":false,"note":""}
+{"id":"T5126","r1_answer":"20","r1_ambiguous":false,"r2_answer":"10","r2_ambiguous":false,"note":""}
+{"id":"T9182","r1_answer":"D","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T5952","r1_answer":"A","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T3111","r1_answer":"61","r1_ambiguous":false,"r2_answer":"61","r2_ambiguous":false,"note":""}
+{"id":"T4032","r1_answer":"2934","r1_ambiguous":false,"r2_answer":"2934","r2_ambiguous":false,"note":""}
+{"id":"T8647","r1_answer":"1","r1_ambiguous":false,"r2_answer":"2","r2_ambiguous":false,"note":""}
+{"id":"T3190","r1_answer":"A","r1_ambiguous":false,"r2_answer":"C","r2_ambiguous":false,"note":""}
+{"id":"T8204","r1_answer":"96","r1_ambiguous":false,"r2_answer":"1","r2_ambiguous":false,"note":""}
+{"id":"T1893","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T1254","r1_answer":"C","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T3816","r1_answer":"217","r1_ambiguous":false,"r2_answer":"220","r2_ambiguous":false,"note":""}
+{"id":"T6684","r1_answer":"A","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T8279","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T8632","r1_answer":"yes","r1_ambiguous":true,"r2_answer":"no","r2_ambiguous":false,"note":"R1 final yes but its explanation argues against fitting in oven"}
+{"id":"T3228","r1_answer":"50","r1_ambiguous":false,"r2_answer":"50","r2_ambiguous":false,"note":""}
+{"id":"T1432","r1_answer":"C","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":true,"note":"R2 text says C but Final answer line says D"}
+{"id":"T9189","r1_answer":"B","r1_ambiguous":false,"r2_answer":"C","r2_ambiguous":false,"note":""}
+{"id":"T2658","r1_answer":"338","r1_ambiguous":false,"r2_answer":"338","r2_ambiguous":false,"note":""}
+{"id":"T4076","r1_answer":"80","r1_ambiguous":false,"r2_answer":"90","r2_ambiguous":false,"note":""}
+{"id":"T3569","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":true,"note":"R2 final answer Yes but revised answer says No"}
+{"id":"T1210","r1_answer":"C","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T2009","r1_answer":"12","r1_ambiguous":false,"r2_answer":"16","r2_ambiguous":false,"note":""}
+{"id":"T2433","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T9131","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T7286","r1_answer":"C","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T1103","r1_answer":"C","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T7014","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T4191","r1_answer":"840","r1_ambiguous":false,"r2_answer":"14","r2_ambiguous":true,"note":"R2 gives 14 hours, not minutes (840)"}
+{"id":"T9559","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T2417","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T4375","r1_answer":"C","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T7753","r1_answer":"D","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T8659","r1_answer":"B","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T1594","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":true,"note":"R2 final Yes but explanation says flying fish lack good eyesight"}
+{"id":"T9851","r1_answer":"16","r1_ambiguous":false,"r2_answer":"16","r2_ambiguous":false,"note":""}
+{"id":"T5163","r1_answer":"A","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T8003","r1_answer":"B","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T9185","r1_answer":"A","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T4990","r1_answer":"30","r1_ambiguous":false,"r2_answer":"30","r2_ambiguous":false,"note":""}
+{"id":"T4837","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T8712","r1_answer":"67","r1_ambiguous":false,"r2_answer":"70","r2_ambiguous":false,"note":""}
+{"id":"T3830","r1_answer":"9","r1_ambiguous":true,"r2_answer":"9","r2_ambiguous":false,"note":"R1 final answer line says $6 then concludes $9"}
+{"id":"T2193","r1_answer":"12500","r1_ambiguous":false,"r2_answer":"-10000","r2_ambiguous":false,"note":""}
+{"id":"T4682","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T8436","r1_answer":"yes","r1_ambiguous":true,"r2_answer":"yes","r2_ambiguous":true,"note":"Final yes but text says neither was better investment; unclear"}
+{"id":"T8696","r1_answer":"2400","r1_ambiguous":false,"r2_answer":"2240","r2_ambiguous":false,"note":""}
+{"id":"T4836","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T2356","r1_answer":"D","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T4402","r1_answer":"15","r1_ambiguous":false,"r2_answer":"15","r2_ambiguous":false,"note":""}
+{"id":"T1322","r1_answer":"B","r1_ambiguous":false,"r2_answer":"none","r2_ambiguous":false,"note":""}
+{"id":"T1693","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T7847","r1_answer":"A","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T1984","r1_answer":"C","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T6128","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T9292","r1_answer":"5","r1_ambiguous":false,"r2_answer":"5","r2_ambiguous":false,"note":""}
+{"id":"T9337","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T7147","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T7441","r1_answer":"A","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T8988","r1_answer":"480","r1_ambiguous":false,"r2_answer":"480","r2_ambiguous":false,"note":""}
+{"id":"T7085","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T6089","r1_answer":"C","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T3503","r1_answer":"36","r1_ambiguous":false,"r2_answer":"28","r2_ambiguous":false,"note":""}
+{"id":"T5092","r1_answer":"3","r1_ambiguous":false,"r2_answer":"3","r2_ambiguous":false,"note":""}
+{"id":"T4120","r1_answer":"1","r1_ambiguous":false,"r2_answer":"13","r2_ambiguous":false,"note":""}
+{"id":"T2639","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T9803","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T8358","r1_answer":"A","r1_ambiguous":false,"r2_answer":"A","r2_ambiguous":false,"note":""}
+{"id":"T9125","r1_answer":"D","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T7299","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T9830","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T2950","r1_answer":"B","r1_ambiguous":false,"r2_answer":"C","r2_ambiguous":false,"note":""}
+{"id":"T5117","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T5024","r1_answer":"11","r1_ambiguous":false,"r2_answer":"242","r2_ambiguous":false,"note":""}
+{"id":"T5927","r1_answer":"28","r1_ambiguous":false,"r2_answer":"-2","r2_ambiguous":true,"note":"R2 contains original answer -2 and a truncated revision with no final answer"}
+{"id":"T9055","r1_answer":"D","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T9984","r1_answer":"30","r1_ambiguous":false,"r2_answer":"30","r2_ambiguous":false,"note":""}
+{"id":"T2967","r1_answer":"14","r1_ambiguous":false,"r2_answer":"7","r2_ambiguous":false,"note":""}
+{"id":"T5563","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T4613","r1_answer":"yes","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T7018","r1_answer":"A","r1_ambiguous":false,"r2_answer":"C","r2_ambiguous":false,"note":""}
+{"id":"T7845","r1_answer":"5","r1_ambiguous":false,"r2_answer":"5.05","r2_ambiguous":false,"note":""}
+{"id":"T8620","r1_answer":"B","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T3432","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T1853","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":true,"note":"R2 final yes but reasoning says walking is not dangerous"}
+{"id":"T4290","r1_answer":"C","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}
+{"id":"T8757","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":true,"note":"R2 final Yes but text says Not necessarily/generally not advisable"}
+{"id":"T6568","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T6597","r1_answer":"D","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T4894","r1_answer":"no","r1_ambiguous":false,"r2_answer":"no","r2_ambiguous":false,"note":""}
+{"id":"T4523","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T4729","r1_answer":"D","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T2352","r1_answer":"87","r1_ambiguous":false,"r2_answer":"190","r2_ambiguous":false,"note":""}
+{"id":"T7099","r1_answer":"no","r1_ambiguous":false,"r2_answer":"yes","r2_ambiguous":false,"note":""}
+{"id":"T5207","r1_answer":"30","r1_ambiguous":false,"r2_answer":"30","r2_ambiguous":false,"note":""}
+{"id":"T4174","r1_answer":"B","r1_ambiguous":false,"r2_answer":"C","r2_ambiguous":false,"note":""}
+{"id":"T4246","r1_answer":"360","r1_ambiguous":true,"r2_answer":"490","r2_ambiguous":false,"note":"R1 final answer line 360 but its working concludes 490"}
+{"id":"T5941","r1_answer":"C","r1_ambiguous":false,"r2_answer":"D","r2_ambiguous":false,"note":""}
+{"id":"T4215","r1_answer":"36","r1_ambiguous":false,"r2_answer":"20","r2_ambiguous":false,"note":""}
+{"id":"T3582","r1_answer":"B","r1_ambiguous":false,"r2_answer":"B","r2_ambiguous":false,"note":""}

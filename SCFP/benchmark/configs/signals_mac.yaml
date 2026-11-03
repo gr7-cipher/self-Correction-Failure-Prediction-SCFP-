@@ -1,0 +1,28 @@
+# Generator-side signals, scaled for an Apple M1 (8 GB): Qwen2.5-0.5B only.
+# ~5 s per generation call unbatched (batching on MPS was slower). About 8-10 hours.
+# The difficulty filter of SCFP v1 was based on this model, so it directly tests
+# whether the filter is what makes failures hard to predict.
+run_dir: scfp_runs/signals_mac_q05
+seed: 42
+batch_size: 1
+
+models:
+  - {name: qwen2.5-0.5b, provider: local, model: Qwen/Qwen2.5-0.5B-Instruct, max_tokens: 512}
+
+signals:
+  models: [qwen2.5-0.5b]
+  sources:
+    gsm8k: [train, test]
+    strategyqa: [train, test]
+    logiqa: [train, validation, test]
+  natural_per_source: {gsm8k: 250, strategyqa: 175, logiqa: 175}   # 600 problems, no difficulty filter
+  exclude_problem_files:
+    - scfp_runs/laptop_v1/splits/train.jsonl
+    - scfp_runs/laptop_v1/splits/val.jsonl
+    - scfp_runs/laptop_v1/splits/test.jsonl
+    - scfp_runs/laptop_v1/holdout.jsonl
+  v1_run_dir: scfp_runs/laptop_v1
+  samples: 5
+  sample_temperature: 0.7
+  sample_max_tokens: 384
+  layers_frac: [0.5, 1.0]

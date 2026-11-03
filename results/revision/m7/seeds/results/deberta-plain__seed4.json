@@ -1,0 +1,88 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "microsoft/deberta-v3-small",
+    "name": "deberta-plain__seed4",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 768,
+    "patience": 5,
+    "seed": 4,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 328.7,
+  "best_val_macro_f1": 0.5823639774859287,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.5823639774859287
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.5692724458204335
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.44997924449979243
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.5448981456106696
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.4587418300653595
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.5604038946988821
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.5555555555555556,
+    "macro_f1": 0.512781954887218,
+    "weighted_f1": 0.5234753550543024,
+    "auc": 0.6148275862068966,
+    "ci95": {
+      "accuracy": [
+        0.46296296296296297,
+        0.6481481481481481
+      ],
+      "macro_f1": [
+        0.411253811327728,
+        0.6045038251572448
+      ],
+      "auc": [
+        0.5015351629502572,
+        0.7186988096666642
+      ]
+    }
+  }
+}

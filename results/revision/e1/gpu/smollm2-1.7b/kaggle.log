@@ -1,0 +1,51 @@
+[{"stream_name":"stdout","time":21.088565122,"data":"package scripts: ['e1_gpu.py', 'e2_gpu.py', 'gpu_external_judges.py', 'gpu_generator_signals.py', 'm6_sc_generate.py', 'm8_gpu.py']\n"}
+,{"stream_name":"stdout","time":24.185324177,"data":"Mon Nov  2 17:56:35 2026       \n"}
+,{"stream_name":"stdout","time":24.185394285,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":24.185400405,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":24.185404967,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":24.185408823,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":24.185412632,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":24.185416567,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":24.185420413,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":24.23970626,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":24.239727111,"data":"| N/A   47C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":24.239731777,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":24.239735746,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":24.239739693,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":24.239750188,"data":"| N/A   44C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":24.239753068,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":24.239755673,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":24.240461867,"data":"\n"}
+,{"stream_name":"stdout","time":24.240481743,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":24.240487682,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":24.240493081,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":24.240498388,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":24.240503896,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":24.245085694,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":24.245100923,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":65.578112817,"data":"  loading HuggingFaceTB/SmolLM2-1.7B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":66.739411309,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":170.512868139,"data":"  smollm2-1.7b 8/1000 133s\n"}
+,{"stream_name":"stdout","time":961.886618746,"data":"  smollm2-1.7b 88/1000 925s\n"}
+,{"stream_name":"stdout","time":1801.763398945,"data":"  smollm2-1.7b 168/1000 1764s\n"}
+,{"stream_name":"stdout","time":2370.195643194,"data":"  smollm2-1.7b 248/1000 2333s\n"}
+,{"stream_name":"stdout","time":3206.987200194,"data":"  smollm2-1.7b 328/1000 3170s\n"}
+,{"stream_name":"stdout","time":3862.553345086,"data":"  smollm2-1.7b 408/1000 3825s\n"}
+,{"stream_name":"stdout","time":4605.2486004,"data":"  smollm2-1.7b 488/1000 4568s\n"}
+,{"stream_name":"stdout","time":5292.22717048,"data":"  smollm2-1.7b 568/1000 5255s\n"}
+,{"stream_name":"stdout","time":5881.626345064,"data":"  smollm2-1.7b 648/1000 5844s\n"}
+,{"stream_name":"stdout","time":6555.635026249,"data":"  smollm2-1.7b 728/1000 6518s\n"}
+,{"stream_name":"stdout","time":7171.731129694,"data":"  smollm2-1.7b 808/1000 7134s\n"}
+,{"stream_name":"stdout","time":7852.244809148,"data":"  smollm2-1.7b 888/1000 7815s\n"}
+,{"stream_name":"stdout","time":8577.460810137,"data":"  smollm2-1.7b 968/1000 8540s\n"}
+,{"stream_name":"stdout","time":8995.207770496,"data":"  smollm2-1.7b done 8958s\n"}
+,{"stream_name":"stdout","time":8995.207820152,"data":"ALL DONE\n"}
+,{"stream_name":"stdout","time":8999.757535064,"data":"exit: 0\n"}
+,{"stream_name":"stdout","time":8999.767443555,"data":"FILES: ['smollm2-1.7b']\n"}
+,{"stream_name":"stderr","time":9001.886802199,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":9001.886831921,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":9002.192888086,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":9002.192934977,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":9002.962445791,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9003.98296921,"data":"[NbConvertApp] Writing 281681 bytes to __results__.html\n"}
+]

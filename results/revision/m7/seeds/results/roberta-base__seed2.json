@@ -1,0 +1,93 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "FacebookAI/roberta-base",
+    "name": "roberta-base__seed2",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 512,
+    "patience": 5,
+    "seed": 2,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 415.4,
+  "best_val_macro_f1": 0.6471434997750787,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.6320427236315087
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6471434997750787
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.6331511839708561
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.6394557823129252
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5808735632183908
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.6002155172413793
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.5847578347578347
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.6111111111111112,
+    "macro_f1": 0.6023842917251052,
+    "weighted_f1": 0.6067477014181081,
+    "auc": 0.5841379310344827,
+    "ci95": {
+      "accuracy": [
+        0.5185185185185185,
+        0.6944444444444444
+      ],
+      "macro_f1": [
+        0.5081928900838418,
+        0.6866813186813187
+      ],
+      "auc": [
+        0.46281556802244045,
+        0.6866136285022483
+      ]
+    }
+  }
+}

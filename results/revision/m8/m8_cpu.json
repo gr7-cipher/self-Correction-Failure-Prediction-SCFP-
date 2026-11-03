@@ -1,0 +1,189 @@
+{
+ "second_parser": {
+  "by_stratum": {
+   "qwen2.5-0.5b|gsm8k|R0": {
+    "agree": 718,
+    "n": 765,
+    "rate": 0.938562091503268
+   },
+   "qwen2.5-0.5b|gsm8k|Rf": {
+    "agree": 751,
+    "n": 765,
+    "rate": 0.9816993464052287
+   },
+   "qwen2.5-0.5b|logiqa|R0": {
+    "agree": 395,
+    "n": 433,
+    "rate": 0.9122401847575058
+   },
+   "qwen2.5-0.5b|logiqa|Rf": {
+    "agree": 409,
+    "n": 433,
+    "rate": 0.9445727482678984
+   },
+   "qwen2.5-0.5b|strategyqa|R0": {
+    "agree": 184,
+    "n": 520,
+    "rate": 0.35384615384615387
+   },
+   "qwen2.5-0.5b|strategyqa|Rf": {
+    "agree": 329,
+    "n": 520,
+    "rate": 0.6326923076923077
+   },
+   "qwen2.5-1.5b|gsm8k|R0": {
+    "agree": 697,
+    "n": 697,
+    "rate": 1.0
+   },
+   "qwen2.5-1.5b|gsm8k|Rf": {
+    "agree": 696,
+    "n": 697,
+    "rate": 0.9985652797704447
+   },
+   "qwen2.5-1.5b|logiqa|R0": {
+    "agree": 364,
+    "n": 374,
+    "rate": 0.9732620320855615
+   },
+   "qwen2.5-1.5b|logiqa|Rf": {
+    "agree": 350,
+    "n": 374,
+    "rate": 0.9358288770053476
+   },
+   "qwen2.5-1.5b|strategyqa|R0": {
+    "agree": 165,
+    "n": 165,
+    "rate": 1.0
+   },
+   "qwen2.5-1.5b|strategyqa|Rf": {
+    "agree": 163,
+    "n": 165,
+    "rate": 0.9878787878787879
+   },
+   "qwen2.5-3b|gsm8k|R0": {
+    "agree": 841,
+    "n": 841,
+    "rate": 1.0
+   },
+   "qwen2.5-3b|gsm8k|Rf": {
+    "agree": 841,
+    "n": 841,
+    "rate": 1.0
+   },
+   "qwen2.5-3b|logiqa|R0": {
+    "agree": 502,
+    "n": 510,
+    "rate": 0.984313725490196
+   },
+   "qwen2.5-3b|logiqa|Rf": {
+    "agree": 496,
+    "n": 510,
+    "rate": 0.9725490196078431
+   },
+   "qwen2.5-3b|strategyqa|R0": {
+    "agree": 568,
+    "n": 569,
+    "rate": 0.9982425307557118
+   },
+   "qwen2.5-3b|strategyqa|Rf": {
+    "agree": 566,
+    "n": 569,
+    "rate": 0.9947275922671354
+   },
+   "smollm2-1.7b|gsm8k|R0": {
+    "agree": 813,
+    "n": 815,
+    "rate": 0.9975460122699387
+   },
+   "smollm2-1.7b|gsm8k|Rf": {
+    "agree": 814,
+    "n": 815,
+    "rate": 0.9987730061349693
+   },
+   "smollm2-1.7b|logiqa|R0": {
+    "agree": 561,
+    "n": 570,
+    "rate": 0.9842105263157894
+   },
+   "smollm2-1.7b|logiqa|Rf": {
+    "agree": 536,
+    "n": 570,
+    "rate": 0.9403508771929825
+   },
+   "smollm2-1.7b|strategyqa|R0": {
+    "agree": 565,
+    "n": 565,
+    "rate": 1.0
+   },
+   "smollm2-1.7b|strategyqa|Rf": {
+    "agree": 447,
+    "n": 565,
+    "rate": 0.7911504424778761
+   }
+  },
+  "overall_agree": 12771,
+  "overall_n": 13648,
+  "overall_rate": 0.9357415005861665,
+  "rf_label_would_change": 223,
+  "rf_n": 6824
+ },
+ "audit_rows": 100,
+ "exclusion_rates": {
+  "qwen2.5-0.5b": {
+   "kept": 1718,
+   "excluded": 282,
+   "failure_rate_excluding": 0.5663562281722934,
+   "failure_rate_counting_as_failure": 0.6275,
+   "excluded_by_source": {
+    "gsm8k": 85,
+    "strategyqa": 55,
+    "logiqa": 142
+   }
+  },
+  "qwen2.5-1.5b": {
+   "kept": 1236,
+   "excluded": 764,
+   "failure_rate_excluding": 0.33252427184466016,
+   "failure_rate_counting_as_failure": 0.5875,
+   "excluded_by_source": {
+    "gsm8k": 153,
+    "strategyqa": 410,
+    "logiqa": 201
+   }
+  },
+  "smollm2-1.7b": {
+   "kept": 1950,
+   "excluded": 50,
+   "failure_rate_excluding": 0.5287179487179487,
+   "failure_rate_counting_as_failure": 0.5405,
+   "excluded_by_source": {
+    "gsm8k": 35,
+    "strategyqa": 10,
+    "logiqa": 5
+   }
+  },
+  "qwen2.5-3b": {
+   "kept": 1920,
+   "excluded": 80,
+   "failure_rate_excluding": 0.2598958333333333,
+   "failure_rate_counting_as_failure": 0.2895,
+   "excluded_by_source": {
+    "gsm8k": 9,
+    "strategyqa": 6,
+    "logiqa": 65
+   }
+  },
+  "scfp_v1": {
+   "kept": 716,
+   "excluded": 184,
+   "failure_rate_excluding": 0.4706703910614525,
+   "failure_rate_counting_as_failure": 0.5788888888888889
+  }
+ },
+ "disagreement_reasons_post_hoc": {
+  "other (formatting, units, extra numbers or letters after the answer)": 92,
+  "answer line outside the last 300 characters": 784,
+  "boxed answer in the tail": 1
+ }
+}

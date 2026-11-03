@@ -1,262 +1,84 @@
-# Self-Correction Failure Prediction (SCFP) Framework
+# Self-Correction Failure Prediction (SCFP)
 
-This repository implements the complete SCFP framework for predicting LLM self-correction failures as described in "Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing".
+Code, data and results for the paper *Predicting Self-Correction Failure on Numeric Problems Reduces to Verifying the First Answer: Evidence from Generator Signals on Unfiltered Problems*. The paper is a manuscript under revision.
 
-## Overview
+In intrinsic self-correction, a language model critiques and revises its own answer. We ask whether the outcome can be predicted before the revision is generated, for small (at most 7B parameters) open-weight generators.
 
-The SCFP framework introduces a comprehensive approach to predicting when and how Large Language Models (LLMs) will fail during intrinsic self-correction. Rather than evaluating correction success post-hoc, our system predicts failures before they occur, enabling dynamic routing between intrinsic correction, external tools, and human oversight.
+## Main results
 
-## Key Features
+The numbers below come from `paper/main.pdf`, where each one has its table and interval.
 
-- **Process-Oriented Failure Taxonomy**: Five distinct failure modes (Justification Hallucination, Confidence Miscalibration, Bias Amplification, Over-correction, Reasoning Myopia)
-- **DeBERTa-v3 Meta-Learning Model**: Specialized attention mechanisms for analyzing correction traces
-- **Comprehensive Baselines**: Random, confidence-based, length-based, GPT-4o judge, fine-tuned BERT/RoBERTa
-- **Dynamic Risk-Aware Routing**: Intelligent orchestration between correction strategies
-- **Cross-Model Generalization**: Failure patterns that transcend individual model architectures
+| Question | Result |
+|---|---|
+| Can failure be predicted on unfiltered problems? | Yes, within limits. On 2,000 problems and four generators, signals computed before revising reach a within-source AUC of 0.634 to 0.734, significantly better than text features for every generator. |
+| What makes it predictable? | Mainly whether the first answer can be verified. The gain is concentrated on arithmetic problems that a program can check, and larger external verifiers match or exceed the signals. |
+| Does this hold on non-numeric problems? | Untested. Agreement-based verification is also weak on StrategyQA and LogiQA (AUC 0.485 to 0.670 for a wrong first answer), so we have no verifier good enough to test the claim there. |
+| Is the helped/harmed change easier to predict? | No, once the answer change is not given away. For Qwen2.5-3B, helped against harmed is at chance. |
+| What about a difficulty-filtered benchmark? | On SCFP v1.0 (716 traces), failure is close to unpredictable and fine-tuned encoders do not beat bag-of-words features. The filter reduces within-dataset signal for all three generators tested. |
+| Does routing on predicted failure help? | Only partly. On 700 held-out GSM8K problems and three generators, routers built on these predictors have the best combined score in at most 115 of 594 cost settings, and fixed policies in at least 474. They raise accuracy mainly by sending problems to a human, whose accuracy and cost are assumed. |
 
-## Project Structure
+Answer extraction was audited on a stratified sample of 100 traces and showed no correctness-label errors (95% upper bound 3.7%). One author did the reading, and it was not blind, as the paper states. The failure-mode annotation scheme is a proposal: its human labels are still being collected, and no result depends on them.
 
-```
-scfp-impl/
-├── src/                    # Source code
-│   ├── data/              # Data loading and preprocessing
-│   ├── models/            # Model implementations
-│   ├── training/          # Training utilities
-│   ├── evaluation/        # Evaluation metrics and utilities
-│   └── routing/           # Dynamic routing system
-├── data/                  # Dataset storage
-├── models/                # Trained model checkpoints
-├── experiments/           # Experiment configurations
-├── notebooks/             # Jupyter notebooks for analysis
-├── tests/                 # Unit tests
-├── scripts/               # Training and evaluation scripts
-├── results/               # Experimental results
-└── docs/                  # Documentation
-```
+## Repository layout
 
-## Quick Start
+| Path | Contents |
+|---|---|
+| `paper/` | Manuscript, bibliography, generated tables and figures, PDF and diff |
+| `SCFP/benchmark/` | Benchmark builder, experiment code, configs and the logged runs (`scfp_runs/`) |
+| `SCFP/src/` | The segment-aware DeBERTa predictor and routing code |
+| `scripts/revision/` | One script per experiment in the paper |
+| `scripts/kaggle/` | The Kaggle GPU jobs as they were run |
+| `results/revision/` | Output of every analysis, with raw GPU outputs and job logs |
+| `data/audit/` | Extraction audit sample, author sheet and separate AI checks |
+| `verification/` | Independent re-check of the paper's numbers |
+| `response/` | Response letter and report for the current revision |
 
-### Installation
+## Quick start
 
-```bash
-# Clone and navigate to the repository
-cd scfp-impl
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install the package in development mode
-pip install -e .
-```
-
-### Data Preparation
+Rebuilding the paper's tables and checking its numbers needs no GPU. You need Python 3.10, and [tectonic](https://tectonic-typesetting.github.io/) to build the PDF.
 
 ```bash
-# Preprocess the real benchmark dataset (scfp_v1.jsonl)
-python scripts/preprocess_data.py --input data/scfp_v1.jsonl --output data/processed/
+git clone -b revision-round2 https://github.com/gr7-cipher/self-Correction-Failure-Prediction-SCFP-.git
 ```
-
-### Training
 
 ```bash
-# Train the main DeBERTa-v3 model with 3-stage training
-python scripts/train_deberta.py --data-dir data/processed/ --three-stage --epochs-binary 10 --epochs-multiclass 15 --epochs-joint 20
-
-# Train baseline models
-python scripts/train_baselines.py --config experiments/baselines_config.yaml
+cd self-Correction-Failure-Prediction-SCFP-
 ```
-
-### Evaluation
 
 ```bash
-# Run comprehensive evaluation
-python scripts/evaluate_all.py --models_dir models/ --data_dir data/processed/ --output results/
-
-# Analyze experimental performance and generate main report
-python scripts/analyze_experimental_performance.py --results_dir results/ --output results/summary/
-
-# Generate paper-quality visualizations (ROC, Calibration, Tables 3&4)
-python scripts/visualize_paper_results.py --results-json results/comprehensive_evaluation.json --output-dir results/paper/
+python3.10 -m venv .venv
 ```
-
-### Dynamic Routing Demo
 
 ```bash
-# Run the routing system demo
-python scripts/demo_routing.py --model models/deberta_best.pt --input "Your test query here"
+.venv/bin/pip install -r requirements-lock.txt
 ```
-
-## Model Architecture
-
-### DeBERTa-v3 Meta-Learning Framework
-
-Our core model is based on DeBERTa-v3 with specialized components:
-
-- **Input Encoding**: Concatenated initial response and self-critique
-- **Specialized Attention**: Custom attention mechanisms for trace analysis
-- **Multi-Task Head**: Joint binary and multi-class prediction
-- **Confidence Calibration**: Temperature scaling for reliable uncertainty
-
-### Hyperparameters
-
-- **Model**: DeBERTa-v3-base
-- **Max Length**: 1024 tokens
-- **Learning Rate**: 2e-5 (AdamW)
-- **Epochs**: 3-8 (early stopping)
-- **Batch Size**: 8-32
-- **Warmup**: 10% of training steps
-
-## Failure Taxonomy
-
-1. **Justification Hallucination (JH)**: Fabricating reasons to defend incorrect answers
-2. **Confidence Miscalibration (CM)**: Poor alignment between confidence and correctness
-3. **Bias Amplification (BA)**: Reinforcing existing biases through correction
-4. **Over-correction (OC)**: Changing correct answers to incorrect ones
-5. **Reasoning Myopia (RM)**: Focusing on local rather than global reasoning issues
-
-## Baseline Models
-
-- **Random**: Random prediction baseline
-- **Confidence Heuristic**: Based on model confidence scores
-- **Length Heuristic**: Based on response length patterns
-- **GPT-4o Judge**: External evaluation using GPT-4o (simulated)
-- **Fine-tuned BERT-base**: BERT-base fine-tuned on correction traces
-- **Fine-tuned RoBERTa-large**: RoBERTa-large fine-tuned on correction traces
-
-## Evaluation Metrics
-
-- **Accuracy**: Overall classification accuracy
-- **Macro F1**: Unweighted average F1 across classes
-- **Weighted F1**: Sample-weighted average F1
-- **AUC-ROC**: Area under ROC curve
-- **ECE**: Expected Calibration Error
-
-## Experimental Results
-
-### Main Results (Real Benchmark Data)
-
-| Model | Binary Accuracy | Macro F1 | Weighted F1 | AUC-ROC | ECE |
-|-------|----------------|----------|-------------|---------|-----|
-| DeBERTa-v3 (Ours) | 82.4% (±2.1%) | 0.814 (±0.022) | 0.823 (±0.019) | 0.891 (±0.015) | 0.067 (±0.008) |
-| RoBERTa-large | 78.9% (±2.4%) | 0.771 (±0.028) | 0.785 (±0.023) | 0.856 (±0.021) | 0.089 (±0.012) |
-| BERT-base | 75.2% (±2.8%) | 0.734 (±0.031) | 0.748 (±0.027) | 0.821 (±0.024) | 0.112 (±0.015) |
-| GPT-4o Judge | 73.6% (±3.1%) | 0.718 (±0.034) | 0.731 (±0.029) | 0.798 (±0.027) | 0.134 (±0.018) |
-| Confidence Heuristic | 64.3% (±3.5%) | 0.612 (±0.038) | 0.639 (±0.033) | 0.687 (±0.031) | 0.187 (±0.022) |
-| Length Heuristic | 58.7% (±3.8%) | 0.571 (±0.041) | 0.584 (±0.036) | 0.623 (±0.034) | 0.234 (±0.025) |
-| Random | 50.1% (±4.2%) | 0.501 (±0.045) | 0.500 (±0.040) | 0.500 (±0.037) | 0.412 (±0.031) |
-
-### Ablation Studies
-
-| Configuration | Binary Accuracy | Macro F1 | Notes |
-|---------------|----------------|----------|-------|
-| Full Model | 82.4% (±2.1%) | 0.814 (±0.022) | Complete architecture |
-| No Specialized Attention | 79.1% (±2.5%) | 0.776 (±0.026) | Standard attention only |
-| No Critique Input | 76.8% (±2.7%) | 0.751 (±0.029) | Initial response only |
-| Handcrafted Features Only | 71.3% (±3.2%) | 0.698 (±0.033) | No neural components |
-| Single-Task (Binary Only) | 81.7% (±2.3%) | 0.802 (±0.024) | No multi-class head |
-
-## Dynamic Routing System
-
-The routing system makes intelligent decisions about correction strategies:
-
-```python
-from src.routing import DynamicRouter
-
-router = DynamicRouter(
-    failure_predictor=predictor,
-    cost_model=cost_model,
-    thresholds={'intrinsic': 0.7, 'external': 0.9}
-)
-
-strategy = router.route(query, initial_response, critique)
-# Returns: 'intrinsic', 'external', or 'human'
-```
-
-### Cost Model
-
-- **Intrinsic Correction**: Low cost, moderate accuracy
-- **External Tools**: Medium cost, high accuracy
-- **Human Oversight**: High cost, highest accuracy
-
-## Reproducibility
-
-### Environment Setup
 
 ```bash
-# Create conda environment
-conda create -n scfp python=3.9
-conda activate scfp
-
-# Install PyTorch (adjust for your CUDA version)
-pip install torch torchvision torchaudio
-
-# Install other dependencies
-pip install -r requirements.txt
+make tables
 ```
-
-### Reproducing Results
 
 ```bash
-# Full reproduction pipeline
-bash scripts/reproduce_all.sh
-
-# Individual experiments
-python scripts/train_deberta.py --seed 42 --config experiments/deberta_config.yaml
-python scripts/evaluate_model.py --model models/deberta_seed42.pt --data data/test.json
+make pdf
 ```
-
-### Unit Tests
 
 ```bash
-# Run all tests
-python -m pytest tests/ -v
-
-# Run specific test modules
-python -m pytest tests/test_data_loading.py -v
-python -m pytest tests/test_model_training.py -v
+bash scripts/revision/verify.sh
 ```
 
-## Limitations and Future Work
+[REPRODUCE.md](REPRODUCE.md) explains how to rerun each analysis and the GPU jobs. Regenerated traces will not match the logged ones exactly, because greedy outputs differ across precision and hardware, so the labels belong to the logged traces.
 
-### Current Limitations
+## Large files
 
-1. **GPT-4o Judge**: External evaluation using GPT-4o API (requires API key)
-2. **Limited Model Coverage**: Cross-model experiments limited to available base models
-3. **Computational Resources**: Some experiments scaled down for CPU-only feasibility
+The trained DeBERTa weights, the residual-stream arrays and the Kaggle dataset package are too large for git. They are in the [`round2-artifacts` release](https://github.com/gr7-cipher/self-Correction-Failure-Prediction-SCFP-/releases/tag/round2-artifacts), with checksums. Base models and source datasets come from Hugging Face.
 
-### Future Directions
+## Tests
 
-1. **Extended Model Coverage**: Test on more diverse LLM architectures
-2. **Domain Adaptation**: Extend to specialized domains (code, math, science)
-3. **Online Learning**: Adaptive systems that learn from deployment feedback
-4. **Causal Analysis**: Understanding causal factors in correction failures
+```bash
+.venv/bin/python -m pytest SCFP/benchmark/tests SCFP/tests
+```
 
-## Citation
-
-If you use this code or framework in your research, please cite:
-
-**************
-
-
-## Contributing
-
-Contributions are welcome! If you find a bug or have a suggestion for improvement, please open an issue or submit a pull request.
-
+Both suites pass.
 
 ## License
-This project is dual-licensed:
-- **Apache 2.0 License** – for academic and non-commercial use.  
-- **Commercial License** – for commercial us
-  
-## Contact
 
-For questions or issues, please open a GitHub issue or contact the author:
-
-- *************
-
-
-## Acknowledgments
-
-This work is based on the research paper *"Predicting LLM Self-Correction Failures: A Meta-Learning Framework for Dynamic Routing."* We thank the authors for their valuable contributions to the field of LLM.
-
-
+The project is dual-licensed: see [LICENSE](LICENSE) (Apache 2.0) and [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md).

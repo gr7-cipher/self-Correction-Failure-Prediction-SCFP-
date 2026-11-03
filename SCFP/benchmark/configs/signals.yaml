@@ -1,0 +1,29 @@
+# Generator-side signals experiment (run on a GPU; see run_signals.sh).
+run_dir: scfp_runs/signals_v1
+seed: 42
+batch_size: 16          # generation batch on CUDA
+
+models:
+  - {name: qwen2.5-0.5b, provider: local, model: Qwen/Qwen2.5-0.5B-Instruct, max_tokens: 512}
+  - {name: qwen2.5-1.5b, provider: local, model: Qwen/Qwen2.5-1.5B-Instruct, max_tokens: 512}
+  - {name: smollm2-1.7b, provider: local, model: HuggingFaceTB/SmolLM2-1.7B-Instruct, max_tokens: 512}
+
+signals:
+  models: [qwen2.5-0.5b, qwen2.5-1.5b, smollm2-1.7b]
+  sources:
+    gsm8k: [train, test]
+    strategyqa: [train, test]
+    logiqa: [train, validation, test]
+  # natural distribution: NO difficulty filter
+  natural_per_source: {gsm8k: 500, strategyqa: 350, logiqa: 350}
+  # keep the natural set disjoint from SCFP v1 and from the routing hold-out
+  exclude_problem_files:
+    - scfp_runs/laptop_v1/splits/train.jsonl
+    - scfp_runs/laptop_v1/splits/val.jsonl
+    - scfp_runs/laptop_v1/splits/test.jsonl
+    - scfp_runs/laptop_v1/holdout.jsonl
+  v1_run_dir: scfp_runs/laptop_v1
+  samples: 5               # extra answers per (problem, model) for self-consistency
+  sample_temperature: 0.7
+  sample_max_tokens: 384
+  layers_frac: [0.5, 1.0]  # hidden states at the middle and last layer

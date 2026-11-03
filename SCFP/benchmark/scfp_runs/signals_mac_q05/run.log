@@ -1,0 +1,1699 @@
+=== build  2026-10-26 16:16:06
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+natural set: 600 problems x 1 models
+  loading Qwen/Qwen2.5-0.5B-Instruct on mps (torch.float16)
+W1026 16:16:25.010000 72523 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:52,  5.53it/s]Loading weights:   9%|▉         | 27/290 [00:00<00:02, 114.98it/s]Loading weights:  21%|██        | 60/290 [00:00<00:01, 185.38it/s]Loading weights:  35%|███▌      | 102/290 [00:00<00:00, 262.29it/s]Loading weights:  58%|█████▊    | 167/290 [00:00<00:00, 387.90it/s]Loading weights:  73%|███████▎  | 212/290 [00:00<00:00, 393.59it/s]Loading weights:  92%|█████████▏| 268/290 [00:00<00:00, 440.30it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 347.10it/s]
+  natural qwen2.5-0.5b: 1/600
+  natural qwen2.5-0.5b: 2/600
+  natural qwen2.5-0.5b: 3/600
+  natural qwen2.5-0.5b: 4/600
+  natural qwen2.5-0.5b: 5/600
+  natural qwen2.5-0.5b: 6/600
+  natural qwen2.5-0.5b: 7/600
+  natural qwen2.5-0.5b: 8/600
+  natural qwen2.5-0.5b: 9/600
+  natural qwen2.5-0.5b: 10/600
+  natural qwen2.5-0.5b: 11/600
+  natural qwen2.5-0.5b: 12/600
+  natural qwen2.5-0.5b: 13/600
+  natural qwen2.5-0.5b: 14/600
+  natural qwen2.5-0.5b: 15/600
+  natural qwen2.5-0.5b: 16/600
+  natural qwen2.5-0.5b: 17/600
+  natural qwen2.5-0.5b: 18/600
+  natural qwen2.5-0.5b: 19/600
+  natural qwen2.5-0.5b: 20/600
+  natural qwen2.5-0.5b: 21/600
+  natural qwen2.5-0.5b: 22/600
+  natural qwen2.5-0.5b: 23/600
+  natural qwen2.5-0.5b: 24/600
+  natural qwen2.5-0.5b: 25/600
+  natural qwen2.5-0.5b: 26/600
+  natural qwen2.5-0.5b: 27/600
+  natural qwen2.5-0.5b: 28/600
+  natural qwen2.5-0.5b: 29/600
+  natural qwen2.5-0.5b: 30/600
+  natural qwen2.5-0.5b: 31/600
+  natural qwen2.5-0.5b: 32/600
+  natural qwen2.5-0.5b: 33/600
+  natural qwen2.5-0.5b: 34/600
+  natural qwen2.5-0.5b: 35/600
+  natural qwen2.5-0.5b: 36/600
+  natural qwen2.5-0.5b: 37/600
+  natural qwen2.5-0.5b: 38/600
+  natural qwen2.5-0.5b: 39/600
+  natural qwen2.5-0.5b: 40/600
+  natural qwen2.5-0.5b: 41/600
+  natural qwen2.5-0.5b: 42/600
+  natural qwen2.5-0.5b: 43/600
+  natural qwen2.5-0.5b: 44/600
+  natural qwen2.5-0.5b: 45/600
+  natural qwen2.5-0.5b: 46/600
+  natural qwen2.5-0.5b: 47/600
+  natural qwen2.5-0.5b: 48/600
+  natural qwen2.5-0.5b: 49/600
+  natural qwen2.5-0.5b: 50/600
+  natural qwen2.5-0.5b: 51/600
+  natural qwen2.5-0.5b: 52/600
+  natural qwen2.5-0.5b: 53/600
+  natural qwen2.5-0.5b: 54/600
+  natural qwen2.5-0.5b: 55/600
+  natural qwen2.5-0.5b: 56/600
+  natural qwen2.5-0.5b: 57/600
+  natural qwen2.5-0.5b: 58/600
+  natural qwen2.5-0.5b: 59/600
+  natural qwen2.5-0.5b: 60/600
+  natural qwen2.5-0.5b: 61/600
+  natural qwen2.5-0.5b: 62/600
+  natural qwen2.5-0.5b: 63/600
+  natural qwen2.5-0.5b: 64/600
+  natural qwen2.5-0.5b: 65/600
+  natural qwen2.5-0.5b: 66/600
+  natural qwen2.5-0.5b: 67/600
+  natural qwen2.5-0.5b: 68/600
+  natural qwen2.5-0.5b: 69/600
+  natural qwen2.5-0.5b: 70/600
+  natural qwen2.5-0.5b: 71/600
+  natural qwen2.5-0.5b: 72/600
+  natural qwen2.5-0.5b: 73/600
+  natural qwen2.5-0.5b: 74/600
+  natural qwen2.5-0.5b: 75/600
+  natural qwen2.5-0.5b: 76/600
+  natural qwen2.5-0.5b: 77/600
+  natural qwen2.5-0.5b: 78/600
+  natural qwen2.5-0.5b: 79/600
+  natural qwen2.5-0.5b: 80/600
+  natural qwen2.5-0.5b: 81/600
+  natural qwen2.5-0.5b: 82/600
+  natural qwen2.5-0.5b: 83/600
+  natural qwen2.5-0.5b: 84/600
+  natural qwen2.5-0.5b: 85/600
+  natural qwen2.5-0.5b: 86/600
+  natural qwen2.5-0.5b: 87/600
+  natural qwen2.5-0.5b: 88/600
+  natural qwen2.5-0.5b: 89/600
+  natural qwen2.5-0.5b: 90/600
+  natural qwen2.5-0.5b: 91/600
+  natural qwen2.5-0.5b: 92/600
+  natural qwen2.5-0.5b: 93/600
+  natural qwen2.5-0.5b: 94/600
+  natural qwen2.5-0.5b: 95/600
+  natural qwen2.5-0.5b: 96/600
+  natural qwen2.5-0.5b: 97/600
+  natural qwen2.5-0.5b: 98/600
+  natural qwen2.5-0.5b: 99/600
+  natural qwen2.5-0.5b: 100/600
+  natural qwen2.5-0.5b: 101/600
+  natural qwen2.5-0.5b: 102/600
+  natural qwen2.5-0.5b: 103/600
+  natural qwen2.5-0.5b: 104/600
+  natural qwen2.5-0.5b: 105/600
+  natural qwen2.5-0.5b: 106/600
+  natural qwen2.5-0.5b: 107/600
+  natural qwen2.5-0.5b: 108/600
+  natural qwen2.5-0.5b: 109/600
+  natural qwen2.5-0.5b: 110/600
+  natural qwen2.5-0.5b: 111/600
+  natural qwen2.5-0.5b: 112/600
+  natural qwen2.5-0.5b: 113/600
+  natural qwen2.5-0.5b: 114/600
+  natural qwen2.5-0.5b: 115/600
+  natural qwen2.5-0.5b: 116/600
+  natural qwen2.5-0.5b: 117/600
+  natural qwen2.5-0.5b: 118/600
+  natural qwen2.5-0.5b: 119/600
+  natural qwen2.5-0.5b: 120/600
+  natural qwen2.5-0.5b: 121/600
+  natural qwen2.5-0.5b: 122/600
+  natural qwen2.5-0.5b: 123/600
+  natural qwen2.5-0.5b: 124/600
+  natural qwen2.5-0.5b: 125/600
+  natural qwen2.5-0.5b: 126/600
+  natural qwen2.5-0.5b: 127/600
+  natural qwen2.5-0.5b: 128/600
+  natural qwen2.5-0.5b: 129/600
+  natural qwen2.5-0.5b: 130/600
+  natural qwen2.5-0.5b: 131/600
+  natural qwen2.5-0.5b: 132/600
+  natural qwen2.5-0.5b: 133/600
+  natural qwen2.5-0.5b: 134/600
+  natural qwen2.5-0.5b: 135/600
+  natural qwen2.5-0.5b: 136/600
+  natural qwen2.5-0.5b: 137/600
+  natural qwen2.5-0.5b: 138/600
+  natural qwen2.5-0.5b: 139/600
+  natural qwen2.5-0.5b: 140/600
+  natural qwen2.5-0.5b: 141/600
+  natural qwen2.5-0.5b: 142/600
+  natural qwen2.5-0.5b: 143/600
+  natural qwen2.5-0.5b: 144/600
+  natural qwen2.5-0.5b: 145/600
+  natural qwen2.5-0.5b: 146/600
+  natural qwen2.5-0.5b: 147/600
+  natural qwen2.5-0.5b: 148/600
+  natural qwen2.5-0.5b: 149/600
+  natural qwen2.5-0.5b: 150/600
+  natural qwen2.5-0.5b: 151/600
+  natural qwen2.5-0.5b: 152/600
+  natural qwen2.5-0.5b: 153/600
+  natural qwen2.5-0.5b: 154/600
+  natural qwen2.5-0.5b: 155/600
+  natural qwen2.5-0.5b: 156/600
+  natural qwen2.5-0.5b: 157/600
+  natural qwen2.5-0.5b: 158/600
+  natural qwen2.5-0.5b: 159/600
+  natural qwen2.5-0.5b: 160/600
+  natural qwen2.5-0.5b: 161/600
+  natural qwen2.5-0.5b: 162/600
+  natural qwen2.5-0.5b: 163/600
+  natural qwen2.5-0.5b: 164/600
+  natural qwen2.5-0.5b: 165/600
+  natural qwen2.5-0.5b: 166/600
+  natural qwen2.5-0.5b: 167/600
+  natural qwen2.5-0.5b: 168/600
+  natural qwen2.5-0.5b: 169/600
+  natural qwen2.5-0.5b: 170/600
+  natural qwen2.5-0.5b: 171/600
+  natural qwen2.5-0.5b: 172/600
+  natural qwen2.5-0.5b: 173/600
+  natural qwen2.5-0.5b: 174/600
+  natural qwen2.5-0.5b: 175/600
+  natural qwen2.5-0.5b: 176/600
+  natural qwen2.5-0.5b: 177/600
+  natural qwen2.5-0.5b: 178/600
+  natural qwen2.5-0.5b: 179/600
+  natural qwen2.5-0.5b: 180/600
+  natural qwen2.5-0.5b: 181/600
+  natural qwen2.5-0.5b: 182/600
+  natural qwen2.5-0.5b: 183/600
+  natural qwen2.5-0.5b: 184/600
+  natural qwen2.5-0.5b: 185/600
+  natural qwen2.5-0.5b: 186/600
+  natural qwen2.5-0.5b: 187/600
+  natural qwen2.5-0.5b: 188/600
+  natural qwen2.5-0.5b: 189/600
+  natural qwen2.5-0.5b: 190/600
+  natural qwen2.5-0.5b: 191/600
+  natural qwen2.5-0.5b: 192/600
+  natural qwen2.5-0.5b: 193/600
+  natural qwen2.5-0.5b: 194/600
+  natural qwen2.5-0.5b: 195/600
+  natural qwen2.5-0.5b: 196/600
+  natural qwen2.5-0.5b: 197/600
+  natural qwen2.5-0.5b: 198/600
+  natural qwen2.5-0.5b: 199/600
+  natural qwen2.5-0.5b: 200/600
+  natural qwen2.5-0.5b: 201/600
+  natural qwen2.5-0.5b: 202/600
+  natural qwen2.5-0.5b: 203/600
+  natural qwen2.5-0.5b: 204/600
+  natural qwen2.5-0.5b: 205/600
+  natural qwen2.5-0.5b: 206/600
+  natural qwen2.5-0.5b: 207/600
+  natural qwen2.5-0.5b: 208/600
+  natural qwen2.5-0.5b: 209/600
+  natural qwen2.5-0.5b: 210/600
+  natural qwen2.5-0.5b: 211/600
+  natural qwen2.5-0.5b: 212/600
+  natural qwen2.5-0.5b: 213/600
+  natural qwen2.5-0.5b: 214/600
+  natural qwen2.5-0.5b: 215/600
+  natural qwen2.5-0.5b: 216/600
+  natural qwen2.5-0.5b: 217/600
+  natural qwen2.5-0.5b: 218/600
+  natural qwen2.5-0.5b: 219/600
+  natural qwen2.5-0.5b: 220/600
+  natural qwen2.5-0.5b: 221/600
+  natural qwen2.5-0.5b: 222/600
+  natural qwen2.5-0.5b: 223/600
+  natural qwen2.5-0.5b: 224/600
+  natural qwen2.5-0.5b: 225/600
+  natural qwen2.5-0.5b: 226/600
+  natural qwen2.5-0.5b: 227/600
+  natural qwen2.5-0.5b: 228/600
+  natural qwen2.5-0.5b: 229/600
+  natural qwen2.5-0.5b: 230/600
+  natural qwen2.5-0.5b: 231/600
+  natural qwen2.5-0.5b: 232/600
+  natural qwen2.5-0.5b: 233/600
+  natural qwen2.5-0.5b: 234/600
+  natural qwen2.5-0.5b: 235/600
+  natural qwen2.5-0.5b: 236/600
+  natural qwen2.5-0.5b: 237/600
+  natural qwen2.5-0.5b: 238/600
+  natural qwen2.5-0.5b: 239/600
+  natural qwen2.5-0.5b: 240/600
+  natural qwen2.5-0.5b: 241/600
+  natural qwen2.5-0.5b: 242/600
+  natural qwen2.5-0.5b: 243/600
+  natural qwen2.5-0.5b: 244/600
+  natural qwen2.5-0.5b: 245/600
+  natural qwen2.5-0.5b: 246/600
+  natural qwen2.5-0.5b: 247/600
+  natural qwen2.5-0.5b: 248/600
+  natural qwen2.5-0.5b: 249/600
+  natural qwen2.5-0.5b: 250/600
+  natural qwen2.5-0.5b: 251/600
+  natural qwen2.5-0.5b: 252/600
+  natural qwen2.5-0.5b: 253/600
+  natural qwen2.5-0.5b: 254/600
+  natural qwen2.5-0.5b: 255/600
+  natural qwen2.5-0.5b: 256/600
+  natural qwen2.5-0.5b: 257/600
+  natural qwen2.5-0.5b: 258/600
+  natural qwen2.5-0.5b: 259/600
+  natural qwen2.5-0.5b: 260/600
+  natural qwen2.5-0.5b: 261/600
+  natural qwen2.5-0.5b: 262/600
+  natural qwen2.5-0.5b: 263/600
+  natural qwen2.5-0.5b: 264/600
+  natural qwen2.5-0.5b: 265/600
+  natural qwen2.5-0.5b: 266/600
+  natural qwen2.5-0.5b: 267/600
+  natural qwen2.5-0.5b: 268/600
+  natural qwen2.5-0.5b: 269/600
+  natural qwen2.5-0.5b: 270/600
+  natural qwen2.5-0.5b: 271/600
+  natural qwen2.5-0.5b: 272/600
+  natural qwen2.5-0.5b: 273/600
+  natural qwen2.5-0.5b: 274/600
+  natural qwen2.5-0.5b: 275/600
+  natural qwen2.5-0.5b: 276/600
+  natural qwen2.5-0.5b: 277/600
+  natural qwen2.5-0.5b: 278/600
+  natural qwen2.5-0.5b: 279/600
+  natural qwen2.5-0.5b: 280/600
+  natural qwen2.5-0.5b: 281/600
+  natural qwen2.5-0.5b: 282/600
+  natural qwen2.5-0.5b: 283/600
+  natural qwen2.5-0.5b: 284/600
+  natural qwen2.5-0.5b: 285/600
+  natural qwen2.5-0.5b: 286/600
+  natural qwen2.5-0.5b: 287/600
+  natural qwen2.5-0.5b: 288/600
+  natural qwen2.5-0.5b: 289/600
+  natural qwen2.5-0.5b: 290/600
+  natural qwen2.5-0.5b: 291/600
+  natural qwen2.5-0.5b: 292/600
+  natural qwen2.5-0.5b: 293/600
+  natural qwen2.5-0.5b: 294/600
+  natural qwen2.5-0.5b: 295/600
+  natural qwen2.5-0.5b: 296/600
+  natural qwen2.5-0.5b: 297/600
+  natural qwen2.5-0.5b: 298/600
+  natural qwen2.5-0.5b: 299/600
+  natural qwen2.5-0.5b: 300/600
+  natural qwen2.5-0.5b: 301/600
+  natural qwen2.5-0.5b: 302/600
+  natural qwen2.5-0.5b: 303/600
+  natural qwen2.5-0.5b: 304/600
+  natural qwen2.5-0.5b: 305/600
+  natural qwen2.5-0.5b: 306/600
+  natural qwen2.5-0.5b: 307/600
+  natural qwen2.5-0.5b: 308/600
+  natural qwen2.5-0.5b: 309/600
+  natural qwen2.5-0.5b: 310/600
+  natural qwen2.5-0.5b: 311/600
+  natural qwen2.5-0.5b: 312/600
+  natural qwen2.5-0.5b: 313/600
+  natural qwen2.5-0.5b: 314/600
+  natural qwen2.5-0.5b: 315/600
+  natural qwen2.5-0.5b: 316/600
+  natural qwen2.5-0.5b: 317/600
+  natural qwen2.5-0.5b: 318/600
+  natural qwen2.5-0.5b: 319/600
+  natural qwen2.5-0.5b: 320/600
+  natural qwen2.5-0.5b: 321/600
+  natural qwen2.5-0.5b: 322/600
+  natural qwen2.5-0.5b: 323/600
+  natural qwen2.5-0.5b: 324/600
+  natural qwen2.5-0.5b: 325/600
+  natural qwen2.5-0.5b: 326/600
+  natural qwen2.5-0.5b: 327/600
+  natural qwen2.5-0.5b: 328/600
+  natural qwen2.5-0.5b: 329/600
+  natural qwen2.5-0.5b: 330/600
+  natural qwen2.5-0.5b: 331/600
+  natural qwen2.5-0.5b: 332/600
+  natural qwen2.5-0.5b: 333/600
+  natural qwen2.5-0.5b: 334/600
+  natural qwen2.5-0.5b: 335/600
+  natural qwen2.5-0.5b: 336/600
+  natural qwen2.5-0.5b: 337/600
+  natural qwen2.5-0.5b: 338/600
+  natural qwen2.5-0.5b: 339/600
+  natural qwen2.5-0.5b: 340/600
+  natural qwen2.5-0.5b: 341/600
+  natural qwen2.5-0.5b: 342/600
+  natural qwen2.5-0.5b: 343/600
+  natural qwen2.5-0.5b: 344/600
+  natural qwen2.5-0.5b: 345/600
+  natural qwen2.5-0.5b: 346/600
+  natural qwen2.5-0.5b: 347/600
+  natural qwen2.5-0.5b: 348/600
+  natural qwen2.5-0.5b: 349/600
+  natural qwen2.5-0.5b: 350/600
+  natural qwen2.5-0.5b: 351/600
+  natural qwen2.5-0.5b: 352/600
+  natural qwen2.5-0.5b: 353/600
+  natural qwen2.5-0.5b: 354/600
+  natural qwen2.5-0.5b: 355/600
+  natural qwen2.5-0.5b: 356/600
+  natural qwen2.5-0.5b: 357/600
+  natural qwen2.5-0.5b: 358/600
+  natural qwen2.5-0.5b: 359/600
+  natural qwen2.5-0.5b: 360/600
+  natural qwen2.5-0.5b: 361/600
+  natural qwen2.5-0.5b: 362/600
+  natural qwen2.5-0.5b: 363/600
+  natural qwen2.5-0.5b: 364/600
+  natural qwen2.5-0.5b: 365/600
+  natural qwen2.5-0.5b: 366/600
+  natural qwen2.5-0.5b: 367/600
+  natural qwen2.5-0.5b: 368/600
+  natural qwen2.5-0.5b: 369/600
+  natural qwen2.5-0.5b: 370/600
+  natural qwen2.5-0.5b: 371/600
+  natural qwen2.5-0.5b: 372/600
+  natural qwen2.5-0.5b: 373/600
+  natural qwen2.5-0.5b: 374/600
+  natural qwen2.5-0.5b: 375/600
+  natural qwen2.5-0.5b: 376/600
+  natural qwen2.5-0.5b: 377/600
+  natural qwen2.5-0.5b: 378/600
+  natural qwen2.5-0.5b: 379/600
+  natural qwen2.5-0.5b: 380/600
+  natural qwen2.5-0.5b: 381/600
+  natural qwen2.5-0.5b: 382/600
+  natural qwen2.5-0.5b: 383/600
+  natural qwen2.5-0.5b: 384/600
+  natural qwen2.5-0.5b: 385/600
+  natural qwen2.5-0.5b: 386/600
+  natural qwen2.5-0.5b: 387/600
+  natural qwen2.5-0.5b: 388/600
+  natural qwen2.5-0.5b: 389/600
+  natural qwen2.5-0.5b: 390/600
+  natural qwen2.5-0.5b: 391/600
+  natural qwen2.5-0.5b: 392/600
+  natural qwen2.5-0.5b: 393/600
+  natural qwen2.5-0.5b: 394/600
+  natural qwen2.5-0.5b: 395/600
+  natural qwen2.5-0.5b: 396/600
+  natural qwen2.5-0.5b: 397/600
+  natural qwen2.5-0.5b: 398/600
+  natural qwen2.5-0.5b: 399/600
+  natural qwen2.5-0.5b: 400/600
+  natural qwen2.5-0.5b: 401/600
+  natural qwen2.5-0.5b: 402/600
+  natural qwen2.5-0.5b: 403/600
+  natural qwen2.5-0.5b: 404/600
+  natural qwen2.5-0.5b: 405/600
+  natural qwen2.5-0.5b: 406/600
+  natural qwen2.5-0.5b: 407/600
+  natural qwen2.5-0.5b: 408/600
+  natural qwen2.5-0.5b: 409/600
+  natural qwen2.5-0.5b: 410/600
+  natural qwen2.5-0.5b: 411/600
+  natural qwen2.5-0.5b: 412/600
+  natural qwen2.5-0.5b: 413/600
+  natural qwen2.5-0.5b: 414/600
+  natural qwen2.5-0.5b: 415/600
+  natural qwen2.5-0.5b: 416/600
+  natural qwen2.5-0.5b: 417/600
+  natural qwen2.5-0.5b: 418/600
+  natural qwen2.5-0.5b: 419/600
+  natural qwen2.5-0.5b: 420/600
+  natural qwen2.5-0.5b: 421/600
+  natural qwen2.5-0.5b: 422/600
+  natural qwen2.5-0.5b: 423/600
+  natural qwen2.5-0.5b: 424/600
+  natural qwen2.5-0.5b: 425/600
+  natural qwen2.5-0.5b: 426/600
+  natural qwen2.5-0.5b: 427/600
+  natural qwen2.5-0.5b: 428/600
+  natural qwen2.5-0.5b: 429/600
+  natural qwen2.5-0.5b: 430/600
+  natural qwen2.5-0.5b: 431/600
+  natural qwen2.5-0.5b: 432/600
+  natural qwen2.5-0.5b: 433/600
+  natural qwen2.5-0.5b: 434/600
+  natural qwen2.5-0.5b: 435/600
+  natural qwen2.5-0.5b: 436/600
+  natural qwen2.5-0.5b: 437/600
+  natural qwen2.5-0.5b: 438/600
+  natural qwen2.5-0.5b: 439/600
+  natural qwen2.5-0.5b: 440/600
+  natural qwen2.5-0.5b: 441/600
+  natural qwen2.5-0.5b: 442/600
+  natural qwen2.5-0.5b: 443/600
+  natural qwen2.5-0.5b: 444/600
+  natural qwen2.5-0.5b: 445/600
+  natural qwen2.5-0.5b: 446/600
+  natural qwen2.5-0.5b: 447/600
+  natural qwen2.5-0.5b: 448/600
+  natural qwen2.5-0.5b: 449/600
+  natural qwen2.5-0.5b: 450/600
+  natural qwen2.5-0.5b: 451/600
+  natural qwen2.5-0.5b: 452/600
+  natural qwen2.5-0.5b: 453/600
+  natural qwen2.5-0.5b: 454/600
+  natural qwen2.5-0.5b: 455/600
+  natural qwen2.5-0.5b: 456/600
+  natural qwen2.5-0.5b: 457/600
+  natural qwen2.5-0.5b: 458/600
+  natural qwen2.5-0.5b: 459/600
+  natural qwen2.5-0.5b: 460/600
+  natural qwen2.5-0.5b: 461/600
+  natural qwen2.5-0.5b: 462/600
+  natural qwen2.5-0.5b: 463/600
+  natural qwen2.5-0.5b: 464/600
+  natural qwen2.5-0.5b: 465/600
+  natural qwen2.5-0.5b: 466/600
+  natural qwen2.5-0.5b: 467/600
+  natural qwen2.5-0.5b: 468/600
+  natural qwen2.5-0.5b: 469/600
+  natural qwen2.5-0.5b: 470/600
+  natural qwen2.5-0.5b: 471/600
+  natural qwen2.5-0.5b: 472/600
+  natural qwen2.5-0.5b: 473/600
+  natural qwen2.5-0.5b: 474/600
+  natural qwen2.5-0.5b: 475/600
+  natural qwen2.5-0.5b: 476/600
+  natural qwen2.5-0.5b: 477/600
+  natural qwen2.5-0.5b: 478/600
+  natural qwen2.5-0.5b: 479/600
+  natural qwen2.5-0.5b: 480/600
+  natural qwen2.5-0.5b: 481/600
+  natural qwen2.5-0.5b: 482/600
+  natural qwen2.5-0.5b: 483/600
+  natural qwen2.5-0.5b: 484/600
+  natural qwen2.5-0.5b: 485/600
+  natural qwen2.5-0.5b: 486/600
+  natural qwen2.5-0.5b: 487/600
+  natural qwen2.5-0.5b: 488/600
+  natural qwen2.5-0.5b: 489/600
+  natural qwen2.5-0.5b: 490/600
+  natural qwen2.5-0.5b: 491/600
+  natural qwen2.5-0.5b: 492/600
+  natural qwen2.5-0.5b: 493/600
+  natural qwen2.5-0.5b: 494/600
+  natural qwen2.5-0.5b: 495/600
+  natural qwen2.5-0.5b: 496/600
+  natural qwen2.5-0.5b: 497/600
+  natural qwen2.5-0.5b: 498/600
+  natural qwen2.5-0.5b: 499/600
+  natural qwen2.5-0.5b: 500/600
+  natural qwen2.5-0.5b: 501/600
+  natural qwen2.5-0.5b: 502/600
+  natural qwen2.5-0.5b: 503/600
+  natural qwen2.5-0.5b: 504/600
+  natural qwen2.5-0.5b: 505/600
+  natural qwen2.5-0.5b: 506/600
+  natural qwen2.5-0.5b: 507/600
+  natural qwen2.5-0.5b: 508/600
+  natural qwen2.5-0.5b: 509/600
+  natural qwen2.5-0.5b: 510/600
+  natural qwen2.5-0.5b: 511/600
+  natural qwen2.5-0.5b: 512/600
+  natural qwen2.5-0.5b: 513/600
+  natural qwen2.5-0.5b: 514/600
+  natural qwen2.5-0.5b: 515/600
+  natural qwen2.5-0.5b: 516/600
+  natural qwen2.5-0.5b: 517/600
+  natural qwen2.5-0.5b: 518/600
+  natural qwen2.5-0.5b: 519/600
+  natural qwen2.5-0.5b: 520/600
+  natural qwen2.5-0.5b: 521/600
+  natural qwen2.5-0.5b: 522/600
+  natural qwen2.5-0.5b: 523/600
+  natural qwen2.5-0.5b: 524/600
+  natural qwen2.5-0.5b: 525/600
+  natural qwen2.5-0.5b: 526/600
+  natural qwen2.5-0.5b: 527/600
+  natural qwen2.5-0.5b: 528/600
+  natural qwen2.5-0.5b: 529/600
+  natural qwen2.5-0.5b: 530/600
+  natural qwen2.5-0.5b: 531/600
+  natural qwen2.5-0.5b: 532/600
+  natural qwen2.5-0.5b: 533/600
+  natural qwen2.5-0.5b: 534/600
+  natural qwen2.5-0.5b: 535/600
+  natural qwen2.5-0.5b: 536/600
+  natural qwen2.5-0.5b: 537/600
+  natural qwen2.5-0.5b: 538/600
+  natural qwen2.5-0.5b: 539/600
+  natural qwen2.5-0.5b: 540/600
+  natural qwen2.5-0.5b: 541/600
+  natural qwen2.5-0.5b: 542/600
+  natural qwen2.5-0.5b: 543/600
+  natural qwen2.5-0.5b: 544/600
+  natural qwen2.5-0.5b: 545/600
+  natural qwen2.5-0.5b: 546/600
+  natural qwen2.5-0.5b: 547/600
+  natural qwen2.5-0.5b: 548/600
+  natural qwen2.5-0.5b: 549/600
+  natural qwen2.5-0.5b: 550/600
+  natural qwen2.5-0.5b: 551/600
+  natural qwen2.5-0.5b: 552/600
+  natural qwen2.5-0.5b: 553/600
+  natural qwen2.5-0.5b: 554/600
+  natural qwen2.5-0.5b: 555/600
+  natural qwen2.5-0.5b: 556/600
+  natural qwen2.5-0.5b: 557/600
+  natural qwen2.5-0.5b: 558/600
+  natural qwen2.5-0.5b: 559/600
+  natural qwen2.5-0.5b: 560/600
+  natural qwen2.5-0.5b: 561/600
+  natural qwen2.5-0.5b: 562/600
+  natural qwen2.5-0.5b: 563/600
+  natural qwen2.5-0.5b: 564/600
+  natural qwen2.5-0.5b: 565/600
+  natural qwen2.5-0.5b: 566/600
+  natural qwen2.5-0.5b: 567/600
+  natural qwen2.5-0.5b: 568/600
+  natural qwen2.5-0.5b: 569/600
+  natural qwen2.5-0.5b: 570/600
+  natural qwen2.5-0.5b: 571/600
+  natural qwen2.5-0.5b: 572/600
+  natural qwen2.5-0.5b: 573/600
+  natural qwen2.5-0.5b: 574/600
+  natural qwen2.5-0.5b: 575/600
+  natural qwen2.5-0.5b: 576/600
+  natural qwen2.5-0.5b: 577/600
+  natural qwen2.5-0.5b: 578/600
+  natural qwen2.5-0.5b: 579/600
+  natural qwen2.5-0.5b: 580/600
+  natural qwen2.5-0.5b: 581/600
+  natural qwen2.5-0.5b: 582/600
+  natural qwen2.5-0.5b: 583/600
+  natural qwen2.5-0.5b: 584/600
+  natural qwen2.5-0.5b: 585/600
+  natural qwen2.5-0.5b: 586/600
+  natural qwen2.5-0.5b: 587/600
+  natural qwen2.5-0.5b: 588/600
+  natural qwen2.5-0.5b: 589/600
+  natural qwen2.5-0.5b: 590/600
+  natural qwen2.5-0.5b: 591/600
+  natural qwen2.5-0.5b: 592/600
+  natural qwen2.5-0.5b: 593/600
+  natural qwen2.5-0.5b: 594/600
+  natural qwen2.5-0.5b: 595/600
+  natural qwen2.5-0.5b: 596/600
+  natural qwen2.5-0.5b: 597/600
+  natural qwen2.5-0.5b: 598/600
+  natural qwen2.5-0.5b: 599/600
+  natural qwen2.5-0.5b: 600/600
+Traceback (most recent call last):
+  File "/Users/gaith/miniforge3/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/gaith/miniforge3/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/experiments/signals.py", line 411, in <module>
+    main()
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/experiments/signals.py", line 407, in main
+    {"build": cmd_build, "features": cmd_features, "evaluate": cmd_evaluate}[a.cmd](cfg)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/experiments/signals.py", line 111, in cmd_build
+    e0, ef = extract(t["initial_response"], p.answer_type), extract(t["final_response"], p.answer_type)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/answers.py", line 58, in extract
+    val = norm(seg)
+  File "/Users/gaith/Downloads/SCFP_Framework/repo/SCFP/benchmark/scfp_bench/answers.py", line 37, in normalize_number
+    return str(int(val)) if val == int(val) else f"{val:.6g}"
+OverflowError: cannot convert float infinity to integer
+!!! build failed
+=== resumed after overflow fix 2026-10-26 18:31:51
+=== build  2026-10-26 18:31:51
+natural set: 600 problems x 1 models
+  natural qwen2.5-0.5b: 1/600
+  natural qwen2.5-0.5b: 2/600
+  natural qwen2.5-0.5b: 3/600
+  natural qwen2.5-0.5b: 4/600
+  natural qwen2.5-0.5b: 5/600
+  natural qwen2.5-0.5b: 6/600
+  natural qwen2.5-0.5b: 7/600
+  natural qwen2.5-0.5b: 8/600
+  natural qwen2.5-0.5b: 9/600
+  natural qwen2.5-0.5b: 10/600
+  natural qwen2.5-0.5b: 11/600
+  natural qwen2.5-0.5b: 12/600
+  natural qwen2.5-0.5b: 13/600
+  natural qwen2.5-0.5b: 14/600
+  natural qwen2.5-0.5b: 15/600
+  natural qwen2.5-0.5b: 16/600
+  natural qwen2.5-0.5b: 17/600
+  natural qwen2.5-0.5b: 18/600
+  natural qwen2.5-0.5b: 19/600
+  natural qwen2.5-0.5b: 20/600
+  natural qwen2.5-0.5b: 21/600
+  natural qwen2.5-0.5b: 22/600
+  natural qwen2.5-0.5b: 23/600
+  natural qwen2.5-0.5b: 24/600
+  natural qwen2.5-0.5b: 25/600
+  natural qwen2.5-0.5b: 26/600
+  natural qwen2.5-0.5b: 27/600
+  natural qwen2.5-0.5b: 28/600
+  natural qwen2.5-0.5b: 29/600
+  natural qwen2.5-0.5b: 30/600
+  natural qwen2.5-0.5b: 31/600
+  natural qwen2.5-0.5b: 32/600
+  natural qwen2.5-0.5b: 33/600
+  natural qwen2.5-0.5b: 34/600
+  natural qwen2.5-0.5b: 35/600
+  natural qwen2.5-0.5b: 36/600
+  natural qwen2.5-0.5b: 37/600
+  natural qwen2.5-0.5b: 38/600
+  natural qwen2.5-0.5b: 39/600
+  natural qwen2.5-0.5b: 40/600
+  natural qwen2.5-0.5b: 41/600
+  natural qwen2.5-0.5b: 42/600
+  natural qwen2.5-0.5b: 43/600
+  natural qwen2.5-0.5b: 44/600
+  natural qwen2.5-0.5b: 45/600
+  natural qwen2.5-0.5b: 46/600
+  natural qwen2.5-0.5b: 47/600
+  natural qwen2.5-0.5b: 48/600
+  natural qwen2.5-0.5b: 49/600
+  natural qwen2.5-0.5b: 50/600
+  natural qwen2.5-0.5b: 51/600
+  natural qwen2.5-0.5b: 52/600
+  natural qwen2.5-0.5b: 53/600
+  natural qwen2.5-0.5b: 54/600
+  natural qwen2.5-0.5b: 55/600
+  natural qwen2.5-0.5b: 56/600
+  natural qwen2.5-0.5b: 57/600
+  natural qwen2.5-0.5b: 58/600
+  natural qwen2.5-0.5b: 59/600
+  natural qwen2.5-0.5b: 60/600
+  natural qwen2.5-0.5b: 61/600
+  natural qwen2.5-0.5b: 62/600
+  natural qwen2.5-0.5b: 63/600
+  natural qwen2.5-0.5b: 64/600
+  natural qwen2.5-0.5b: 65/600
+  natural qwen2.5-0.5b: 66/600
+  natural qwen2.5-0.5b: 67/600
+  natural qwen2.5-0.5b: 68/600
+  natural qwen2.5-0.5b: 69/600
+  natural qwen2.5-0.5b: 70/600
+  natural qwen2.5-0.5b: 71/600
+  natural qwen2.5-0.5b: 72/600
+  natural qwen2.5-0.5b: 73/600
+  natural qwen2.5-0.5b: 74/600
+  natural qwen2.5-0.5b: 75/600
+  natural qwen2.5-0.5b: 76/600
+  natural qwen2.5-0.5b: 77/600
+  natural qwen2.5-0.5b: 78/600
+  natural qwen2.5-0.5b: 79/600
+  natural qwen2.5-0.5b: 80/600
+  natural qwen2.5-0.5b: 81/600
+  natural qwen2.5-0.5b: 82/600
+  natural qwen2.5-0.5b: 83/600
+  natural qwen2.5-0.5b: 84/600
+  natural qwen2.5-0.5b: 85/600
+  natural qwen2.5-0.5b: 86/600
+  natural qwen2.5-0.5b: 87/600
+  natural qwen2.5-0.5b: 88/600
+  natural qwen2.5-0.5b: 89/600
+  natural qwen2.5-0.5b: 90/600
+  natural qwen2.5-0.5b: 91/600
+  natural qwen2.5-0.5b: 92/600
+  natural qwen2.5-0.5b: 93/600
+  natural qwen2.5-0.5b: 94/600
+  natural qwen2.5-0.5b: 95/600
+  natural qwen2.5-0.5b: 96/600
+  natural qwen2.5-0.5b: 97/600
+  natural qwen2.5-0.5b: 98/600
+  natural qwen2.5-0.5b: 99/600
+  natural qwen2.5-0.5b: 100/600
+  natural qwen2.5-0.5b: 101/600
+  natural qwen2.5-0.5b: 102/600
+  natural qwen2.5-0.5b: 103/600
+  natural qwen2.5-0.5b: 104/600
+  natural qwen2.5-0.5b: 105/600
+  natural qwen2.5-0.5b: 106/600
+  natural qwen2.5-0.5b: 107/600
+  natural qwen2.5-0.5b: 108/600
+  natural qwen2.5-0.5b: 109/600
+  natural qwen2.5-0.5b: 110/600
+  natural qwen2.5-0.5b: 111/600
+  natural qwen2.5-0.5b: 112/600
+  natural qwen2.5-0.5b: 113/600
+  natural qwen2.5-0.5b: 114/600
+  natural qwen2.5-0.5b: 115/600
+  natural qwen2.5-0.5b: 116/600
+  natural qwen2.5-0.5b: 117/600
+  natural qwen2.5-0.5b: 118/600
+  natural qwen2.5-0.5b: 119/600
+  natural qwen2.5-0.5b: 120/600
+  natural qwen2.5-0.5b: 121/600
+  natural qwen2.5-0.5b: 122/600
+  natural qwen2.5-0.5b: 123/600
+  natural qwen2.5-0.5b: 124/600
+  natural qwen2.5-0.5b: 125/600
+  natural qwen2.5-0.5b: 126/600
+  natural qwen2.5-0.5b: 127/600
+  natural qwen2.5-0.5b: 128/600
+  natural qwen2.5-0.5b: 129/600
+  natural qwen2.5-0.5b: 130/600
+  natural qwen2.5-0.5b: 131/600
+  natural qwen2.5-0.5b: 132/600
+  natural qwen2.5-0.5b: 133/600
+  natural qwen2.5-0.5b: 134/600
+  natural qwen2.5-0.5b: 135/600
+  natural qwen2.5-0.5b: 136/600
+  natural qwen2.5-0.5b: 137/600
+  natural qwen2.5-0.5b: 138/600
+  natural qwen2.5-0.5b: 139/600
+  natural qwen2.5-0.5b: 140/600
+  natural qwen2.5-0.5b: 141/600
+  natural qwen2.5-0.5b: 142/600
+  natural qwen2.5-0.5b: 143/600
+  natural qwen2.5-0.5b: 144/600
+  natural qwen2.5-0.5b: 145/600
+  natural qwen2.5-0.5b: 146/600
+  natural qwen2.5-0.5b: 147/600
+  natural qwen2.5-0.5b: 148/600
+  natural qwen2.5-0.5b: 149/600
+  natural qwen2.5-0.5b: 150/600
+  natural qwen2.5-0.5b: 151/600
+  natural qwen2.5-0.5b: 152/600
+  natural qwen2.5-0.5b: 153/600
+  natural qwen2.5-0.5b: 154/600
+  natural qwen2.5-0.5b: 155/600
+  natural qwen2.5-0.5b: 156/600
+  natural qwen2.5-0.5b: 157/600
+  natural qwen2.5-0.5b: 158/600
+  natural qwen2.5-0.5b: 159/600
+  natural qwen2.5-0.5b: 160/600
+  natural qwen2.5-0.5b: 161/600
+  natural qwen2.5-0.5b: 162/600
+  natural qwen2.5-0.5b: 163/600
+  natural qwen2.5-0.5b: 164/600
+  natural qwen2.5-0.5b: 165/600
+  natural qwen2.5-0.5b: 166/600
+  natural qwen2.5-0.5b: 167/600
+  natural qwen2.5-0.5b: 168/600
+  natural qwen2.5-0.5b: 169/600
+  natural qwen2.5-0.5b: 170/600
+  natural qwen2.5-0.5b: 171/600
+  natural qwen2.5-0.5b: 172/600
+  natural qwen2.5-0.5b: 173/600
+  natural qwen2.5-0.5b: 174/600
+  natural qwen2.5-0.5b: 175/600
+  natural qwen2.5-0.5b: 176/600
+  natural qwen2.5-0.5b: 177/600
+  natural qwen2.5-0.5b: 178/600
+  natural qwen2.5-0.5b: 179/600
+  natural qwen2.5-0.5b: 180/600
+  natural qwen2.5-0.5b: 181/600
+  natural qwen2.5-0.5b: 182/600
+  natural qwen2.5-0.5b: 183/600
+  natural qwen2.5-0.5b: 184/600
+  natural qwen2.5-0.5b: 185/600
+  natural qwen2.5-0.5b: 186/600
+  natural qwen2.5-0.5b: 187/600
+  natural qwen2.5-0.5b: 188/600
+  natural qwen2.5-0.5b: 189/600
+  natural qwen2.5-0.5b: 190/600
+  natural qwen2.5-0.5b: 191/600
+  natural qwen2.5-0.5b: 192/600
+  natural qwen2.5-0.5b: 193/600
+  natural qwen2.5-0.5b: 194/600
+  natural qwen2.5-0.5b: 195/600
+  natural qwen2.5-0.5b: 196/600
+  natural qwen2.5-0.5b: 197/600
+  natural qwen2.5-0.5b: 198/600
+  natural qwen2.5-0.5b: 199/600
+  natural qwen2.5-0.5b: 200/600
+  natural qwen2.5-0.5b: 201/600
+  natural qwen2.5-0.5b: 202/600
+  natural qwen2.5-0.5b: 203/600
+  natural qwen2.5-0.5b: 204/600
+  natural qwen2.5-0.5b: 205/600
+  natural qwen2.5-0.5b: 206/600
+  natural qwen2.5-0.5b: 207/600
+  natural qwen2.5-0.5b: 208/600
+  natural qwen2.5-0.5b: 209/600
+  natural qwen2.5-0.5b: 210/600
+  natural qwen2.5-0.5b: 211/600
+  natural qwen2.5-0.5b: 212/600
+  natural qwen2.5-0.5b: 213/600
+  natural qwen2.5-0.5b: 214/600
+  natural qwen2.5-0.5b: 215/600
+  natural qwen2.5-0.5b: 216/600
+  natural qwen2.5-0.5b: 217/600
+  natural qwen2.5-0.5b: 218/600
+  natural qwen2.5-0.5b: 219/600
+  natural qwen2.5-0.5b: 220/600
+  natural qwen2.5-0.5b: 221/600
+  natural qwen2.5-0.5b: 222/600
+  natural qwen2.5-0.5b: 223/600
+  natural qwen2.5-0.5b: 224/600
+  natural qwen2.5-0.5b: 225/600
+  natural qwen2.5-0.5b: 226/600
+  natural qwen2.5-0.5b: 227/600
+  natural qwen2.5-0.5b: 228/600
+  natural qwen2.5-0.5b: 229/600
+  natural qwen2.5-0.5b: 230/600
+  natural qwen2.5-0.5b: 231/600
+  natural qwen2.5-0.5b: 232/600
+  natural qwen2.5-0.5b: 233/600
+  natural qwen2.5-0.5b: 234/600
+  natural qwen2.5-0.5b: 235/600
+  natural qwen2.5-0.5b: 236/600
+  natural qwen2.5-0.5b: 237/600
+  natural qwen2.5-0.5b: 238/600
+  natural qwen2.5-0.5b: 239/600
+  natural qwen2.5-0.5b: 240/600
+  natural qwen2.5-0.5b: 241/600
+  natural qwen2.5-0.5b: 242/600
+  natural qwen2.5-0.5b: 243/600
+  natural qwen2.5-0.5b: 244/600
+  natural qwen2.5-0.5b: 245/600
+  natural qwen2.5-0.5b: 246/600
+  natural qwen2.5-0.5b: 247/600
+  natural qwen2.5-0.5b: 248/600
+  natural qwen2.5-0.5b: 249/600
+  natural qwen2.5-0.5b: 250/600
+  natural qwen2.5-0.5b: 251/600
+  natural qwen2.5-0.5b: 252/600
+  natural qwen2.5-0.5b: 253/600
+  natural qwen2.5-0.5b: 254/600
+  natural qwen2.5-0.5b: 255/600
+  natural qwen2.5-0.5b: 256/600
+  natural qwen2.5-0.5b: 257/600
+  natural qwen2.5-0.5b: 258/600
+  natural qwen2.5-0.5b: 259/600
+  natural qwen2.5-0.5b: 260/600
+  natural qwen2.5-0.5b: 261/600
+  natural qwen2.5-0.5b: 262/600
+  natural qwen2.5-0.5b: 263/600
+  natural qwen2.5-0.5b: 264/600
+  natural qwen2.5-0.5b: 265/600
+  natural qwen2.5-0.5b: 266/600
+  natural qwen2.5-0.5b: 267/600
+  natural qwen2.5-0.5b: 268/600
+  natural qwen2.5-0.5b: 269/600
+  natural qwen2.5-0.5b: 270/600
+  natural qwen2.5-0.5b: 271/600
+  natural qwen2.5-0.5b: 272/600
+  natural qwen2.5-0.5b: 273/600
+  natural qwen2.5-0.5b: 274/600
+  natural qwen2.5-0.5b: 275/600
+  natural qwen2.5-0.5b: 276/600
+  natural qwen2.5-0.5b: 277/600
+  natural qwen2.5-0.5b: 278/600
+  natural qwen2.5-0.5b: 279/600
+  natural qwen2.5-0.5b: 280/600
+  natural qwen2.5-0.5b: 281/600
+  natural qwen2.5-0.5b: 282/600
+  natural qwen2.5-0.5b: 283/600
+  natural qwen2.5-0.5b: 284/600
+  natural qwen2.5-0.5b: 285/600
+  natural qwen2.5-0.5b: 286/600
+  natural qwen2.5-0.5b: 287/600
+  natural qwen2.5-0.5b: 288/600
+  natural qwen2.5-0.5b: 289/600
+  natural qwen2.5-0.5b: 290/600
+  natural qwen2.5-0.5b: 291/600
+  natural qwen2.5-0.5b: 292/600
+  natural qwen2.5-0.5b: 293/600
+  natural qwen2.5-0.5b: 294/600
+  natural qwen2.5-0.5b: 295/600
+  natural qwen2.5-0.5b: 296/600
+  natural qwen2.5-0.5b: 297/600
+  natural qwen2.5-0.5b: 298/600
+  natural qwen2.5-0.5b: 299/600
+  natural qwen2.5-0.5b: 300/600
+  natural qwen2.5-0.5b: 301/600
+  natural qwen2.5-0.5b: 302/600
+  natural qwen2.5-0.5b: 303/600
+  natural qwen2.5-0.5b: 304/600
+  natural qwen2.5-0.5b: 305/600
+  natural qwen2.5-0.5b: 306/600
+  natural qwen2.5-0.5b: 307/600
+  natural qwen2.5-0.5b: 308/600
+  natural qwen2.5-0.5b: 309/600
+  natural qwen2.5-0.5b: 310/600
+  natural qwen2.5-0.5b: 311/600
+  natural qwen2.5-0.5b: 312/600
+  natural qwen2.5-0.5b: 313/600
+  natural qwen2.5-0.5b: 314/600
+  natural qwen2.5-0.5b: 315/600
+  natural qwen2.5-0.5b: 316/600
+  natural qwen2.5-0.5b: 317/600
+  natural qwen2.5-0.5b: 318/600
+  natural qwen2.5-0.5b: 319/600
+  natural qwen2.5-0.5b: 320/600
+  natural qwen2.5-0.5b: 321/600
+  natural qwen2.5-0.5b: 322/600
+  natural qwen2.5-0.5b: 323/600
+  natural qwen2.5-0.5b: 324/600
+  natural qwen2.5-0.5b: 325/600
+  natural qwen2.5-0.5b: 326/600
+  natural qwen2.5-0.5b: 327/600
+  natural qwen2.5-0.5b: 328/600
+  natural qwen2.5-0.5b: 329/600
+  natural qwen2.5-0.5b: 330/600
+  natural qwen2.5-0.5b: 331/600
+  natural qwen2.5-0.5b: 332/600
+  natural qwen2.5-0.5b: 333/600
+  natural qwen2.5-0.5b: 334/600
+  natural qwen2.5-0.5b: 335/600
+  natural qwen2.5-0.5b: 336/600
+  natural qwen2.5-0.5b: 337/600
+  natural qwen2.5-0.5b: 338/600
+  natural qwen2.5-0.5b: 339/600
+  natural qwen2.5-0.5b: 340/600
+  natural qwen2.5-0.5b: 341/600
+  natural qwen2.5-0.5b: 342/600
+  natural qwen2.5-0.5b: 343/600
+  natural qwen2.5-0.5b: 344/600
+  natural qwen2.5-0.5b: 345/600
+  natural qwen2.5-0.5b: 346/600
+  natural qwen2.5-0.5b: 347/600
+  natural qwen2.5-0.5b: 348/600
+  natural qwen2.5-0.5b: 349/600
+  natural qwen2.5-0.5b: 350/600
+  natural qwen2.5-0.5b: 351/600
+  natural qwen2.5-0.5b: 352/600
+  natural qwen2.5-0.5b: 353/600
+  natural qwen2.5-0.5b: 354/600
+  natural qwen2.5-0.5b: 355/600
+  natural qwen2.5-0.5b: 356/600
+  natural qwen2.5-0.5b: 357/600
+  natural qwen2.5-0.5b: 358/600
+  natural qwen2.5-0.5b: 359/600
+  natural qwen2.5-0.5b: 360/600
+  natural qwen2.5-0.5b: 361/600
+  natural qwen2.5-0.5b: 362/600
+  natural qwen2.5-0.5b: 363/600
+  natural qwen2.5-0.5b: 364/600
+  natural qwen2.5-0.5b: 365/600
+  natural qwen2.5-0.5b: 366/600
+  natural qwen2.5-0.5b: 367/600
+  natural qwen2.5-0.5b: 368/600
+  natural qwen2.5-0.5b: 369/600
+  natural qwen2.5-0.5b: 370/600
+  natural qwen2.5-0.5b: 371/600
+  natural qwen2.5-0.5b: 372/600
+  natural qwen2.5-0.5b: 373/600
+  natural qwen2.5-0.5b: 374/600
+  natural qwen2.5-0.5b: 375/600
+  natural qwen2.5-0.5b: 376/600
+  natural qwen2.5-0.5b: 377/600
+  natural qwen2.5-0.5b: 378/600
+  natural qwen2.5-0.5b: 379/600
+  natural qwen2.5-0.5b: 380/600
+  natural qwen2.5-0.5b: 381/600
+  natural qwen2.5-0.5b: 382/600
+  natural qwen2.5-0.5b: 383/600
+  natural qwen2.5-0.5b: 384/600
+  natural qwen2.5-0.5b: 385/600
+  natural qwen2.5-0.5b: 386/600
+  natural qwen2.5-0.5b: 387/600
+  natural qwen2.5-0.5b: 388/600
+  natural qwen2.5-0.5b: 389/600
+  natural qwen2.5-0.5b: 390/600
+  natural qwen2.5-0.5b: 391/600
+  natural qwen2.5-0.5b: 392/600
+  natural qwen2.5-0.5b: 393/600
+  natural qwen2.5-0.5b: 394/600
+  natural qwen2.5-0.5b: 395/600
+  natural qwen2.5-0.5b: 396/600
+  natural qwen2.5-0.5b: 397/600
+  natural qwen2.5-0.5b: 398/600
+  natural qwen2.5-0.5b: 399/600
+  natural qwen2.5-0.5b: 400/600
+  natural qwen2.5-0.5b: 401/600
+  natural qwen2.5-0.5b: 402/600
+  natural qwen2.5-0.5b: 403/600
+  natural qwen2.5-0.5b: 404/600
+  natural qwen2.5-0.5b: 405/600
+  natural qwen2.5-0.5b: 406/600
+  natural qwen2.5-0.5b: 407/600
+  natural qwen2.5-0.5b: 408/600
+  natural qwen2.5-0.5b: 409/600
+  natural qwen2.5-0.5b: 410/600
+  natural qwen2.5-0.5b: 411/600
+  natural qwen2.5-0.5b: 412/600
+  natural qwen2.5-0.5b: 413/600
+  natural qwen2.5-0.5b: 414/600
+  natural qwen2.5-0.5b: 415/600
+  natural qwen2.5-0.5b: 416/600
+  natural qwen2.5-0.5b: 417/600
+  natural qwen2.5-0.5b: 418/600
+  natural qwen2.5-0.5b: 419/600
+  natural qwen2.5-0.5b: 420/600
+  natural qwen2.5-0.5b: 421/600
+  natural qwen2.5-0.5b: 422/600
+  natural qwen2.5-0.5b: 423/600
+  natural qwen2.5-0.5b: 424/600
+  natural qwen2.5-0.5b: 425/600
+  natural qwen2.5-0.5b: 426/600
+  natural qwen2.5-0.5b: 427/600
+  natural qwen2.5-0.5b: 428/600
+  natural qwen2.5-0.5b: 429/600
+  natural qwen2.5-0.5b: 430/600
+  natural qwen2.5-0.5b: 431/600
+  natural qwen2.5-0.5b: 432/600
+  natural qwen2.5-0.5b: 433/600
+  natural qwen2.5-0.5b: 434/600
+  natural qwen2.5-0.5b: 435/600
+  natural qwen2.5-0.5b: 436/600
+  natural qwen2.5-0.5b: 437/600
+  natural qwen2.5-0.5b: 438/600
+  natural qwen2.5-0.5b: 439/600
+  natural qwen2.5-0.5b: 440/600
+  natural qwen2.5-0.5b: 441/600
+  natural qwen2.5-0.5b: 442/600
+  natural qwen2.5-0.5b: 443/600
+  natural qwen2.5-0.5b: 444/600
+  natural qwen2.5-0.5b: 445/600
+  natural qwen2.5-0.5b: 446/600
+  natural qwen2.5-0.5b: 447/600
+  natural qwen2.5-0.5b: 448/600
+  natural qwen2.5-0.5b: 449/600
+  natural qwen2.5-0.5b: 450/600
+  natural qwen2.5-0.5b: 451/600
+  natural qwen2.5-0.5b: 452/600
+  natural qwen2.5-0.5b: 453/600
+  natural qwen2.5-0.5b: 454/600
+  natural qwen2.5-0.5b: 455/600
+  natural qwen2.5-0.5b: 456/600
+  natural qwen2.5-0.5b: 457/600
+  natural qwen2.5-0.5b: 458/600
+  natural qwen2.5-0.5b: 459/600
+  natural qwen2.5-0.5b: 460/600
+  natural qwen2.5-0.5b: 461/600
+  natural qwen2.5-0.5b: 462/600
+  natural qwen2.5-0.5b: 463/600
+  natural qwen2.5-0.5b: 464/600
+  natural qwen2.5-0.5b: 465/600
+  natural qwen2.5-0.5b: 466/600
+  natural qwen2.5-0.5b: 467/600
+  natural qwen2.5-0.5b: 468/600
+  natural qwen2.5-0.5b: 469/600
+  natural qwen2.5-0.5b: 470/600
+  natural qwen2.5-0.5b: 471/600
+  natural qwen2.5-0.5b: 472/600
+  natural qwen2.5-0.5b: 473/600
+  natural qwen2.5-0.5b: 474/600
+  natural qwen2.5-0.5b: 475/600
+  natural qwen2.5-0.5b: 476/600
+  natural qwen2.5-0.5b: 477/600
+  natural qwen2.5-0.5b: 478/600
+  natural qwen2.5-0.5b: 479/600
+  natural qwen2.5-0.5b: 480/600
+  natural qwen2.5-0.5b: 481/600
+  natural qwen2.5-0.5b: 482/600
+  natural qwen2.5-0.5b: 483/600
+  natural qwen2.5-0.5b: 484/600
+  natural qwen2.5-0.5b: 485/600
+  natural qwen2.5-0.5b: 486/600
+  natural qwen2.5-0.5b: 487/600
+  natural qwen2.5-0.5b: 488/600
+  natural qwen2.5-0.5b: 489/600
+  natural qwen2.5-0.5b: 490/600
+  natural qwen2.5-0.5b: 491/600
+  natural qwen2.5-0.5b: 492/600
+  natural qwen2.5-0.5b: 493/600
+  natural qwen2.5-0.5b: 494/600
+  natural qwen2.5-0.5b: 495/600
+  natural qwen2.5-0.5b: 496/600
+  natural qwen2.5-0.5b: 497/600
+  natural qwen2.5-0.5b: 498/600
+  natural qwen2.5-0.5b: 499/600
+  natural qwen2.5-0.5b: 500/600
+  natural qwen2.5-0.5b: 501/600
+  natural qwen2.5-0.5b: 502/600
+  natural qwen2.5-0.5b: 503/600
+  natural qwen2.5-0.5b: 504/600
+  natural qwen2.5-0.5b: 505/600
+  natural qwen2.5-0.5b: 506/600
+  natural qwen2.5-0.5b: 507/600
+  natural qwen2.5-0.5b: 508/600
+  natural qwen2.5-0.5b: 509/600
+  natural qwen2.5-0.5b: 510/600
+  natural qwen2.5-0.5b: 511/600
+  natural qwen2.5-0.5b: 512/600
+  natural qwen2.5-0.5b: 513/600
+  natural qwen2.5-0.5b: 514/600
+  natural qwen2.5-0.5b: 515/600
+  natural qwen2.5-0.5b: 516/600
+  natural qwen2.5-0.5b: 517/600
+  natural qwen2.5-0.5b: 518/600
+  natural qwen2.5-0.5b: 519/600
+  natural qwen2.5-0.5b: 520/600
+  natural qwen2.5-0.5b: 521/600
+  natural qwen2.5-0.5b: 522/600
+  natural qwen2.5-0.5b: 523/600
+  natural qwen2.5-0.5b: 524/600
+  natural qwen2.5-0.5b: 525/600
+  natural qwen2.5-0.5b: 526/600
+  natural qwen2.5-0.5b: 527/600
+  natural qwen2.5-0.5b: 528/600
+  natural qwen2.5-0.5b: 529/600
+  natural qwen2.5-0.5b: 530/600
+  natural qwen2.5-0.5b: 531/600
+  natural qwen2.5-0.5b: 532/600
+  natural qwen2.5-0.5b: 533/600
+  natural qwen2.5-0.5b: 534/600
+  natural qwen2.5-0.5b: 535/600
+  natural qwen2.5-0.5b: 536/600
+  natural qwen2.5-0.5b: 537/600
+  natural qwen2.5-0.5b: 538/600
+  natural qwen2.5-0.5b: 539/600
+  natural qwen2.5-0.5b: 540/600
+  natural qwen2.5-0.5b: 541/600
+  natural qwen2.5-0.5b: 542/600
+  natural qwen2.5-0.5b: 543/600
+  natural qwen2.5-0.5b: 544/600
+  natural qwen2.5-0.5b: 545/600
+  natural qwen2.5-0.5b: 546/600
+  natural qwen2.5-0.5b: 547/600
+  natural qwen2.5-0.5b: 548/600
+  natural qwen2.5-0.5b: 549/600
+  natural qwen2.5-0.5b: 550/600
+  natural qwen2.5-0.5b: 551/600
+  natural qwen2.5-0.5b: 552/600
+  natural qwen2.5-0.5b: 553/600
+  natural qwen2.5-0.5b: 554/600
+  natural qwen2.5-0.5b: 555/600
+  natural qwen2.5-0.5b: 556/600
+  natural qwen2.5-0.5b: 557/600
+  natural qwen2.5-0.5b: 558/600
+  natural qwen2.5-0.5b: 559/600
+  natural qwen2.5-0.5b: 560/600
+  natural qwen2.5-0.5b: 561/600
+  natural qwen2.5-0.5b: 562/600
+  natural qwen2.5-0.5b: 563/600
+  natural qwen2.5-0.5b: 564/600
+  natural qwen2.5-0.5b: 565/600
+  natural qwen2.5-0.5b: 566/600
+  natural qwen2.5-0.5b: 567/600
+  natural qwen2.5-0.5b: 568/600
+  natural qwen2.5-0.5b: 569/600
+  natural qwen2.5-0.5b: 570/600
+  natural qwen2.5-0.5b: 571/600
+  natural qwen2.5-0.5b: 572/600
+  natural qwen2.5-0.5b: 573/600
+  natural qwen2.5-0.5b: 574/600
+  natural qwen2.5-0.5b: 575/600
+  natural qwen2.5-0.5b: 576/600
+  natural qwen2.5-0.5b: 577/600
+  natural qwen2.5-0.5b: 578/600
+  natural qwen2.5-0.5b: 579/600
+  natural qwen2.5-0.5b: 580/600
+  natural qwen2.5-0.5b: 581/600
+  natural qwen2.5-0.5b: 582/600
+  natural qwen2.5-0.5b: 583/600
+  natural qwen2.5-0.5b: 584/600
+  natural qwen2.5-0.5b: 585/600
+  natural qwen2.5-0.5b: 586/600
+  natural qwen2.5-0.5b: 587/600
+  natural qwen2.5-0.5b: 588/600
+  natural qwen2.5-0.5b: 589/600
+  natural qwen2.5-0.5b: 590/600
+  natural qwen2.5-0.5b: 591/600
+  natural qwen2.5-0.5b: 592/600
+  natural qwen2.5-0.5b: 593/600
+  natural qwen2.5-0.5b: 594/600
+  natural qwen2.5-0.5b: 595/600
+  natural qwen2.5-0.5b: 596/600
+  natural qwen2.5-0.5b: 597/600
+  natural qwen2.5-0.5b: 598/600
+  natural qwen2.5-0.5b: 599/600
+  natural qwen2.5-0.5b: 600/600
+natural set: 471 traces kept, 129 without a final-answer line
+  loading Qwen/Qwen2.5-0.5B-Instruct on mps (torch.float16)
+W1026 18:31:57.161000 84355 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:35,  8.05it/s]Loading weights:  13%|█▎        | 37/290 [00:00<00:01, 194.25it/s]Loading weights:  23%|██▎       | 68/290 [00:00<00:00, 243.94it/s]Loading weights:  33%|███▎      | 96/290 [00:00<00:00, 246.64it/s]Loading weights:  47%|████▋     | 135/290 [00:00<00:00, 282.19it/s]Loading weights:  62%|██████▏   | 181/290 [00:00<00:00, 334.09it/s]Loading weights:  82%|████████▏ | 239/290 [00:00<00:00, 398.67it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 345.14it/s]
+  samples natural qwen2.5-0.5b: 1/2355
+  samples natural qwen2.5-0.5b: 11/2355
+  samples natural qwen2.5-0.5b: 21/2355
+  samples natural qwen2.5-0.5b: 31/2355
+  samples natural qwen2.5-0.5b: 41/2355
+  samples natural qwen2.5-0.5b: 51/2355
+  samples natural qwen2.5-0.5b: 61/2355
+  samples natural qwen2.5-0.5b: 71/2355
+  samples natural qwen2.5-0.5b: 81/2355
+  samples natural qwen2.5-0.5b: 91/2355
+  samples natural qwen2.5-0.5b: 101/2355
+  samples natural qwen2.5-0.5b: 111/2355
+  samples natural qwen2.5-0.5b: 121/2355
+  samples natural qwen2.5-0.5b: 131/2355
+  samples natural qwen2.5-0.5b: 141/2355
+  samples natural qwen2.5-0.5b: 151/2355
+  samples natural qwen2.5-0.5b: 161/2355
+  samples natural qwen2.5-0.5b: 171/2355
+  samples natural qwen2.5-0.5b: 181/2355
+  samples natural qwen2.5-0.5b: 191/2355
+  samples natural qwen2.5-0.5b: 201/2355
+  samples natural qwen2.5-0.5b: 211/2355
+  samples natural qwen2.5-0.5b: 221/2355
+  samples natural qwen2.5-0.5b: 231/2355
+  samples natural qwen2.5-0.5b: 241/2355
+  samples natural qwen2.5-0.5b: 251/2355
+  samples natural qwen2.5-0.5b: 261/2355
+  samples natural qwen2.5-0.5b: 271/2355
+  samples natural qwen2.5-0.5b: 281/2355
+  samples natural qwen2.5-0.5b: 291/2355
+  samples natural qwen2.5-0.5b: 301/2355
+  samples natural qwen2.5-0.5b: 311/2355
+  samples natural qwen2.5-0.5b: 321/2355
+  samples natural qwen2.5-0.5b: 331/2355
+  samples natural qwen2.5-0.5b: 341/2355
+  samples natural qwen2.5-0.5b: 351/2355
+  samples natural qwen2.5-0.5b: 361/2355
+  samples natural qwen2.5-0.5b: 371/2355
+  samples natural qwen2.5-0.5b: 381/2355
+  samples natural qwen2.5-0.5b: 391/2355
+  samples natural qwen2.5-0.5b: 401/2355
+  samples natural qwen2.5-0.5b: 411/2355
+  samples natural qwen2.5-0.5b: 421/2355
+  samples natural qwen2.5-0.5b: 431/2355
+  samples natural qwen2.5-0.5b: 441/2355
+  samples natural qwen2.5-0.5b: 451/2355
+  samples natural qwen2.5-0.5b: 461/2355
+  samples natural qwen2.5-0.5b: 471/2355
+  samples natural qwen2.5-0.5b: 481/2355
+  samples natural qwen2.5-0.5b: 491/2355
+  samples natural qwen2.5-0.5b: 501/2355
+  samples natural qwen2.5-0.5b: 511/2355
+  samples natural qwen2.5-0.5b: 521/2355
+  samples natural qwen2.5-0.5b: 531/2355
+  samples natural qwen2.5-0.5b: 541/2355
+  samples natural qwen2.5-0.5b: 551/2355
+  samples natural qwen2.5-0.5b: 561/2355
+  samples natural qwen2.5-0.5b: 571/2355
+  samples natural qwen2.5-0.5b: 581/2355
+  samples natural qwen2.5-0.5b: 591/2355
+  samples natural qwen2.5-0.5b: 601/2355
+  samples natural qwen2.5-0.5b: 611/2355
+  samples natural qwen2.5-0.5b: 621/2355
+  samples natural qwen2.5-0.5b: 631/2355
+  samples natural qwen2.5-0.5b: 641/2355
+  samples natural qwen2.5-0.5b: 651/2355
+  samples natural qwen2.5-0.5b: 661/2355
+  samples natural qwen2.5-0.5b: 671/2355
+  samples natural qwen2.5-0.5b: 681/2355
+  samples natural qwen2.5-0.5b: 691/2355
+  samples natural qwen2.5-0.5b: 701/2355
+  samples natural qwen2.5-0.5b: 711/2355
+  samples natural qwen2.5-0.5b: 721/2355
+  samples natural qwen2.5-0.5b: 731/2355
+  samples natural qwen2.5-0.5b: 741/2355
+  samples natural qwen2.5-0.5b: 751/2355
+  samples natural qwen2.5-0.5b: 761/2355
+  samples natural qwen2.5-0.5b: 771/2355
+  samples natural qwen2.5-0.5b: 781/2355
+  samples natural qwen2.5-0.5b: 791/2355
+  samples natural qwen2.5-0.5b: 801/2355
+  samples natural qwen2.5-0.5b: 811/2355
+  samples natural qwen2.5-0.5b: 821/2355
+  samples natural qwen2.5-0.5b: 831/2355
+  samples natural qwen2.5-0.5b: 841/2355
+  samples natural qwen2.5-0.5b: 851/2355
+  samples natural qwen2.5-0.5b: 861/2355
+  samples natural qwen2.5-0.5b: 871/2355
+  samples natural qwen2.5-0.5b: 881/2355
+  samples natural qwen2.5-0.5b: 891/2355
+  samples natural qwen2.5-0.5b: 901/2355
+  samples natural qwen2.5-0.5b: 911/2355
+  samples natural qwen2.5-0.5b: 921/2355
+  samples natural qwen2.5-0.5b: 931/2355
+  samples natural qwen2.5-0.5b: 941/2355
+  samples natural qwen2.5-0.5b: 951/2355
+  samples natural qwen2.5-0.5b: 961/2355
+  samples natural qwen2.5-0.5b: 971/2355
+  samples natural qwen2.5-0.5b: 981/2355
+  samples natural qwen2.5-0.5b: 991/2355
+  samples natural qwen2.5-0.5b: 1001/2355
+  samples natural qwen2.5-0.5b: 1011/2355
+  samples natural qwen2.5-0.5b: 1021/2355
+  samples natural qwen2.5-0.5b: 1031/2355
+  samples natural qwen2.5-0.5b: 1041/2355
+  samples natural qwen2.5-0.5b: 1051/2355
+  samples natural qwen2.5-0.5b: 1061/2355
+  samples natural qwen2.5-0.5b: 1071/2355
+  samples natural qwen2.5-0.5b: 1081/2355
+  samples natural qwen2.5-0.5b: 1091/2355
+  samples natural qwen2.5-0.5b: 1101/2355
+  samples natural qwen2.5-0.5b: 1111/2355
+  samples natural qwen2.5-0.5b: 1121/2355
+  samples natural qwen2.5-0.5b: 1131/2355
+  samples natural qwen2.5-0.5b: 1141/2355
+  samples natural qwen2.5-0.5b: 1151/2355
+  samples natural qwen2.5-0.5b: 1161/2355
+  samples natural qwen2.5-0.5b: 1171/2355
+  samples natural qwen2.5-0.5b: 1181/2355
+  samples natural qwen2.5-0.5b: 1191/2355
+  samples natural qwen2.5-0.5b: 1201/2355
+  samples natural qwen2.5-0.5b: 1211/2355
+  samples natural qwen2.5-0.5b: 1221/2355
+  samples natural qwen2.5-0.5b: 1231/2355
+  samples natural qwen2.5-0.5b: 1241/2355
+  samples natural qwen2.5-0.5b: 1251/2355
+  samples natural qwen2.5-0.5b: 1261/2355
+  samples natural qwen2.5-0.5b: 1271/2355
+  samples natural qwen2.5-0.5b: 1281/2355
+  samples natural qwen2.5-0.5b: 1291/2355
+  samples natural qwen2.5-0.5b: 1301/2355
+  samples natural qwen2.5-0.5b: 1311/2355
+  samples natural qwen2.5-0.5b: 1321/2355
+  samples natural qwen2.5-0.5b: 1331/2355
+  samples natural qwen2.5-0.5b: 1341/2355
+  samples natural qwen2.5-0.5b: 1351/2355
+  samples natural qwen2.5-0.5b: 1361/2355
+  samples natural qwen2.5-0.5b: 1371/2355
+  samples natural qwen2.5-0.5b: 1381/2355
+  samples natural qwen2.5-0.5b: 1391/2355
+  samples natural qwen2.5-0.5b: 1401/2355
+  samples natural qwen2.5-0.5b: 1411/2355
+  samples natural qwen2.5-0.5b: 1421/2355
+  samples natural qwen2.5-0.5b: 1431/2355
+  samples natural qwen2.5-0.5b: 1441/2355
+  samples natural qwen2.5-0.5b: 1451/2355
+  samples natural qwen2.5-0.5b: 1461/2355
+  samples natural qwen2.5-0.5b: 1471/2355
+  samples natural qwen2.5-0.5b: 1481/2355
+  samples natural qwen2.5-0.5b: 1491/2355
+  samples natural qwen2.5-0.5b: 1501/2355
+  samples natural qwen2.5-0.5b: 1511/2355
+  samples natural qwen2.5-0.5b: 1521/2355
+  samples natural qwen2.5-0.5b: 1531/2355
+  samples natural qwen2.5-0.5b: 1541/2355
+  samples natural qwen2.5-0.5b: 1551/2355
+  samples natural qwen2.5-0.5b: 1561/2355
+  samples natural qwen2.5-0.5b: 1571/2355
+  samples natural qwen2.5-0.5b: 1581/2355
+  samples natural qwen2.5-0.5b: 1591/2355
+  samples natural qwen2.5-0.5b: 1601/2355
+  samples natural qwen2.5-0.5b: 1611/2355
+  samples natural qwen2.5-0.5b: 1621/2355
+  samples natural qwen2.5-0.5b: 1631/2355
+  samples natural qwen2.5-0.5b: 1641/2355
+  samples natural qwen2.5-0.5b: 1651/2355
+  samples natural qwen2.5-0.5b: 1661/2355
+  samples natural qwen2.5-0.5b: 1671/2355
+  samples natural qwen2.5-0.5b: 1681/2355
+  samples natural qwen2.5-0.5b: 1691/2355
+  samples natural qwen2.5-0.5b: 1701/2355
+  samples natural qwen2.5-0.5b: 1711/2355
+  samples natural qwen2.5-0.5b: 1721/2355
+  samples natural qwen2.5-0.5b: 1731/2355
+  samples natural qwen2.5-0.5b: 1741/2355
+  samples natural qwen2.5-0.5b: 1751/2355
+  samples natural qwen2.5-0.5b: 1761/2355
+  samples natural qwen2.5-0.5b: 1771/2355
+  samples natural qwen2.5-0.5b: 1781/2355
+  samples natural qwen2.5-0.5b: 1791/2355
+  samples natural qwen2.5-0.5b: 1801/2355
+  samples natural qwen2.5-0.5b: 1811/2355
+  samples natural qwen2.5-0.5b: 1821/2355
+  samples natural qwen2.5-0.5b: 1831/2355
+  samples natural qwen2.5-0.5b: 1841/2355
+  samples natural qwen2.5-0.5b: 1851/2355
+  samples natural qwen2.5-0.5b: 1861/2355
+  samples natural qwen2.5-0.5b: 1871/2355
+  samples natural qwen2.5-0.5b: 1881/2355
+  samples natural qwen2.5-0.5b: 1891/2355
+  samples natural qwen2.5-0.5b: 1901/2355
+  samples natural qwen2.5-0.5b: 1911/2355
+  samples natural qwen2.5-0.5b: 1921/2355
+  samples natural qwen2.5-0.5b: 1931/2355
+  samples natural qwen2.5-0.5b: 1941/2355
+  samples natural qwen2.5-0.5b: 1951/2355
+  samples natural qwen2.5-0.5b: 1961/2355
+  samples natural qwen2.5-0.5b: 1971/2355
+  samples natural qwen2.5-0.5b: 1981/2355
+  samples natural qwen2.5-0.5b: 1991/2355
+  samples natural qwen2.5-0.5b: 2001/2355
+  samples natural qwen2.5-0.5b: 2011/2355
+  samples natural qwen2.5-0.5b: 2021/2355
+  samples natural qwen2.5-0.5b: 2031/2355
+  samples natural qwen2.5-0.5b: 2041/2355
+  samples natural qwen2.5-0.5b: 2051/2355
+  samples natural qwen2.5-0.5b: 2061/2355
+  samples natural qwen2.5-0.5b: 2071/2355
+  samples natural qwen2.5-0.5b: 2081/2355
+  samples natural qwen2.5-0.5b: 2091/2355
+  samples natural qwen2.5-0.5b: 2101/2355
+  samples natural qwen2.5-0.5b: 2111/2355
+  samples natural qwen2.5-0.5b: 2121/2355
+  samples natural qwen2.5-0.5b: 2131/2355
+  samples natural qwen2.5-0.5b: 2141/2355
+  samples natural qwen2.5-0.5b: 2151/2355
+  samples natural qwen2.5-0.5b: 2161/2355
+  samples natural qwen2.5-0.5b: 2171/2355
+  samples natural qwen2.5-0.5b: 2181/2355
+  samples natural qwen2.5-0.5b: 2191/2355
+  samples natural qwen2.5-0.5b: 2201/2355
+  samples natural qwen2.5-0.5b: 2211/2355
+  samples natural qwen2.5-0.5b: 2221/2355
+  samples natural qwen2.5-0.5b: 2231/2355
+  samples natural qwen2.5-0.5b: 2241/2355
+  samples natural qwen2.5-0.5b: 2251/2355
+  samples natural qwen2.5-0.5b: 2261/2355
+  samples natural qwen2.5-0.5b: 2271/2355
+  samples natural qwen2.5-0.5b: 2281/2355
+  samples natural qwen2.5-0.5b: 2291/2355
+  samples natural qwen2.5-0.5b: 2301/2355
+  samples natural qwen2.5-0.5b: 2311/2355
+  samples natural qwen2.5-0.5b: 2321/2355
+  samples natural qwen2.5-0.5b: 2331/2355
+  samples natural qwen2.5-0.5b: 2341/2355
+  samples natural qwen2.5-0.5b: 2351/2355
+  loading Qwen/Qwen2.5-0.5B-Instruct on mps (torch.float16)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  11%|█         | 31/290 [00:00<00:00, 304.84it/s]Loading weights:  21%|██▏       | 62/290 [00:00<00:00, 261.85it/s]Loading weights:  37%|███▋      | 107/290 [00:00<00:00, 330.95it/s]Loading weights:  61%|██████    | 176/290 [00:00<00:00, 448.79it/s]Loading weights:  84%|████████▍ | 244/290 [00:00<00:00, 518.85it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 473.31it/s]
+  samples v1 qwen2.5-0.5b: 1/1220
+  samples v1 qwen2.5-0.5b: 11/1220
+  samples v1 qwen2.5-0.5b: 21/1220
+  samples v1 qwen2.5-0.5b: 31/1220
+  samples v1 qwen2.5-0.5b: 41/1220
+  samples v1 qwen2.5-0.5b: 51/1220
+  samples v1 qwen2.5-0.5b: 61/1220
+  samples v1 qwen2.5-0.5b: 71/1220
+  samples v1 qwen2.5-0.5b: 81/1220
+  samples v1 qwen2.5-0.5b: 91/1220
+  samples v1 qwen2.5-0.5b: 101/1220
+  samples v1 qwen2.5-0.5b: 111/1220
+  samples v1 qwen2.5-0.5b: 121/1220
+  samples v1 qwen2.5-0.5b: 131/1220
+  samples v1 qwen2.5-0.5b: 141/1220
+  samples v1 qwen2.5-0.5b: 151/1220
+  samples v1 qwen2.5-0.5b: 161/1220
+  samples v1 qwen2.5-0.5b: 171/1220
+  samples v1 qwen2.5-0.5b: 181/1220
+  samples v1 qwen2.5-0.5b: 191/1220
+  samples v1 qwen2.5-0.5b: 201/1220
+  samples v1 qwen2.5-0.5b: 211/1220
+  samples v1 qwen2.5-0.5b: 221/1220
+  samples v1 qwen2.5-0.5b: 231/1220
+  samples v1 qwen2.5-0.5b: 241/1220
+  samples v1 qwen2.5-0.5b: 251/1220
+  samples v1 qwen2.5-0.5b: 261/1220
+  samples v1 qwen2.5-0.5b: 271/1220
+  samples v1 qwen2.5-0.5b: 281/1220
+  samples v1 qwen2.5-0.5b: 291/1220
+  samples v1 qwen2.5-0.5b: 301/1220
+  samples v1 qwen2.5-0.5b: 311/1220
+  samples v1 qwen2.5-0.5b: 321/1220
+  samples v1 qwen2.5-0.5b: 331/1220
+  samples v1 qwen2.5-0.5b: 341/1220
+  samples v1 qwen2.5-0.5b: 351/1220
+  samples v1 qwen2.5-0.5b: 361/1220
+  samples v1 qwen2.5-0.5b: 371/1220
+  samples v1 qwen2.5-0.5b: 381/1220
+  samples v1 qwen2.5-0.5b: 391/1220
+  samples v1 qwen2.5-0.5b: 401/1220
+  samples v1 qwen2.5-0.5b: 411/1220
+  samples v1 qwen2.5-0.5b: 421/1220
+  samples v1 qwen2.5-0.5b: 431/1220
+  samples v1 qwen2.5-0.5b: 441/1220
+  samples v1 qwen2.5-0.5b: 451/1220
+  samples v1 qwen2.5-0.5b: 461/1220
+  samples v1 qwen2.5-0.5b: 471/1220
+  samples v1 qwen2.5-0.5b: 481/1220
+  samples v1 qwen2.5-0.5b: 491/1220
+  samples v1 qwen2.5-0.5b: 501/1220
+  samples v1 qwen2.5-0.5b: 511/1220
+  samples v1 qwen2.5-0.5b: 521/1220
+  samples v1 qwen2.5-0.5b: 531/1220
+  samples v1 qwen2.5-0.5b: 541/1220
+  samples v1 qwen2.5-0.5b: 551/1220
+  samples v1 qwen2.5-0.5b: 561/1220
+  samples v1 qwen2.5-0.5b: 571/1220
+  samples v1 qwen2.5-0.5b: 581/1220
+  samples v1 qwen2.5-0.5b: 591/1220
+  samples v1 qwen2.5-0.5b: 601/1220
+  samples v1 qwen2.5-0.5b: 611/1220
+  samples v1 qwen2.5-0.5b: 621/1220
+  samples v1 qwen2.5-0.5b: 631/1220
+  samples v1 qwen2.5-0.5b: 641/1220
+  samples v1 qwen2.5-0.5b: 651/1220
+  samples v1 qwen2.5-0.5b: 661/1220
+  samples v1 qwen2.5-0.5b: 671/1220
+  samples v1 qwen2.5-0.5b: 681/1220
+  samples v1 qwen2.5-0.5b: 691/1220
+  samples v1 qwen2.5-0.5b: 701/1220
+  samples v1 qwen2.5-0.5b: 711/1220
+  samples v1 qwen2.5-0.5b: 721/1220
+  samples v1 qwen2.5-0.5b: 731/1220
+  samples v1 qwen2.5-0.5b: 741/1220
+  samples v1 qwen2.5-0.5b: 751/1220
+  samples v1 qwen2.5-0.5b: 761/1220
+  samples v1 qwen2.5-0.5b: 771/1220
+  samples v1 qwen2.5-0.5b: 781/1220
+  samples v1 qwen2.5-0.5b: 791/1220
+  samples v1 qwen2.5-0.5b: 801/1220
+  samples v1 qwen2.5-0.5b: 811/1220
+  samples v1 qwen2.5-0.5b: 821/1220
+  samples v1 qwen2.5-0.5b: 831/1220
+  samples v1 qwen2.5-0.5b: 841/1220
+  samples v1 qwen2.5-0.5b: 851/1220
+  samples v1 qwen2.5-0.5b: 861/1220
+  samples v1 qwen2.5-0.5b: 871/1220
+  samples v1 qwen2.5-0.5b: 881/1220
+  samples v1 qwen2.5-0.5b: 891/1220
+  samples v1 qwen2.5-0.5b: 901/1220
+  samples v1 qwen2.5-0.5b: 911/1220
+  samples v1 qwen2.5-0.5b: 921/1220
+  samples v1 qwen2.5-0.5b: 931/1220
+  samples v1 qwen2.5-0.5b: 941/1220
+  samples v1 qwen2.5-0.5b: 951/1220
+  samples v1 qwen2.5-0.5b: 961/1220
+  samples v1 qwen2.5-0.5b: 971/1220
+  samples v1 qwen2.5-0.5b: 981/1220
+  samples v1 qwen2.5-0.5b: 991/1220
+  samples v1 qwen2.5-0.5b: 1001/1220
+  samples v1 qwen2.5-0.5b: 1011/1220
+  samples v1 qwen2.5-0.5b: 1021/1220
+  samples v1 qwen2.5-0.5b: 1031/1220
+  samples v1 qwen2.5-0.5b: 1041/1220
+  samples v1 qwen2.5-0.5b: 1051/1220
+  samples v1 qwen2.5-0.5b: 1061/1220
+  samples v1 qwen2.5-0.5b: 1071/1220
+  samples v1 qwen2.5-0.5b: 1081/1220
+  samples v1 qwen2.5-0.5b: 1091/1220
+  samples v1 qwen2.5-0.5b: 1101/1220
+  samples v1 qwen2.5-0.5b: 1111/1220
+  samples v1 qwen2.5-0.5b: 1121/1220
+  samples v1 qwen2.5-0.5b: 1131/1220
+  samples v1 qwen2.5-0.5b: 1141/1220
+  samples v1 qwen2.5-0.5b: 1151/1220
+  samples v1 qwen2.5-0.5b: 1161/1220
+  samples v1 qwen2.5-0.5b: 1171/1220
+  samples v1 qwen2.5-0.5b: 1181/1220
+  samples v1 qwen2.5-0.5b: 1191/1220
+  samples v1 qwen2.5-0.5b: 1201/1220
+  samples v1 qwen2.5-0.5b: 1211/1220
+=== features  2026-10-26 21:10:45
+  loading Qwen/Qwen2.5-0.5B-Instruct on mps (torch.float16)
+W1026 21:10:52.219000 99458 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:29] NOTE: Redirects are currently not supported in Windows or MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   2%|▏         | 7/290 [00:00<00:04, 69.31it/s]Loading weights:  15%|█▌        | 44/290 [00:00<00:01, 241.79it/s]Loading weights:  24%|██▍       | 69/290 [00:00<00:01, 203.55it/s]Loading weights:  45%|████▌     | 131/290 [00:00<00:00, 332.47it/s]Loading weights:  72%|███████▏  | 209/290 [00:00<00:00, 472.48it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 437.87it/s]
+  features natural qwen2.5-0.5b: 50/471
+  features natural qwen2.5-0.5b: 100/471
+  features natural qwen2.5-0.5b: 150/471
+  features natural qwen2.5-0.5b: 200/471
+  features natural qwen2.5-0.5b: 250/471
+  features natural qwen2.5-0.5b: 300/471
+  features natural qwen2.5-0.5b: 350/471
+  features natural qwen2.5-0.5b: 400/471
+  features natural qwen2.5-0.5b: 450/471
+features natural: 471 traces, 1884 hidden vectors, 0 skipped (text not found in chat template)
+  loading Qwen/Qwen2.5-0.5B-Instruct on mps (torch.float16)
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:00<00:36,  7.83it/s]Loading weights:  12%|█▏        | 34/290 [00:00<00:01, 164.14it/s]Loading weights:  22%|██▏       | 64/290 [00:00<00:01, 217.50it/s]Loading weights:  32%|███▏      | 93/290 [00:00<00:00, 233.15it/s]Loading weights:  44%|████▍     | 129/290 [00:00<00:00, 274.07it/s]Loading weights:  58%|█████▊    | 167/290 [00:00<00:00, 297.53it/s]Loading weights:  70%|██████▉   | 202/290 [00:00<00:00, 300.51it/s]Loading weights:  82%|████████▏ | 237/290 [00:00<00:00, 303.40it/s]Loading weights:  92%|█████████▏| 268/290 [00:01<00:00, 100.33it/s]Loading weights: 100%|██████████| 290/290 [00:01<00:00, 168.36it/s]
+  features v1 qwen2.5-0.5b: 50/244
+  features v1 qwen2.5-0.5b: 100/244
+  features v1 qwen2.5-0.5b: 150/244
+  features v1 qwen2.5-0.5b: 200/244
+features v1: 244 traces, 976 hidden vectors, 0 skipped (text not found in chat template)
+=== evaluate  2026-10-26 21:27:26
+# Generator-side signals: out-of-fold results (5-fold, grouped by problem)
+
+## natural set, target: final answer wrong (paper label)
+
+| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |
+|---|---|---|---|---|---|---|---|
+| qwen2.5-0.5b | majority | 471 | 0.500 [0.500, 0.500] | 55.6% | 0.357 | -- | -- |
+| qwen2.5-0.5b | text_tfidf | 471 | 0.640 [0.592, 0.689] | 62.8% | 0.621 | 0.019 | -- |
+| qwen2.5-0.5b | signals_scalar | 471 | 0.618 [0.565, 0.667] | 59.9% | 0.597 | 0.208 | 0.243 |
+| qwen2.5-0.5b | hidden_L12_F | 471 | 0.571 [0.517, 0.623] | 55.0% | 0.550 | 0.900 | 0.001 |
+| qwen2.5-0.5b | hidden_L12_R0 | 471 | 0.579 [0.528, 0.632] | 59.7% | 0.594 | 0.232 | 0.191 |
+| qwen2.5-0.5b | hidden_L24_F | 471 | 0.583 [0.528, 0.635] | 58.0% | 0.575 | 0.495 | 0.052 |
+| qwen2.5-0.5b | hidden_L24_R0 | 471 | 0.619 [0.568, 0.670] | 61.8% | 0.615 | 0.059 | 0.672 |
+| qwen2.5-0.5b | combined | 471 | 0.583 [0.528, 0.633] | 56.3% | 0.561 | 0.896 | 0.007 |
+| all | majority | 471 | 0.500 [0.500, 0.500] | 55.6% | 0.357 | -- | -- |
+| all | text_tfidf | 471 | 0.640 [0.592, 0.689] | 62.8% | 0.621 | 0.019 | -- |
+| all | signals_scalar | 471 | 0.618 [0.565, 0.667] | 59.9% | 0.597 | 0.208 | 0.243 |
+| all | hidden_L12_F | 471 | 0.571 [0.517, 0.623] | 55.0% | 0.550 | 0.900 | 0.001 |
+| all | hidden_L12_R0 | 471 | 0.579 [0.528, 0.632] | 59.7% | 0.594 | 0.232 | 0.191 |
+| all | hidden_L24_F | 471 | 0.583 [0.528, 0.635] | 58.0% | 0.575 | 0.495 | 0.052 |
+| all | hidden_L24_R0 | 471 | 0.619 [0.568, 0.670] | 61.8% | 0.615 | 0.059 | 0.672 |
+| all | combined | 471 | 0.583 [0.528, 0.633] | 56.3% | 0.561 | 0.896 | 0.007 |
+
+## natural set, target: initial answer wrong (diagnostic)
+
+| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |
+|---|---|---|---|---|---|---|---|
+| qwen2.5-0.5b | majority | 471 | 0.500 [0.500, 0.500] | 70.5% | 0.413 | -- | -- |
+| qwen2.5-0.5b | text_tfidf | 471 | 0.654 [0.600, 0.706] | 66.9% | 0.575 | 0.128 | -- |
+| qwen2.5-0.5b | signals_scalar | 471 | 0.702 [0.646, 0.747] | 64.3% | 0.622 | 0.059 | 0.396 |
+| qwen2.5-0.5b | hidden_L12_F | 471 | 0.560 [0.506, 0.615] | 56.7% | 0.537 | 0.000 | 0.000 |
+| qwen2.5-0.5b | hidden_L12_R0 | 471 | 0.663 [0.615, 0.711] | 60.1% | 0.581 | 0.001 | 0.011 |
+| qwen2.5-0.5b | hidden_L24_F | 471 | 0.564 [0.509, 0.615] | 57.1% | 0.543 | 0.000 | 0.000 |
+| qwen2.5-0.5b | hidden_L24_R0 | 471 | 0.634 [0.580, 0.687] | 59.0% | 0.566 | 0.000 | 0.003 |
+| qwen2.5-0.5b | combined | 471 | 0.588 [0.528, 0.637] | 57.5% | 0.534 | 0.000 | 0.000 |
+| all | majority | 471 | 0.500 [0.500, 0.500] | 70.5% | 0.413 | -- | -- |
+| all | text_tfidf | 471 | 0.654 [0.600, 0.706] | 66.9% | 0.575 | 0.128 | -- |
+| all | signals_scalar | 471 | 0.702 [0.646, 0.747] | 64.3% | 0.622 | 0.059 | 0.396 |
+| all | hidden_L12_F | 471 | 0.560 [0.506, 0.615] | 56.7% | 0.537 | 0.000 | 0.000 |
+| all | hidden_L12_R0 | 471 | 0.663 [0.615, 0.711] | 60.1% | 0.581 | 0.001 | 0.011 |
+| all | hidden_L24_F | 471 | 0.564 [0.509, 0.615] | 57.1% | 0.543 | 0.000 | 0.000 |
+| all | hidden_L24_R0 | 471 | 0.634 [0.580, 0.687] | 59.0% | 0.566 | 0.000 | 0.003 |
+| all | combined | 471 | 0.588 [0.528, 0.637] | 57.5% | 0.534 | 0.000 | 0.000 |
+
+## v1 set, target: final answer wrong (paper label)
+
+| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |
+|---|---|---|---|---|---|---|---|
+| qwen2.5-0.5b | majority | 244 | 0.500 [0.500, 0.500] | 52.0% | 0.342 | -- | -- |
+| qwen2.5-0.5b | text_tfidf | 244 | 0.511 [0.438, 0.584] | 54.5% | 0.545 | 0.648 | -- |
+| qwen2.5-0.5b | signals_scalar | 244 | 0.499 [0.429, 0.571] | 50.4% | 0.503 | 0.781 | 0.348 |
+| qwen2.5-0.5b | hidden_L12_F | 244 | 0.444 [0.375, 0.519] | 44.3% | 0.442 | 0.096 | 0.025 |
+| qwen2.5-0.5b | hidden_L12_R0 | 244 | 0.516 [0.440, 0.590] | 49.6% | 0.495 | 0.648 | 0.213 |
+| qwen2.5-0.5b | hidden_L24_F | 244 | 0.460 [0.387, 0.531] | 43.9% | 0.436 | 0.072 | 0.007 |
+| qwen2.5-0.5b | hidden_L24_R0 | 244 | 0.502 [0.423, 0.573] | 49.2% | 0.492 | 0.597 | 0.193 |
+| qwen2.5-0.5b | combined | 244 | 0.441 [0.373, 0.518] | 44.3% | 0.442 | 0.099 | 0.025 |
+| all | majority | 244 | 0.500 [0.500, 0.500] | 52.0% | 0.342 | -- | -- |
+| all | text_tfidf | 244 | 0.511 [0.438, 0.584] | 54.5% | 0.545 | 0.648 | -- |
+| all | signals_scalar | 244 | 0.499 [0.429, 0.571] | 50.4% | 0.503 | 0.781 | 0.348 |
+| all | hidden_L12_F | 244 | 0.444 [0.375, 0.519] | 44.3% | 0.442 | 0.096 | 0.025 |
+| all | hidden_L12_R0 | 244 | 0.516 [0.440, 0.590] | 49.6% | 0.495 | 0.648 | 0.213 |
+| all | hidden_L24_F | 244 | 0.460 [0.387, 0.531] | 43.9% | 0.436 | 0.072 | 0.007 |
+| all | hidden_L24_R0 | 244 | 0.502 [0.423, 0.573] | 49.2% | 0.492 | 0.597 | 0.193 |
+| all | combined | 244 | 0.441 [0.373, 0.518] | 44.3% | 0.442 | 0.099 | 0.025 |
+
+## v1 set, target: initial answer wrong (diagnostic)
+
+| Generator | Predictor | n | AUC [95% CI] | Accuracy | Macro F1 | p vs majority | p vs TF-IDF |
+|---|---|---|---|---|---|---|---|
+| qwen2.5-0.5b | majority | 244 | 0.500 [0.500, 0.500] | 60.7% | 0.378 | -- | -- |
+| qwen2.5-0.5b | text_tfidf | 244 | 0.577 [0.504, 0.649] | 59.0% | 0.578 | 0.771 | -- |
+| qwen2.5-0.5b | signals_scalar | 244 | 0.659 [0.587, 0.725] | 59.4% | 0.592 | 0.861 | 1.000 |
+| qwen2.5-0.5b | hidden_L12_F | 244 | 0.597 [0.529, 0.663] | 57.0% | 0.563 | 0.460 | 0.635 |
+| qwen2.5-0.5b | hidden_L12_R0 | 244 | 0.675 [0.598, 0.735] | 60.7% | 0.603 | 1.000 | 0.683 |
+| qwen2.5-0.5b | hidden_L24_F | 244 | 0.594 [0.518, 0.660] | 57.4% | 0.567 | 0.519 | 0.728 |
+| qwen2.5-0.5b | hidden_L24_R0 | 244 | 0.683 [0.613, 0.748] | 64.8% | 0.643 | 0.411 | 0.065 |
+| qwen2.5-0.5b | combined | 244 | 0.580 [0.509, 0.648] | 56.6% | 0.556 | 0.395 | 0.561 |
+| all | majority | 244 | 0.500 [0.500, 0.500] | 60.7% | 0.378 | -- | -- |
+| all | text_tfidf | 244 | 0.577 [0.504, 0.649] | 59.0% | 0.578 | 0.771 | -- |
+| all | signals_scalar | 244 | 0.659 [0.587, 0.725] | 59.4% | 0.592 | 0.861 | 1.000 |
+| all | hidden_L12_F | 244 | 0.597 [0.529, 0.663] | 57.0% | 0.563 | 0.460 | 0.635 |
+| all | hidden_L12_R0 | 244 | 0.675 [0.598, 0.735] | 60.7% | 0.603 | 1.000 | 0.683 |
+| all | hidden_L24_F | 244 | 0.594 [0.518, 0.660] | 57.4% | 0.567 | 0.519 | 0.728 |
+| all | hidden_L24_R0 | 244 | 0.683 [0.613, 0.748] | 64.8% | 0.643 | 0.411 | 0.065 |
+| all | combined | 244 | 0.580 [0.509, 0.648] | 56.6% | 0.556 | 0.395 | 0.561 |
+
+=== all done  2026-10-26 21:28:54

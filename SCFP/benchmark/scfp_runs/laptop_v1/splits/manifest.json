@@ -1,0 +1,58 @@
+{
+  "seed": 42,
+  "ratios": [
+    0.7,
+    0.15,
+    0.15
+  ],
+  "files": {
+    "train": {
+      "traces": 502,
+      "problems": 210,
+      "failure_rate": 0.4701,
+      "by_source": {
+        "logiqa": 128,
+        "strategyqa": 170,
+        "gsm8k": 204
+      },
+      "by_model": {
+        "qwen2.5-1.5b": 124,
+        "qwen2.5-0.5b": 173,
+        "smollm2-1.7b": 205
+      },
+      "sha256": "959510ecbc9d005abb041de94b6138ecda9dd4c84e3c72832e20eba8696e6ffa"
+    },
+    "val": {
+      "traces": 106,
+      "problems": 45,
+      "failure_rate": 0.4811,
+      "by_source": {
+        "gsm8k": 44,
+        "strategyqa": 34,
+        "logiqa": 28
+      },
+      "by_model": {
+        "smollm2-1.7b": 45,
+        "qwen2.5-0.5b": 35,
+        "qwen2.5-1.5b": 26
+      },
+      "sha256": "07f6ace4904895fd2fad96983ac934ef4141ebe2ded1a7955a719de7e1416f78"
+    },
+    "test": {
+      "traces": 108,
+      "problems": 45,
+      "failure_rate": 0.463,
+      "by_source": {
+        "gsm8k": 46,
+        "strategyqa": 36,
+        "logiqa": 26
+      },
+      "by_model": {
+        "qwen2.5-0.5b": 36,
+        "smollm2-1.7b": 45,
+        "qwen2.5-1.5b": 27
+      },
+      "sha256": "68f6f885d42d8ef82dc3e91b2bb1c5ad9b09be7486273e033f1f5ba8273cc850"
+    }
+  }
+}

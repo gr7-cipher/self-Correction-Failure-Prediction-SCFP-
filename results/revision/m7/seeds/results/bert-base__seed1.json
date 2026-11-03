@@ -1,0 +1,98 @@
+{
+  "args": {
+    "config": "configs/laptop_local.yaml",
+    "arch": "plain",
+    "model": "google-bert/bert-base-uncased",
+    "name": "bert-base__seed1",
+    "epochs_binary": 10,
+    "epochs_multi": 15,
+    "epochs_joint": 20,
+    "alpha": 0.5,
+    "lr": 2e-05,
+    "weight_decay": 0.01,
+    "batch_size": 2,
+    "max_len": 512,
+    "patience": 5,
+    "seed": 1,
+    "train_models": null,
+    "test_models": null,
+    "limit": null,
+    "device": "cuda",
+    "inputs": "P,R0,F",
+    "no_segments": false,
+    "no_special_attention": false,
+    "binary_only": false,
+    "grad_accum": 8,
+    "save": false,
+    "freeze_word_embeddings": true,
+    "no_amp": true,
+    "no_grad_checkpoint": false
+  },
+  "device": "cuda",
+  "gpu": "Tesla T4",
+  "wall_clock_s": 437.0,
+  "best_val_macro_f1": 0.6509123275478416,
+  "log": [
+    {
+      "stage": "binary",
+      "epoch": 1,
+      "val_binary_macro_f1": 0.6501650165016502
+    },
+    {
+      "stage": "binary",
+      "epoch": 2,
+      "val_binary_macro_f1": 0.6484087852980727
+    },
+    {
+      "stage": "binary",
+      "epoch": 3,
+      "val_binary_macro_f1": 0.6509123275478416
+    },
+    {
+      "stage": "binary",
+      "epoch": 4,
+      "val_binary_macro_f1": 0.579516768842409
+    },
+    {
+      "stage": "binary",
+      "epoch": 5,
+      "val_binary_macro_f1": 0.5148967964882787
+    },
+    {
+      "stage": "binary",
+      "epoch": 6,
+      "val_binary_macro_f1": 0.6036324786324787
+    },
+    {
+      "stage": "binary",
+      "epoch": 7,
+      "val_binary_macro_f1": 0.5188251001335114
+    },
+    {
+      "stage": "binary",
+      "epoch": 8,
+      "val_binary_macro_f1": 0.519927536231884
+    }
+  ],
+  "test": {
+    "n": 108,
+    "accuracy": 0.5462962962962963,
+    "macro_f1": 0.5415403274711947,
+    "weighted_f1": 0.5449992138894504,
+    "auc": 0.5344827586206896,
+    "ci95": {
+      "accuracy": [
+        0.4534722222222223,
+        0.6388888888888888
+      ],
+      "macro_f1": [
+        0.4413793103448276,
+        0.6297660784534111
+      ],
+      "auc": [
+        0.4269158202056216,
+        0.6427192142972734
+      ]
+    }
+  }
+}
