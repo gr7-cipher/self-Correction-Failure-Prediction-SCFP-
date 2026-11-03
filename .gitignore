@@ -20,3 +20,15 @@ results/revision/gpuA/hidden_*.npz
 .DS_Store
 paper/diff.tex
 paper/main_diff.tex
+
+# manuscript and reviewer correspondence stay private; the repository holds code, data and results
+paper/*.tex
+paper/*.bib
+paper/*.png
+paper/*.pdf
+paper/round2/
+response/
+RESPONSE_TO_REVIEWERS.*
+REVISION_LOG.md
+REVISION_MAP.md
+CLAIMS_AUDIT.md

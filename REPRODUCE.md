@@ -1,12 +1,12 @@
-# Reproducing the paper
+# Reproducing the results
 
-This file covers the current manuscript (`paper/main.tex`, branch `revision-round2`).
+The manuscript is not in this repository. This file covers everything else needed to regenerate its tables and numbers.
 
 ## What is where
 
 | Path | Contents |
 |---|---|
-| `paper/` | Manuscript, bibliography, generated tables and figures, PDF and diff |
+| `paper/paper_tables/` | Generated tables, figures and numbers |
 | `SCFP/benchmark/` | Benchmark builder, experiment code, configs |
 | `SCFP/benchmark/scfp_runs/` | Logged model calls, traces, splits, features and predictions of every run |
 | `scripts/revision/` | One script per experiment in the paper |
@@ -14,7 +14,6 @@ This file covers the current manuscript (`paper/main.tex`, branch `revision-roun
 | `results/revision/` | Output of every analysis, including raw round-2 GPU outputs and Kaggle logs (`kaggle_logs/`) |
 | `data/audit/` | Extraction audit: sample, author sheet, and AI checks kept separately |
 | `verification/` | Independent re-check of the numbers |
-| `response/` | Response letter, agent report, title options |
 
 ## Files too large for git
 
@@ -30,7 +29,7 @@ No table needs them to be rebuilt from the saved results.
 
 ## Environment
 
-Python 3.10 for the analyses. `requirements.txt` lists direct dependencies and `requirements-lock.txt` the exact versions used on the Apple M1. GPU jobs install `scripts/kaggle/gpu_package/requirements_gpu.txt`. LaTeX builds use `tectonic`.
+Python 3.10 for the analyses. `requirements.txt` lists direct dependencies and `requirements-lock.txt` the exact versions used on the Apple M1. GPU jobs install `scripts/kaggle/gpu_package/requirements_gpu.txt`.
 
 ```bash
 python3.10 -m venv .venv
@@ -40,7 +39,7 @@ python3.10 -m venv .venv
 .venv/bin/pip install -r requirements-lock.txt
 ```
 
-## Rebuild the paper and re-check the numbers
+## Rebuild the tables
 
 No GPU is needed.
 
@@ -48,17 +47,7 @@ No GPU is needed.
 make tables
 ```
 
-```bash
-make pdf
-```
-
-```bash
-make diff2
-```
-
-```bash
-bash scripts/revision/verify.sh
-```
+`make pdf`, `make diff2` and `scripts/revision/verify.sh` also read the manuscript, so they work only with a private copy of it in `paper/`.
 
 ## Rerun the analyses
 
@@ -84,7 +73,7 @@ The other experiments have one script each (`a1_delta.py`, `a3_precision.py`, `t
 
 ## Rerun the GPU jobs
 
-The jobs ran on one Kaggle NVIDIA T4. Attach `scfp_revision_package.zip` as the dataset and push a job folder with the Kaggle CLI. Round-2 run times are in `response/agent_report.md`. Greedy outputs differ across precision and hardware, so labels are properties of the logged traces and regenerated traces will not match exactly.
+The jobs ran on one Kaggle NVIDIA T4. Attach `scfp_revision_package.zip` as the dataset and push a job folder with the Kaggle CLI. Greedy outputs differ across precision and hardware, so labels are properties of the logged traces and regenerated traces will not match exactly.
 
 ## Not in this repository
 

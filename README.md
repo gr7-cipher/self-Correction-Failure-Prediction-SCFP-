@@ -1,12 +1,12 @@
 # Self-Correction Failure Prediction (SCFP)
 
-Code, data and results for the paper *Predicting Self-Correction Failure on Numeric Problems Reduces to Verifying the First Answer: Evidence from Generator Signals on Unfiltered Problems*. The paper is a manuscript under revision.
+Code, data and results for the paper *Predicting Self-Correction Failure on Numeric Problems Reduces to Verifying the First Answer: Evidence from Generator Signals on Unfiltered Problems*. The paper is a manuscript under revision and is not included here.
 
 In intrinsic self-correction, a language model critiques and revises its own answer. We ask whether the outcome can be predicted before the revision is generated, for small (at most 7B parameters) open-weight generators.
 
 ## Main results
 
-The numbers below come from `paper/main.pdf`, where each one has its table and interval.
+The numbers below are generated from the files in `results/revision/`, and the paper gives each one's table and interval.
 
 | Question | Result |
 |---|---|
@@ -23,7 +23,7 @@ Answer extraction was audited on a stratified sample of 100 traces and showed no
 
 | Path | Contents |
 |---|---|
-| `paper/` | Manuscript, bibliography, generated tables and figures, PDF and diff |
+| `paper/paper_tables/` | Generated tables, figures and numbers |
 | `SCFP/benchmark/` | Benchmark builder, experiment code, configs and the logged runs (`scfp_runs/`) |
 | `SCFP/src/` | The segment-aware DeBERTa predictor and routing code |
 | `scripts/revision/` | One script per experiment in the paper |
@@ -31,11 +31,10 @@ Answer extraction was audited on a stratified sample of 100 traces and showed no
 | `results/revision/` | Output of every analysis, with raw GPU outputs and job logs |
 | `data/audit/` | Extraction audit sample, author sheet and separate AI checks |
 | `verification/` | Independent re-check of the paper's numbers |
-| `response/` | Response letter and report for the current revision |
 
 ## Quick start
 
-Rebuilding the paper's tables and checking its numbers needs no GPU. You need Python 3.10, and [tectonic](https://tectonic-typesetting.github.io/) to build the PDF.
+Rebuilding the tables needs no GPU, only Python 3.10.
 
 ```bash
 git clone -b revision-round2 https://github.com/gr7-cipher/self-Correction-Failure-Prediction-SCFP-.git
@@ -55,14 +54,6 @@ python3.10 -m venv .venv
 
 ```bash
 make tables
-```
-
-```bash
-make pdf
-```
-
-```bash
-bash scripts/revision/verify.sh
 ```
 
 [REPRODUCE.md](REPRODUCE.md) explains how to rerun each analysis and the GPU jobs. Regenerated traces will not match the logged ones exactly, because greedy outputs differ across precision and hardware, so the labels belong to the logged traces.
