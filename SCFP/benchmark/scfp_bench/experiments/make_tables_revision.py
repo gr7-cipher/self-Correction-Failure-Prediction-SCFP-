@@ -695,6 +695,23 @@ E1POL = [("No correction (R0 only)", "Rzero", "No correction"), ("Always Intrins
 WORDS = {0: "none", 1: "one", 2: "two", 3: "three", 4: "all four"}
 
 
+def r2_e4(res_dir, out, M):
+    """Round 2, E4: the author audit of answer extraction, from e4_audit_score.py."""
+    p = os.path.join(res_dir, "e4", "extraction_audit.json")
+    if not os.path.exists(p):
+        return
+    R = json.load(open(p))
+    L = []
+    for k, m, lab in (("err_r0", "Rzero", "$R_0$ correct"), ("err_rf", "Rf", "$R_f$ correct"), ("err_label", "Fail", "Failure label")):
+        v = R[k]
+        lo, hi = v["rate_wilson95"]
+        M[f"au{m}Errors"], M[f"au{m}Hi"] = str(v["errors"]), f"{100 * hi:.1f}"
+        L.append(f"{lab} & {v['errors']} & {100 * v['rate']:.1f} [{100 * lo:.1f}, {100 * hi:.1f}] & {100 * v['weighted_rate']:.1f} \\\\")
+    M["auN"] = str(R["n"])
+    write(out, "tab_audit.tex", "\\begin{tabular}{@{}lccc@{}}\n\\toprule\nLabel & Errors (of " + str(R["n"]) + ") & Rate, \\% [95\\% CI] & Weighted rate, \\% \\\\\n\\midrule\n"
+          + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
+
+
 def r2_e1(res_dir, out, M):
     """Round 2, E1: routing on the hold-out with the natural-set predictors."""
     p = os.path.join(res_dir, "e1", "e1_routing.json")
@@ -968,6 +985,7 @@ def main():
     ap.add_argument("--out", default="../../../paper_tables")
     a = ap.parse_args()
     M = {}
+    for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7, r2_e4, r2_e2, r2_a2):
     for section in (m7, m7_seeds, m4, m5, m6, m9, m3, m8, m8_gpu, m1, r2_a1, r2_a3, r2_t7, r2_e1, r2_e2, r2_a2):
         section(a.results, a.out, M)
     write(a.out, "macros_rev.tex", "".join(f"\\providecommand{{\\{k}}}{{{v}}}\n" for k, v in sorted(M.items())))

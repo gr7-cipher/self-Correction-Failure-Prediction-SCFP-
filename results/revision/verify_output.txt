@@ -834,8 +834,8 @@
                  
 [     PASS     ] M1: SCFP test-split size and failure rate                                                             
                  
-[     PASS     ] every revision macro used in the manuscript is generated                                              
-                 missing []
+[     FAIL     ] every revision macro used in the manuscript is generated                                              
+                 missing ['auN', 'auRfErrors', 'auRzeroErrors', 'auRzeroHi']
 
 === G  round 2
 [     PASS     ] E3: Qwen2.5-3B SC3 difference reported with an interval that includes zero                            
@@ -889,4 +889,4 @@
 [     PASS     ] E2 qwen2.5-3b logiqa: SC3 AUC for R0 wrong (sklearn, raw calls)                                       
                  0.6549 vs 0.6549
 
-Summary: {'PASS': 440}
+Summary: {'PASS': 439, 'FAIL': 1}

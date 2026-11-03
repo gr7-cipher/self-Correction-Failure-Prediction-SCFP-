@@ -877,7 +877,7 @@ def check_revision(rev_tables, routing_dir, manuscript):
     record(s, "M1: SCFP test-split size and failure rate", N["psTestN"] == str(len(te1)) and
            N["psTestFailPct"] == f"{100 * np.mean([r['label'] for r in te1]):.1f}", "")
     tex = open(manuscript).read()
-    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|ps|src|pw|nt|cal|ao|at|aTwo|eo|et)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
+    used = set(re.findall(r"\\((?:rt|w|fw|sw|sc|sd|hp|dl|cb|ex|qs|pa|pr|ps|src|pw|nt|cal|ao|at|aTwo|au|eo|et)(?:[A-Z])[A-Za-z]*)", tex)) - {"wd"}
     gen = set(N) | set(json.load(open(os.path.join(rev_tables, "numbers_v7.json"))))
     record(s, "every revision macro used in the manuscript is generated", used <= gen, f"missing {sorted(used - gen)}")
 
