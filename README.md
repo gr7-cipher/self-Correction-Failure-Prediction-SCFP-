@@ -37,7 +37,7 @@ Answer extraction was audited on a stratified sample of 100 traces and showed no
 Rebuilding the tables needs no GPU, only Python 3.10.
 
 ```bash
-git clone -b revision-round2 https://github.com/gr7-cipher/self-Correction-Failure-Prediction-SCFP-.git
+git clone https://github.com/gr7-cipher/self-Correction-Failure-Prediction-SCFP-.git
 ```
 
 ```bash
