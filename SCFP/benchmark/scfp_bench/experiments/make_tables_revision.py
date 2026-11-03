@@ -726,7 +726,7 @@ def r2_e1(res_dir, out, M):
             if v.get("share"):
                 M[f"eo{m}{mk}ShareInt"], M[f"eo{m}{mk}ShareExt"], M[f"eo{m}{mk}ShareHum"] = (pct(v["share"][x]) for x in ("int", "ext", "hum"))
             M[f"eo{m}{mk}Score"] = f"{v['overall_score']:.3f}"
-        L.append(f"\\makecell[l]{{{lab}}} & " + " & ".join(cells) + " \\\\")
+        L.append("\\makecell[l]{" + lab.replace("Router: ", "Router:\\\\") + "} & " + " & ".join(cells) + " \\\\")
         if k == "Agreement tool" or k == "Confidence-based":
             L.append("\\midrule")
     write(out, "tab_e1_routing.tex", "\\begin{tabular}{@{}l" + "c" * len(gens) + "@{}}\n\\toprule\nPolicy & "
