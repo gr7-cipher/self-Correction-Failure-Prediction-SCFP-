@@ -715,7 +715,7 @@ def r2_e1(res_dir, out, M):
                     d = f"\\textbf{{{d}}}"
             else:
                 d = "--"
-            cells.append(stack(acc, f"{v['relative_cost']:.2f}$\\times$, {d}"))
+            cells.append(f"\\makecell{{{acc}\\\\{v['relative_cost']:.2f}$\\times$, {v['latency_s']:.1f} s\\\\{d}}}")
             M[f"eo{m}{mk}Acc"], M[f"eo{m}{mk}Cost"] = pct(v["accuracy"]), f"{v['relative_cost']:.2f}"
             M[f"eo{m}{mk}Lat"] = f"{v['latency_s']:.1f}"
             if v["accuracy_ci95"]:
@@ -739,7 +739,7 @@ def r2_e1(res_dir, out, M):
             v, sn = R[g]["policies"][k], R[g]["sensitivity"]
             cells += [f"{v['overall_score']:.3f}", str(sn["wins"][k])]
             M[f"eo{m}{mk}Wins"] = str(sn["wins"][k])
-        L.append(f"{lab} & " + " & ".join(cells) + " \\\\")
+        L.append(f"{lab.replace('Router: ', '')} & " + " & ".join(cells) + " \\\\")
     n_set = R[gens[0][0]]["sensitivity"]["n_settings"]
     M["eoSensN"] = str(n_set)
     write(out, "tab_e1_sensitivity.tex", "\\begin{tabular}{@{}l" + "cc" * len(gens) + "@{}}\n\\toprule\n & "
@@ -766,6 +766,19 @@ def r2_e1(res_dir, out, M):
         M[f"eo{m}Hthree"] = r["h3"]
         M[f"eo{m}NTrain"] = f"{r['n_natural_train']:,}"
         M[f"eo{m}ProgAnswered"] = str(r["agreement"]["program_answered"])
+    fixed = [k for k, mk, _ in E1POL if not k.startswith("Router") and k != "Confidence-based"]
+    M["eoNatBestMax"] = str(max(R[g]["sensitivity"]["natural_router_best"] for g, _, _ in gens))
+    M["eoFixedWinsMin"] = str(min(sum(R[g]["sensitivity"]["wins"][k] for k in fixed) for g, _, _ in gens))
+    L = []
+    for name, lab in (("Signals + PoT", "Signals + PoT"), ("Signals + SC3", "Signals + SC3"), ("SCFP v1.0 DeBERTa", "SCFP v1.0 DeBERTa"),
+                      ("Critique confidence", "Critique confidence")):
+        L.append(lab + " & " + " & ".join(f"{f3(R[g]['risk_coverage'][name]['aurc'])} [{f3(R[g]['risk_coverage'][name]['aurc_ci95'][0])}, "
+                                          f"{f3(R[g]['risk_coverage'][name]['aurc_ci95'][1])}]" for g, _, _ in gens) + " \\\\")
+    L.append("\\midrule")
+    for name in ("Random (expected)", "Oracle"):
+        L.append(name + " & " + " & ".join(f3(R[g]["risk_coverage"][name]["aurc"]) for g, _, _ in gens) + " \\\\")
+    write(out, "tab_e1_aurc.tex", "\\begin{tabular}{@{}l" + "c" * len(gens) + "@{}}\n\\toprule\nScore & "
+          + " & ".join(n for _, _, n in gens) + " \\\\\n\\midrule\n" + "\n".join(L) + "\n\\bottomrule\n\\end{tabular}\n")
     if "qwen2.5-1.5b" in R and R["qwen2.5-1.5b"]["reproduction"]:
         rp = R["qwen2.5-1.5b"]["reproduction"]
         M["eoReproAcc"], M["eoReproN"] = pct(rp["r0_accuracy_new"]), str(rp["n"])
@@ -791,7 +804,7 @@ def r2_e2(res_dir, out, M):
         row("\\makecell[l]{SC3, initial wrong\\\\{[95\\% CI]}}", lambda v: stack(f3(v["single"]["sc3_agree_frac"]["r0_wrong"]), ci(v["single"]["sc3_agree_frac"]["r0_wrong_ci95"])))
         row("\\makecell[l]{SC3, final wrong\\\\{[95\\% CI]}}", lambda v: stack(f3(v["single"]["sc3_agree_frac"]["rf_wrong"]), ci(v["single"]["sc3_agree_frac"]["rf_wrong_ci95"])))
         row("Signals, final wrong", lambda v: f3(v["models"]["rf_wrong"]["signals"]))
-        row("Signals + SC3, final wrong", lambda v: f3(v["models"]["rf_wrong"]["signals_sc3"]))
+        row("\\makecell[l]{Signals + SC3,\\\\final wrong}", lambda v: f3(v["models"]["rf_wrong"]["signals_sc3"]))
         def dc(v):
             m_ = v["models"]["rf_wrong"]
             a_, b_ = f"{m_['diff']:+.3f}", ci(m_["diff_ci95"])
