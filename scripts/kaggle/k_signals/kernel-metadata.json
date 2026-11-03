@@ -1,0 +1,13 @@
+{
+  "id": "gaith7/scfp-signals",
+  "title": "scfp-signals",
+  "code_file": "scfp_signals.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": ["gaith7/scfp-gpu-package"],
+  "competition_sources": [],
+  "kernel_sources": []
+}

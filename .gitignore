@@ -17,3 +17,6 @@ results/revision/**/*.png
 
 # revision: residual-stream arrays from job A are too large for git; sha256 in results/revision/gpuA/SHA256SUMS
 results/revision/gpuA/hidden_*.npz
+.DS_Store
+paper/diff.tex
+paper/main_diff.tex

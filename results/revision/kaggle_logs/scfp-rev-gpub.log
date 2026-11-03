@@ -1,0 +1,93 @@
+[{"stream_name":"stdout","time":1.329028371,"data":"Sun Nov  1 04:12:12 2026       \n"}
+,{"stream_name":"stdout","time":1.329086201,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.329091269,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":1.329094143,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.329096904,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":1.329099599,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":1.329102191,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":1.329104784,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":1.375143682,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":1.375173672,"data":"| N/A   46C    P8             10W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":1.375178283,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":1.375181881,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.375185501,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":1.375188757,"data":"| N/A   45C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":1.375195755,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":1.375198189,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":1.3760264,"data":"\n"}
+,{"stream_name":"stdout","time":1.376035916,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":1.376043343,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":1.376045989,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":1.376048295,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":1.376050587,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":1.37759395,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":1.377605428,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":11.998472836,"data":"6824 traces\n"}
+,{"stream_name":"stdout","time":37.323803772,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":144.28658897,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stdout","time":144.288567549,"data":"  File \"/kaggle/working/pkg/scripts/revision/gpu_external_judges.py\", line 125, in \u003cmodule\u003e\n"}
+,{"stream_name":"stdout","time":144.288593539,"data":"    main()\n"}
+,{"stream_name":"stdout","time":144.288598025,"data":"    ~~~~^^\n"}
+,{"stream_name":"stdout","time":144.288602175,"data":"  File \"/kaggle/working/pkg/scripts/revision/gpu_external_judges.py\", line 118, in main\n"}
+,{"stream_name":"stdout","time":144.288606964,"data":"    run_rm(rows, a.out)\n"}
+,{"stream_name":"stdout","time":144.288611016,"data":"    ~~~~~~^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288615108,"data":"  File \"/kaggle/working/pkg/scripts/revision/gpu_external_judges.py\", line 72, in run_rm\n"}
+,{"stream_name":"stdout","time":144.288619332,"data":"    s = float(m(ids).logits[0][0])\n"}
+,{"stream_name":"stdout","time":144.288623634,"data":"              ~^^^^^\n"}
+,{"stream_name":"stdout","time":144.288627569,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":144.288632169,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288636394,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288640448,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":144.288645073,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288649244,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/utils/generic.py\", line 939, in wrapper\n"}
+,{"stream_name":"stdout","time":144.288653618,"data":"    output = func(self, *args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288657704,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/modeling_layers.py\", line 144, in forward\n"}
+,{"stream_name":"stdout","time":144.288662478,"data":"    transformer_outputs: BaseModelOutputWithPast = getattr(self, self.base_model_prefix)(\n"}
+,{"stream_name":"stdout","time":144.288666736,"data":"                                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^\n"}
+,{"stream_name":"stdout","time":144.288671026,"data":"        input_ids,\n"}
+,{"stream_name":"stdout","time":144.288675018,"data":"        ^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.28867906,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":144.288683312,"data":"        **kwargs,\n"}
+,{"stream_name":"stdout","time":144.288687342,"data":"        ^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288691284,"data":"    )\n"}
+,{"stream_name":"stdout","time":144.288695204,"data":"    ^\n"}
+,{"stream_name":"stdout","time":144.288699122,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":144.288703554,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288707627,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288711755,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":144.288716138,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288720174,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/utils/generic.py\", line 1068, in wrapper\n"}
+,{"stream_name":"stdout","time":144.288724568,"data":"    output = func(self, *args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288736916,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/utils/output_capturing.py\", line 262, in wrapper\n"}
+,{"stream_name":"stdout","time":144.288741524,"data":"    outputs = func(self, *args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288745594,"data":"  File \"/usr/local/lib/python3.13/dist-packages/transformers/models/llama/modeling_llama.py\", line 381, in forward\n"}
+,{"stream_name":"stdout","time":144.288750864,"data":"    inputs_embeds: torch.Tensor = self.embed_tokens(input_ids)\n"}
+,{"stream_name":"stdout","time":144.288755161,"data":"                                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.28875929,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n"}
+,{"stream_name":"stdout","time":144.288763785,"data":"    return self._call_impl(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288767997,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288772091,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n"}
+,{"stream_name":"stdout","time":144.288776285,"data":"    return forward_call(*args, **kwargs)\n"}
+,{"stream_name":"stdout","time":144.288780356,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/sparse.py\", line 189, in forward\n"}
+,{"stream_name":"stdout","time":144.288784616,"data":"    return F.embedding(\n"}
+,{"stream_name":"stdout","time":144.288788649,"data":"           ~~~~~~~~~~~^\n"}
+,{"stream_name":"stdout","time":144.288792468,"data":"        input,\n"}
+,{"stream_name":"stdout","time":144.288796376,"data":"        ^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288800405,"data":"    ...\u003c5 lines\u003e...\n"}
+,{"stream_name":"stdout","time":144.288804502,"data":"        self.sparse,\n"}
+,{"stream_name":"stdout","time":144.2888101,"data":"        ^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288823964,"data":"    )\n"}
+,{"stream_name":"stdout","time":144.288828072,"data":"    ^\n"}
+,{"stream_name":"stdout","time":144.288831994,"data":"  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/functional.py\", line 2567, in embedding\n"}
+,{"stream_name":"stdout","time":144.288836555,"data":"    return torch.embedding(weight, input, padding_idx, scale_grad_by_freq, sparse)\n"}
+,{"stream_name":"stdout","time":144.288840774,"data":"           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stdout","time":144.288844958,"data":"TypeError: embedding(): argument 'indices' (position 2) must be Tensor, not BatchEncoding\n"}
+,{"stream_name":"stdout","time":148.274829551,"data":"exit: 0\n"}
+,{"stream_name":"stdout","time":148.275443603,"data":"FILES: ['reward_model.jsonl']\n"}
+,{"stream_name":"stderr","time":150.302938739,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":150.302967235,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":150.572158305,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":150.572198562,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":151.343140789,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":152.310463093,"data":"[NbConvertApp] Writing 280973 bytes to __results__.html\n"}
+]

@@ -1,0 +1,324 @@
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+qwen2.5-0.5b neutral 0.668 (unchanged among neutral 0.723) macro 0.738 -> no cue 0.659 | helped/harmed n=570 (190 harmed) AUC 0.703 [0.659, 0.746]
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+qwen2.5-1.5b neutral 0.810 (unchanged among neutral 0.942) macro 0.717 -> no cue 0.643 | helped/harmed n=235 (139 harmed) AUC 0.681 [0.61, 0.75]
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+smollm2-1.7b neutral 0.791 (unchanged among neutral 0.850) macro 0.759 -> no cue 0.684 | helped/harmed n=407 (152 harmed) AUC 0.667 [0.598, 0.733]
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [11 12 13 14]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/gaith/miniforge3/lib/python3.10/site-packages/sklearn/impute/_base.py:653: UserWarning: Skipping features without any observed values: [10 11 12 13]. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+qwen2.5-3b neutral 0.891 (unchanged among neutral 0.986) macro 0.931 -> no cue 0.711 | helped/harmed n=209 (123 harmed) AUC 0.496 [0.414, 0.577]

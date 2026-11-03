@@ -1,0 +1,3 @@
+{"id": "gaith7/scfp-r2-e2a", "title": "scfp-r2-e2a", "code_file": "job.py", "language": "python", "kernel_type": "script",
+ "is_private": true, "enable_gpu": true, "enable_internet": true,
+ "dataset_sources": ["gaith7/scfp-revision-package"], "competition_sources": [], "kernel_sources": []}

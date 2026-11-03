@@ -1,5 +1,7 @@
 # Self-Correction Failure Prediction (SCFP) Framework
 
+> **To reproduce the paper, see [REPRODUCE.md](REPRODUCE.md).** The sections below describe an earlier version of the framework and may not match the current manuscript.
+
 This repository implements the complete SCFP framework for predicting LLM self-correction failures as described in "Predicting LLM Self-Correction Failures: A Supervised Learning Framework for Dynamic Routing".
 
 ## Overview
