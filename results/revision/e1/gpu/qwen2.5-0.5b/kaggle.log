@@ -1,0 +1,51 @@
+[{"stream_name":"stdout","time":6.644640143,"data":"package scripts: ['e1_gpu.py', 'e2_gpu.py', 'gpu_external_judges.py', 'gpu_generator_signals.py', 'm6_sc_generate.py', 'm8_gpu.py']\n"}
+,{"stream_name":"stdout","time":7.603788416,"data":"Mon Nov  2 17:51:15 2026       \n"}
+,{"stream_name":"stdout","time":7.603816075,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":7.6038214669999995,"data":"| NVIDIA-SMI 580.178.04             Driver Version: 580.178.04     CUDA Version: 13.0     |\n"}
+,{"stream_name":"stdout","time":7.603825296,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":7.603829263,"data":"| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n"}
+,{"stream_name":"stdout","time":7.6038327,"data":"| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n"}
+,{"stream_name":"stdout","time":7.6038370749999995,"data":"|                                         |                        |               MIG M. |\n"}
+,{"stream_name":"stdout","time":7.603840905,"data":"|=========================================+========================+======================|\n"}
+,{"stream_name":"stdout","time":7.651364169,"data":"|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":7.651381366,"data":"| N/A   62C    P8             11W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":7.651386061,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":7.651393405,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":7.651398372,"data":"|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n"}
+,{"stream_name":"stdout","time":7.651401359,"data":"| N/A   58C    P8             11W /   70W |       0MiB /  15360MiB |      0%      Default |\n"}
+,{"stream_name":"stdout","time":7.651403838,"data":"|                                         |                        |                  N/A |\n"}
+,{"stream_name":"stdout","time":7.651406339,"data":"+-----------------------------------------+------------------------+----------------------+\n"}
+,{"stream_name":"stdout","time":7.652146934,"data":"\n"}
+,{"stream_name":"stdout","time":7.652153936,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":7.652157657,"data":"| Processes:                                                                              |\n"}
+,{"stream_name":"stdout","time":7.652161293,"data":"|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n"}
+,{"stream_name":"stdout","time":7.652164726,"data":"|        ID   ID                                                               Usage      |\n"}
+,{"stream_name":"stdout","time":7.652171675,"data":"|=========================================================================================|\n"}
+,{"stream_name":"stdout","time":7.653655139,"data":"|  No running processes found                                                             |\n"}
+,{"stream_name":"stdout","time":7.653669632,"data":"+-----------------------------------------------------------------------------------------+\n"}
+,{"stream_name":"stdout","time":41.792654714,"data":"  loading Qwen/Qwen2.5-0.5B-Instruct on cuda (torch.float16)\n"}
+,{"stream_name":"stdout","time":41.939144253,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":132.280698684,"data":"  qwen2.5-0.5b 8/1000 113s\n"}
+,{"stream_name":"stdout","time":954.813602586,"data":"  qwen2.5-0.5b 88/1000 935s\n"}
+,{"stream_name":"stdout","time":1797.577828434,"data":"  qwen2.5-0.5b 168/1000 1778s\n"}
+,{"stream_name":"stdout","time":2540.338529887,"data":"  qwen2.5-0.5b 248/1000 2521s\n"}
+,{"stream_name":"stdout","time":3332.461803384,"data":"  qwen2.5-0.5b 328/1000 3313s\n"}
+,{"stream_name":"stdout","time":4102.868476127,"data":"  qwen2.5-0.5b 408/1000 4083s\n"}
+,{"stream_name":"stdout","time":4871.481829683,"data":"  qwen2.5-0.5b 488/1000 4852s\n"}
+,{"stream_name":"stdout","time":5602.10012979,"data":"  qwen2.5-0.5b 568/1000 5583s\n"}
+,{"stream_name":"stdout","time":6347.546890027,"data":"  qwen2.5-0.5b 648/1000 6328s\n"}
+,{"stream_name":"stdout","time":7054.762110471,"data":"  qwen2.5-0.5b 728/1000 7035s\n"}
+,{"stream_name":"stdout","time":7775.187516276,"data":"  qwen2.5-0.5b 808/1000 7756s\n"}
+,{"stream_name":"stdout","time":8514.50536266,"data":"  qwen2.5-0.5b 888/1000 8495s\n"}
+,{"stream_name":"stdout","time":9284.501204254,"data":"  qwen2.5-0.5b 968/1000 9265s\n"}
+,{"stream_name":"stdout","time":9707.573849306,"data":"  qwen2.5-0.5b done 9688s\n"}
+,{"stream_name":"stdout","time":9707.573888964,"data":"ALL DONE\n"}
+,{"stream_name":"stdout","time":9711.01487147,"data":"exit: 0\n"}
+,{"stream_name":"stdout","time":9711.024463868,"data":"FILES: ['qwen2.5-0.5b']\n"}
+,{"stream_name":"stderr","time":9713.036867268,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":9713.036894742,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":9713.257734817,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":9713.257759585,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":9713.996621909,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9714.889727509,"data":"[NbConvertApp] Writing 281682 bytes to __results__.html\n"}
+]
